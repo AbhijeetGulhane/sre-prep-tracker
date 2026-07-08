@@ -755,19 +755,20 @@ const PLAN=[
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy","")]},
  ]},
  {day:"Sat",sessions:[
-  {name:"🧳 Family Outing",time:"All day",items:[pr("Jul 12 — Family outing. Full rest day. No study.","Enjoy the day. Back to schedule Sunday.")]},
+  {name:"🧳 Family Outing",time:"All day",items:[pr("Jul 11 — Family outing. Full rest day. No study.","Enjoy the day. Back to schedule Sunday.")]},
  ]},
  {day:"Sun",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 10:00 AM",items:[pr("K8s HPA: metrics server, autoscale command","HPA: `kubectl autoscale deploy nginx --min=2 --max=10 --cpu-percent=50`"),pr("Resource requests vs limits: QoS classes","Guaranteed: req=limit; BestEffort: no req/limit → evicted first"),pr("Taints, tolerations, node affinity","Taint: `node=gpu:NoSchedule`; toleration allows scheduling")]},
-  {name:"🔄 Buffer & Catch-Up (flex)",time:"10:00 AM – 11:30 AM",items:[pr("Buffer & catch-up — clear anything from Sat spill-over first","iximiuz.com 'Container Networking Is Simple!' — hands-on with ip/veth/bridge commands. Networking gap remediation #3"),pr("Answer 15 networking + K8s questions from memory","Use Glassdoor Google SRE interview questions list")]},
-  {name:"🔨 Project — Guide Days 13-14 — Ship It",time:"Afternoon, ~90-120 min",items:[pr("Enable metrics-server, apply k8s/hpa.yaml, write load_test/loadgen.py — then run load test","See guide Day 13 — watch `kubectl get hpa -w` scale up and down. Note replica counts + timestamps."),pr("Write SECOND postmortem (HPA experiment) using real numbers","Full template in guide Day 14"),pr("Finalize README, add GitHub Actions CI, tag v1.0, push",""),pr("🏁 MILESTONE: pin repo on GitHub profile, add 3-4 bullets to resume Projects section","")]},
- ]},
+  {name:"🧳 Family Outing (Jul 12)",time:"All day",items:[
+    pr("Jul 12 — Family outing. Full rest day.","K8s HPA, iximiuz networking, and Project Guide Days 13-14 deferred to Week 5 (see Wk5 Mon evening + Wk5 Sat afternoon)."),
+  ]},
+]},
 ]},
 {wk:5,ph:3,title:"NALSD Foundations",milestone:"First timed NALSD mock — Sunday",days:[
  {day:"Mon",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design URL Shortener — full NALSD pass","Requirements → capacity → API → DB schema → hashing → read/write flow"),pr("Base62 vs MD5 truncation — justify choice","Base62: no collision; MD5: needs collision handling")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("Quick skim: SDI Ch 1 (audio-reviewed already)","10 min refresh only -- re-anchor the diagrams, no need for a full read")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[wt("ByteByteGo — Design TinyURL (~15 min)","youtube.com/bytebytego — compare with your design")]},
+  {name:"⏩ Deferred from Wk4 Sun (Jul 12 family day)",time:"Any available slot",items:[pr("K8s HPA: metrics server, autoscale command","HPA: `kubectl autoscale deploy nginx --min=2 --max=10 --cpu-percent=50`"),pr("Resource requests vs limits: QoS classes","Guaranteed: req=limit; BestEffort: no req/limit → evicted first"),pr("Taints, tolerations, node affinity","Taint: `node=gpu:NoSchedule`; toleration allows scheduling"),pr("iximiuz.com Container Networking — hands-on ip/veth/bridge","Networking gap remediation #3 — deferred from Wk4 Sun catch-up slot")]},
  ]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design Rate Limiter: token bucket vs leaky bucket vs sliding window","Token bucket: bursts ok; leaky bucket: smooth; sliding window: accurate"),pr("Rate limiter placement + Redis INCR/EXPIRE pattern","INCR per key per window; EXPIRE sets TTL")]},
@@ -791,6 +792,7 @@ const PLAN=[
  {day:"Sat",sessions:[
   {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[mk("Timed design: URL Shortener from scratch — 45 min, NO notes","Grading: req(5) estimate(5) API(5) DB(10) flow(10) scale(10)"),pr("Debrief: compare with Week 5 Day 1 design — what improved?","Write specifically what got better"),pr("Design Web Crawler","URL frontier, politeness, DNS caching, deduplication (Bloom filter)")],},
   {name:"Afternoon Study",time:"4:00 PM – 5:00 PM",items:[rd("Quick skim: SDI Ch 8 and Ch 10 combined (both audio-reviewed already)","10 min combined refresh -- fan-out write/read tradeoff (Ch8) plus APNs/FCM delivery guarantees (Ch10)")]},
+  {name:"🔨 Project — Guide Days 13-14 — SHIP IT (deferred from Wk4 Sun)",time:"5:00 PM – 7:00 PM",items:[pr("Enable metrics-server, apply k8s/hpa.yaml, write load_test/loadgen.py — run load test","See guide Day 13 — watch `kubectl get hpa -w` scale up and down. Note replica counts + timestamps."),pr("Write SECOND postmortem (HPA load test) using real timestamps","Full template in guide Day 14 — time the scale-up, calculate error budget impact"),pr("Finalize README, add GitHub Actions CI (.github/workflows/ci.yml), tag v1.0, push","See guide Day 14 — verify CI passes on GitHub Actions after push"),pr("🏁 MILESTONE: pin search-api on GitHub profile, add 4-5 resume project bullets","This completes the project. Resume Projects section now has real content.")]},
  ]},
  {day:"Sun",sessions:[
   {name:"FIRST TIMED NALSD MOCK",time:"8:30 AM – 9:30 AM",items:[mk("45-min Mock: Design URL Shortener for Google scale (1B users)","Record on voice memo. No notes. Full verbal as in interview."),pr("Debrief (15 min): 3 strengths, 3 gaps","Common gaps: no capacity estimate, no cache, no rate limiting")]},
@@ -802,6 +804,7 @@ const PLAN=[
  {day:"Mon",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design Gmail / Email System","SMTP ingestion, queue (MTA), Bigtable-like storage, full-text search, threading"),wt("ByteByteGo — How Gmail works (~15 min)","youtube.com/bytebytego")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SDI Vol 2 Ch 1 — Proximity Service","Geospatial: geohash vs quadtree vs S2 (Google choice)")]},
+  {name:"🤖 AI-SRE / AIOps Literacy Block",time:"9:30 PM – 10:15 PM",items:[rd("Google: Reliable AI with SRE Principles (sre.google/resources)","How SRE practices extend to ML systems: data drift as a reliability signal, model rollouts as canary deployments, silent failures in ML pipelines"),rd("What is AIOps? (logz.io/blog or dynatrace.com/ai-observability)","AIOps = using ML on operational data (logs, metrics, traces) to reduce alert noise, correlate incidents, predict failures. Relevant to: Splunk AI, ELK ML, Datadog Watchdog"),pr("Draft 2 talking points: AI role in SRE for Week 8-9 interviews","TP1: how ML-serving reliability differs (silent degradation vs hard errors). TP2: AIOps for noise reduction in high-volume alert environments — directly relevant to your Barclays oncall experience")]},
  ]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design YouTube Video Platform","Upload: transcode (FFmpeg), GCS storage, CDN, metadata Spanner, thumbnail")]},
