@@ -734,8 +734,9 @@ const PLAN=[
 {wk:4,ph:2,title:"Networking + Kubernetes — Finishing the Reliability Project",milestone:"🎉 Project live: Prometheus + Grafana + HPA + 2 postmortems on GitHub",days:[
  {day:"Mon",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("TCP: flow control (rwnd), congestion control (cwnd, slow start, AIMD)","Draw cwnd vs time graph through all phases"),pr("TIME_WAIT: cause, 2*MSL duration, how to tune","Key: net.ipv4.tcp_tw_reuse; port exhaustion in high-throughput")]},
-  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("Kurose & Ross Ch 3.1–3.5 — Transport Layer & TCP","3-way handshake SYN/SYN-ACK/ACK; FIN teardown")]},
+  {name:"🏢 Work-Hour Reading",time:"~45 min · during work hours",items:[rd("Kurose & Ross Ch 3.1–3.5 — Transport Layer & TCP","3-way handshake SYN/SYN-ACK/ACK; FIN teardown"),rd("🌐 Networking Fundamentals: Cloudflare Learning Center — NAT, Routing, Subnets","cloudflare.com/learning — NAT, routing tables, L2 vs L3, subnets. Free. ~30 min. Networking gap remediation #1 — must complete before K8s networking hands-on")]},
   {name:"🔨 Project — Guide Day 8",time:"Evening, ~30 min",items:[pr("With port-forward running, inspect your own TCP handshake","See guide Day 8 — `curl -v http://localhost:8080/healthz`, read the verbose output")]},
+  {name:"⚡ Limited Day",time:"Available: ~1 hr",items:[pr("K8s Architecture Retention Q&A redo — narrate the full Pod scheduling trace without notes","etcd → apiserver → scheduler → kubelet → containerd → runc → running Pod. Covers all 14 pending change items for today.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("DNS: recursive vs iterative resolution chain","Lab: `dig +trace google.com` — map the full resolver chain"),pr("DNS record types: A, AAAA, CNAME, MX, TXT, PTR, NS, SOA","When CNAME vs A? Can you CNAME at zone apex? (No — use ALIAS)")]},
  ]},
  {day:"Tue",sessions:[
@@ -747,31 +748,33 @@ const PLAN=[
  ]},
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("LB: L4 (TCP) vs L7 (HTTP) — use cases","L4: fast, no content awareness; L7: path routing, headers"),pr("LB algorithms: round-robin, least-conn, IP hash, random","When does IP hash break? (NAT proxy)"),pr("Health checks: active vs passive; circuit breaker pattern","States: Closed → Open → Half-Open")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
+  {name:"🔁 Wk3 Hands-On Redo A",time:"Late morning, ~60 min",items:[pr("/proc deep dive — real Linux this time","cat /proc/$$/status · ls -la /proc/$$/fd · cat /proc/$$/maps · cat /proc/$$/sched · watch -n1 'cat /proc/meminfo | grep -E MemAvailable|MemFree|Dirty'"),pr("File descriptor inspection","lsof -p $$ · lsof +L1 (find deleted-but-open files) · ls /proc/$$/fd — see socket:, pipe:, anon_inode:")]},
+  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("freeCodeCamp Brian Ferrill — Computer Networking (YouTube, hours 1-1.5)","OSI model + IP addressing basics. Free. Networking gap remediation #2")]},
   {name:"🔨 Project — Guide Day 10",time:"Evening, ~60-90 min",items:[pr("Deploy Prometheus with RBAC-scoped pod discovery","See guide Day 10 — ServiceAccount, ClusterRole, scrape config, full YAML"),pr("Verify targets are UP at localhost:9090/targets","If this fails, it's almost always the RBAC or relabel_configs — debug those first")]},
   {name:"Evening Study",time:"10:15 PM – 10:45 PM",items:[pr("K8s: Pods, Deployments, ReplicaSets — spec and kubectl","You already wrote one of these Week 3 Day 6"),pr("ConfigMaps and Secrets: env var vs volume mount","Why NOT store secrets in ConfigMap? You used a ConfigMap yesterday — now contrast with Secrets")]},
  ]},
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("K8s Services: ClusterIP, NodePort, LoadBalancer, ExternalName","How kube-proxy implements ClusterIP — you've been using ClusterIP all along"),pr("K8s workloads: DaemonSet, StatefulSet, Job, CronJob","DaemonSet: per-node; StatefulSet: ordered, stable identity"),pr("kubectl: get, describe, logs, exec, rollout status/undo","Memorize: `kubectl exec -it pod -- bash`")]},
-  {name:"🔨 Project — Guide Day 11",time:"Late morning, ~60-90 min",items:[pr("Deploy Grafana, connect Prometheus datasource","See guide Day 11 — full YAML, anonymous admin access for local use"),pr("Build a 3-panel dashboard: request rate, p99 latency, error rate","PromQL queries given in the guide — screenshot it for your README")]},
-  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("TechWorld with Nana — Kubernetes Tutorial","K8s basics, architecture, kubectl episodes")]},
+  {name:"Morning Study 2",time:"10:00 AM – 10:30 AM",items:[pr("Deploy Grafana, connect Prometheus datasource","See guide Day 11 — full YAML, anonymous admin access for local use"),pr("Build a 3-panel dashboard: request rate, p99 latency, error rate","PromQL queries given in the guide — screenshot it for your README")]},
+  {name:"🧴 Getting Ready",time:"10:30 AM – 11:00 AM",items:[pr("Get ready for office commute","30-min buffer before 11:00 AM drive")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("▶ 'Life of a Packet' — KubeCon talk (~30 min) on YouTube","Search 'Life of a Packet KubeCon Michael Rubin'. Watch THIS before K8s networking hands-on. Networking gap remediation #4")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("K8s networking: kube-proxy (iptables), CoreDNS, pod routing","DNS format: svc.namespace.svc.cluster.local — this is literally how Grafana found Prometheus today"),pr("CNI: Flannel vs Calico vs Cilium","GKE uses Calico; Dataplane V2 = Cilium")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("K8s Ingress: NGINX IngressController, path routing, TLS","pathType: Prefix vs Exact; TLS secret reference"),pr("K8s NetworkPolicy: allow/deny by namespace/pod selector, port","Default: all traffic allowed. Policies are additive."),pr("K8s RBAC: Role, ClusterRole, RoleBinding, ServiceAccount","Least privilege — you already wrote a ClusterRole for Prometheus Wednesday")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
+  {name:"Morning Study",time:"9:15 AM – 11:00 AM",items:[pr("K8s Ingress: NGINX IngressController, path routing, TLS","pathType: Prefix vs Exact; TLS secret reference"),pr("K8s NetworkPolicy: allow/deny by namespace/pod selector, port","Default: all traffic allowed. Policies are additive."),pr("K8s RBAC: Role, ClusterRole, RoleBinding, ServiceAccount","Least privilege — you already wrote a ClusterRole for Prometheus Wednesday")]},
+  {name:"🔁 Wk3 Hands-On Redo B",time:"11:00 AM – 12:00 PM",items:[pr("Signals hands-on — real Linux this time","kill -l · strace -e trace=signal sleep 10 & · python3 signal demo: register SIGTERM handler, send kill -15 · verify PID 1 signal quirk with tini"),pr("Fork/exec/zombie demo","Write python3 fork script: parent forks, child sleeps, parent delays wait() — observe zombie with ps aux --forest · then fix with wait()"),pr("Cgroups/namespaces","cat /proc/$$/cgroup · ls /sys/fs/cgroup/ · sudo unshare --net bash -- ip addr (only loopback) · nsenter demo")]},
+  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("freeCodeCamp Brian Ferrill — Computer Networking (YouTube, hours 1.5-3)","Routing tables + NAT. Completes the 3-hour networking fundamentals block. Networking gap remediation #2 complete")]},
   {name:"🔨 Project — Guide Day 12",time:"Afternoon, ~45-60 min",items:[pr("Write k8s/networkpolicy.yaml restricting search-api to same-namespace traffic","See guide Day 12 — directly applies today's NetworkPolicy concept"),pr("Validate RBAC with real commands: `kubectl auth can-i ... --as=system:serviceaccount:...`","Concrete proof of least privilege, not just the theory")]},
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy","")]},
  ]},
  {day:"Sat",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[pr("K8s HPA: metrics server, autoscale command","HPA: `kubectl autoscale deploy nginx --min=2 --max=10 --cpu-percent=50`"),pr("Resource requests vs limits: QoS classes","Guaranteed: req=limit; BestEffort: no req/limit → evicted first"),pr("Taints, tolerations, node affinity","Taint: `node=gpu:NoSchedule`; toleration allows scheduling")]},
-  {name:"🔨 Project — Guide Day 13",time:"Afternoon, ~90 min",items:[pr("Enable metrics-server, apply k8s/hpa.yaml, write load_test/loadgen.py","See guide Day 13 — pure-Python async load generator, no extra binaries"),pr("Run the load test, watch `kubectl get hpa -w` scale replicas up then back down","Note exact replica counts + timestamps — you'll need them tomorrow")]},
+  {name:"🧳 Family Outing",time:"All day",items:[pr("Jul 12 — Family outing. Full rest day. No study.","Enjoy the day. Back to schedule Sunday.")]},
  ]},
  {day:"Sun",sessions:[
-  {name:"Morning Deep Work",time:"8:30 AM – 10:00 AM",items:[pr("Write from memory: What happens when you type google.com?","Full detail: DNS → TCP → TLS → HTTP/2 → LB → backend")]},
-  {name:"🔄 Buffer & Catch-Up (flex)",time:"10:00 AM – 11:30 AM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),pr("Answer 15 networking + K8s questions from memory","Use Glassdoor Google SRE interview questions list")]},
-  {name:"🔨 Project — Guide Day 14 — Ship It",time:"Afternoon, ~90-120 min",items:[pr("Write your SECOND postmortem (the load test/HPA experiment) using yesterday's real numbers","Full template in guide Day 14 — two real postmortems now beats any fictional one"),pr("Finalize README, add GitHub Actions CI, tag v1.0, push","Full README content + ci.yml given in the guide"),pr("🏁 MILESTONE: pin repo on GitHub profile, add 3-4 bullets to resume Projects section","Resume bullets are written out for you in the guide's final section")]},
+  {name:"Morning Study",time:"8:30 AM – 10:00 AM",items:[pr("K8s HPA: metrics server, autoscale command","HPA: `kubectl autoscale deploy nginx --min=2 --max=10 --cpu-percent=50`"),pr("Resource requests vs limits: QoS classes","Guaranteed: req=limit; BestEffort: no req/limit → evicted first"),pr("Taints, tolerations, node affinity","Taint: `node=gpu:NoSchedule`; toleration allows scheduling")]},
+  {name:"🔄 Buffer & Catch-Up (flex)",time:"10:00 AM – 11:30 AM",items:[pr("Buffer & catch-up — clear anything from Sat spill-over first","iximiuz.com 'Container Networking Is Simple!' — hands-on with ip/veth/bridge commands. Networking gap remediation #3"),pr("Answer 15 networking + K8s questions from memory","Use Glassdoor Google SRE interview questions list")]},
+  {name:"🔨 Project — Guide Days 13-14 — Ship It",time:"Afternoon, ~90-120 min",items:[pr("Enable metrics-server, apply k8s/hpa.yaml, write load_test/loadgen.py — then run load test","See guide Day 13 — watch `kubectl get hpa -w` scale up and down. Note replica counts + timestamps."),pr("Write SECOND postmortem (HPA experiment) using real numbers","Full template in guide Day 14"),pr("Finalize README, add GitHub Actions CI, tag v1.0, push",""),pr("🏁 MILESTONE: pin repo on GitHub profile, add 3-4 bullets to resume Projects section","")]},
  ]},
 ]},
 {wk:5,ph:3,title:"NALSD Foundations",milestone:"First timed NALSD mock — Sunday",days:[
@@ -797,12 +800,10 @@ const PLAN=[
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Design Unique ID Gen — 15 min sketch","Snowflake: 41-bit timestamp + 10-bit machine + 12-bit seq = 64-bit")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("Timed design: URL Shortener from scratch — 45 min, NO notes","Grading: req(5) estimate(5) API(5) DB(10) flow(10) scale(10)"),pr("Debrief: compare with Day 1 design — what improved?","Write specifically what got better")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy","")]},
+  {name:"🧳 Family Outing",time:"All day",items:[pr("Jul 18 — Family outing. Full rest day.","Timed URL Shortener design deferred to Saturday morning.")]},
  ]},
  {day:"Sat",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[pr("Design Web Crawler","URL frontier, politeness, DNS caching, deduplication (Bloom filter)"),rd("Quick skim: SDI Ch 9 (audio-reviewed already)","5 min -- just check robots.txt + URL normalization + worker coordination are in your design")]},
+  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[mk("Timed design: URL Shortener from scratch — 45 min, NO notes","Grading: req(5) estimate(5) API(5) DB(10) flow(10) scale(10)"),pr("Debrief: compare with Week 5 Day 1 design — what improved?","Write specifically what got better"),pr("Design Web Crawler","URL frontier, politeness, DNS caching, deduplication (Bloom filter)")],},
   {name:"Afternoon Study",time:"4:00 PM – 5:00 PM",items:[rd("Quick skim: SDI Ch 8 and Ch 10 combined (both audio-reviewed already)","10 min combined refresh -- fan-out write/read tradeoff (Ch8) plus APNs/FCM delivery guarantees (Ch10)")]},
  ]},
  {day:"Sun",sessions:[
@@ -820,7 +821,7 @@ const PLAN=[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design YouTube Video Platform","Upload: transcode (FFmpeg), GCS storage, CDN, metadata Spanner, thumbnail")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("ByteByteGo podcast — Designing YouTube","CDN strategy and transcoding pipeline focus")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SDI Vol 1 Ch 14 — Design YouTube","Adaptive bitrate streaming (HLS/DASH), video deduplication")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Research Google SRE JDs: careers.google.com → SRE New York","Open 8-10 roles. Which teams? Which skills appear most?")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Research Google SRE JDs: careers.google.com → SRE New York","Open 8-10 roles. Which teams? Which skills appear most?"),pr("🌐 BROADENED TARGETS — also research: Meta Production Engineer JDs (metacareers.com), Datadog SRE/Platform, HashiCorp, Robinhood, Coinbase","Note: your Barclays regulated-env background = strong fit for fintech roles too")]},
  ]},
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design Monitoring & Alerting System","Metrics: pull (Prometheus) vs push (StatsD). Time-series DB. Alerting pipeline.")]},
@@ -828,28 +829,24 @@ const PLAN=[
   {name:"Evening Study",time:"10:15 PM – 10:45 PM",items:[pr("JD research: map requirements to your skills","Grid: Skill → Have it? → Evidence from work history")]},
  ]},
  {day:"Thu",sessions:[
-  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design Logging Pipeline","Log producers → Kafka → Flink → Elasticsearch → Kibana"),pr("Observability: logs + metrics + traces","Distributed tracing: Jaeger/Zipkin/Cloud Trace, correlation IDs")]},
-  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — Observability at Google","Search for monitoring/observability episode")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Finalize shortlist: 8-10 Google SRE JDs with notes","For each: job ID, team, top 5 requirements, fit score 1-10")]},
+  {name:"🧳 Family Outing",time:"All day",items:[pr("Jul 24 — Family outing. Full rest day.","Logging Pipeline + Observability session deferred to next available slot.")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("Timed design: Google Maps routing in 30 min","Scope: routing only. Dijkstra + A* heuristic."),pr("Design Search Autocomplete (Google Suggest)","Trie in memory, top-k per prefix, Kafka click feedback, daily rebuild")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy","")]},
+  {name:"🧳 Family Outing",time:"All day",items:[pr("Jul 25 — Weekend outing starts. Full rest.","")]},
  ]},
  {day:"Sat",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[rd("SDI Vol 2 Ch 3 — Google Maps","Map tile storage, routing graph, real-time traffic, ETA with ML"),rd("SDI Vol 2 Ch 4 — Distributed Message Queue (Kafka-like)","Partition, offset, consumer group, at-least-once vs exactly-once")]},
-  {name:"Afternoon Study",time:"4:00 PM – 5:00 PM",items:[rv("Review all Week 6 designs — which was weakest?","Spend 30 min redrawing weakest from scratch")]},
+  {name:"🧳 Family Outing",time:"All day",items:[pr("Jul 26 — Weekend outing. Full rest.","Design Logging Pipeline + Google Maps routing design deferred to Week 7 Monday.")]},
  ]},
  {day:"Sun",sessions:[
   {name:"TIMED NALSD MOCK #2",time:"8:30 AM – 9:30 AM",items:[mk("45-min Mock: Design YouTube at Google scale (2B users, 500hr/min)","Record. Focus: capacity + CDN + encoding pipeline. Debrief 15 min.")]},
   {name:"Afternoon Study",time:"12:00 PM – 1:00 PM",items:[pr("Final JD shortlist: pick top 3 roles to apply to first","Write a 2-sentence 'why this team' for each")]},
-  {name:"🔄 Buffer & Catch-Up (flex)",time:"1:00 PM – 2:00 PM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),pr("Gap analysis: which JD requirement needs more study?","Common gaps: K8s prod, capacity planning, oncall narration")]},
+  {name:"🔄 Buffer & Catch-Up (flex)",time:"1:00 PM – 2:00 PM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),pr("Gap analysis: which JD requirement needs more study?","Common gaps: K8s prod, capacity planning, oncall narration"),pr("🌐 Fintech/Hedge Fund research: Goldman Sachs, JPMorgan, Citadel, Two Sigma, Jane Street, Bloomberg","Your Barclays regulated-env background is highest fit here. Jane Street + Two Sigma weight coding heavily. Goldman + JPMorgan weight production ops depth. Check careers pages for infra/SRE/platform engineering roles.")]},
  ]},
 ]},
 {wk:7,ph:3,title:"Distributed Systems + Resume v1",milestone:"Resume v1 + referral outreach — 2 Aug",days:[
  {day:"Mon",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 11:00 AM",items:[pr("Design Logging Pipeline (deferred from Wk6 Thu)","Log producers → Kafka → Flink → Elasticsearch → Kibana"),pr("Observability: logs + metrics + traces","Distributed tracing: Jaeger/Zipkin/Cloud Trace, correlation IDs")]},
+  {name:"📐 Capacity Estimation Drill #1",time:"11:00 AM – 11:15 AM",items:[pr("TIMED 15-min drill: Estimate Twitter write QPS + storage for 1 year","Users: 300M MAU, 50% daily, 2 tweets/day avg. Storage: text 280 chars + metadata. Work through it without notes. Write answer.")]},
   {name:"🏢 Work-Hour Reading",time:"~45–60 min · during work hours",items:[rd("DDIA Ch 5 — Replication","Leader-follower: sync vs async; read replicas; lag. Leaderless: read repair, hinted handoff"),rd("DDIA Ch 6 — Partitioning","Range vs hash partition; hot spots; secondary index (local vs global)")]},
  ]},
  {day:"Tue",sessions:[
@@ -863,15 +860,12 @@ const PLAN=[
   {name:"Evening Study",time:"10:15 PM – 10:45 PM",items:[pr("Start Resume v1 — Experience section with SRE-language bullets","Format: Reduced [metric] by [X%] by [action], impacting [N] users/services")]},
  ]},
  {day:"Thu",sessions:[
-  {name:"Morning Study 1 — DEEP WORK",time:"6:45 AM – 9:15 AM",items:[pr("K8s advanced: HPA with Prometheus custom metrics","Configure HPA with averageUtilization:50; custom metric: req/sec"),pr("PDB: minAvailable vs maxUnavailable; rolling update interaction","PDB prevents voluntary disruptions below minimum ready pods"),pr("RBAC: ClusterRole aggregation, impersonation, audit logging","`kubectl auth can-i create pods --as=system:serviceaccount:default:mysa`")]},
-  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — K8s in production / capacity planning","")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Resume v1: tailor bullets for top 3 JDs using exact keywords","If JD says 'capacity planning' — your resume needs that exact phrase")]},
+  {name:"🧳 Family Outing",time:"All day",items:[pr("Jul 31 — Family outing. Full rest day.","K8s advanced HPA/PDB/RBAC deferred to Friday morning.")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Linux debug: strace with filtering","`strace -e trace=openat,read,write -p $(pgrep nginx) 2>&1 | head -50`"),pr("perf flamegraph: record → script → FlameGraph.pl","Wide bars = CPU time; deep stacks = call chain"),pr("bpftrace intro: tracepoints, kprobes, uprobes","Trace open syscalls to see which files a process reads")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy + rest","")]},
+  {name:"Morning Study",time:"9:15 AM – 11:00 AM",items:[pr("K8s advanced: HPA with Prometheus custom metrics","Configure HPA with averageUtilization:50; custom metric: req/sec"),pr("PDB: minAvailable vs maxUnavailable; rolling update interaction","PDB prevents voluntary disruptions below minimum ready pods"),pr("RBAC: ClusterRole aggregation, impersonation, audit logging","`kubectl auth can-i create pods --as=system:serviceaccount:default:mysa`")]},
+  {name:"📐 Capacity Estimation Drill #2",time:"11:00 AM – 11:15 AM",items:[pr("TIMED 15-min drill: Estimate YouTube storage for 1 year of uploads","500hrs video uploaded per minute. Avg video: 4K, 1 hour, 10GB. Multiple resolutions: 1080p=25%, 720p=50%, 480p=25%. Work through it cold.")],},
+  {name:"⏰ Half Day",time:"Afternoon",items:[pr("Aug 1 — Half day. Afternoon free.","Morning sessions only today. Resume tailoring if time permits.")]},
  ]},
  {day:"Sat",sessions:[
   {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[pr("Design Distributed Lock Service (Chubby/ZooKeeper style)","Ephemeral nodes, session leases, fencing tokens to prevent split-brain"),pr("Draw Raft log replication from memory: client write → leader → followers → commit","Include: partitioned follower, leader crash after commit")]},
@@ -887,7 +881,8 @@ const PLAN=[
  {day:"Mon",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Write STAR Story 1: Ownership — took initiative beyond your role","Format: Situation(2) → Task(1) → Actions(4: YOU) → Result(quantified)"),pr("Write STAR Story 2: Technical Excellence — hardest technical problem","Emphasize: debugging, depth, impact on reliability")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Record Stories 1 and 2 as voice memos (2 min max each)","Play back: too long? Filler words? Result quantified?")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Record Stories 1 and 2 as voice memos (2 min max each)","Play back: too long? Filler words? Result quantified?")]},
+  {name:"🔥 Troubleshooting Scenario #1",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 20-min live-debugging scenario: High latency + low CPU","Scenario: p99 latency 800ms, CPU at 30%, memory fine, no errors. Narrate your diagnosis out loud using fake metrics. Hypothesis → tools → root cause. Answer: CFS throttling + direct reclaim stall.")]},
  ]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Write STAR Story 3: Conflict Resolution — disagreement with teammate/manager","You listened, found common ground, resolved without unnecessary escalation"),pr("Write STAR Story 4: Failure + Learning — project that went wrong","Direct about the failure; 70% on what you learned and changed")]},
@@ -898,27 +893,25 @@ const PLAN=[
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Write STAR Story 5: Cross-team Collaboration","Influenced without authority, aligned stakeholders, drove shared outcome"),pr("Write STAR Story 6: Innovation/Automation — automated toil","Map to SRE values: toil reduction, reliability, scalability")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"10:15 PM – 10:45 PM",items:[pr("Record Stories 5-6; check all 6 cover a range of situations","Are results quantified? Each story has clear 'I did X' vs 'we did X'?")]},
+  {name:"🔥 Troubleshooting Scenario #2",time:"10:15 PM – 10:45 PM",items:[pr("TIMED 20-min live-debugging scenario: Service OOMKilled every 30 minutes","Scenario: pod restarts with exit code 137, RSS looks modest at restart, memory limit 512Mi. Narrate: cgroup OOM vs global OOM, check memory.events, pull usage graph not snapshot. Root cause: memory spike during batch job.")]},
  ]},
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Write STAR Story 7: High-pressure / Production incident","Triage, communication, resolution, post-incident follow-up"),pr("Write STAR Story 8: Long-term impact — lasting positive impact","Ideal: improved reliability, reduced oncall burden, scaled the system")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play all 8 STAR stories consecutively — identify 3 weakest","These are your refinement targets tonight")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("Glassdoor/Blind — Google SRE behavioral interview questions","Note recurring themes: toil, oncall, SLO")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Refine 3 weakest stories — rewrite and re-record","Fixes: add numbers, cut context, sharpen 'I' actions")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Refine 3 weakest stories — rewrite and re-record","Fixes: add numbers, cut context, sharpen 'I' actions")]},
+  {name:"📅 Book Mocks",time:"10:00 PM – 10:30 PM",items:[mk("Book Pramp coding mocks (x2) + both Interviewing.io mocks for Week 9 NOW","Book before the weekend outing Aug 8-9. Interviewing.io SRE troubleshooting slot (~$225). Coding mocks on Pramp (free). You need slots locked before applications go live Aug 10.")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Create 3 JD-specific resume versions (one per top JD)","Adjust: headline, summary, skills emphasis. Save as PDF."),pr("Prepare 'Why Google SRE?' answer — 2 min, rehearse out loud","Elements: Google scale + SRE philosophy + your fit")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Create 3 SRE-specific resume versions (one per top Google/Meta JD)","Adjust: headline, summary, skills emphasis. Save as PDF."),pr("🌐 Create DevOps/Platform resume variant (#4)","Reframe bullets: infrastructure automation, CI/CD, platform engineering. Target: Datadog, HashiCorp, Robinhood, Coinbase. Keywords: 'platform engineering', 'developer experience', 'infrastructure as code'."),pr("Prepare 'Why Google SRE?' AND 'Why Meta PE?' answers — 2 min each","Have distinct answers for each company's philosophy")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy","")]},
  ]},
  {day:"Sat",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[mk("Book 2 mock slots on Pramp or Interviewing.io","Schedule for Week 9. Interviewing.io better for system design."),pr("Say all 8 STAR stories out loud — 2 min max each","Total: 16 min. Which ones exceed 2 min? Trim them.")]},
-  {name:"Afternoon Study",time:"4:00 PM – 5:00 PM",items:[pr("Confirm all 3 resume versions are final PDFs","Send to referral contacts who haven't received it yet")]},
+  {name:"⚠️ Family Outing (Aug 8)",time:"All day",items:[pr("Aug 8 — Family outing. Full rest.","NOTE: Applications go live Aug 10 (Mon). Book Interviewing.io mocks this Friday before the weekend.")],},
  ]},
  {day:"Sun",sessions:[
-  {name:"Morning Deep Work",time:"8:30 AM – 10:00 AM",items:[mk("Full behavioral mock — ask your wife to interview you (45 min)","Questions: ownership, failure, conflict, 'Why Google?', weakness")]},
-  {name:"🔄 Buffer & Catch-Up (flex)",time:"10:00 AM – 11:30 AM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),pr("Post-mock debrief: score each answer 1-5 on clarity, specificity, result","")]},
-  {name:"Afternoon Study",time:"12:00 PM – 2:00 PM",items:[pr("Polish final 8 STAR stories based on mock feedback",""),rd("Life of an SRE at Google — blog posts / Reddit r/sre","Feel for culture: 'Why SRE at Google specifically?'")]},
+  {name:"⚠️ Family Outing (Aug 9)",time:"All day",items:[pr("Aug 9 — Family outing. Full rest.","Applications go live TOMORROW (Aug 10). All prep should be complete by end of Week 8 Friday.")]},
  ]},
 ]},
 {wk:9,ph:4,title:"Mock Interviews + Applications Live",milestone:"🚀 Google applications submitted — 10 Aug",days:[
@@ -929,6 +922,8 @@ const PLAN=[
  ]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[mk("SYSTEM DESIGN MOCK #1 on Interviewing.io (45 min)","Checklist: clarifying Q(2min), capacity(5), API(5), architecture(20), tradeoffs(10), failure modes"),pr("15-min debrief: estimation solid? Did you cover SLOs?","Write 3 improvements for mock #2")]},
+  {name:"Morning Study 2",time:"10:00 AM – 10:30 AM",items:[mk("🔥 SECOND Interviewing.io session — SRE Troubleshooting Round (~$225)","Framed as: 'A service is degraded — diagnose and resolve.' Not NALSD. Covers: live-debugging, oncall thinking, root cause narration. This is the single most important mock you will do.")],},
+  {name:"🧴 Getting Ready",time:"10:30 AM – 11:00 AM",items:[pr("Get ready for office commute","")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — any episode","")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("⭐ SUBMIT Google SRE applications — top 3 roles from shortlist","careers.google.com. Track: job ID, date, role in spreadsheet.")]},
@@ -936,13 +931,15 @@ const PLAN=[
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("CODING MOCK #2 on Pramp (45 min, different partner)","Goal: write approach in comments first, then implement"),pr("15-min debrief","")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Submit backup company applications (2-3 companies)","Use same tailored resumes"),pr("Update tracking spreadsheet: Company, Role, Date, Referral, Status","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Submit backup company applications (2-3 companies) — Meta PE, Datadog, Robinhood","Use tailored resumes: SRE variant for Meta, DevOps/Platform variant for Datadog/Robinhood"),pr("Update tracking spreadsheet: Company, Role, Date, Referral, Status","")]},
+  {name:"⌨️ Scripting Round Rep",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 30-min Python/bash sysadmin scripting problem","Example: 'Parse /var/log/nginx/access.log, find top 10 IPs by request count, flag any with error rate > 20%.' Write clean, working script. Timed. No looking up syntax.")],},
  ]},
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[mk("SYSTEM DESIGN MOCK #2 on Interviewing.io (45 min)","Goal: cover 4 Golden Signals, SLOs, and 2 failure modes explicitly"),pr("15-min debrief","")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play your STAR voice memos — all 8 in sequence","Note which still feel weak after the drive")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("LeetCode: 2 medium problems to stay sharp","LC 102 Binary Tree Level Order or LC 207 Course Schedule")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("LeetCode: 2 medium problems to stay sharp","LC 102 Binary Tree Level Order or LC 207 Course Schedule")]},
+  {name:"🔥 Troubleshooting Scenario #3",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 20-min scenario: Kubernetes pod keeps restarting — diagnose","Scenario: exit code 137, happens every 4 hours, RSS looks fine. Fake dmesg + memory.events provided. Narrate: cgroup OOM vs global OOM, check memory.high vs memory.max, spike during scheduled batch job. Fix: raise memory limit or add resource.limits.")]},
  ]},
  {day:"Fri",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[rv("Consolidate mock feedback: 5 things to do better (ranked by impact)","What single change most improves your performance?"),rv("System design checklist: Requirements → Estimation → API → DB → Architecture → Scale → Failure","Questions to ask at each step")]},
