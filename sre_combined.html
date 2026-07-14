@@ -384,6 +384,7 @@ const PHASES = [
   {id:2,label:"Phase 2",name:"Linux, SRE & Kubernetes",color:"#10B981",wks:[3,4]},
   {id:3,label:"Phase 3",name:"NALSD System Design",color:"#F59E0B",wks:[5,6,7]},
   {id:4,label:"Phase 4",name:"Behavioral, Mocks & Apply",color:"#8B5CF6",wks:[8,9,10]},
+{id:5,label:"Maintain",name:"Post-Plan Maintenance",color:"#64748B",wks:[11]},
 ];
 function phaseOf(wk){return PHASES.find(p=>p.wks.includes(wk))||PHASES[0];}
 
@@ -766,14 +767,14 @@ const PLAN=[
 
 {wk:5,ph:3,title:"NALSD Foundations",milestone:"First timed NALSD mock — Sunday",days:[
  {day:"Mon",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design URL Shortener — full NALSD pass","Requirements → capacity → API → DB schema → hashing → read/write flow"),pr("Base62 vs MD5 truncation — justify choice","Base62: no collision; MD5: needs collision handling")]},
-  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("Quick skim: SDI Ch 1 (audio-reviewed already)","10 min refresh only -- re-anchor the diagrams, no need for a full read")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design URL Shortener — full NALSD pass","Requirements → capacity → API → DB schema → hashing → read/write flow"),pr("Base62 vs MD5 truncation — justify choice","Base62: no collision; MD5: needs collision handling"),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
+  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SRE Workbook Ch 12 — Non-Abstract Large System Design (sre.google/workbook — free)","READ BEFORE tonight's design review. NALSD ≠ SWE system design: compute actual machine counts, disk/IOPS/RAM math at every layer, find the first numerical bottleneck, iterate the design when it breaks. This is Google's format. (SDI Ch 1 skim: 5 min after, only if time.)")]},
   {name:"🔨 Guide Day 5",time:"Evening, ~60 min",items:[pr("Write Dockerfile. docker build -t search-api:v1 . && docker run -p 8000:8000 search-api:v1","curl http://localhost:8000/healthz from container. docker stats — cgroup limits in action."),pr("git add Dockerfile && git commit feat: Dockerize service","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[wt("ByteByteGo — Design TinyURL (~15 min)","youtube.com/bytebytego — compare with your design")]}
  ]},
 
  {day:"Tue",sessions:[
-  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design Rate Limiter: token bucket vs leaky bucket vs sliding window","Token bucket: bursts ok; leaky bucket: smooth; sliding window: accurate"),pr("Rate limiter placement + Redis INCR/EXPIRE pattern","INCR per key per window; EXPIRE sets TTL")]},
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design Rate Limiter: token bucket vs leaky bucket vs sliding window","Token bucket: bursts ok; leaky bucket: smooth; sliding window: accurate"),pr("Rate limiter placement + Redis INCR/EXPIRE pattern","INCR per key per window; EXPIRE sets TTL"),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"🔨 Guide Day 6",time:"Before commute",items:[pr("kubectl apply -f k8s/ — deploy to Minikube (search-sre namespace)","kubectl port-forward -n search-sre svc/search-api 8080:8080. curl http://localhost:8080/healthz."),pr("ss -tnp | grep 8080 — see the TCP socket your port-forward opened","Connects Week 4 networking lecture to something you built."),pr("git add k8s/ && git commit feat: K8s deployment to Minikube","")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("ByteByteGo podcast — Rate Limiting episode","podcast.bytebytego.com")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("Quick skim: SDI Ch 4 (audio-reviewed already)","5 min refresh -- go straight to the design practice below")]},
@@ -781,49 +782,51 @@ const PLAN=[
  ]},
  {day:"Wed",sessions:[
   {name:"🔨 Guide Day 7 — MILESTONE: Postmortem #1",time:"Evening",items:[pr("chaos/chaos_test.sh — delete pod, time recovery to 1/1 Ready","Record timestamps. 10-15 sec gap = real single-replica outage window."),pr("Write POSTMORTEM #1 in docs/POSTMORTEM.md with real timestamps","STAR Story #1 for Week 8: Situation + Action + Result (quantified outage window)."),pr("git add chaos/ docs/ && git commit docs: chaos test + Postmortem #1","")]},
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design Distributed KV Store","Consistent hashing ring, replication N, quorum W+R>N"),pr("Conflict resolution: vector clocks vs last-write-wins","LWW is simpler but loses data; Dynamo uses vector clocks")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design Distributed KV Store","Consistent hashing ring, replication N, quorum W+R>N"),pr("Conflict resolution: vector clocks vs last-write-wins","LWW is simpler but loses data; Dynamo uses vector clocks"),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"🏢 Work-Hour Reading",time:"~45–60 min · during work hours",items:[rd("Quick skim: SDI Ch 5 (audio-reviewed already)","10 min refresh -- focus only on the virtual nodes diagram"),rd("Quick skim: SDI Ch 6 (audio-reviewed already)","5 min -- just compare your design against the book diagram")]},
  ]},
  {day:"Thu",sessions:[
-  {name:"🔨 Guide Day 8",time:"Pre-study",items:[pr("Write app/metrics.py — REQUEST_COUNT + REQUEST_LATENCY (4 Golden Signals)","@track on all endpoints. curl localhost:8080/metrics | grep search_api_requests_total."),pr("Write tests/test_api.py — 4 tests. python -m pytest tests/ -v — all 4 pass","git add app/ tests/ && git commit feat: Prometheus metrics + test suite")]},
-  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design Distributed Cache (Redis-like)","Cache-aside vs write-through vs write-back vs write-around"),pr("Eviction: LRU vs LFU vs TTL; cache stampede solutions","Stampede: Redis SETNX lock or probabilistic early expiry"),pr("Cache warming + thundering herd","Warming: pre-populate on deploy; herd: jitter on TTL")]},
+  {name:"🔨 Guide Day 8 — Verify metrics on K8s (metrics.py + tests done Guide Day 4)",time:"Pre-study, ~20 min",items:[pr("Verify /metrics on the K8s deployment — port-forward, curl from all 3 replicas","curl localhost:8080/metrics | grep search_api_requests_total per pod. Metrics.py + tests were written Guide Day 4 (Wk4 Sat) — this is a check, not a redo."),pr("python -m pytest tests/ -v still green after K8s changes; commit any drift","git add -A && git commit chore: verify metrics on cluster (only if something changed)")]},
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design Distributed Cache (Redis-like)","Cache-aside vs write-through vs write-back vs write-around"),pr("Eviction: LRU vs LFU vs TTL; cache stampede solutions","Stampede: Redis SETNX lock or probabilistic early expiry"),pr("Cache warming + thundering herd","Warming: pre-populate on deploy; herd: jitter on TTL"),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("ByteByteGo — How Redis works internally","Single-threaded model, AOF vs RDB, Sentinel vs Cluster")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("Quick skim: SDI Ch 7 (audio-reviewed already)","5 min refresh on Snowflake bit layout before sketching")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Design Unique ID Gen — 15 min sketch","Snowflake: 41-bit timestamp + 10-bit machine + 12-bit seq = 64-bit")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Jul 17 — Web Crawler: URL frontier + politeness + Bloom filter dedup","See DDIA Ch 6 for write patterns. iximiuz.com hands-on in evening on new Dell once setup.","Timed URL Shortener design deferred to Saturday morning.")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Jul 17 — Web Crawler: URL frontier + politeness + Bloom filter dedup","See DDIA Ch 6 for write patterns. iximiuz.com hands-on in evening on new Dell once setup.","Timed URL Shortener design deferred to Saturday morning."),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
  ]},
  {day:"Sat",sessions:[
   {name:"🧳 Outing (Jul 18)",time:"All day",items:[pr("Jul 18 — Single day outing. Full rest.","URL Shortener timed mock + Web Crawler design deferred to Sunday morning.")]},
  ]},
  {day:"Sun",sessions:[
   {name:"⏩ Deferred (Jul 18): URL Shortener",time:"8:30 AM",items:[mk("Timed: URL Shortener 45 min, no notes","req(5) estimate(5) API(5) DB(10) flow(10) scale(10)")]},
-  {name:"FIRST TIMED NALSD MOCK",time:"10:00 AM – 9:30 AM",items:[mk("45-min Mock: Design URL Shortener for Google scale (1B users)","Record on voice memo. No notes. Full verbal as in interview."),pr("Debrief (15 min): 3 strengths, 3 gaps","Common gaps: no capacity estimate, no cache, no rate limiting")]},
+  {name:"FIRST TIMED NALSD MOCK",time:"10:00 AM – 11:00 AM",items:[mk("45-min Mock: Design URL Shortener for Google scale (1B users)","Record on voice memo. No notes. Full verbal as in interview."),pr("Debrief (15 min): 3 strengths, 3 gaps","Common gaps: no capacity estimate, no cache, no rate limiting"),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"🔨 Guide Day 9",time:"12 PM – 1 PM",items:[pr("k8s/configmap.yaml + deployment.yaml replicas:3 + envFrom. kubectl apply -f k8s/.","Watch 3 pods start. kubectl logs -l app=search-api --prefix -f — see load balancing."),pr("git add k8s/ && git commit feat: ConfigMap + scale to 3 replicas","")]},
   {name:"Afternoon Study",time:"12:00 PM – 1:00 PM",items:[rd("SRE Workbook Ch 1 — How SRE Relates to DevOps","Useful for 'Why SRE?' interview question")]},
   {name:"🔄 Buffer & Catch-Up (flex)",time:"1:00 PM – 2:00 PM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),rd("SDI Vol 1 Ch 11-12 — Search Autocomplete + Google Drive","Quick skim — note key components")]},
+  {name:"⌨️ Coding Maintenance",time:"2:00 PM – 2:45 PM",items:[pr("2 timed LeetCode mediums from BLIND/GOOGLE pools — full solves, 20 min each","Distinct from daily revision recall: these are complete timed solves with narration. Keeps coding warm through Phase 3–4 for the two Google coding rounds.")]},
  ]},
 ]},
 {wk:6,ph:3,title:"Google-Scale Designs + Company Research",milestone:"8–10 Google SRE JDs shortlisted",days:[
  {day:"Mon",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design Gmail / Email System","SMTP ingestion, queue (MTA), Bigtable-like storage, full-text search, threading"),wt("ByteByteGo — How Gmail works (~15 min)","youtube.com/bytebytego")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design Gmail / Email System","SMTP ingestion, queue (MTA), Bigtable-like storage, full-text search, threading"),wt("ByteByteGo — How Gmail works (~15 min)","youtube.com/bytebytego"),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SDI Vol 2 Ch 1 — Proximity Service","Geospatial: geohash vs quadtree vs S2 (Google choice)")]},
   {name:"🤖 AI-SRE / AIOps Literacy Block",time:"9:30 PM – 10:15 PM",items:[rd("Google: Reliable AI with SRE Principles (sre.google/resources)","How SRE practices extend to ML: data drift as reliability signal, model rollouts as canary deployments, silent failures in ML pipelines"),rd("What is AIOps? (logz.io/blog or dynatrace.com overview)","AIOps = ML on ops data (logs, metrics, traces) to reduce alert noise, correlate incidents. Relevant to your Barclays ELK/Splunk background."),pr("Draft 2 talking points: AI role in SRE for Week 8-9 interviews","TP1: ML-serving reliability differs from traditional — silent degradation vs hard errors. TP2: AIOps for noise reduction — directly relevant to oncall at Barclays.")]},
   {name:"🔨 Project — Guide Day 10",time:"Late evening, ~45 min",items:[pr("Deploy Prometheus: apply k8s/prometheus-rbac.yaml + prometheus-config.yaml + k8s/prometheus-deployment.yaml","localhost:9090/targets — should show 3 targets UP, one per pod. Prometheus auto-discovers via K8s SD."),pr("kubectl auth can-i list pods --as=system:serviceaccount:search-sre:prometheus -n search-sre","Should return yes. delete pods should return no. Least privilege confirmed."),pr("Commit: git add k8s/prometheus-*.yaml — git commit feat: Prometheus + RBAC-scoped pod discovery","")]}
  ]},
  {day:"Tue",sessions:[
-  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design YouTube Video Platform","Upload: transcode (FFmpeg), GCS storage, CDN, metadata Spanner, thumbnail")]},
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design YouTube Video Platform","Upload: transcode (FFmpeg), GCS storage, CDN, metadata Spanner, thumbnail"),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("ByteByteGo podcast — Designing YouTube","CDN strategy and transcoding pipeline focus")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SDI Vol 1 Ch 14 — Design YouTube","Adaptive bitrate streaming (HLS/DASH), video deduplication")]},
   {name:"🔨 Guide Day 11",time:"9:30 PM",items:[pr("Apply k8s/grafana-deployment.yaml. Port-forward :3000. Add Prometheus datasource.","Build 3-panel dashboard: request rate + p99 + error rate. Screenshot it."),pr("git add k8s/grafana-deployment.yaml && git commit feat: Grafana dashboard","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Research Google SRE JDs: careers.google.com → SRE New York","Open 8-10 roles. Which teams? Which skills appear most?"),pr("🌐 BROADENED TARGETS — also research: Meta Production Engineer JDs (metacareers.com), Datadog SRE/Platform, HashiCorp, Robinhood, Coinbase","Note: your Barclays regulated-env background = strong fit for fintech roles too")]},
  ]},
  {day:"Wed",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design Monitoring & Alerting System","Metrics: pull (Prometheus) vs push (StatsD). Time-series DB. Alerting pipeline.")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Design Monitoring & Alerting System","Metrics: pull (Prometheus) vs push (StatsD). Time-series DB. Alerting pipeline."),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"🔨 Guide Day 12",time:"10:15 PM",items:[pr("Apply k8s/networkpolicy.yaml. kubectl auth can-i delete pods --as=...prometheus... = no.","Screenshot both auth can-i results for README."),pr("git add k8s/networkpolicy.yaml && git commit feat: NetworkPolicy + RBAC validated","")]},
   {name:"🏢 Work-Hour Reading",time:"~45–60 min · during work hours",items:[rd("SRE Workbook Ch 4 — Monitoring","Alert on symptoms (SLO breach) not causes"),rd("SRE Workbook Ch 5 — Alerting on SLOs","Multi-window: fast burn (1hr) + slow burn (6hr)")]},
-  {name:"Evening Study",time:"10:15 PM – 10:45 PM",items:[pr("JD research: map requirements to your skills","Grid: Skill → Have it? → Evidence from work history")]},
+  {name:"Evening Study",time:"10:15 PM – 10:45 PM",items:[pr("JD research: map requirements to your skills","Grid: Skill → Have it? → Evidence from work history"),pr("⌨️ Coding maintenance: 2 timed LC mediums (20 min each)","Full solves with narration, weakest patterns first — not just recall. Coding rounds are at the standard SWE bar; don't let it rust until Week 9.")]},
+  {name:"📐 Capacity Estimation Drill #3",time:"10:45 PM – 11:00 PM",items:[pr("TIMED 15-min drill: Estimate Gmail storage + write QPS for 1 year","1.8B users, 40% daily, ~15 emails received/day avg, ~75KB/email incl. attachments amortized. Work cold — no notes. Write the answer down.")]},
  ]},
  {day:"Thu",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Jul 23 — Study: Logging Pipeline + observability + Guide Day 13 (HPA load test).","Logging Pipeline + Observability session deferred to next available slot.")]},
@@ -842,8 +845,8 @@ const PLAN=[
 
 {wk:7,ph:3,title:"Distributed Systems + Resume v1",milestone:"Resume v1 + referral outreach — 2 Aug",days:[
  {day:"Mon",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 11:00 AM",items:[pr("Design Logging Pipeline (deferred from Wk6 Thu)","Log producers → Kafka → Flink → Elasticsearch → Kibana"),pr("Observability: logs + metrics + traces","Distributed tracing: Jaeger/Zipkin/Cloud Trace, correlation IDs")]},
-  {name:"⏩ NALSD Mock #2 (deferred Jul 26 outing)",time:"9:30 PM",items:[mk("45-min Mock: Design YouTube at Google scale (2B users, 500hr/min)","Record. Debrief 15 min: capacity + CDN + encoding pipeline.")]},
+  {name:"Morning Study",time:"9:15 AM – 11:00 AM",items:[pr("Design Logging Pipeline (deferred from Wk6 Thu)","Log producers → Kafka → Flink → Elasticsearch → Kibana"),pr("Observability: logs + metrics + traces","Distributed tracing: Jaeger/Zipkin/Cloud Trace, correlation IDs"),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
+  {name:"⏩ NALSD Mock #2 (deferred Jul 26 outing)",time:"9:30 PM",items:[mk("45-min Mock: Design YouTube at Google scale (2B users, 500hr/min)","Record. Debrief 15 min: capacity + CDN + encoding pipeline."),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"📐 Capacity Estimation Drill #1",time:"11:00 AM – 11:15 AM",items:[pr("TIMED 15-min drill: Estimate Twitter write QPS + storage for 1 year","Users: 300M MAU, 50% daily, 2 tweets/day avg. Storage: text 280 chars + metadata. Work through it without notes. Write answer.")]},
   {name:"🏢 Work-Hour Reading",time:"~45–60 min · during work hours",items:[rd("DDIA Ch 5 — Replication","Leader-follower: sync vs async; read replicas; lag. Leaderless: read repair, hinted handoff"),rd("DDIA Ch 6 — Partitioning","Range vs hash partition; hot spots; secondary index (local vs global)")]},
  ]},
@@ -851,6 +854,7 @@ const PLAN=[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Write examples: dirty read, phantom read, lost update, read skew","For each: what isolation level prevents it?")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Software Engineering Daily — distributed systems/consensus","Search 'consensus' or 'distributed database'")]},
   {name:"🏢 Work-Hour Reading",time:"~45–60 min · during work hours",items:[rd("DDIA Ch 7 — Transactions","ACID, isolation levels: READ COMMITTED, REPEATABLE READ, SERIALIZABLE"),rd("DDIA Ch 8 — Trouble with Distributed Systems","Network faults, clock skew (NTP limits), process pauses (GC)")]},
+  {name:"⌨️ Coding Maintenance",time:"9:30 PM – 10:15 PM",items:[pr("2 timed LC mediums (20 min each) — trees/graphs bias","Google coding rounds lean trees, graphs, strings. Full timed solves, think out loud.")]},
  ]},
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[wt("Raft: Understandable Distributed Consensus (raft.github.io — 20 min)","Leader election + log replication + commitment"),pr("Draw Raft leader election from scratch — state machine","Election timeout → vote request → vote grant → new leader")]},
@@ -860,18 +864,18 @@ const PLAN=[
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("K8s advanced HPA/PDB/RBAC","HPA with custom metrics; PDB minAvailable; kubectl auth can-i impersonation")]},
   {name:"📐 Capacity Estimation Drill #2",time:"Evening, 15 min",items:[pr("TIMED 15-min drill: Estimate YouTube storage for 1 year of uploads","500hrs video/min. Avg 4K 1-hr video = 10GB. Resolutions: 1080p+720p+480p. Work cold — no notes.")]},
-  {name:"🔨 Project — Guide Day 14 — SHIP IT",time:"Evening",items:[pr("Run load_test/loadgen.py (50 workers 2 min). kubectl get hpa -n search-sre -w — watch scale 2→5.","Record timestamps + replica counts for Postmortem #2."),pr("Write POSTMORTEM #2 + finalize README + .github/workflows/ci.yml + git tag v1.0 + push","CI badge green. Pin repo. Add 4-5 resume project bullets. search-api is DONE.")]},
+  {name:"🔨 Project — Guide Day 14 — SHIP IT",time:"Evening",items:[pr("Run load_test/loadgen.py (50 workers 2 min). kubectl get hpa -n search-sre -w — watch scale 2→5.","Record timestamps + replica counts for Postmortem #2."),pr("Write POSTMORTEM #2 + finalize README + .github/workflows/ci.yml + git tag v1.0 + push","CI badge green. Pin repo. Add 4-5 resume project bullets. search-api is DONE."),pr("README 30-second skim test: architecture diagram + SLOs + 1 Grafana screenshot + postmortem links AT TOP","Recruiters skim for ~1 minute. Lead with the reliability story, not the semantic search.")]},
   {name:"📐 Capacity Drill #2",time:"10 PM",items:[pr("TIMED 15-min: YouTube storage 1yr (500hrs/min uploads, 4K 1hr=10GB, multiple resolutions)","Work cold.")]},
  ]},
  {day:"Fri",sessions:[
   {name:"🧳 Outing (Jul 31)",time:"All day",items:[pr("Jul 31 — Single day family outing. Full rest.","K8s advanced HPA/PDB/RBAC content moved to Thursday block.")]},
  ]},
  {day:"Sat",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[pr("Design Distributed Lock Service (Chubby/ZooKeeper style)","Ephemeral nodes, session leases, fencing tokens to prevent split-brain"),pr("Draw Raft log replication from memory: client write → leader → followers → commit","Include: partitioned follower, leader crash after commit")]},
+  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[pr("Design Distributed Lock Service (Chubby/ZooKeeper style)","Ephemeral nodes, session leases, fencing tokens to prevent split-brain"),pr("Draw Raft log replication from memory: client write → leader → followers → commit","Include: partitioned follower, leader crash after commit"),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"🏖 Half Day (Aug 1)",time:"Afternoon",items:[pr("Aug 1 — Half day outing. Morning study kept.","Resume v1 + referral outreach deferred to Sunday afternoon.")]},
  ]},
  {day:"Sun",sessions:[
-  {name:"TIMED NALSD MOCK #3",time:"8:30 AM – 9:30 AM",items:[mk("45-min Mock: Design a Distributed Message Queue (Kafka-like)","Partitioning, offsets, consumer groups, at-least-once delivery. Record + debrief.")]},
+  {name:"TIMED NALSD MOCK #3",time:"8:30 AM – 9:30 AM",items:[mk("45-min Mock: Design a Distributed Message Queue (Kafka-like)","Partitioning, offsets, consumer groups, at-least-once delivery. Record + debrief."),pr("📐 NALSD math pass","Machine count · storage/disk/IOPS math · first numerical bottleneck · iterate the design once it breaks (Workbook Ch 12 format)")]},
   {name:"Afternoon Study",time:"12:00 PM – 1:00 PM",items:[pr("Send referral outreach messages — 2 Aug MILESTONE","Track: sent date, contact name, role. Follow up in 1 week if no reply.")]},
   {name:"🔄 Buffer & Catch-Up (flex)",time:"1:00 PM – 2:00 PM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),rv("DDIA Ch 9 consensus — final pass on Raft","Goal: explain Raft in 2 minutes to an interviewer")]},
  ]},
@@ -881,28 +885,29 @@ const PLAN=[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Write STAR Story 1: Ownership — took initiative beyond your role","Format: Situation(2) → Task(1) → Actions(4: YOU) → Result(quantified)"),pr("Write STAR Story 2: Technical Excellence — hardest technical problem","Emphasize: debugging, depth, impact on reliability")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
   {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Record Stories 1 and 2 as voice memos (2 min max each)","Play back: too long? Filler words? Result quantified?")]},
-  {name:"🔥 Troubleshooting Scenario #1",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 20-min live-debugging scenario: High latency + low CPU","Scenario: p99 latency 800ms, CPU at 30%, memory fine, no errors. Narrate your diagnosis out loud using fake metrics. Hypothesis → tools → root cause. Answer: CFS throttling + direct reclaim stall.")]},
+  {name:"🔥 Troubleshooting Scenario #1 (BLIND)",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 20-min BLIND scenario — sadservers.com, pick an unseen server","No pre-known answer — that is the whole point. SSH in, diagnose, fix, timed. Narrate out loud: hypothesis → tool → evidence → next step. Debrief: did you anchor on your first hypothesis too early?")]},
  ]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Write STAR Story 3: Conflict Resolution — disagreement with teammate/manager","You listened, found common ground, resolved without unnecessary escalation"),pr("Write STAR Story 4: Failure + Learning — project that went wrong","Direct about the failure; 70% on what you learned and changed")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play back Stories 1-4 during drive","Refine mentally: what to cut? What needs more detail?")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Record Stories 3-4; re-record Story 1 if needed","")]},
+  {name:"🔥 Troubleshooting Scenario #2 (BLIND)",time:"10:30 PM – 10:50 PM",items:[pr("TIMED 20-min BLIND scenario — sadservers.com, next unseen server","Timed, narrated, no hints until debrief. Log: time to first correct hypothesis, and which tool actually broke the case open.")]},
  ]},
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Write STAR Story 5: Cross-team Collaboration","Influenced without authority, aligned stakeholders, drove shared outcome"),pr("Write STAR Story 6: Innovation/Automation — automated toil","Map to SRE values: toil reduction, reliability, scalability")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"🔥 Troubleshooting Scenario #2",time:"10:15 PM – 10:45 PM",items:[pr("TIMED 20-min live-debugging scenario: Service OOMKilled every 30 minutes","Scenario: pod restarts with exit code 137, RSS looks modest at restart, memory limit 512Mi. Narrate: cgroup OOM vs global OOM, check memory.events, pull usage graph not snapshot. Root cause: memory spike during batch job.")]},
+  {name:"🔥 Troubleshooting Scenario #3 (BLIND)",time:"10:15 PM – 10:45 PM",items:[pr("TIMED 20-min BLIND scenario — AI-generated fault, drip-fed evidence","Have the generator invent a K8s/Linux fault and reveal dmesg/metrics/logs ONLY when you ask for each by name. Root cause must be unknown to you in advance. Narrate the full diagnosis.")]},
  ]},
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Write STAR Story 7: High-pressure / Production incident","Triage, communication, resolution, post-incident follow-up"),pr("Write STAR Story 8: Long-term impact — lasting positive impact","Ideal: improved reliability, reduced oncall burden, scaled the system")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play all 8 STAR stories consecutively — identify 3 weakest","These are your refinement targets tonight")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("Glassdoor/Blind — Google SRE behavioral interview questions","Note recurring themes: toil, oncall, SLO")]},
-  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Refine 3 weakest stories — rewrite and re-record","Fixes: add numbers, cut context, sharpen 'I' actions")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Refine 3 weakest stories — rewrite and re-record","Fixes: add numbers, cut context, sharpen 'I' actions"),pr("Map all 8 stories to Googleyness & Leadership signals + rehearse 3 hypotheticals","G&L axes: comfort with ambiguity, intellectual humility, bias to action, doing the right thing. Then answer 3 'What would you do if...' hypotheticals out loud — Google uses these more than pure STAR.")]},
   {name:"📅 Book Mocks",time:"10:00 PM – 10:30 PM",items:[mk("Book Pramp coding mocks (x2) + both Interviewing.io mocks for Week 9 NOW","Book before the weekend outing Aug 8-9. Interviewing.io SRE troubleshooting slot (~$225). Coding mocks on Pramp (free). You need slots locked before applications go live Aug 10.")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Create 3 SRE-specific resume versions (one per top Google/Meta JD)","Adjust: headline, summary, skills emphasis. Save as PDF."),pr("🌐 Create DevOps/Platform resume variant (#4)","Reframe bullets: infrastructure automation, CI/CD, platform engineering. Target: Datadog, HashiCorp, Robinhood, Coinbase. Keywords: 'platform engineering', 'developer experience', 'infrastructure as code'."),pr("Prepare 'Why Google SRE?' AND 'Why Meta PE?' answers — 2 min each","Have distinct answers for each company's philosophy")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Create 3 SRE-specific resume versions (one per top Google/Meta JD)","Adjust: headline, summary, skills emphasis. Save as PDF."),pr("🌐 Create DevOps/Platform resume variant (#4)","Reframe bullets: infrastructure automation, CI/CD, platform engineering. Target: Datadog, HashiCorp, Robinhood, Coinbase. Keywords: 'platform engineering', 'developer experience', 'infrastructure as code'."),pr("Prepare 'Why Google SRE?' AND 'Why Meta PE?' answers — 2 min each","Have distinct answers for each company's philosophy"),pr("⌨️ Coding maintenance: 2 timed LC mediums (20 min each)","Last dose before mock week — go into Week 9 Pramp mocks already warm.")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy","")]},
  ]},
@@ -918,10 +923,11 @@ const PLAN=[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("CODING MOCK #1 on Pramp (45 min)","Talk through approach before coding. Ask clarifying questions. Handle edge cases out loud."),pr("15-min debrief: what did you rush? What did you explain well?","Write 3 improvements for mock #2")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Fix gap from mock: re-solve the problem type you struggled with","Trees → 2 tree problems; Graphs → 2 graph problems. Timed.")]},
+  {name:"🔥 Troubleshooting Scenario #4 (BLIND)",time:"10:30 PM – 10:50 PM",items:[pr("TIMED 20-min BLIND scenario — sadservers.com, harder tier","Two days before the paid Interviewing.io troubleshooting round — this is the warm-up. Timed, narrated, no hints until debrief.")]},
  ]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[mk("SYSTEM DESIGN MOCK #1 on Interviewing.io (45 min)","Checklist: clarifying Q(2min), capacity(5), API(5), architecture(20), tradeoffs(10), failure modes"),pr("15-min debrief: estimation solid? Did you cover SLOs?","Write 3 improvements for mock #2")]},
-  {name:"Morning Study 2",time:"10:00 AM – 10:30 AM",items:[mk("🔥 SECOND Interviewing.io session — SRE Troubleshooting Round (~$225)","Framed as: 'A service is degraded — diagnose and resolve.' Not NALSD. Covers: live-debugging, oncall thinking, root cause narration. This is the single most important mock you will do.")],},
+  {name:"Morning Study 2",time:"10:00 AM – 10:30 AM",items:[mk("🔥 SECOND Interviewing.io session — SRE Troubleshooting Round (~$225)","Framed as: 'A service is degraded — diagnose and resolve.' Not NALSD. Covers: live-debugging, oncall thinking, root cause narration. This is the single most important mock you will do. HIGHEST-PRIORITY item of Weeks 8–9 — if anything must slip, it is not this.")],},
   {name:"🧴 Getting Ready",time:"10:30 AM – 11:00 AM",items:[pr("Get ready for office commute","")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — any episode","")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
@@ -938,7 +944,7 @@ const PLAN=[
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play your STAR voice memos — all 8 in sequence","Note which still feel weak after the drive")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
   {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("LeetCode: 2 medium problems to stay sharp","LC 102 Binary Tree Level Order or LC 207 Course Schedule")]},
-  {name:"🔥 Troubleshooting Scenario #3",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 20-min scenario: Kubernetes pod keeps restarting — diagnose","Scenario: exit code 137, happens every 4 hours, RSS looks fine. Fake dmesg + memory.events provided. Narrate: cgroup OOM vs global OOM, check memory.high vs memory.max, spike during scheduled batch job. Fix: raise memory limit or add resource.limits.")]},
+  {name:"🔥 Troubleshooting Scenario #5 (BLIND)",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 20-min BLIND scenario — sadservers.com or AI-generated, K8s-flavored","Root cause unknown to you in advance. Apply anything the Interviewing.io troubleshooting mock exposed. Narrate hypothesis → evidence → next check.")]},
  ]},
  {day:"Fri",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[rv("Consolidate mock feedback: 5 things to do better (ranked by impact)","What single change most improves your performance?"),rv("System design checklist: Requirements → Estimation → API → DB → Architecture → Scale → Failure","Questions to ask at each step")]},
@@ -951,6 +957,7 @@ const PLAN=[
  ]},
  {day:"Sun",sessions:[
   {name:"Morning Study",time:"8:30 AM – 10:00 AM",items:[pr("Say all 8 STAR stories out loud (16 min total)","")]},
+  {name:"🔥 Troubleshooting Scenario #6 (BLIND)",time:"After morning study, 20 min",items:[pr("TIMED 20-min BLIND scenario — final rep before real interviews","Sixth blind rep. By now the diagnosis loop (hypothesis → evidence → narrow) should feel automatic. Debrief honestly: are you faster than Scenario #1?")]},
   {name:"🔄 Buffer & Catch-Up (flex)",time:"10:00 AM – 11:30 AM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),pr("One system design sketch: YouTube from memory (30 min)","Did you hit all components without notes?")]},
   {name:"Afternoon Study",time:"12:00 PM – 2:00 PM",items:[rv("Review own notes from Weeks 3-4 (Linux, networking, K8s)","Light surface scan — not re-learning"),pr("Check for referral responses; polite follow-up if 1 week passed","")]},
  ]},
@@ -968,7 +975,7 @@ const PLAN=[
   {name:"Evening",time:"Rest",items:[rv("Read something non-technical tonight","")]},
  ]},
  {day:"Wed",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Sketch 2 system designs from memory (30 min each): Rate Limiter + Distributed Cache","No notes. Timed.")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Sketch 2 system designs from memory (30 min each): Rate Limiter + Distributed Cache","No notes. Timed."),pr("Convert Weeks 3–4 interview one-liners into an Anki deck (or single review.md)","Do it NOW while fresh — Linux internals decay fastest. This feeds the weekly 15-min review in Maintenance mode and carries you through Sept–Oct onsites.")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SRE Book Ch 29 — Dealing with Interrupts","How SREs balance project work vs oncall")]},
  ]},
  {day:"Thu",sessions:[
@@ -991,6 +998,30 @@ const PLAN=[
   {name:"Afternoon",time:"Complete rest",items:[rv("10 weeks complete. Trust the process. Show up and let it rip.","")]},
  ]},
 ]},
+{wk:11,ph:5,title:"Post-Plan Maintenance — Stay Sharp Through Interviews",milestone:"🔁 Repeats weekly until offers land — stay warm, don't burn out. Not counted in main progress.",days:[
+ {day:"Mon",sessions:[
+  {name:"⌨️ Coding Rep 1",time:"9:30 PM – 10:15 PM",items:[pr("1 LeetCode medium — timed 30 min, think out loud","Rotate weakest pattern. This plus daily revision keeps coding warm through Sept–Oct phone screens and onsites.")]},
+ ]},
+ {day:"Tue",sessions:[
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast or ByteByteGo — any episode","Passive maintenance — keeps the vocabulary active with zero effort cost")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Application pipeline check: statuses, referral follow-ups, new JDs posted","Follow up politely at 1-week marks. Log everything in the tracking spreadsheet.")]},
+ ]},
+ {day:"Wed",sessions:[
+  {name:"📐 Design Sketch",time:"9:15 AM – 10:00 AM",items:[pr("1 system design sketch from memory — 30 min, timed, NALSD math pass included","Rotate: URL shortener, rate limiter, KV store, cache, YouTube, message queue, logging pipeline. Machine counts + first numerical bottleneck every single time.")]},
+ ]},
+ {day:"Thu",sessions:[
+  {name:"⌨️ Coding Rep 2 + Linux Review",time:"9:30 PM – 10:15 PM",items:[pr("1 LeetCode medium — timed 30 min","Second weekly rep. Muscle memory, not new learning."),rv("Linux/K8s one-liner review — 15 min (Anki deck from Week 10)","Spaced repetition of Weeks 3–4 internals. This is exactly what decays by late September if untouched.")]},
+ ]},
+ {day:"Fri",sessions:[
+  {name:"🔨 Project — SLO Error Budget Service",time:"Evening, ~60 min",items:[pr("Build session: SLO Error Budget Service (extends search-api)","Ingest Prometheus metrics → compute error budgets + burn rates → multi-window alerts (SRE Workbook Ch 5, already read). Even a partial version is a unique 'tell me about a project' answer no other candidate has.")]},
+ ]},
+ {day:"Sat",sessions:[
+  {name:"🔨 Project Block (skip if interview week)",time:"8:30 AM – 10:30 AM",items:[pr("SLO Error Budget Service — longer build session","If an interview is scheduled in the next 7 days, swap this for a targeted mock or company-specific research instead. Interviews always outrank the project.")]},
+ ]},
+ {day:"Sun",sessions:[
+  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Pipeline review: interviews scheduled? What was the weakest area this week?","Pick ONE weak area and give it a 30-min patch next week. Then repeat this week's structure until offers land. You did the 10 weeks — this is just keeping the edge.")]},
+ ]},
+]},
 ];;
 
 // ── UTILS ─────────────────────────────────────────────
@@ -1004,7 +1035,9 @@ function getWeekNum(){
   const s=parseLocalDate(STATE.startDate);s.setHours(0,0,0,0);
   const t=new Date();t.setHours(0,0,0,0);
   const diff=Math.floor((t-s)/(7*86400000));
-  const wk=diff+1;return(wk>=1&&wk<=10)?wk:null;
+  const wk=diff+1;
+  if(wk<1)return null;
+  return Math.min(wk,11); // Weeks 1-10 = plan; Week 11+ = ongoing maintenance mode
 }
 function weekDates(wkNum){
   if(!STATE.startDate)return"";
@@ -1076,9 +1109,9 @@ function getDayRevisionTotals(globalDay){
 }
 
 // ── PROGRESS CALC ─────────────────────────────────────
-function getTotals(){
+function getTotals(){ // Main progress = Weeks 1-10 only; Week 11+ maintenance tracked separately
   let total=0,done=0;
-  PLAN.forEach(wData=>wData.days.forEach(dayData=>dayData.sessions.forEach((s,si)=>s.items.forEach((item,ii)=>{
+  PLAN.filter(w=>w.wk<=10).forEach(wData=>wData.days.forEach(dayData=>dayData.sessions.forEach((s,si)=>s.items.forEach((item,ii)=>{
     total++;
     if(STATE.checked[wData.wk+"_"+dayData.day+"_"+si+"_"+ii])done++;
   }))));
@@ -1160,7 +1193,7 @@ function tlBlock(b,isCurrent){
 // ── HEADER UPDATE ─────────────────────────────────────
 function updateHeader(){
   const wk=getWeekNum();
-  document.getElementById("tb-wk").textContent=wk?"W"+wk+"/10":"—";
+  document.getElementById("tb-wk").textContent=wk?(wk<=10?"W"+wk+"/10":"W11+"):"—";
   const ph=wk?phaseOf(wk):null;
   const left=daysLeft();
   document.getElementById("tb-sub").textContent=ph
@@ -1219,7 +1252,7 @@ function renderToday(){
   const {done,total}=wk&&planDay?getDayTotals(wk,key):{done:0,total:0};
 
   let pills="";
-  if(wk)pills+="<div class=\"pill\" style=\"background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25)\"><div class=\"pill-num\" style=\"color:#3B82F6\">W"+wk+"<span style=\"font-size:10px;font-weight:400\"> of 10</span></div><div class=\"pill-lbl\" style=\"color:#3B82F6\">Prep Week</div></div>";
+  if(wk)pills+="<div class=\"pill\" style=\"background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25)\"><div class=\"pill-num\" style=\"color:#3B82F6\">"+(wk<=10?"W"+wk+"<span style=\"font-size:10px;font-weight:400\"> of 10</span>":"W11<span style=\"font-size:10px;font-weight:400\">+</span>")+"</div><div class=\"pill-lbl\" style=\"color:#3B82F6\">"+(wk<=10?"Prep Week":"Maintenance")+"</div></div>";
   if(left!==null)pills+="<div class=\"pill\" style=\"background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25)\"><div class=\"pill-num\" style=\"color:#10B981\">"+left+"</div><div class=\"pill-lbl\" style=\"color:#10B981\">Days Left</div></div>";
   pills+="<div class=\"pill\" style=\"background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25)\"><div class=\"pill-num\" style=\"color:#8B5CF6\">"+day.hrs+"</div><div class=\"pill-lbl\" style=\"color:#8B5CF6\">Study Today</div></div>";
   if(wk&&total>0)pills+="<div class=\"pill\" style=\"background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25)\"><div class=\"pill-num\" style=\"color:#10B981\">"+done+"/"+total+"</div><div class=\"pill-lbl\" style=\"color:#10B981\">Done Today</div></div>";
@@ -1473,7 +1506,7 @@ function renderProgress(){
     +"<div style=\"font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px\">Your Progress</div>"
     +"<div class=\"prog-ring-wrap\">"+ring+"</div>"
     +"<div class=\"prog-stats\">"
-    +(wk?"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#3B82F6\">W"+wk+"/10</div><div class=\"prog-stat-lbl\">Current Week</div></div>":"")
+    +(wk?"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#3B82F6\">"+(wk<=10?"W"+wk+"/10":"W11+")+"</div><div class=\"prog-stat-lbl\">"+(wk<=10?"Current Week":"Maintenance")+"</div></div>":"")
     +(left!==null?"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#F59E0B\">"+left+"</div><div class=\"prog-stat-lbl\">Days Left</div></div>":"")
     +"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#10B981\">"+done+"</div><div class=\"prog-stat-lbl\">Items Done</div></div>"
     +"</div></div>"
@@ -1490,6 +1523,7 @@ function renderProgress(){
     +"<div style=\"height:100%;border-radius:6px;background:var(--t-revisit-c);width:"+revPct+"%\"></div></div>"
     +"<div style=\"font-size:10px;color:var(--muted);margin-top:6px\">Tracked separately from your main plan — daily LeetCode + Google-tagged revivals, Days 3–70</div>"
     +"</div></div>"
+    +"<div style=\"text-align:center;font-size:10px;color:var(--muted);margin-top:8px\">Ring counts Weeks 1–10 only · Week 11+ maintenance tracked in its own row below</div>"
     +"<div class=\"prog-section\"><div class=\"prog-section-title\">Phase Breakdown</div>"+phaseBars+"</div>"
     +"<div class=\"prog-section\"><div class=\"prog-section-title\">Week-by-Week — tap to navigate</div><div class=\"wk-grid\">"+wkCells+"</div></div>"
     +"<div style=\"margin:12px 16px 0;background:var(--card);border-radius:11px;border:1px solid var(--border);padding:11px 13px\">"
@@ -1534,7 +1568,7 @@ function renderSettings(){
     +"<div class=\"settings-card\">"
     +"<div class=\"field-label\">Prep Start Date</div>"
     +"<input class=\"settings-input\" type=\"date\" id=\"startInput\" value=\""+(sd||"")+"\" onchange=\"updateDateHint()\">"
-    +"<div class=\"field-hint\" id=\"dateHint\">"+(wk?"Currently in Week "+wk+" of 10":sd?"Outside 10-week window":"")+"</div>"
+    +"<div class=\"field-hint\" id=\"dateHint\">"+(wk?(wk<=10?"Currently in Week "+wk+" of 10":"Week 11+ — post-plan maintenance mode"):sd?"Outside 10-week window":"")+"</div>"
     +"<button class=\"big-btn\" id=\"saveDateBtn\" style=\"background:#3B82F6\" onclick=\"saveDate()\">Save Start Date</button>"
     +"</div>"
     +(sd&&wk?"<div class=\"settings-card\"><div class=\"field-label\">Adjusted Plan Dates</div>"+dateRows+"</div>":"")
@@ -1616,7 +1650,7 @@ function updateDateHint(){
   const s=new Date(v);s.setHours(0,0,0,0);const t=new Date();t.setHours(0,0,0,0);
   const diff=Math.floor((t-s)/(7*86400000));const wk=diff+1;
   const hint=document.getElementById("dateHint");
-  if(hint)hint.textContent=(wk>=1&&wk<=10)?"Currently in Week "+wk+" of 10":"Outside 10-week window — check your dates";
+  if(hint)hint.textContent=(wk>=1&&wk<=10)?"Currently in Week "+wk+" of 10":(wk>=11?"Week 11+ — post-plan maintenance mode":"Outside 10-week window — check your dates");
 }
 function saveDate(){
   const v=document.getElementById("startInput")?.value;if(!v)return;
