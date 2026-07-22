@@ -840,39 +840,39 @@ const PLAN=[
 ]},
 
 
-{wk:7,ph:3,title:"Distributed Systems + Resume v1",milestone:"Resume v1 + referral outreach — 2 Aug",days:[
+{wk:7,ph:3,title:"Cloud Artifact + Resume v1",milestone:"search-api on EKS + Resume v1 + referral outreach — 2 Aug",days:[
  {day:"Mon",sessions:[
   {name:"Morning Study",time:"9:15 AM – 11:00 AM",items:[pr("Design Logging Pipeline (deferred from Wk6 Thu)","Log producers → Kafka → Flink → Elasticsearch → Kibana"),pr("Observability: logs + metrics + traces","Distributed tracing: Jaeger/Zipkin/Cloud Trace, correlation IDs")]},
-  {name:"⏩ NALSD Mock #2 (deferred Jul 26 outing)",time:"9:30 PM",items:[mk("45-min Mock: Design YouTube at Google scale (2B users, 500hr/min)","Record. Debrief 15 min: capacity + CDN + encoding pipeline.")]},
+  {name:"📞 MTTR Number — WORK HOURS ONLY",time:"During work hours",items:[pr("Chase the real MTTR figure from Barclays MIM data — closes the [X] placeholder","BLOCKING: feeds LinkedIn PE section + resume E2 + incident STAR + Robinhood RCC screen. Needs colleagues and systems during business hours — cannot be done on Tue/Wed leave.")]},
   {name:"📐 Capacity Estimation Drill #1",time:"11:00 AM – 11:15 AM",items:[pr("TIMED 15-min drill: Estimate Twitter write QPS + storage for 1 year","Users: 300M MAU, 50% daily, 2 tweets/day avg. Storage: text 280 chars + metadata. Work through it without notes. Write answer.")]},
+  {name:"⏩ NALSD Mock #2 (deferred Jul 26 outing)",time:"9:30 PM",items:[mk("45-min Mock: Design YouTube at Google scale (2B users, 500hr/min)","Record. Debrief 15 min: capacity + CDN + encoding pipeline.")]},
   {name:"🏢 Work-Hour Reading",time:"~45–60 min · during work hours",items:[rd("DDIA Ch 5 — Replication","Leader-follower: sync vs async; read replicas; lag. Leaderless: read repair, hinted handoff"),rd("DDIA Ch 6 — Partitioning","Range vs hash partition; hot spots; secondary index (local vs global)")]},
  ]},
  {day:"Tue",sessions:[
-  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Write examples: dirty read, phantom read, lost update, read skew","For each: what isolation level prevents it?")]},
-  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Software Engineering Daily — distributed systems/consensus","Search 'consensus' or 'distributed database'")]},
-  {name:"🏢 Work-Hour Reading",time:"~45–60 min · during work hours",items:[rd("DDIA Ch 7 — Transactions","ACID, isolation levels: READ COMMITTED, REPEATABLE READ, SERIALIZABLE"),rd("DDIA Ch 8 — Trouble with Distributed Systems","Network faults, clock skew (NTP limits), process pauses (GC)")]},
+  {name:"🚀 LEAVE DAY 1 — search-api on EKS",time:"All day · 9:00 AM – 6:00 PM",items:[pr("Terraform: VPC + EKS cluster + node group. terraform apply from scratch.","Do NOT click through the console. The artifact is the .tf files, not the cluster. Commit terraform/ to the repo."),pr("Deploy search-api to EKS: deployment, service, ingress/LB. Reachable from the public internet.","Reuse the minikube manifests where possible. Document every divergence — that IS the interview answer."),pr("Prometheus + Grafana on EKS. HPA scaling against real load.","HPA is the named requirement in the Datadog JD (HPA/VPA/Cluster Autoscaler/Karpenter). Get it scaling for real on real nodes."),pr("Record cost + teardown plan","Note hourly burn. Decide now: leave it up through Aug 10 interviews, or tear down and re-apply from Terraform on demand.")]},
+  {name:"⚠️ Discipline Note",time:"—",items:[pr("Do not substitute a NALSD document for this. Study feels more productive and is not.","This is the failure mode: 5 weeks in, ahead on study, 3 artifact gaps still open because study always won the slot. Ship the cluster.")]},
+  {name:"🏢 Deferred Reading (commute / work-hour flex)",time:"Anytime this week",items:[rd("DDIA Ch 7 — Transactions","ACID, isolation levels: READ COMMITTED, REPEATABLE READ, SERIALIZABLE"),rd("DDIA Ch 8 — Trouble with Distributed Systems","Network faults, clock skew (NTP limits), process pauses (GC)")]},
  ]},
  {day:"Wed",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[wt("Raft: Understandable Distributed Consensus (raft.github.io — 20 min)","Leader election + log replication + commitment"),pr("Draw Raft leader election from scratch — state machine","Election timeout → vote request → vote grant → new leader")]},
-  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("DDIA Ch 9 — Consistency and Consensus","Linearizability, CAP nuances, Paxos overview")]},
-  {name:"Evening Study",time:"10:15 PM – 10:45 PM",items:[pr("Start Resume v1 — Experience section with SRE-language bullets","Format: Reduced [metric] by [X%] by [action], impacting [N] users/services")]},
+  {name:"📝 LEAVE DAY 2 — Documentation (AM)",time:"9:00 AM – 12:00 PM",items:[pr("docs/DESIGN.md — new section: EKS migration, decisions and alternatives considered","Standing 3-level doc rule. Why EKS over GKE, why Terraform over eksctl, every minikube→cloud divergence."),pr("Inline comments on all new Terraform + K8s YAML — every field, and why","Same rule as Days 11–14. This is what makes the repo readable to a reviewer who isn't you."),pr("README.md — mark cloud deploy complete, add architecture note + live endpoint","")]},
+  {name:"🎯 LEAVE DAY 2 — Resume v1 (PM) — HIGHEST-LEVERAGE ITEM IN THE PLAN",time:"1:00 PM – 6:00 PM",items:[pr("Rewrite EVERY Python/automation bullet into software-engineering language","THE gate. 'N years coding in higher-level languages' is a min-qual at Google L5, Meta PE, Datadog, Coinbase and Robinhood. Built / designed / shipped — not automated / maintained / supported."),pr("Add search-api cloud bullets while the work is 24 hours old","Terraform-provisioned EKS, HPA autoscaling under measured load, Prometheus/Grafana SLOs, CI. Specifics you will not remember in August."),pr("Insert the real MTTR number into resume E2 + LinkedIn PE section","Unblocked by Monday."),pr("Full Experience section pass — Reduced [metric] by [X%] by [action], impacting [N] users/services","")]},
+  {name:"🏢 Deferred Reading (commute / work-hour flex)",time:"Anytime this week",items:[wt("Raft: Understandable Distributed Consensus (raft.github.io — 20 min)","Leader election + log replication + commitment"),rd("DDIA Ch 9 — Consistency and Consensus","Linearizability, CAP nuances, Paxos overview")]},
  ]},
  {day:"Thu",sessions:[
-  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("K8s advanced HPA/PDB/RBAC","HPA with custom metrics; PDB minAvailable; kubectl auth can-i impersonation")]},
-  {name:"📐 Capacity Estimation Drill #2",time:"Evening, 15 min",items:[pr("TIMED 15-min drill: Estimate YouTube storage for 1 year of uploads","500hrs video/min. Avg 4K 1-hr video = 10GB. Resolutions: 1080p+720p+480p. Work cold — no notes.")]},
-  {name:"🔨 Project — Guide Day 14 — SHIP IT",time:"Evening",items:[pr("Run load_test/loadgen.py (50 workers 2 min). kubectl get hpa -n search-sre -w — watch scale 2→5.","Record timestamps + replica counts for Postmortem #2."),pr("Write POSTMORTEM #2 + finalize README + .github/workflows/ci.yml + git tag v1.0 + push","CI badge green. Pin repo. Add 4-5 resume project bullets. search-api is DONE.")]},
-  {name:"📐 Capacity Drill #2",time:"10 PM",items:[pr("TIMED 15-min: YouTube storage 1yr (500hrs/min uploads, 4K 1hr=10GB, multiple resolutions)","Work cold.")]},
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("K8s advanced HPA/PDB/RBAC","HPA with custom metrics; PDB minAvailable; kubectl auth can-i impersonation"),pr("Draw Raft leader election from scratch — state machine","Election timeout → vote request → vote grant → new leader")]},
+  {name:"🔨 Guide Day 14 — SHIP IT (now shipping the CLOUD build)",time:"Evening",items:[pr("Run load_test/loadgen.py against EKS (50 workers, 2 min). Watch HPA scale 2→5 on real nodes.","Record timestamps + replica counts for Postmortem #2. Cloud numbers, not minikube numbers."),pr("POSTMORTEM #2 + finalize README + .github/workflows/ci.yml + git tag v1.0 + push","v1.0 ships as a cloud-deployed, Terraform-provisioned service. Do NOT tag a minikube-only v1.0 and retrofit cloud later. CI badge green. Pin repo. Add 4–5 resume project bullets.")]},
+  {name:"📐 Capacity Estimation Drill #2",time:"10:00 PM · 15 min",items:[pr("TIMED 15-min drill: Estimate YouTube storage for 1 year of uploads","500hrs video/min. Avg 4K 1-hr video = 10GB. Resolutions: 1080p+720p+480p. Work cold — no notes. (Duplicate 11 AM entry removed.)")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"🧳 Outing (Jul 31)",time:"All day",items:[pr("Jul 31 — Single day family outing. Full rest.","K8s advanced HPA/PDB/RBAC content moved to Thursday block.")]},
+  {name:"🧳 Outing (Jul 31)",time:"All day",items:[pr("Jul 31 — Single day family outing. Full rest.","")]},
  ]},
  {day:"Sat",sessions:[
   {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[pr("Design Distributed Lock Service (Chubby/ZooKeeper style)","Ephemeral nodes, session leases, fencing tokens to prevent split-brain"),pr("Draw Raft log replication from memory: client write → leader → followers → commit","Include: partitioned follower, leader crash after commit")]},
-  {name:"🏖 Half Day (Aug 1)",time:"Afternoon",items:[pr("Aug 1 — Half day outing. Morning study kept.","Resume v1 + referral outreach deferred to Sunday afternoon.")]},
+  {name:"🏖 Half Day (Aug 1)",time:"Afternoon",items:[pr("Aug 1 — Half day outing. Morning study kept.","Resume v1 landed Wednesday — this slot is no longer load-bearing.")]},
  ]},
  {day:"Sun",sessions:[
   {name:"TIMED NALSD MOCK #3",time:"8:30 AM – 9:30 AM",items:[mk("45-min Mock: Design a Distributed Message Queue (Kafka-like)","Partitioning, offsets, consumer groups, at-least-once delivery. Record + debrief.")]},
-  {name:"Afternoon Study",time:"12:00 PM – 1:00 PM",items:[pr("Send referral outreach messages — 2 Aug MILESTONE","Track: sent date, contact name, role. Follow up in 1 week if no reply.")]},
+  {name:"Afternoon Study",time:"12:00 PM – 1:00 PM",items:[pr("Send referral outreach messages — 2 Aug MILESTONE","Now firing behind a resume that got a full day and a repo with a live cloud deployment. Track: sent date, contact name, role. Follow up in 1 week if no reply.")]},
   {name:"🔄 Buffer & Catch-Up (flex)",time:"1:00 PM – 2:00 PM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),rv("DDIA Ch 9 consensus — final pass on Raft","Goal: explain Raft in 2 minutes to an interviewer")]},
  ]},
 ]},
