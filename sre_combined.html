@@ -259,7 +259,7 @@ a{text-decoration:none}
 // ── SEED (your progress as of 29 Jun 2026 — used only as a fallback the very
 // first time this app runs on a device, before localStorage/GitHub take over) ─
 const SEED_START = "2026-06-15";
-const SEED_CHECKED = {"1_Mon_0_0":true,"1_Mon_0_1":true,"1_Mon_0_2":true,"1_Mon_1_0":true,"1_Mon_1_1":true,"1_Tue_0_0":true,"1_Tue_0_1":true,"1_Tue_0_2":true,"1_Tue_1_0":true,"1_Tue_2_0":true,"1_Tue_1_1":true,"1_Tue_3_1":true,"1_Tue_3_0":true,"1_Wed_0_0":true,"1_Wed_0_1":true,"1_Wed_0_2":true,"1_Wed_1_0":true,"REV_3_0_0":true,"1_Wed_1_1":true,"1_Thu_0_0":true,"1_Thu_0_1":true,"1_Thu_2_0":true,"1_Fri_0_0":true,"1_Fri_0_1":true,"1_Fri_0_2":true,"1_Thu_1_0":true,"REV_5_0_0":true,"REV_4_0_0":true,"1_Fri_1_0":true,"1_Thu_3_1":true,"1_Sat_0_0":true,"1_Sat_0_1":true,"1_Sat_0_2":true,"1_Sat_0_3":true,"1_Sat_1_1":true,"1_Sat_1_0":true,"REV_6_0_0":true,"1_Thu_3_0":true,"1_Sun_1_0":true,"1_Sun_1_1":true,"1_Sun_1_2":true,"REV_7_0_0":true,"REV_7_0_1":true,"1_Sun_0_0":true,"1_Sun_2_0":true,"2_Mon_1_0":true,"2_Mon_2_0":true,"2_Tue_0_0":true,"2_Tue_0_1":true,"REV_9_0_0":true,"2_Tue_0_2":true,"2_Tue_1_0":true,"2_Tue_2_0":true,"2_Mon_0_0":true,"2_Mon_0_1":true,"1_Sun_0_1":true,"2_Tue_3_0":true,"2_Tue_3_1":true,"2_Wed_0_0":true,"2_Wed_0_1":true,"2_Wed_1_0":true,"2_Wed_0_2":true,"2_Wed_2_0":true,"REV_10_0_0":true,"2_Wed_2_1":true,"2_Thu_0_0":true,"REV_12_0_0":true,"2_Thu_2_0":true,"2_Thu_1_0":true,"2_Fri_1_0":true,"2_Fri_2_0":true,"REV_13_0_0":true,"2_Thu_0_1":true,"2_Sun_2_1":true,"2_Sun_3_0":true,"2_Thu_0_2":true,"2_Thu_3_0":true,"2_Fri_0_1":true,"2_Sat_1_0":true,"REV_14_0_0":true,"REV_8_0_0":true,"REV_11_0_0":true,"REV_13_0_1":true,"REV_14_0_1":true,"2_Sun_1_0":true,"2_Sat_0_0":true,"2_Sat_0_1":true,"2_Sun_2_0":true,"2_Sun_0_0":true,"2_Sun_1_1":true,"REV_6_0_1":true,"3_Mon_0_0":true,"3_Mon_0_1":true,"3_Mon_1_1":true};
+const SEED_CHECKED = {"1_Mon_0_0":true,"1_Mon_0_1":true,"1_Mon_0_2":true,"1_Mon_1_0":true,"1_Mon_1_1":true,"1_Tue_0_0":true,"1_Tue_0_1":true,"1_Tue_0_2":true,"1_Tue_1_0":true,"1_Tue_2_0":true,"1_Tue_1_1":true,"1_Tue_3_1":true,"1_Tue_3_0":true,"1_Wed_0_0":true,"1_Wed_0_1":true,"1_Wed_0_2":true,"1_Wed_1_0":true,"REV_3_0_0":true,"1_Wed_1_1":true,"1_Thu_0_0":true,"1_Thu_0_1":true,"1_Thu_2_0":true,"1_Fri_0_0":true,"1_Fri_0_1":true,"1_Fri_0_2":true,"1_Thu_1_0":true,"REV_5_0_0":true,"REV_4_0_0":true,"1_Fri_1_0":true,"1_Thu_3_1":true,"1_Sat_0_0":true,"1_Sat_0_1":true,"1_Sat_0_2":true,"1_Sat_0_3":true,"1_Sat_1_1":true,"1_Sat_1_0":true,"REV_6_0_0":true,"1_Thu_3_0":true,"1_Sun_1_0":true,"1_Sun_1_1":true,"1_Sun_1_2":true,"REV_7_0_0":true,"REV_7_0_1":true,"1_Sun_0_0":true,"1_Sun_2_0":true,"2_Mon_1_0":true,"2_Mon_2_0":true,"2_Tue_0_0":true,"2_Tue_0_1":true,"REV_9_0_0":true,"2_Tue_0_2":true,"2_Tue_1_0":true,"2_Tue_2_0":true,"2_Mon_0_0":true,"2_Mon_0_1":true,"1_Sun_0_1":true,"2_Tue_3_0":true,"2_Tue_3_1":true,"2_Wed_0_0":true,"2_Wed_0_1":true,"2_Wed_1_0":true,"2_Wed_0_2":true,"2_Wed_2_0":true,"REV_10_0_0":true,"2_Wed_2_1":true,"2_Thu_0_0":true,"REV_12_0_0":true,"2_Thu_2_0":true,"2_Thu_1_0":true,"2_Fri_1_0":true,"2_Fri_2_0":true,"REV_13_0_0":true,"2_Thu_0_1":true,"2_Sun_2_1":true,"2_Sun_3_0":true,"2_Thu_0_2":true,"2_Thu_3_0":true,"2_Fri_0_1":true,"2_Sat_1_0":true,"REV_14_0_0":true,"REV_8_0_0":true,"REV_11_0_0":true,"REV_13_0_1":true,"REV_14_0_1":true,"2_Sun_1_0":true,"2_Sat_0_0":true,"2_Sat_0_1":true,"2_Sun_2_0":true,"2_Sun_0_0":true,"2_Sun_1_1":true,"REV_6_0_1":true,"3_Mon_0_0":true,"3_Mon_0_1":true,"3_Mon_2_0":true,"3_Mon_2_1":true,"3_Mon_1_1":true,"3_Mon_1_2":true,"REV_15_0_0":true,"3_Tue_2_0":true,"REV_16_0_0":true,"3_Mon_1_0":true,"3_Tue_0_0":true,"3_Tue_0_1":true,"3_Tue_4_0":true,"3_Tue_3_0":true,"REV_17_0_0":true,"3_Wed_1_0":true,"3_Thu_2_0":true,"3_Wed_0_0":true,"3_Wed_0_1":true,"3_Thu_0_0":true,"4_Tue_0_0":true,"3_Sat_0_0":true,"3_Sun_0_0":true,"3_Sun_1_1":true,"3_Sun_1_0":true,"3_Fri_0_0":true,"3_Fri_1_0":true,"3_Fri_1_1":true,"3_Wed_0_2":true,"3_Wed_1_1":true,"3_Tue_0_2":true,"3_Tue_1_0":true,"3_Tue_1_1":true,"3_Mon_0_2":true,"3_Sat_1_0":true,"3_Sat_1_1":true,"3_Fri_0_1":true,"3_Fri_0_2":true,"3_Thu_0_1":true,"3_Thu_0_2":true,"3_Thu_1_0":true,"3_Thu_1_1":true,"3_Sat_0_1":true,"REV_23_0_0":true,"4_Tue_2_0":true,"4_Wed_1_0":true,"4_Wed_1_1":true,"4_Wed_1_2":true,"4_Wed_1_3":true,"4_Wed_1_4":true,"4_Wed_1_5":true,"REV_22_0_0":true,"4_Wed_0_0":true,"4_Wed_0_1":true,"4_Wed_2_0":true,"4_Wed_2_1":true,"4_Thu_0_0":true,"4_Thu_0_1":true,"4_Thu_0_2":true,"4_Thu_5_0":true,"REV_25_0_0":true,"4_Thu_3_0":true,"4_Thu_4_0":true,"4_Wed_4_0":true,"4_Wed_4_1":true,"4_Thu_1_0":true,"REV_26_0_0":true,"4_Mon_0_0":true,"4_Mon_0_1":true,"4_Tue_2_1":true,"4_Mon_2_0":true,"4_Mon_2_1":true,"4_Wed_3_0":true,"4_Fri_4_0":true,"4_Sat_2_0":true,"4_Sun_0_0":true,"REV_27_0_0":true,"REV_27_0_1":true,"4_Tue_1_0":true,"4_Mon_1_1":true,"4_Thu_1_1":true,"4_Thu_1_2":true,"4_Thu_6_0":true,"4_Fri_1_0":true,"4_Fri_1_1":true,"4_Fri_1_2":true,"4_Mon_1_0":true,"4_Thu_6_1":true,"4_Sat_1_0":true,"4_Sat_1_1":true,"4_Sat_1_2":true,"4_Sat_1_3":true,"4_Fri_2_2":true,"4_Fri_2_1":true,"4_Fri_2_0":true,"4_Fri_0_0":true,"4_Fri_0_1":true,"4_Fri_0_2":true,"4_Sat_0_0":true,"4_Sat_0_1":true,"4_Sat_0_2":true,"5_Mon_2_0":true,"5_Mon_2_1":true,"4_Thu_2_0":true,"4_Thu_2_1":true,"4_Thu_2_2":true,"4_Fri_3_0":true,"5_Mon_0_0":true,"5_Mon_0_1":true,"5_Tue_0_0":true,"5_Tue_0_1":true,"5_Tue_1_0":true,"5_Tue_1_1":true,"5_Tue_1_2":true,"5_Tue_0_2":true,"5_Tue_2_0":true,"5_Mon_0_2":true,"5_Tue_4_1":true,"5_Wed_0_0":true,"5_Wed_0_1":true,"5_Wed_0_2":true,"5_Mon_1_0":true,"5_Tue_3_0":true,"5_Wed_1_0":true,"5_Wed_1_1":true,"5_Wed_1_2":true,"5_Thu_0_0":true,"5_Thu_0_1":true,"5_Thu_1_0":true,"5_Thu_1_1":true,"5_Thu_1_2":true,"5_Thu_1_3":true,"REV_31_0_0":true,"5_Thu_4_0":true,"REV_32_0_0":true,"5_Mon_3_0":true,"5_Fri_0_0":true,"5_Fri_0_1":true,"5_Sat_0_0":true,"5_Thu_2_0":true,"REV_35_0_0":true,"5_Tue_4_0":true,"5_Wed_2_0":true,"5_Sun_2_0":true,"5_Sun_2_1":true,"6_Mon_0_0":true,"6_Mon_0_1":true,"6_Mon_0_2":true,"6_Mon_2_0":true,"6_Mon_2_1":true,"6_Mon_2_2":true,"REV_37_0_0":true,"6_Tue_2_0":true,"6_Tue_1_0":true,"5_Sun_4_0":true,"5_Wed_2_1":true,"5_Thu_3_0":true,"6_Mon_3_0":true,"6_Mon_3_1":true,"6_Mon_3_2":true,"6_Tue_3_0":true,"6_Tue_3_1":true,"6_Tue_4_0":true,"6_Tue_4_1":true,"6_Wed_0_0":true,"6_Mon_1_0":true,"6_Wed_1_0":true,"6_Wed_1_1":true,"6_Wed_3_0":true,"REV_38_0_0":true,"6_Thu_0_0":true,"REV_39_0_0":true,"6_Fri_0_0":true,"REV_40_0_0":true,"6_Sun_0_0":true,"6_Sat_0_0":true,"REV_43_0_0":true,"6_Tue_0_0":true,"REV_41_0_0":true,"7_Mon_0_0":true,"5_Sun_3_0":true,"6_Wed_2_0":true,"7_Tue_0_0":true,"7_Wed_0_0":true,"7_Wed_0_1":true,"7_Thu_3_0":true,"7_Mon_0_1":true,"7_Tue_1_0":true,"7_Wed_1_0":true,"REV_46_0_0":true,"7_Thu_1_0":true,"7_Thu_0_0":true,"7_Thu_2_0":true,"7_Thu_2_1":true,"7_Thu_2_2":true,"7_Thu_2_3":true,"7_Thu_2_4":true,"6_Wed_2_1":true,"7_Wed_1_1":true,"7_Fri_1_0":true,"7_Fri_0_0":true,"7_Sat_1_0":true,"7_Sun_2_0":true,"7_Sun_2_1":true,"REV_48_0_0":true,"7_Fri_0_1":true,"7_Fri_0_2":true,"7_Fri_0_3":true,"7_Fri_0_4":true,"7_Fri_0_5":true,"7_Wed_3_0":true,"REV_47_0_0":true,"8_Mon_0_0":true,"8_Mon_0_1":true,"8_Mon_0_2":true,"8_Mon_0_3":true,"8_Mon_0_4":true,"8_Mon_0_5":true,"8_Mon_0_6":true,"8_Mon_0_7":true,"8_Mon_1_0":true,"8_Mon_1_1":true,"8_Mon_0_9":true,"8_Mon_3_0":true,"8_Mon_2_0":true,"8_Tue_0_0":true,"8_Tue_0_1":true,"7_Sun_1_0":true,"7_Sun_1_1":true,"8_Tue_0_3":true,"8_Tue_0_4":true,"8_Tue_0_5":true,"7_Mon_3_0":true,"7_Mon_3_1":true,"8_Wed_0_0":true,"8_Wed_0_1":true,"8_Fri_1_0":true,"8_Fri_2_1":true,"8_Fri_3_0":true,"8_Fri_2_2":true,"8_Fri_0_2":true,"8_Fri_0_0":true,"8_Sat_0_0":true,"8_Mon_0_8":true,"8_Tue_0_2":true,"8_Tue_0_6":true,"8_Tue_0_7":true,"8_Tue_0_8":true,"8_Wed_0_2":true,"8_Wed_0_3":true,"8_Wed_0_4":true,"8_Wed_0_6":true,"8_Wed_0_7":true,"8_Wed_0_9":true,"8_Wed_2_0":true,"8_Thu_1_0":true,"8_Thu_4_0":true,"8_Sun_0_0":true,"8_Fri_0_1":true,"8_Thu_2_0":true,"8_Wed_2_1":true,"8_Wed_2_2":true,"8_Fri_2_0":true,"9_Mon_1_0":true,"9_Mon_0_0":true,"9_Mon_0_1":true,"9_Mon_2_0":true};
 
 // ── STATE ─────────────────────────────────────────────
 let STATE = {
@@ -384,6 +384,7 @@ const PHASES = [
   {id:2,label:"Phase 2",name:"Linux, SRE & Kubernetes",color:"#10B981",wks:[3,4]},
   {id:3,label:"Phase 3",name:"NALSD System Design",color:"#F59E0B",wks:[5,6,7]},
   {id:4,label:"Phase 4",name:"Behavioral, Mocks & Apply",color:"#8B5CF6",wks:[8,9,10]},
+  {id:5,label:"Phase 5",name:"Interview Loops & Grind",color:"#EC4899",wks:[11,12,13,14]},
 ];
 function phaseOf(wk){return PHASES.find(p=>p.wks.includes(wk))||PHASES[0];}
 
@@ -916,82 +917,249 @@ const PLAN=[
   {name:"⚠️ Family Outing (Aug 9)",time:"All day",items:[pr("Aug 9 — Family outing. Full rest.","Applications go live TOMORROW (Aug 10). All prep should be complete by end of Week 8 Friday.")]},
  ]},
 ]},
-{wk:9,ph:4,title:"Mock Interviews + Applications Live",milestone:"🚀 Google applications submitted — 10 Aug",days:[
+{wk:9,ph:4,title:"Grind 1 — Clear Behavioral Backlog + DDIA + Mocks",milestone:"🚀 Apps live (10 Aug) · all 8 STAR stories written + DDIA Ch 8–10 done — 16 Aug",days:[
  {day:"Mon",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("CODING MOCK #1 on Pramp (45 min)","Talk through approach before coding. Ask clarifying questions. Handle edge cases out loud."),pr("15-min debrief: what did you rush? What did you explain well?","Write 3 improvements for mock #2")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("CODING MOCK #1 on Pramp (45 min)","Think out loud; clarify before coding; state complexity."),pr("15-min debrief: what did you rush? What did you explain well?","")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Fix gap from mock: re-solve the problem type you struggled with","Trees → 2 tree problems; Graphs → 2 graph problems. Timed.")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Fix gap from mock: re-solve the problem type you struggled with","")]},
  ]},
  {day:"Tue",sessions:[
-  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[mk("SYSTEM DESIGN MOCK #1 on Interviewing.io (45 min)","Checklist: clarifying Q(2min), capacity(5), API(5), architecture(20), tradeoffs(10), failure modes"),pr("15-min debrief: estimation solid? Did you cover SLOs?","Write 3 improvements for mock #2")]},
-  {name:"Morning Study 2",time:"10:00 AM – 10:30 AM",items:[mk("🔥 SECOND Interviewing.io session — SRE Troubleshooting Round (~$225)","Framed as: 'A service is degraded — diagnose and resolve.' Not NALSD. Covers: live-debugging, oncall thinking, root cause narration. This is the single most important mock you will do.")],},
-  {name:"🧴 Getting Ready",time:"10:30 AM – 11:00 AM",items:[pr("Get ready for office commute","")]},
-  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — any episode","")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("⭐ SUBMIT Google SRE applications — top 3 roles from shortlist","careers.google.com. Track: job ID, date, role in spreadsheet.")]},
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("✍️ STAR Story 3: Conflict Resolution — draft from REAL material only","Disagreement with teammate/manager: you listened, found common ground, resolved without escalation. Confirm real beats before writing — no fabrication."),pr("✍️ STAR Story 4: Failure + Learning","Be direct about what failed; spend 70% on what you changed afterward.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(261,"Graph Valid Tree","M","n-1 edges AND fully connected (Union-Find or DFS)"),rv2(460,"LFU Cache","H","HashMap + freq buckets (each a DLL); evict lowest-freq")]},
+  {name:"🏢 Work-Hour Reading",time:"~45 min · during work hours",items:[rd("DDIA Ch 9 — The Trouble with Distributed Systems [READ FULLY — highest-yield SRE chapter]","Unreliable clocks, network faults, partial failure, fencing tokens.")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — any episode","Passive listening.")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: URL Shortener at Google scale (1B users) — 45 min timed, no notes","Requirements → estimation → API → DB → architecture → scale → failure."),pr("15-min debrief: 3 strengths, 3 gaps","Did you cover estimation + SLOs?")]},
  ]},
  {day:"Wed",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("CODING MOCK #2 on Pramp (45 min, different partner)","Goal: write approach in comments first, then implement"),pr("15-min debrief","")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Submit backup company applications (2-3 companies) — Meta PE, Datadog, Robinhood","Use tailored resumes: SRE variant for Meta, DevOps/Platform variant for Datadog/Robinhood"),pr("Update tracking spreadsheet: Company, Role, Date, Referral, Status","")]},
-  {name:"⌨️ Scripting Round Rep",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 30-min Python/bash sysadmin scripting problem","Example: 'Parse /var/log/nginx/access.log, find top 10 IPs by request count, flag any with error rate > 20%.' Write clean, working script. Timed. No looking up syntax.")],},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("✍️ STAR Story 5: Cross-team Collaboration","A time you aligned multiple teams toward one outcome."),pr("✍️ STAR Story 6: Innovation / Automation — automated toil","Patching automation tool: toil elimination, automated response to non-exceptional conditions."),pr("🎙️ Voice-memo Stories 1–6; play back consecutively","Listen for filler, length (~2 min each), clean STAR structure.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(355,"Design Twitter","M","HashMap user→tweets; merge-k-lists (heap) for feed"),rv2(323,"Number of Connected Components","M","Union-Find: count distinct roots")]},
+  {name:"🏢 Work-Hour Reading",time:"~45 min · during work hours",items:[rd("DDIA Ch 8 — Transactions [READ properly — isolation levels come up]","Read committed, snapshot isolation, serializable; write skew.")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("CODING MOCK #2 on Pramp (45 min, different partner)","Brute force first, then optimize; state time/space."),pr("15-min debrief","")]},
+  {name:"⌨️ Scripting Round Rep",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 30-min Python/bash sysadmin scripting problem","Parse logs / process files — SysEng scripting round rep.")]},
  ]},
  {day:"Thu",sessions:[
-  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[mk("SYSTEM DESIGN MOCK #2 on Interviewing.io (45 min)","Goal: cover 4 Golden Signals, SLOs, and 2 failure modes explicitly"),pr("15-min debrief","")]},
-  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play your STAR voice memos — all 8 in sequence","Note which still feel weak after the drive")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("LeetCode: 2 medium problems to stay sharp","LC 102 Binary Tree Level Order or LC 207 Course Schedule")]},
-  {name:"🔥 Troubleshooting Scenario #3",time:"10:00 PM – 10:30 PM",items:[pr("TIMED 20-min scenario: Kubernetes pod keeps restarting — diagnose","Scenario: exit code 137, happens every 4 hours, RSS looks fine. Fake dmesg + memory.events provided. Narrate: cgroup OOM vs global OOM, check memory.high vs memory.max, spike during scheduled batch job. Fix: raise memory limit or add resource.limits.")]},
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("✍️ STAR Story 7: Why Google SRE / Why now","Locked 'why leaving Barclays' line + forward pull toward SRE build work."),pr("✍️ STAR Story 8: Leadership without authority / mentoring","MIM leadership, cross-team influence at AVP level.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(973,"K Closest Points to Origin","M","Max-heap size k, or quickselect O(n) avg"),rv2(3,"Longest Substring Without Repeating Characters","M","Sliding window + set; shrink on duplicate")]},
+  {name:"🏢 Work-Hour Reading",time:"~45 min · during work hours",items:[rd("DDIA Ch 10 — Consistency and Consensus [READ concepts / SKIM protocol]","Linearizability, causal order, consensus; leader election at concept level.")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play STAR voice memos — all stories in sequence","Reinforce delivery on the drive.")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: YouTube at Google scale (2B users, 500hr/min) — 45 min","Upload/transcode pipeline, CDN, metadata store, view counts at scale."),pr("TIMED 15-min drill: Estimate Twitter write QPS + storage for 1 year","DAU → tweets/day → QPS → bytes/yr.")]},
+  {name:"🔥 Troubleshooting Scenario",time:"10:30 PM – 10:50 PM",items:[pr("TIMED 20-min live-debug: Service OOMKilled every 30 minutes","Exit 137 → memory.max → leak vs load → RSS growth → cgroup limit vs actual. Name the mechanism.")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[rv("Consolidate mock feedback: 5 things to do better (ranked by impact)","What single change most improves your performance?"),rv("System design checklist: Requirements → Estimation → API → DB → Architecture → Scale → Failure","Questions to ask at each step")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy + genuinely rest. You are in the game.","")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("✍️ Refine 3 weakest STAR stories — rewrite + re-record","Tighten to ~2 min; strong result line each."),pr("🎙️ Record ALL 8 stories; play back consecutively","Full behavioral set locked — loop-ready material."),rd("DDIA Ch 10 — final pass on Raft","client write → leader → followers → commit; draw it from memory after.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(239,"Sliding Window Maximum","H","Monotonic deque of indices; pop expired/smaller"),rv2(128,"Longest Consecutive Sequence","M","HashSet; only start counting when n-1 absent")]},
+  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex — catch up on any slipped item from Tue–Thu.","Behavioral must be fully written by end of today.")]},
+  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — your fixed Friday reset. Behavioral backlog is cleared.","")]},
  ]},
  {day:"Sat",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[pr("LeetCode: 2 medium problems from weakest pattern","Keep muscle memory alive"),pr("Quick sketch: Rate Limiter in 20 min from memory","")]},
-  {name:"Afternoon",time:"Outing — full rest",items:[pr("Go out with your wife. Rest is preparation.","Mental freshness is a competitive advantage.")]},
+  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[mk("SYSTEM DESIGN MOCK: Distributed Message Queue (Kafka-like) — 45 min","Partitions, offsets, consumer groups, replication, delivery semantics."),pr("Design Distributed Lock Service (Chubby/ZooKeeper style) — 30 min","Sessions, ephemeral nodes, leader election, fencing tokens."),pr("Draw Raft log replication from memory","client write → leader append → replicate → commit → apply.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(42,"Trapping Rain Water","H","Two pointer leftMax/rightMax"),rv2(4,"Median of Two Sorted Arrays","H","Binary search partition on smaller array")]},
+  {name:"Afternoon Study",time:"3:00 PM – 4:30 PM",items:[rd("SDI Vol 1 Ch 11–12 — Search Autocomplete + Google Drive","Trie + top-k; file sync/metadata + block storage.")]},
  ]},
  {day:"Sun",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 10:00 AM",items:[pr("Say all 8 STAR stories out loud (16 min total)","")]},
-  {name:"🔄 Buffer & Catch-Up (flex)",time:"10:00 AM – 11:30 AM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),pr("One system design sketch: YouTube from memory (30 min)","Did you hit all components without notes?")]},
-  {name:"Afternoon Study",time:"12:00 PM – 2:00 PM",items:[rv("Review own notes from Weeks 3-4 (Linux, networking, K8s)","Light surface scan — not re-learning"),pr("Check for referral responses; polite follow-up if 1 week passed","")]},
+  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[pr("💻 #297 Serialize and Deserialize Binary Tree [H]","Preorder DFS + null markers."),pr("💻 #721 Accounts Merge [M]","Union-Find on emails."),pr("💻 #208 Implement Trie [M]","children map + isEnd."),mk("FULL TIMED MOCK — 2 problems in 45 min each","Simulate real coding interview end-to-end.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(49,"Group Anagrams","M","HashMap keyed by sorted string / char-count"),rv2(31,"Next Permutation","M","rightmost ascent → swap next-larger → reverse suffix")]},
+  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Say all 8 STAR stories out loud (16 min) — final check","They should feel effortless."),pr("Check for referral/recruiter responses; polite follow-up if 1 week passed","")]},
  ]},
 ]},
-{wk:10,ph:4,title:"Polish, Follow-ups & Stay Sharp",milestone:"✅ Fully interview-ready — 23 Aug",days:[
+{wk:10,ph:4,title:"Grind 2 — Design Depth + Coding Blitz + Follow-ups",milestone:"🎯 Full backlog cleared · design + coding loop-ready — 23 Aug",days:[
  {day:"Mon",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[rv("Light review: your own STAR story notes — no new material","They should feel effortless now"),pr("Prepare 'Tell me about yourself' (90 sec, rehearse)","Current role → ops background → why SRE → why Google now")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Check statuses; send referral follow-up messages","'Applied to [role] on [date]. Happy to share resume if helpful.'")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("SYSTEM DESIGN MOCK: Distributed Message Queue #2 (Kafka-like) — 45 min timed","Delivery semantics: at-least / at-most / exactly-once; consumer rebalancing."),pr("15-min debrief: estimation solid? Failure modes covered?","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(721,"Accounts Merge","M","Union-Find on emails"),rv2(424,"Longest Repeating Character Replacement","M","window valid if len-maxFreq ≤ k")]},
+  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — catch up or get ahead.","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Prepare 'Tell me about yourself' (90 sec) + 'What is SRE?' (2 min)","Current role → ops background → why SRE → why Google now."),pr("Check statuses; send referral follow-up messages","'Applied to [role] on [date]. Happy to share resume.'")]},
  ]},
  {day:"Tue",sessions:[
-  {name:"Morning Study",time:"6:45 AM – 9:15 AM",items:[pr("Light LeetCode: 2 from your personal hardest list","Confidence maintenance, not new learning")]},
-  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — topic that interests you","It should feel familiar now, not stressful")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening",time:"Rest",items:[rv("Read something non-technical tonight","")]},
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design Distributed Lock Service (Chubby/ZooKeeper) — 30 min","Ephemeral nodes, sessions, leader election, fencing tokens."),pr("Draw Raft log replication from memory","client write → leader → followers → commit → apply.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(227,"Basic Calculator II","M","Stack; handle */ before +-"),rv2(287,"Find the Duplicate Number","M","Floyd's cycle detection on value-as-pointer")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — topic that interests you","")]},
+  {name:"🏢 Work-Hour Reading",time:"~45 min · during work hours",items:[rd("SDI Vol 1 Ch 13–14 — Notification + News Feed","Fan-out on write vs read; push/pull hybrid.")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("💻 Coding blitz: #297 Serialize/Deserialize [H] + #208 Trie [M]","Timed, no hints.")]},
  ]},
  {day:"Wed",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Sketch 2 system designs from memory (30 min each): Rate Limiter + Distributed Cache","No notes. Timed.")]},
-  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SRE Book Ch 29 — Dealing with Interrupts","How SREs balance project work vs oncall")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("FULL TIMED MOCK — 2 coding problems in 45 min each","Real interview simulation."),pr("💻 #721 Accounts Merge [M]","Union-Find warmup after mock.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(759,"Employee Free Time","H","Merge all intervals; gaps = free time"),rv2(235,"Lowest Common Ancestor of a BST","M","compare to node range; go left/right/stop")]},
+  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SRE Book Ch 29 — Dealing with Interrupts","On-call load management — behavioral fuel.")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("🏢 Company tailoring: Google SysEng-SRE vs HRT — map both resume halves to each JD","Google: L5 anchor, filesystems/syscalls OR TCP/IP; HRT: 'built + can defend', SaltStack/Ansible/Chef named.")]},
  ]},
  {day:"Thu",sessions:[
-  {name:"Morning Study",time:"6:45 AM – 9:15 AM",items:[pr("Interview logistics: test video/audio setup","Camera, lighting, background, screen share, water on desk"),pr("Rehearse 'What is SRE?' — polished 2-minute answer","Often the first question. Have it locked cold.")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening",time:"Rest",items:[rv("No study tonight — rest is the preparation","")]},
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Sketch 2 designs from memory (30 min each): Rate Limiter + Distributed Cache","Token bucket vs sliding window; eviction + consistency."),pr("TIMED 15-min capacity drill: Instagram feed storage + read QPS","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(124,"Binary Tree Maximum Path Sum","H","track single-branch gain; global max"),rv2(304,"Range Sum Query 2D","M","2D prefix sum; inclusion-exclusion")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play STAR voice memos — all 8","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK #2 (Interviewing.io or self-timed) — 45 min","Pick an unpracticed prompt; full framework.")]},
+  {name:"🔥 Troubleshooting Scenario",time:"10:30 PM – 10:50 PM",items:[pr("TIMED 20-min: Kubernetes pod keeps restarting — diagnose","CrashLoopBackOff → logs → probes → OOM vs exit code → resource limits.")]},
  ]},
  {day:"Fri",sessions:[
-  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[rv("5 key networking concepts from memory (1 sentence each)","TCP handshake, DNS resolution, TLS, L7 LB, HTTP/2"),rv("5 key K8s concepts from memory (1 sentence each)","Pod, Service, HPA, RBAC, CNI")]},
-  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — no fixed reading today. Use it to catch up on a pending item, or get ahead on tomorrow's material.","Keep it light — this slot exists so weekday sessions don't slip when the day gets busy.")]},
-  {name:"Evening",time:"Calligraphy",items:[pr("You have done the work. Enjoy the calm.","")]},
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[rv("Consolidate all mock feedback: 5 things to do better (ranked by impact)","Coding, design, behavioral — one ranked list."),pr("System design checklist from memory","Requirements → Estimation → API → DB → Architecture → Scale → Failure.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(271,"Encode and Decode Strings","M","length-prefix + delimiter"),rv2(347,"Top K Frequent Elements","M","bucket sort by count / min-heap")]},
+  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex — clear any slipped item.","")]},
+  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — Friday reset.","")]},
  ]},
  {day:"Sat",sessions:[
-  {name:"Morning",time:"Optional mock",items:[mk("Optional: 1 final mock if slot available","Only if you need it. Do not cram.")]},
-  {name:"Afternoon",time:"Full recharge",items:[pr("Full rest day. Go out. Eat well. Recharge.","Mental freshness is a real performance advantage.")]},
+  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[mk("Mini loop: 1 coding (45m) + 1 design (45m) back-to-back","Simulate loop stamina."),pr("Debrief: energy dip? time management across rounds?","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(146,"LRU Cache","M","HashMap + DLL; move-to-front, evict tail"),rv2(1268,"Search Suggestions System","M","sort + binary search prefix range")]},
+  {name:"Afternoon Study",time:"3:00 PM – 4:00 PM",items:[rd("SLO project prep: skim sre.google/workbook/alerting-on-slos","Sets up Week 11 SLO Error Budget Service build (free).")]},
  ]},
  {day:"Sun",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 10:00 AM",items:[rd("SRE Book Ch 30 — Communication and Collaboration in SRE","Light reading — reinforces SRE culture")]},
-  {name:"🔄 Buffer & Catch-Up (flex)",time:"10:00 AM – 11:30 AM",items:[pr("Buffer & catch-up — clear anything pending from Mon–Sat first","If you're fully caught up, use this time to get ahead on next week, or just rest."),rv("Final scan: pattern cheat sheet from Weeks 1-2","Remind yourself you know this material cold")]},
-  {name:"Afternoon",time:"Complete rest",items:[rv("10 weeks complete. Trust the process. Show up and let it rip.","")]},
+  {name:"Morning Study",time:"8:30 AM – 10:00 AM",items:[pr("Say all 8 STAR out loud + 2 design sketches from memory","Maintenance rep."),rv("Review Weeks 3–4 notes (Linux, networking, K8s) — surface scan","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(57,"Insert Interval","M","merge overlapping around insert point"),rv2(56,"Merge Intervals","M","sort by start; merge when overlap")]},
+  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Backlog fully cleared. Recruiter screens expected from this week.","Phase 5 = live-loop readiness."),pr("Check referral/recruiter status; follow up as needed","")]},
+ ]},
+]},
+{wk:11,ph:5,title:"Loop Sim #1 + SLO Error Budget Service",milestone:"🔁 First full mock loop passed · SLO service scaffolded + pushed — 30 Aug",days:[
+ {day:"Mon",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ SLO Error Budget Service — design + scaffold (Project Tier-1 #1)","Extends search-api: ingest Prometheus metrics, compute error budget = 1−SLO, expose /budget."),pr("Write docs/DESIGN.md: SLI/SLO chosen, budget window, data model","Three-level docs discipline as always.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(200,"Number of Islands","M","BFS/DFS flood fill"),rv2(981,"Time Based Key-Value Store","M","sorted (ts,val) + binary search")]},
+  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SRE Workbook — Alerting on SLOs (burn-rate alerts)","Multi-window multi-burn-rate alerting; feeds the build.")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("💻 2 timed mediums (phone-screen sim)","Clarify → plan → code → test, out loud.")]},
+ ]},
+ {day:"Tue",sessions:[
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 timed mediums + 1 hard (phone-screen intensity)","45-min cap on the hard.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(207,"Course Schedule","M","cycle detection / Kahn topo sort"),rv2(994,"Rotting Oranges","M","multi-source BFS")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — SLO / error budget episode","")]},
+  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex — SLO service: wire Prometheus client / metric scrape","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Metrics/Monitoring system (Prometheus-like) — 45 min","On-theme with the SLO build: TSDB, scrape, query, alerting.")]},
+ ]},
+ {day:"Wed",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ SLO service — implement burn-rate calc + multi-window alert logic","Fast-burn (1h/5m) + slow-burn (6h/30m) windows firing on budget threshold."),pr("Unit tests for budget + burn-rate math","pytest; edge cases at 0% and 100% budget.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(139,"Word Break","M","dp[i] via word set"),rv2(1235,"Maximum Profit in Job Scheduling","H","DP + binary search by end time")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Behavioral run-through: all 8 STAR to camera; self-critique","Length, result line, no rambling.")]},
+ ]},
+ {day:"Thu",sessions:[
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 timed mediums + 1 design warmup sketch","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(295,"Find Median from Data Stream","H","two heaps"),rv2(347,"Top K Frequent Elements","M","bucket / heap")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("DDIA recap audio notes — Ch 9 key points","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Rate Limiter (distributed) — 45 min","Token bucket, sliding window log/counter, Redis-backed, race conditions.")]},
+ ]},
+ {day:"Fri",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ SLO service — Grafana dashboard + burn-rate alert firing end-to-end","Screenshot the fired alert; add to README."),pr("Push to GitHub: DESIGN.md + inline comments + README updated","Tier-1 reliability-platform narrative begins.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(48,"Rotate Image","M","transpose + reverse rows"),rv2(54,"Spiral Matrix","M","4 shrinking boundaries")]},
+  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — Friday reset.","")]},
+ ]},
+ {day:"Sat",sessions:[
+  {name:"Morning — 🔁 FULL LOOP SIM #1",time:"8:30 AM – 12:30 PM",items:[mk("Round 1: Coding (45m)","No hints; think out loud."),mk("Round 2: Coding (45m)","Different pattern."),mk("Round 3: System Design / NALSD (45m)","Full framework."),mk("Round 4: Behavioral / Googliness (45m)","3–4 STAR stories under questioning.")]},
+  {name:"Afternoon Debrief",time:"2:00 PM – 3:00 PM",items:[pr("Rank the 4 rounds; write the single biggest fix for each","Feed into Week 12 focus.")]},
+ ]},
+ {day:"Sun",sessions:[
+  {name:"Morning Study",time:"8:30 AM – 10:30 AM",items:[pr("Weak-area cleanup from loop sim — drill the worst round","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(238,"Product of Array Except Self","M","prefix × suffix"),rv2(152,"Maximum Product Subarray","M","track max and min")]},
+  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Loop stamina building. SLO service = fresh engineering evidence.","Recruiter/phone screens likely landing now — keep status tracker current."),pr("Status follow-ups: Google + HRT + backups","")]},
+ ]},
+]},
+{wk:12,ph:5,title:"Phone-Screen Peak + Company Tailoring + Tracing Project",milestone:"📞 Phone-screen-ready · Google + HRT tailored · tracing pipeline live — 6 Sep",days:[
+ {day:"Mon",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ Distributed Tracing Pipeline — kickoff (Project Tier-1 #2)","OpenTelemetry instrumentation on search-api: spans across model load + inference + HTTP."),pr("docs/DESIGN.md: trace model, exporter choice (Jaeger vs Tempo)","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(76,"Minimum Window Substring","H","sliding window + freq map"),rv2(424,"Longest Repeating Character Replacement","M","len-maxFreq ≤ k")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("💻 2 timed mediums (phone-screen cadence)","")]},
+ ]},
+ {day:"Tue",sessions:[
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 hard-mediums timed — 40 min each","Google phone-screen difficulty band.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(23,"Merge K Sorted Lists","H","min-heap of heads"),rv2(621,"Task Scheduler","M","greedy / max-heap")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("HRT / low-latency systems talk or podcast","Trading-hours reliability framing.")]},
+  {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("HRT-specific: write 3 talking points on low-latency + trading-hours on-call","Where BOTH resume halves are assets.")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Distributed Cache (Redis-like) — 45 min","Consistent hashing, replication, eviction, hot keys.")]},
+ ]},
+ {day:"Wed",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ Tracing — Jaeger/Tempo on minikube; unified logs + metrics + traces","Correlate a slow request across all three signals."),pr("Add a deliberate latency injection + trace it","Demonstrates observability value.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(417,"Pacific Atlantic Water Flow","M","reverse DFS from both borders"),rv2(133,"Clone Graph","M","BFS/DFS + map")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Google-specific: NALSD framework drill + Googliness answers","'Comfort with ambiguity', 'bias to action' — 2 stories each.")]},
+ ]},
+ {day:"Thu",sessions:[
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[mk("CODING MOCK (Pramp / peer) — 45 min","Fresh partner; full protocol.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(105,"Construct Tree from Preorder+Inorder","M","root split via inorder index"),rv2(210,"Course Schedule II","M","topo order output")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — incident / postmortem episode","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("🔥 TIMED 20-min troubleshooting: latency p99 spike, low avg CPU","CFS throttling: cpu.max period → throttled mid-period → name throttle_cfs_rq.")]},
+ ]},
+ {day:"Fri",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ Tracing — push to GitHub: DESIGN.md + README + screenshots","Two-project reliability platform (SLO + tracing) now on GitHub."),pr("Update resume 'project-based' line to reference SLO + tracing","Honest tier; project-based label.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(322,"Coin Change","M","dp over amounts"),rv2(198,"House Robber","M","dp[i]=max(dp[i-2]+n,dp[i-1])")]},
+  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — Friday reset.","")]},
+ ]},
+ {day:"Sat",sessions:[
+  {name:"Morning — 🔁 FULL LOOP SIM #2",time:"8:30 AM – 12:30 PM",items:[mk("Round 1: Coding (45m)",""),mk("Round 2: Coding (45m)",""),mk("Round 3: System Design / NALSD (45m)",""),mk("Round 4: SRE Troubleshooting / Non-abstract ops (45m)","Live debug + reliability reasoning.")]},
+  {name:"Afternoon Debrief",time:"2:00 PM – 3:00 PM",items:[pr("Compare to Loop Sim #1 — measurable improvement per round?","")]},
+ ]},
+ {day:"Sun",sessions:[
+  {name:"Morning Study",time:"8:30 AM – 10:30 AM",items:[pr("Weak-round cleanup + 2 design sketches from memory","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(15,"3Sum","M","sort + two pointer"),rv2(11,"Container With Most Water","M","two pointer, move shorter")]},
+  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Phone screens should be landing / scheduled. Onsite loops next.","Peak week ahead."),pr("Status follow-ups; confirm any scheduled screens","")]},
+ ]},
+]},
+{wk:13,ph:5,title:"Loop Peak — Live Design + Coding Under Fire",milestone:"🎯 Every round rehearsed cold · onsite-loop ready — 13 Sep",days:[
+ {day:"Mon",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("SYSTEM DESIGN MOCK: Design Google Docs (collab editing) — 45 min","OT/CRDT, presence, conflict resolution, storage."),pr("Debrief + redo weakest 10 min","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(297,"Serialize and Deserialize Binary Tree","H","preorder + null markers"),rv2(146,"LRU Cache","M","HashMap + DLL")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("💻 2 timed hards","Full verbalization.")]},
+ ]},
+ {day:"Tue",sessions:[
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 timed mediums + 1 hard","Onsite pace.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(212,"Word Search II","H","Trie + DFS prune"),rv2(269,"Alien Dictionary","H","build order graph + topo")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Behavioral: play your 8 STAR memos","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Search Autocomplete at scale — 45 min","Trie + top-k + caching + sharding.")]},
+ ]},
+ {day:"Wed",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Distributed Job Scheduler — 45 min","Leader election, at-least-once execution, retries, dedup."),pr("Debrief","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(300,"Longest Increasing Subsequence","M","patience + binary search"),rv2(5,"Longest Palindromic Substring","M","expand around center")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Behavioral cold-call drill: random story in 30 sec, deliver in 2 min","Simulate loop unpredictability.")]},
+ ]},
+ {day:"Thu",sessions:[
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[mk("CODING MOCK (peer/paid) — 45 min","Loop-realistic partner.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(42,"Trapping Rain Water","H","two pointer"),rv2(4,"Median of Two Sorted Arrays","H","partition binary search")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — reliability principles","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("🔥 TIMED 25-min troubleshooting: compound stall (CFS throttle + direct reclaim)","Name kernel mechanisms; arithmetic forces the second mechanism; falsifiable confirmation.")]},
+ ]},
+ {day:"Fri",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Full design checklist run on 2 prompts from memory","Requirements→estimation→API→DB→arch→scale→failure, timed."),pr("Refresh SLO + tracing project talking points (2 min each)","Ready to discuss as recent engineering evidence.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(973,"K Closest Points to Origin","M","heap / quickselect"),rv2(528,"Random Pick with Weight","M","prefix sum + binary search")]},
+  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — Friday reset before peak weekend.","")]},
+ ]},
+ {day:"Sat",sessions:[
+  {name:"Morning — 🔁 FULL LOOP SIM #3",time:"8:30 AM – 1:00 PM",items:[mk("Round 1: Coding (45m)",""),mk("Round 2: Coding (45m)",""),mk("Round 3: System Design / NALSD (45m)",""),mk("Round 4: SRE Troubleshooting (45m)",""),mk("Round 5: Behavioral / Googliness (45m)","Full 5-round loop.")]},
+  {name:"Afternoon Debrief",time:"2:30 PM – 3:30 PM",items:[pr("Final gap list — anything still shaky gets Monday drilling","")]},
+ ]},
+ {day:"Sun",sessions:[
+  {name:"Morning Study",time:"8:30 AM – 10:30 AM",items:[pr("Drill the single weakest round from Sim #3","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(33,"Search in Rotated Sorted Array","M","which half is sorted"),rv2(153,"Find Minimum in Rotated Sorted Array","M","compare mid to right")]},
+  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("You've rehearsed every round type cold. Loops are execution now.","Trust the reps."),pr("Confirm scheduled loops; logistics checklist for next week","")]},
+ ]},
+]},
+{wk:14,ph:5,title:"Interview Execution + Sharp Maintenance",milestone:"🚀 Loops live — sharp, rested, ready — 20 Sep",days:[
+ {day:"Mon",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("💻 2 mediums from your personal hardest list","Stay warm, not exhausted."),pr("1 design sketch from memory (30 min)","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(1,"Two Sum","E","HashMap complement"),rv2(238,"Product of Array Except Self","M","prefix × suffix")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Interview logistics: test video/audio, IDE/collab-editor setup, quiet room","Remove day-of friction.")]},
+ ]},
+ {day:"Tue",sessions:[
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 timed mediums + rehearse 'Tell me about yourself' (90 sec)","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(20,"Valid Parentheses","E","stack"),rv2(206,"Reverse Linked List","E","iterative pointer swap")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play STAR memos — final polish pass","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Company research: teams/orgs for your Google reqs + HRT desk","Questions to ask interviewers ready.")]},
+ ]},
+ {day:"Wed",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Sketch 2 designs from memory: Rate Limiter + Message Queue","Keep the framework reflexive."),pr("Refresh 'What is SRE?' (2 min) + SLO/error-budget definitions","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(102,"Binary Tree Level Order","M","BFS by level"),rv2(98,"Validate BST","M","min/max bounds")]},
+  {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SRE Book Ch 30 — Communication and Collaboration in SRE","Light — behavioral polish.")]},
+ ]},
+ {day:"Thu",sessions:[
+  {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Light: 2 mediums + 1 behavioral run-through","Day-before-loop taper if a loop is scheduled.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(121,"Best Time to Buy and Sell Stock","E","min-so-far"),rv2(217,"Contains Duplicate","E","set")]},
+  {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Calm / non-technical — protect energy","")]},
+  {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Pre-loop ritual: review your own cheat sheet only — no new material","Sleep early before any scheduled round.")]},
+ ]},
+ {day:"Fri",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("5 networking + 5 K8s concepts from memory (1 line each)","Fast recall check."),pr("2 design sketches + 3 STAR out loud","Maintenance, not cramming.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(141,"Linked List Cycle","E","Floyd's"),rv2(226,"Invert Binary Tree","E","swap + recurse")]},
+  {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — you've done the work. Steady hands.","")]},
+ ]},
+ {day:"Sat",sessions:[
+  {name:"Morning — Optional final mock",time:"8:30 AM – 10:00 AM",items:[mk("1 final full mock IF a loop is imminent — otherwise light drills","Match the round type you have next.")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(347,"Top K Frequent Elements","M","bucket / heap"),rv2(295,"Find Median from Data Stream","H","two heaps")]},
+  {name:"Afternoon",time:"Recharge (active)",items:[pr("Rest deliberately + one calm review of cheat sheet","Recovery is part of the grind now.")]},
+ ]},
+ {day:"Sun",sessions:[
+  {name:"Morning Study",time:"8:30 AM – 10:00 AM",items:[pr("Final scan: pattern cheat sheet + SLO/tracing project one-liners","")]},
+  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(56,"Merge Intervals","M","sort + merge"),rv2(253,"Meeting Rooms II","M","min-heap of end times")]},
+  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("14 weeks done. Backlog cleared, projects shipped, every round rehearsed.","Show up and let it rip."),pr("Keep status tracker live; schedule any remaining loops","Beyond Wk 14 = maintenance + execution as loops land.")]},
  ]},
 ]},
 ];;
@@ -1007,7 +1175,7 @@ function getWeekNum(){
   const s=parseLocalDate(STATE.startDate);s.setHours(0,0,0,0);
   const t=new Date();t.setHours(0,0,0,0);
   const diff=Math.floor((t-s)/(7*86400000));
-  const wk=diff+1;return(wk>=1&&wk<=10)?wk:null;
+  const wk=diff+1;return(wk>=1&&wk<=14)?wk:null;
 }
 function weekDates(wkNum){
   if(!STATE.startDate)return"";
@@ -1019,7 +1187,7 @@ function weekDates(wkNum){
 }
 function daysLeft(){
   if(!STATE.startDate)return null;
-  const end=parseLocalDate(STATE.startDate);end.setDate(end.getDate()+69);
+  const end=parseLocalDate(STATE.startDate);end.setDate(end.getDate()+97);
   const t=new Date();t.setHours(0,0,0,0);
   return Math.max(0,Math.ceil((end-t)/86400000));
 }
@@ -1042,7 +1210,7 @@ function globalDayOf(wk,dayName){
   return (wk-1)*7 + DAY_ORDER.indexOf(dayName) + 1;
 }
 function getDailyRevision(targetDay){
-  if(targetDay<3)return[];
+  if(targetDay<3||targetDay>56)return[];
   let blindPtr=0,googlePtr=0,result=[];
   for(let d=3;d<=targetDay;d++){
     const dow=(d-1)%7; // 0=Mon..6=Sun
@@ -1619,7 +1787,7 @@ function updateDateHint(){
   const s=new Date(v);s.setHours(0,0,0,0);const t=new Date();t.setHours(0,0,0,0);
   const diff=Math.floor((t-s)/(7*86400000));const wk=diff+1;
   const hint=document.getElementById("dateHint");
-  if(hint)hint.textContent=(wk>=1&&wk<=10)?"Currently in Week "+wk+" of 10":"Outside 10-week window — check your dates";
+  if(hint)hint.textContent=(wk>=1&&wk<=14)?"Currently in Week "+wk+" of 14":"Outside 14-week window — check your dates";
 }
 function saveDate(){
   const v=document.getElementById("startInput")?.value;if(!v)return;
