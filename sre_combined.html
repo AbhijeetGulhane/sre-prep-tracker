@@ -384,7 +384,7 @@ const PHASES = [
   {id:2,label:"Phase 2",name:"Linux, SRE & Kubernetes",color:"#10B981",wks:[3,4]},
   {id:3,label:"Phase 3",name:"NALSD System Design",color:"#F59E0B",wks:[5,6,7]},
   {id:4,label:"Phase 4",name:"Behavioral, Mocks & Apply",color:"#8B5CF6",wks:[8,9,10]},
-  {id:5,label:"Phase 5",name:"Interview Loops & Grind",color:"#EC4899",wks:[11,12,13,14]},
+  {id:5,label:"Phase 5",name:"Interview Loops & Grind",color:"#EC4899",wks:[11,12,13,14,15]},
 ];
 function phaseOf(wk){return PHASES.find(p=>p.wks.includes(wk))||PHASES[0];}
 
@@ -1358,7 +1358,7 @@ function tlBlock(b,isCurrent){
 // ── HEADER UPDATE ─────────────────────────────────────
 function updateHeader(){
   const wk=getWeekNum();
-  document.getElementById("tb-wk").textContent=wk?"W"+wk+"/14":"—";
+  document.getElementById("tb-wk").textContent=wk?"W"+wk+"/15":"—";
   const ph=wk?phaseOf(wk):null;
   const left=daysLeft();
   document.getElementById("tb-sub").textContent=ph
@@ -1573,7 +1573,7 @@ function renderPlan(){
 
   return "<div class=\"sticky-hd\">"
     +"<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:6px\">"
-    +"<div style=\"font-size:15px;font-weight:700;color:var(--text)\">14-Week Prep Plan</div>"
+    +"<div style=\"font-size:15px;font-weight:700;color:var(--text)\">15-Week Prep Plan</div>"
     +"<div style=\"font-size:11px;font-weight:600;color:"+ph.color+"\">Week "+STATE.planWk+": "+wkPct+"%</div>"
     +"</div>"
     +"<div style=\"display:flex;gap:2px;height:4px;border-radius:4px;overflow:hidden;margin-bottom:7px\">"
@@ -1671,7 +1671,7 @@ function renderProgress(){
     +"<div style=\"font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px\">Your Progress</div>"
     +"<div class=\"prog-ring-wrap\">"+ring+"</div>"
     +"<div class=\"prog-stats\">"
-    +(wk?"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#3B82F6\">W"+wk+"/14</div><div class=\"prog-stat-lbl\">Current Week</div></div>":"")
+    +(wk?"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#3B82F6\">W"+wk+"/15</div><div class=\"prog-stat-lbl\">Current Week</div></div>":"")
     +(left!==null?"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#F59E0B\">"+left+"</div><div class=\"prog-stat-lbl\">Days Left</div></div>":"")
     +"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#10B981\">"+done+"</div><div class=\"prog-stat-lbl\">Items Done</div></div>"
     +"</div></div>"
