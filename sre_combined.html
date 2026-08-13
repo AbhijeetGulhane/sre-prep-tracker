@@ -950,16 +950,14 @@ const PLAN=[
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(239,"Sliding Window Maximum","H","Monotonic deque of indices; pop expired/smaller"),rv2(128,"Longest Consecutive Sequence","M","HashSet; only start counting when n-1 absent")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex — catch up on any slipped item from Tue–Thu.","Behavioral must be fully written by end of today.")]},
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — your fixed Friday reset. Behavioral backlog is cleared.","")]},
- ]},
+ ,{name:"💻 LeetCode — Arrays/Hashing",time:"Daily block",items:[pr("#1 Two Sum [E]","HashMap: store value→index; check complement on the fly"),pr("#121 Best Time to Buy and Sell Stock [E]","Track min price seen so far; profit=price-minSoFar"),pr("#1 Two Sum [E]","HashMap: store value→index; check complement on the fly"),pr("#121 Best Time to Buy and Sell Stock [E]","Track min price seen so far; profit=price-minSoFar"),pr("#217 Contains Duplicate [E]","HashSet; if len(set)<len(array) there's a duplicate")]}]},
  {day:"Sat",sessions:[
   {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[mk("SYSTEM DESIGN MOCK: Distributed Message Queue (Kafka-like) — 45 min","Partitions, offsets, consumer groups, replication, delivery semantics."),pr("Design Distributed Lock Service (Chubby/ZooKeeper style) — 30 min","Sessions, ephemeral nodes, leader election, fencing tokens."),pr("Draw Raft log replication from memory","client write → leader append → replicate → commit → apply.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(42,"Trapping Rain Water","H","Two pointer leftMax/rightMax"),rv2(4,"Median of Two Sorted Arrays","H","Binary search partition on smaller array")]},
   {name:"Afternoon Study",time:"3:00 PM – 4:30 PM",items:[rd("SDI Vol 1 Ch 11–12 — Search Autocomplete + Google Drive","Trie + top-k; file sync/metadata + block storage.")]},
- ]},
+ ,{name:"💻 LeetCode — Arrays/Hashing",time:"Daily block",items:[pr("#217 Contains Duplicate [E]","HashSet; if len(set)<len(array) there's a duplicate"),pr("#238 Product of Array Except Self [M]","Prefix product array + suffix product array, multiply"),pr("#238 Product of Array Except Self [M]","Prefix product array + suffix product array, multiply"),pr("#152 Maximum Product Subarray [M]","Track both max AND min running product (negatives flip sign)"),pr("#153 Find Minimum in Rotated Sorted Array [M]","Binary search: compare mid to right; min is in the unsorted half")]}]},
  {day:"Sun",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[pr("💻 #297 Serialize and Deserialize Binary Tree [H]","Preorder DFS + null markers."),pr("💻 #721 Accounts Merge [M]","Union-Find on emails."),pr("💻 #208 Implement Trie [M]","children map + isEnd."),mk("FULL TIMED MOCK — 2 problems in 45 min each","Simulate real coding interview end-to-end.")]},
-  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(49,"Group Anagrams","M","HashMap keyed by sorted string / char-count"),rv2(31,"Next Permutation","M","rightmost ascent → swap next-larger → reverse suffix")]},
-  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Say all 8 STAR stories out loud (16 min) — final check","They should feel effortless."),pr("Check for referral/recruiter responses; polite follow-up if 1 week passed","")]},
+  {name:"🧳 Family Outing (Aug 16)",time:"All day",items:[pr("Aug 16 — Family outing. Full rest. Study items redistributed to adjacent days.","")]}
  ]},
 ]},
 {wk:10,ph:4,title:"Grind 2 — Design Depth + Coding Blitz + Follow-ups",milestone:"🎯 Full backlog cleared · design + coding loop-ready — 23 Aug",days:[
@@ -968,43 +966,43 @@ const PLAN=[
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(721,"Accounts Merge","M","Union-Find on emails"),rv2(424,"Longest Repeating Character Replacement","M","window valid if len-maxFreq ≤ k")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex slot — catch up or get ahead.","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Prepare 'Tell me about yourself' (90 sec) + 'What is SRE?' (2 min)","Current role → ops background → why SRE → why Google now."),pr("Check statuses; send referral follow-up messages","'Applied to [role] on [date]. Happy to share resume.'")]},
- ]},
+ ,{name:"💻 LeetCode — Arrays/Hashing",time:"Daily block",items:[pr("#347 Top K Frequent Elements [M]","Frequency map + bucket sort by count, or min-heap of size k"),pr("#271 Encode and Decode Strings [M]","Prefix each string with its length + delimiter (e.g. '5#hello')"),pr("#33 Search in Rotated Sorted Array [M]","Binary search: identify which half is sorted, then decide direction"),pr("#15 3Sum [M]","Sort array; fix one number, two-pointer for the remaining pair"),pr("#11 Container With Most Water [M]","Two pointer from both ends; move the shorter wall inward")]}]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Design Distributed Lock Service (Chubby/ZooKeeper) — 30 min","Ephemeral nodes, sessions, leader election, fencing tokens."),pr("Draw Raft log replication from memory","client write → leader → followers → commit → apply.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(227,"Basic Calculator II","M","Stack; handle */ before +-"),rv2(287,"Find the Duplicate Number","M","Floyd's cycle detection on value-as-pointer")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — topic that interests you","")]},
   {name:"🏢 Work-Hour Reading",time:"~45 min · during work hours",items:[rd("SDI Vol 1 Ch 13–14 — Notification + News Feed","Fan-out on write vs read; push/pull hybrid.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("💻 Coding blitz: #297 Serialize/Deserialize [H] + #208 Trie [M]","Timed, no hints.")]},
- ]},
+ ,{name:"💻 LeetCode — Arrays/Hashing",time:"Daily block",items:[pr("#380 Insert Delete GetRandom O(1) [M]","HashMap+array; O(1) delete: swap target with last element, pop"),pr("#15 3Sum [M]","Sort array; fix one number, two-pointer for the remaining pair"),pr("#70 Climbing Stairs [E]","dp[n]=dp[n-1]+dp[n-2]; Fibonacci pattern"),pr("#322 Coin Change [M]","dp[amount]=min coins; dp[a]=min(dp[a-coin]+1) over all coins"),pr("#39 Combination Sum [M]","Backtracking: try each candidate, recurse with reduced target, allow reuse")]}]},
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("FULL TIMED MOCK — 2 coding problems in 45 min each","Real interview simulation."),pr("💻 #721 Accounts Merge [M]","Union-Find warmup after mock.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(759,"Employee Free Time","H","Merge all intervals; gaps = free time"),rv2(235,"Lowest Common Ancestor of a BST","M","compare to node range; go left/right/stop")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SRE Book Ch 29 — Dealing with Interrupts","On-call load management — behavioral fuel.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("🏢 Company tailoring: Google SysEng-SRE vs HRT — map both resume halves to each JD","Google: L5 anchor, filesystems/syscalls OR TCP/IP; HRT: 'built + can defend', SaltStack/Ansible/Chef named.")]},
- ]},
+ ,{name:"💻 LeetCode — Two Pointers",time:"Daily block",items:[pr("#11 Container With Most Water [M]","Two pointer from both ends; move the shorter wall inward"),pr("#125 Valid Palindrome [E]","Two pointer from both ends, skip non-alphanumeric, compare lowercase"),pr("#198 House Robber [M]","dp[i]=max(dp[i-2]+nums[i], dp[i-1])"),pr("#213 House Robber II [M]","Run House Robber twice on [0..n-2] and [1..n-1], take max"),pr("#91 Decode Ways [M]","dp[i]=dp[i-1](if valid 1-digit)+dp[i-2](if valid 2-digit)")]}]},
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Sketch 2 designs from memory (30 min each): Rate Limiter + Distributed Cache","Token bucket vs sliding window; eviction + consistency."),pr("TIMED 15-min capacity drill: Instagram feed storage + read QPS","")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(124,"Binary Tree Maximum Path Sum","H","track single-branch gain; global max"),rv2(304,"Range Sum Query 2D","M","2D prefix sum; inclusion-exclusion")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play STAR voice memos — all 8","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK #2 (Interviewing.io or self-timed) — 45 min","Pick an unpracticed prompt; full framework.")]},
   {name:"🔥 Troubleshooting Scenario",time:"10:30 PM – 10:50 PM",items:[pr("TIMED 20-min: Kubernetes pod keeps restarting — diagnose","CrashLoopBackOff → logs → probes → OOM vs exit code → resource limits.")]},
- ]},
+ ,{name:"💻 LeetCode — Two Pointers",time:"Daily block",items:[pr("#42 Trapping Rain Water [H]","Two pointer with leftMax/rightMax, or precompute max-left/max-right arrays"),pr("#3 Longest Substring Without Repeating Characters [M]","Sliding window + HashSet/Map; shrink window when duplicate found"),pr("#55 Jump Game [M]","Greedy: track farthest reachable index; if i exceeds it, fail"),pr("#133 Clone Graph [M]","BFS/DFS + HashMap of original node→cloned node"),pr("#417 Pacific Atlantic Water Flow [M]","Reverse-flow DFS from BOTH oceans' borders inward; intersect results")]}]},
  {day:"Fri",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[rv("Consolidate all mock feedback: 5 things to do better (ranked by impact)","Coding, design, behavioral — one ranked list."),pr("System design checklist from memory","Requirements → Estimation → API → DB → Architecture → Scale → Failure.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(271,"Encode and Decode Strings","M","length-prefix + delimiter"),rv2(347,"Top K Frequent Elements","M","bucket sort by count / min-heap")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("Flex — clear any slipped item.","")]},
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — Friday reset.","")]},
- ]},
+ ,{name:"💻 LeetCode — Sliding Window",time:"Daily block",items:[pr("#424 Longest Repeating Character Replacement [M]","Sliding window; window valid if (length-maxFreqChar)<=k replacements"),pr("#76 Minimum Window Substring [H]","Sliding window + char frequency map; expand then contract to minimize"),pr("#128 Longest Consecutive Sequence [M]","HashSet; only start counting from numbers where n-1 not in set"),pr("#261 Graph Valid Tree [M]","Valid tree iff exactly n-1 edges AND fully connected (Union-Find or DFS)"),pr("#323 Number of Connected Components in an Undirected Graph [M]","Union-Find: count distinct roots after processing all edges")]}]},
  {day:"Sat",sessions:[
   {name:"Morning Study",time:"8:30 AM – 11:00 AM",items:[mk("Mini loop: 1 coding (45m) + 1 design (45m) back-to-back","Simulate loop stamina."),pr("Debrief: energy dip? time management across rounds?","")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(146,"LRU Cache","M","HashMap + DLL; move-to-front, evict tail"),rv2(1268,"Search Suggestions System","M","sort + binary search prefix range")]},
   {name:"Afternoon Study",time:"3:00 PM – 4:00 PM",items:[rd("SLO project prep: skim sre.google/workbook/alerting-on-slos","Sets up Week 11 SLO Error Budget Service build (free).")]},
- ]},
+ ,{name:"💻 LeetCode — Sliding Window",time:"Daily block",items:[pr("#239 Sliding Window Maximum [H]","Monotonic deque: keep indices decreasing in value, pop expired/smaller"),pr("#20 Valid Parentheses [E]","Stack: push opening brackets, pop and match on closing"),pr("#206 Reverse Linked List [E]","Iterative: prev=null, swap next pointers one at a time"),pr("#141 Linked List Cycle [E]","Floyd's: slow/fast pointers; cycle exists if they ever meet"),pr("#21 Merge Two Sorted Lists [E]","Dummy head; compare heads of both lists, attach smaller, advance")]}]},
  {day:"Sun",sessions:[
   {name:"Morning Study",time:"8:30 AM – 10:00 AM",items:[pr("Say all 8 STAR out loud + 2 design sketches from memory","Maintenance rep."),rv("Review Weeks 3–4 notes (Linux, networking, K8s) — surface scan","")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(57,"Insert Interval","M","merge overlapping around insert point"),rv2(56,"Merge Intervals","M","sort by start; merge when overlap")]},
   {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Backlog fully cleared. Recruiter screens expected from this week.","Phase 5 = live-loop readiness."),pr("Check referral/recruiter status; follow up as needed","")]},
- ]},
+ ,{name:"💻 LeetCode — Stack",time:"Daily block",items:[pr("#735 Asteroid Collision [M]","Stack: push right-movers; on left-mover, resolve collisions with stack top"),pr("#227 Basic Calculator II [M]","Stack-based: track running number + last operator, handle */before +-"),pr("#19 Remove Nth Node From End of List [M]","Two pointers with n-gap; when fast hits end, slow is at target"),pr("#143 Reorder List [M]","Find middle, reverse second half, merge two halves alternately"),pr("#3 Longest Substring Without Repeating Characters [M]","Sliding window + HashSet/Map; shrink window when duplicate found")]}]},
 ]},
 {wk:11,ph:5,title:"Loop Sim #1 + SLO Service + Pattern/Design Sweep",milestone:"🔁 Loop #1 passed · SLO service pushed · Backtracking + 2-D DP + IDGen/KV revised — 30 Aug",days:[
  {day:"Mon",sessions:[
@@ -1012,38 +1010,36 @@ const PLAN=[
   {name:"🎯 Pattern Sweep — Backtracking",time:"~30 min",items:[rv2(78,"Subsets","M","include/exclude recursion; power set"),rv2(39,"Combination Sum","M","reuse allowed; index to avoid dupes"),rv2(46,"Permutations","M","used[] or swap-in-place")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SRE Workbook — Alerting on SLOs (burn-rate alerts)","Multi-window multi-burn-rate alerting; feeds the build.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("💻 2 timed mediums (phone-screen sim)","Clarify → plan → code → test, out loud.")]},
- ]},
+ ,{name:"💻 LeetCode — Binary Search",time:"Daily block",items:[pr("#153 Find Minimum in Rotated Sorted Array [M]","Binary search: compare mid to right; min is in the unsorted half"),pr("#33 Search in Rotated Sorted Array [M]","Binary search: identify which half is sorted, then decide direction"),pr("#424 Longest Repeating Character Replacement [M]","Sliding window; window valid if (length-maxFreqChar)<=k replacements"),pr("#76 Minimum Window Substring [H]","Sliding window + char frequency map; expand then contract to minimize"),pr("#242 Valid Anagram [E]","Char frequency count; both strings must match exactly")]}]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 timed mediums + 1 hard (phone-screen intensity)","45-min cap on the hard.")]},
   {name:"🗺️ Design Revision Rotation A",time:"~40 min",items:[pr("TIMED 20-min sketch: Unique ID Generator (Snowflake)","64-bit: timestamp + machine id + sequence; clock skew, monotonicity."),pr("TIMED 20-min sketch: Distributed Key-Value Store","Consistent hashing, quorum R/W, vector clocks / LWW, replication.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(207,"Course Schedule","M","cycle detection / Kahn topo sort"),rv2(994,"Rotting Oranges","M","multi-source BFS")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — SLO / error budget episode","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Metrics/Monitoring system (Prometheus-like) — 45 min","On-theme with SLO build: TSDB, scrape, query, alerting.")]},
- ]},
+ ,{name:"💻 LeetCode — Binary Search",time:"Daily block",items:[pr("#981 Time Based Key-Value Store [M]","HashMap of key→sorted (timestamp,value) list; binary search on get"),pr("#4 Median of Two Sorted Arrays [H]","Binary search on the smaller array to find correct partition point"),pr("#49 Group Anagrams [M]","HashMap keyed by sorted string (or char-count tuple) as group key"),pr("#20 Valid Parentheses [E]","Stack: push opening brackets, pop and match on closing"),pr("#125 Valid Palindrome [E]","Two pointer from both ends, skip non-alphanumeric, compare lowercase")]}]},
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ SLO service — burn-rate calc + multi-window alert logic","Fast-burn (1h/5m) + slow-burn (6h/30m) firing on budget threshold."),pr("Unit tests for budget + burn-rate math","pytest; edges at 0% and 100% budget.")]},
   {name:"🎯 Pattern Sweep — 2-D Dynamic Programming",time:"~35 min",items:[rv2(1143,"Longest Common Subsequence","M","grid dp[i][j]; match → diag+1"),rv2(62,"Unique Paths","M","dp[i][j]=up+left"),rv2(72,"Edit Distance","H","insert/delete/replace min")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Behavioral run-through: all 8 STAR to camera; self-critique","Length, result line, no rambling.")]},
- ]},
+ ,{name:"💻 LeetCode — Linked List",time:"Daily block",items:[pr("#206 Reverse Linked List [E]","Iterative: prev=null, swap next pointers one at a time"),pr("#141 Linked List Cycle [E]","Floyd's: slow/fast pointers; cycle exists if they ever meet"),pr("#104 Maximum Depth of Binary Tree [E]","Recursive: 1+max(depth(left), depth(right))"),pr("#100 Same Tree [E]","Recursive: compare value + recurse left+right; both null = true"),pr("#226 Invert Binary Tree [E]","Recursive: swap left/right children, recurse into both")]}]},
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 timed mediums + 1 design warmup sketch","")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(295,"Find Median from Data Stream","H","two heaps"),rv2(347,"Top K Frequent Elements","M","bucket / heap")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("DDIA recap audio notes — Ch 9 key points","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Rate Limiter (distributed) — 45 min","Token bucket, sliding window log/counter, Redis-backed, race conditions.")]},
- ]},
+ ,{name:"💻 LeetCode — Linked List",time:"Daily block",items:[pr("#21 Merge Two Sorted Lists [E]","Dummy head; compare heads of both lists, attach smaller, advance"),pr("#19 Remove Nth Node From End of List [M]","Two pointers with n-gap; when fast hits end, slow is at target"),pr("#124 Binary Tree Maximum Path Sum [H]","Recursive: track max single-branch gain per node; global max across all paths"),pr("#102 Binary Tree Level Order Traversal [M]","BFS with a queue; process level by level using queue size snapshot"),pr("#297 Serialize and Deserialize Binary Tree [H]","Preorder DFS with null markers; rebuild using same traversal order")]}]},
  {day:"Fri",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ SLO service — Grafana dashboard + burn-rate alert firing end-to-end","Screenshot the fired alert; add to README."),pr("Push to GitHub: DESIGN.md + inline comments + README","Tier-1 reliability-platform narrative begins.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(48,"Rotate Image","M","transpose + reverse rows"),rv2(54,"Spiral Matrix","M","4 shrinking boundaries")]},
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — Friday reset.","")]},
- ]},
+ ,{name:"💻 LeetCode — Linked List",time:"Daily block",items:[pr("#143 Reorder List [M]","Find middle, reverse second half, merge two halves alternately"),pr("#23 Merge K Sorted Lists [H]","Min-heap of (val, list_index); pop min, push next from same list"),pr("#572 Subtree of Another Tree [E]","For each node in main tree, check if Same Tree matches the subRoot"),pr("#105 Construct Binary Tree from Preorder and Inorder Traversal [M]","Preorder[0]=root; find root in inorder to split left/right subtrees"),pr("#98 Validate Binary Search Tree [M]","Recursive with (min,max) bounds passed down; node must fit in range")]}]},
  {day:"Sat",sessions:[
   {name:"Morning — 🔁 FULL LOOP SIM #1",time:"8:30 AM – 12:30 PM",items:[mk("Round 1: Coding (45m)","No hints; think out loud."),mk("Round 2: Coding (45m)","Different pattern."),mk("Round 3: System Design / NALSD (45m)","Full framework."),mk("Round 4: Behavioral / Googliness (45m)","3–4 STAR under questioning.")]},
   {name:"Afternoon Debrief",time:"2:00 PM – 3:00 PM",items:[pr("Rank the 4 rounds; write the single biggest fix for each","Feed into Week 12 focus.")]},
- ]},
+ ,{name:"💻 LeetCode — Trees",time:"Daily block",items:[pr("#104 Maximum Depth of Binary Tree [E]","Recursive: 1+max(depth(left), depth(right))"),pr("#100 Same Tree [E]","Recursive: compare value + recurse left+right; both null = true"),pr("#235 Lowest Common Ancestor of a BST [M]","Compare target values to node: go left/right/stop based on range"),pr("#208 Implement Trie (Prefix Tree) [M]","TrieNode: children map + isEnd flag; insert/search/startsWith"),pr("#347 Top K Frequent Elements [M]","Frequency map + bucket sort by count, or min-heap of size k")]}]},
  {day:"Sun",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 10:30 AM",items:[pr("Weak-area cleanup from loop sim — drill the worst round","")]},
-  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(238,"Product of Array Except Self","M","prefix × suffix"),rv2(152,"Maximum Product Subarray","M","track max and min")]},
-  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Loop stamina building. SLO service = fresh engineering evidence.","Recruiter/phone screens likely landing now."),pr("Status follow-ups: Google + HRT + backups","")]},
+  {name:"🧳 Family Outing (Aug 30)",time:"All day",items:[pr("Aug 30 — Family outing. Full rest. Study items redistributed to adjacent days.","")]}
  ]},
 ]},
 {wk:12,ph:5,title:"Phone-Screen Peak + Tracing + Greedy/Bit + Crawler/Chat",milestone:"📞 Phone-screen-ready · tracing live · Greedy + Bit-Manip + Crawler/Chat revised — 6 Sep",days:[
@@ -1051,38 +1047,36 @@ const PLAN=[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ Distributed Tracing Pipeline — kickoff (Project Tier-1 #2)","OpenTelemetry on search-api: spans across model load + inference + HTTP."),pr("docs/DESIGN.md: trace model, exporter (Jaeger vs Tempo)","")]},
   {name:"🎯 Pattern Sweep — Greedy",time:"~30 min",items:[rv2(55,"Jump Game","M","track furthest reachable"),rv2(134,"Gas Station","M","total≥0 feasible; reset start on deficit"),rv2(45,"Jump Game II","M","BFS-layer greedy for min jumps")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("💻 2 timed mediums (phone-screen cadence)","")]},
- ]},
+ ,{name:"💻 LeetCode — Trees",time:"Daily block",items:[pr("#226 Invert Binary Tree [E]","Recursive: swap left/right children, recurse into both"),pr("#124 Binary Tree Maximum Path Sum [H]","Recursive: track max single-branch gain per node; global max across all paths"),pr("#57 Insert Interval [M]","Find insertion range; merge overlapping: start≤prevEnd"),pr("#56 Merge Intervals [M]","Sort by start; merge when curr.start ≤ prev.end"),pr("#435 Non-overlapping Intervals [M]","Greedy: sort by END, keep earliest-ending")]}]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 hard-mediums timed — 40 min each","Google phone-screen difficulty band.")]},
   {name:"🗺️ Design Revision Rotation B",time:"~40 min",items:[pr("TIMED 20-min sketch: Web Crawler","URL frontier, politeness/rate-limit, dedup (bloom filter), DNS, storage."),pr("TIMED 20-min sketch: Chat System (WhatsApp/Messenger)","WebSocket, presence, message fanout, delivery/read receipts, offline queue.")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("HRT / low-latency systems talk","Trading-hours reliability framing.")]},
   {name:"🏢 Work-Hour Flex Block",time:"~30–60 min · during work hours (flex)",items:[pr("HRT-specific: 3 talking points on low-latency + trading-hours on-call","Where BOTH resume halves are assets.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Distributed Cache (Redis-like) — 45 min","Consistent hashing, replication, eviction, hot keys.")]},
- ]},
+ ,{name:"💻 LeetCode — Trees",time:"Daily block",items:[pr("#102 Binary Tree Level Order Traversal [M]","BFS with a queue; process level by level using queue size snapshot"),pr("#297 Serialize and Deserialize Binary Tree [H]","Preorder DFS with null markers; rebuild using same traversal order"),pr("#252 Meeting Rooms [E]","Sort by start; check consecutive overlap"),pr("#253 Meeting Rooms II [M]","Min-heap of end times; heap size at end = rooms needed"),pr("#295 Find Median from Data Stream [H]","Two heaps: max-heap left half, min-heap right half")]}]},
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ Tracing — Jaeger/Tempo on minikube; unified logs+metrics+traces","Correlate a slow request across all three signals."),pr("Inject deliberate latency + trace it","Demonstrates observability value.")]},
   {name:"🎯 Pattern Sweep — Bit Manipulation",time:"~30 min",items:[rv2(136,"Single Number","E","XOR all → lone element"),rv2(338,"Counting Bits","M","dp[i]=dp[i>>1]+(i&1)"),rv2(268,"Missing Number","E","XOR indices+values, or sum"),rv2(371,"Sum of Two Integers","M","XOR sum + carry via AND<<1")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Google-specific: NALSD framework drill + Googliness answers","'Comfort with ambiguity', 'bias to action' — 2 stories each.")]},
- ]},
+ ,{name:"💻 LeetCode — Trees",time:"Daily block",items:[pr("#572 Subtree of Another Tree [E]","For each node in main tree, check if Same Tree matches the subRoot"),pr("#105 Construct Binary Tree from Preorder and Inorder Traversal [M]","Preorder[0]=root; find root in inorder to split left/right subtrees"),pr("#62 Unique Paths [M]","DP: dp[i][j]=dp[i-1][j]+dp[i][j-1]"),pr("#1143 Longest Common Subsequence [M]","2D DP: match→dp[i-1][j-1]+1 else max(up,left)"),pr("#23 Merge K Sorted Lists [H]","Min-heap of (val, list_index); pop min, push next from same list")]}]},
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[mk("CODING MOCK (Pramp / peer) — 45 min","Fresh partner; full protocol.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(105,"Construct Tree from Preorder+Inorder","M","root split via inorder index"),rv2(210,"Course Schedule II","M","topo order output")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — incident / postmortem episode","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("🔥 TIMED 20-min troubleshooting: latency p99 spike, low avg CPU","CFS throttling: cpu.max period → throttled mid-period → name throttle_cfs_rq.")]},
- ]},
+ ,{name:"💻 LeetCode — Trees",time:"Daily block",items:[pr("#98 Validate Binary Search Tree [M]","Recursive with (min,max) bounds passed down; node must fit in range"),pr("#235 Lowest Common Ancestor of a BST [M]","Compare target values to node: go left/right/stop based on range"),pr("#5 Longest Palindromic Substring [M]","Expand around center for each char and pair; O(n²)"),pr("#300 Longest Increasing Subsequence [M]","dp[i]=max(dp[j]+1) for j<i where nums[j]<nums[i]"),pr("#230 Kth Smallest Element in a BST [M]","Inorder traversal gives sorted order; Kth visited = answer")]}]},
  {day:"Fri",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("🛠️ Tracing — push to GitHub: DESIGN.md + README + screenshots","Two-project reliability platform (SLO + tracing) on GitHub."),pr("Update resume 'project-based' line to reference SLO + tracing","Honest tier; project-based label.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(322,"Coin Change","M","dp over amounts"),rv2(198,"House Robber","M","dp[i]=max(dp[i-2]+n,dp[i-1])")]},
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — Friday reset.","")]},
- ]},
+ ,{name:"💻 LeetCode — Trees",time:"Daily block",items:[pr("#230 Kth Smallest Element in a BST [M]","Inorder traversal gives sorted order; Kth visited = answer"),pr("#208 Implement Trie (Prefix Tree) [M]","TrieNode: children map + isEnd flag; insert/search/startsWith"),pr("#53 Maximum Subarray [M]","Kadane: dp[i]=max(nums[i], dp[i-1]+nums[i])"),pr("#207 Course Schedule [M]","Cycle detection in directed graph: Kahn topological sort or DFS"),pr("#269 Alien Dictionary [H]","Build char-order graph from adjacent word pairs; topological sort")]}]},
  {day:"Sat",sessions:[
   {name:"Morning — 🔁 FULL LOOP SIM #2",time:"8:30 AM – 12:30 PM",items:[mk("Round 1: Coding (45m)",""),mk("Round 2: Coding (45m)",""),mk("Round 3: System Design / NALSD (45m)",""),mk("Round 4: SRE Troubleshooting / Non-abstract ops (45m)","Live debug + reliability reasoning.")]},
   {name:"Afternoon Debrief",time:"2:00 PM – 3:00 PM",items:[pr("Compare to Loop Sim #1 — measurable improvement per round?","")]},
- ]},
+ ,{name:"💻 LeetCode — Tries",time:"Daily block",items:[pr("#211 Design Add and Search Words Data Structure [M]","Trie + DFS for wildcard; recurse into ALL children on a dot"),pr("#212 Word Search II [H]","Build Trie from word list; DFS+backtracking on grid; prune found words"),pr("#48 Rotate Image [M]","Transpose (swap [i][j] with [j][i]), then reverse each row"),pr("#54 Spiral Matrix [M]","Track 4 boundaries; shrink each after completing that direction"),pr("#73 Set Matrix Zeroes [M]","Use first row/col as markers; check their own zeros first")]}]},
  {day:"Sun",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 10:30 AM",items:[pr("Weak-round cleanup + 2 design sketches from memory","")]},
-  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(15,"3Sum","M","sort + two pointer"),rv2(11,"Container With Most Water","M","two pointer, move shorter")]},
-  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Phone screens landing / scheduled. Onsite loops next.","Peak week ahead."),pr("Status follow-ups; confirm scheduled screens","")]},
+  {name:"🧳 Family Outing (Sep 6)",time:"All day",items:[pr("Sep 6 — Family outing. Full rest. Study items redistributed to adjacent days.","")]}
  ]},
 ]},
 {wk:13,ph:5,title:"Loop Peak + Advanced Graphs + Geo/Ad-Click Design",milestone:"🎯 Every round cold · Dijkstra/MST + Geo + Ad-Click revised · onsite-ready — 13 Sep",days:[
@@ -1090,78 +1084,111 @@ const PLAN=[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("SYSTEM DESIGN MOCK: Design Google Docs (collab editing) — 45 min","OT/CRDT, presence, conflict resolution, storage."),pr("Debrief + redo weakest 10 min","")]},
   {name:"🎯 Pattern Sweep — Advanced Graphs",time:"~35 min",items:[rv2(743,"Network Delay Time","M","Dijkstra (min-heap) from source"),rv2(1584,"Min Cost to Connect All Points","M","MST: Prim / Kruskal"),rv2(787,"Cheapest Flights Within K Stops","M","Bellman-Ford / BFS with k")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("💻 2 timed hards","Full verbalization.")]},
- ]},
+ ,{name:"💻 LeetCode — Tries",time:"Daily block",items:[pr("#1268 Search Suggestions System [M]","Sort products; binary search prefix range per typed character"),pr("#295 Find Median from Data Stream [H]","Two heaps: max-heap left half, min-heap right half"),pr("#338 Counting Bits [E]","dp[i]=dp[i>>1]+(i&1)"),pr("#190 Reverse Bits [E]","Shift result left, add LSB of n, shift n right; 32 iterations"),pr("#268 Missing Number [E]","XOR all indices 0..n with all nums; unpaired XOR = answer")]}]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 timed mediums + 1 hard","Onsite pace.")]},
   {name:"🗺️ Design Revision Rotation C",time:"~40 min",items:[pr("TIMED 20-min sketch: Proximity / Geo Service (Nearby Friends, Yelp)","Geohash / quadtree, spatial index, sharding by region, hot cells."),pr("TIMED 20-min sketch: Ad-Click Aggregation (stream processing)","Kafka → stream processor → time-window aggregation, exactly-once, late events.")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Behavioral: play your 8 STAR memos","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Distributed Job Scheduler — 45 min","Leader election, at-least-once execution, retries, dedup.")]},
- ]},
+ ,{name:"💻 LeetCode — Heaps",time:"Daily block",items:[pr("#973 K Closest Points to Origin [M]","Max-heap of size k by distance, or quickselect for O(n) average"),pr("#621 Task Scheduler [M]","Greedy: most frequent task drives idle slots; math formula or max-heap simulation"),pr("#371 Sum of Two Integers [M]","XOR=sum without carry; (a&b)<<1=carry; repeat until carry=0"),pr("#211 Design Add and Search Words Data Structure [M]","Trie + DFS for wildcard; recurse into ALL children on a dot"),pr("#212 Word Search II [H]","Build Trie from word list; DFS+backtracking on grid; prune found words")]}]},
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[mk("SYSTEM DESIGN MOCK: Design a Web Crawler at scale — 45 min","URL frontier, dedup, politeness, distributed workers, storage."),pr("Debrief","")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(300,"Longest Increasing Subsequence","M","patience + binary search"),rv2(5,"Longest Palindromic Substring","M","expand around center")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Behavioral cold-call drill: random story in 30 sec, deliver in 2 min","Simulate loop unpredictability.")]},
- ]},
+ ,{name:"💻 LeetCode — Heaps",time:"Daily block",items:[pr("#355 Design Twitter [M]","HashMap of user→tweet list (with timestamp); merge-k-lists for feed (heap)"),pr("#39 Combination Sum [M]","Backtracking: try each candidate, recurse with reduced target, allow reuse"),pr("#139 Word Break [M]","dp[i]=true if dp[j]=true and s[j:i] in wordDict, for some j<i"),pr("#140 Word Break II [H]","Backtracking + memo; cache valid sentences from each start index"),pr("#79 Word Search [M]","DFS+backtracking on grid; mark visited in-place, restore on backtrack")]}]},
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[mk("CODING MOCK (peer/paid) — 45 min","Loop-realistic partner.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(79,"Word Search","M","backtracking DFS on grid"),rv2(191,"Number of 1 Bits","E","n&(n-1) clears lowest set bit")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("SRE Prodcast — reliability principles","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("🔥 TIMED 25-min troubleshooting: compound stall (CFS throttle + direct reclaim)","Name kernel mechanisms; arithmetic forces the second mechanism; falsifiable confirmation.")]},
- ]},
+ ,{name:"💻 LeetCode — Backtracking",time:"Daily block",items:[pr("#79 Word Search [M]","DFS+backtracking on grid; mark visited in-place, restore on backtrack"),pr("#140 Word Break II [H]","Backtracking + memo; cache valid sentences from each start index"),pr("#200 Number of Islands [M]","BFS/DFS flood fill from each unvisited land cell"),pr("#994 Rotting Oranges [M]","Multi-source BFS from all rotten oranges simultaneously"),pr("#1091 Shortest Path in Binary Matrix [M]","BFS from (0,0); 8-directional; first arrival = shortest path")]}]},
  {day:"Fri",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Full design checklist run on 2 prompts from memory","Requirements→estimation→API→DB→arch→scale→failure, timed."),pr("Refresh SLO + tracing project talking points (2 min each)","Recent engineering evidence, ready to discuss.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(973,"K Closest Points to Origin","M","heap / quickselect"),rv2(528,"Random Pick with Weight","M","prefix sum + binary search")]},
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — reset before peak weekend.","")]},
- ]},
+ ,{name:"💻 LeetCode — Graphs",time:"Daily block",items:[pr("#133 Clone Graph [M]","BFS/DFS + HashMap of original node→cloned node"),pr("#417 Pacific Atlantic Water Flow [M]","Reverse-flow DFS from BOTH oceans' borders inward; intersect results"),pr("#981 Time Based Key-Value Store [M]","HashMap of key→sorted (timestamp,value) list; binary search on get"),pr("#1235 Maximum Profit in Job Scheduling [H]","DP+binary search: sort by end time, find last non-conflicting job"),pr("#380 Insert Delete GetRandom O(1) [M]","HashMap+array; O(1) delete: swap target with last element, pop")]}]},
  {day:"Sat",sessions:[
   {name:"Morning — 🔁 FULL LOOP SIM #3 (full 5-round)",time:"8:30 AM – 1:00 PM",items:[mk("Round 1: Coding (45m)",""),mk("Round 2: Coding (45m)",""),mk("Round 3: System Design / NALSD (45m)",""),mk("Round 4: SRE Troubleshooting (45m)",""),mk("Round 5: Behavioral / Googliness (45m)","")]},
   {name:"Afternoon Debrief",time:"2:30 PM – 3:30 PM",items:[pr("Final gap list — anything still shaky gets Monday drilling","")]},
- ]},
+ ,{name:"💻 LeetCode — Graphs",time:"Daily block",items:[pr("#128 Longest Consecutive Sequence [M]","HashSet; only start counting from numbers where n-1 not in set"),pr("#261 Graph Valid Tree [M]","Valid tree iff exactly n-1 edges AND fully connected (Union-Find or DFS)"),pr("#146 LRU Cache [M]","HashMap + doubly linked list; move-to-front on access, evict tail"),pr("#460 LFU Cache [H]","HashMap + frequency buckets (each a doubly linked list); evict from lowest freq bucket"),pr("#355 Design Twitter [M]","HashMap of user→tweet list (with timestamp); merge-k-lists for feed (heap)")]}]},
  {day:"Sun",sessions:[
   {name:"Morning Study",time:"8:30 AM – 10:30 AM",items:[pr("Drill the single weakest round from Sim #3","")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(33,"Search in Rotated Sorted Array","M","which half is sorted"),rv2(51,"N-Queens","H","backtracking + column/diagonal sets")]},
   {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Every round type rehearsed cold. Loops are execution now.","Trust the reps."),pr("Confirm scheduled loops; logistics checklist for next week","")]},
- ]},
+ ,{name:"💻 LeetCode — Graphs",time:"Daily block",items:[pr("#323 Number of Connected Components in an Undirected Graph [M]","Union-Find: count distinct roots after processing all edges"),pr("#207 Course Schedule [M]","Cycle detection in directed graph: Kahn topological sort or DFS"),pr("#528 Random Pick with Weight [M]","Prefix sum of weights + binary search on a random value in range"),pr("#973 K Closest Points to Origin [M]","Max-heap of size k by distance, or quickselect for O(n) average"),pr("#621 Task Scheduler [M]","Greedy: most frequent task drives idle slots; math formula or max-heap simulation")]}]},
 ]},
 {wk:14,ph:5,title:"Execution + Payment/Trading Design + Full Coverage Check",milestone:"🚀 Loops live · Payment + Stock-Exchange revised · all patterns + topics closed — 20 Sep",days:[
  {day:"Mon",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("💻 2 mediums from your personal hardest list","Stay warm, not exhausted."),pr("1 design sketch from memory (30 min)","")]},
   {name:"🗺️ Design Revision Rotation D",time:"~40 min",items:[pr("TIMED 20-min sketch: Payment System / Digital Wallet","Idempotency keys, double-entry ledger, exactly-once, reconciliation, PCI boundary."),pr("TIMED 20-min sketch: Stock Exchange / Matching Engine (HRT-relevant)","Order book, price-time priority, matching, sequencer, low-latency + durability.")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Interview logistics: test video/audio, IDE/collab-editor, quiet room","Remove day-of friction.")]},
- ]},
+ ,{name:"💻 LeetCode — Graphs",time:"Daily block",items:[pr("#269 Alien Dictionary [H]","Build char-order graph from adjacent word pairs; topological sort"),pr("#200 Number of Islands [M]","BFS/DFS flood fill from each unvisited land cell"),pr("#239 Sliding Window Maximum [H]","Monotonic deque: keep indices decreasing in value, pop expired/smaller"),pr("#42 Trapping Rain Water [H]","Two pointer with leftMax/rightMax, or precompute max-left/max-right arrays"),pr("#4 Median of Two Sorted Arrays [H]","Binary search on the smaller array to find correct partition point")]}]},
  {day:"Tue",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("💻 2 timed mediums + rehearse 'Tell me about yourself' (90 sec)","")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(20,"Valid Parentheses","E","stack"),rv2(206,"Reverse Linked List","E","iterative pointer swap")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Play STAR memos — final polish pass","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Company research: teams/orgs for your Google reqs + HRT desk","Questions to ask interviewers ready.")]},
- ]},
+ ,{name:"💻 LeetCode — Graphs",time:"Daily block",items:[pr("#994 Rotting Oranges [M]","Multi-source BFS from all rotten oranges simultaneously"),pr("#1091 Shortest Path in Binary Matrix [M]","BFS from (0,0); 8-directional; first arrival = shortest path"),pr("#31 Next Permutation [M]","Find rightmost ascent, swap with next-larger to its right, reverse suffix"),pr("#227 Basic Calculator II [M]","Stack-based: track running number + last operator, handle */before +-"),pr("#721 Accounts Merge [M]","Union-Find on emails; group accounts sharing any email")]}]},
  {day:"Wed",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Sketch 2 designs from memory: Rate Limiter + Message Queue","Keep the framework reflexive."),pr("Refresh 'What is SRE?' (2 min) + SLO/error-budget definitions","")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(102,"Binary Tree Level Order","M","BFS by level"),rv2(98,"Validate BST","M","min/max bounds")]},
   {name:"🏢 Work-Hour Reading",time:"~30 min · during work hours",items:[rd("SRE Book Ch 30 — Communication and Collaboration in SRE","Light — behavioral polish.")]},
- ]},
+ ,{name:"💻 LeetCode — Graphs",time:"Daily block",items:[pr("#721 Accounts Merge [M]","Union-Find on emails; group accounts sharing any email"),pr("#70 Climbing Stairs [E]","dp[n]=dp[n-1]+dp[n-2]; Fibonacci pattern"),pr("#735 Asteroid Collision [M]","Stack: push right-movers; on left-mover, resolve collisions with stack top"),pr("#1268 Search Suggestions System [M]","Sort products; binary search prefix range per typed character"),pr("#304 Range Sum Query 2D - Immutable [M]","2D prefix sum matrix; O(1) query via inclusion-exclusion")]}]},
  {day:"Thu",sessions:[
   {name:"Morning Study 1",time:"6:45 AM – 9:15 AM",items:[pr("Light: 2 mediums + 1 behavioral run-through","Day-before-loop taper if a loop is scheduled.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(121,"Best Time to Buy and Sell Stock","E","min-so-far"),rv2(217,"Contains Duplicate","E","set")]},
   {name:"Commute Audio",time:"11:00 AM drive",items:[ls("Calm / non-technical — protect energy","")]},
   {name:"Evening Study",time:"9:30 PM – 10:30 PM",items:[pr("Pre-loop ritual: review your own cheat sheet only — no new material","Sleep early before any scheduled round.")]},
- ]},
+ ,{name:"💻 LeetCode — DP",time:"Daily block",items:[pr("#322 Coin Change [M]","dp[amount]=min coins; dp[a]=min(dp[a-coin]+1) over all coins"),pr("#198 House Robber [M]","dp[i]=max(dp[i-2]+nums[i], dp[i-1])"),pr("#287 Find the Duplicate Number [M]","Floyd's cycle detection on value-as-pointer (treat array as linked list)"),pr("#759 Employee Free Time [H]","Merge all intervals across employees, sorted; gaps between merged = free time"),pr("#271 Encode and Decode Strings [M]","Prefix each string with its length + delimiter (e.g. '5#hello')")]}]},
  {day:"Fri",sessions:[
   {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("5 networking + 5 K8s concepts from memory (1 line each)","Fast recall check."),pr("2 design sketches + 3 STAR out loud","Maintenance, not cramming.")]},
   {name:"🧾 FULL COVERAGE CHECK",time:"~30 min",items:[rv("Coding patterns — confirm you can name the go-to move for each: Arrays/Hashing, Two-Pointer, Sliding Window, Stack, Binary Search, Linked List, Trees, Tries, Heap, Backtracking, Graphs, Advanced Graphs (Dijkstra/MST), 1-D DP, 2-D DP, Greedy, Intervals, Math/Geometry, Bit Manipulation.","If any feels shaky, that's tonight's one problem."),rv("System design topics — confirm a 60-sec pitch for each: URL Shortener, Twitter/News Feed, YouTube, Message Queue, Rate Limiter, Distributed Cache, KV Store, Unique ID Gen, Web Crawler, Chat System, Autocomplete, Google Drive, Notification, Metrics/Monitoring, Distributed Lock, Job Scheduler, Geo/Proximity, Ad-Click Aggregation, Payment/Wallet, Stock Exchange, Google Docs.","This is the whole NALSD surface. No loose ends.")]},
   {name:"Evening",time:"Free — calligraphy",items:[pr("Calligraphy — you've done the work. Steady hands.","")]},
- ]},
+ ,{name:"💻 LeetCode — DP",time:"Daily block",items:[pr("#213 House Robber II [M]","Run House Robber twice on [0..n-2] and [1..n-1], take max"),pr("#91 Decode Ways [M]","dp[i]=dp[i-1](if valid 1-digit)+dp[i-2](if valid 2-digit)"),pr("#1 Two Sum [E]","HashMap: store value→index; check complement on the fly"),pr("#121 Best Time to Buy and Sell Stock [E]","Track min price seen so far; profit=price-minSoFar"),pr("#217 Contains Duplicate [E]","HashSet; if len(set)<len(array) there's a duplicate")]}]},
  {day:"Sat",sessions:[
   {name:"Morning — Optional final mock",time:"8:30 AM – 10:00 AM",items:[mk("1 final full mock IF a loop is imminent — else light drills","Match the round type you have next.")]},
   {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(347,"Top K Frequent Elements","M","bucket / heap"),rv2(295,"Find Median from Data Stream","H","two heaps")]},
   {name:"Afternoon",time:"Recharge (active)",items:[pr("Rest deliberately + one calm review of cheat sheet","Recovery is part of the grind now.")]},
- ]},
+ ,{name:"💻 LeetCode — DP",time:"Daily block",items:[pr("#55 Jump Game [M]","Greedy: track farthest reachable index; if i exceeds it, fail"),pr("#62 Unique Paths [M]","DP: dp[i][j]=dp[i-1][j]+dp[i][j-1]"),pr("#238 Product of Array Except Self [M]","Prefix product array + suffix product array, multiply"),pr("#152 Maximum Product Subarray [M]","Track both max AND min running product (negatives flip sign)"),pr("#153 Find Minimum in Rotated Sorted Array [M]","Binary search: compare mid to right; min is in the unsorted half")]}]},
  {day:"Sun",sessions:[
-  {name:"Morning Study",time:"8:30 AM – 10:00 AM",items:[pr("Final scan: pattern cheat sheet + SLO/tracing project one-liners","")]},
-  {name:"⚡ Warmup Revisit",time:"~15 min",items:[rv2(56,"Merge Intervals","M","sort + merge"),rv2(253,"Meeting Rooms II","M","min-heap of end times")]},
-  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("14 weeks done. Backlog cleared, projects shipped, every pattern + topic covered.","Show up and let it rip."),pr("Keep status tracker live; schedule remaining loops","Beyond Wk 14 = maintenance + execution as loops land.")]},
+  {name:"🧳 Family Outing (Sep 20)",time:"All day",items:[pr("Sep 20 — Family outing. Full rest. Study items redistributed to adjacent days.","")]}
  ]},
 ]},
+{wk:15,ph:5,title:"Interview Execution + Final Coverage",milestone:"🎯 Loops live — final pattern sweep + full coverage — 27 Sep",days:[
+ {day:"Mon",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Light maintenance: 1 design sketch + 3 STAR out loud","Loops are live — stay warm, don't cram.")]},
+  {name:"💻 LeetCode — DP",time:"Daily block",items:[pr("#1143 Longest Common Subsequence [M]","2D DP: match→dp[i-1][j-1]+1 else max(up,left)"),pr("#33 Search in Rotated Sorted Array [M]","Binary search: identify which half is sorted, then decide direction"),pr("#15 3Sum [M]","Sort array; fix one number, two-pointer for the remaining pair"),pr("#11 Container With Most Water [M]","Two pointer from both ends; move the shorter wall inward"),pr("#70 Climbing Stairs [E]","dp[n]=dp[n-1]+dp[n-2]; Fibonacci pattern")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Review cheat sheet + schedule/prep any upcoming loop","Interview-window taper.")]}
+ ]},
+ {day:"Tue",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Light maintenance: 1 design sketch + 3 STAR out loud","Loops are live — stay warm, don't cram.")]},
+  {name:"💻 LeetCode — DP",time:"Daily block",items:[pr("#5 Longest Palindromic Substring [M]","Expand around center for each char and pair; O(n²)"),pr("#322 Coin Change [M]","dp[amount]=min coins; dp[a]=min(dp[a-coin]+1) over all coins"),pr("#39 Combination Sum [M]","Backtracking: try each candidate, recurse with reduced target, allow reuse"),pr("#198 House Robber [M]","dp[i]=max(dp[i-2]+nums[i], dp[i-1])"),pr("#213 House Robber II [M]","Run House Robber twice on [0..n-2] and [1..n-1], take max")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Review cheat sheet + schedule/prep any upcoming loop","Interview-window taper.")]}
+ ]},
+ {day:"Wed",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Light maintenance: 1 design sketch + 3 STAR out loud","Loops are live — stay warm, don't cram.")]},
+  {name:"💻 LeetCode — DP",time:"Daily block",items:[pr("#300 Longest Increasing Subsequence [M]","dp[i]=max(dp[j]+1) for j<i where nums[j]<nums[i]"),pr("#91 Decode Ways [M]","dp[i]=dp[i-1](if valid 1-digit)+dp[i-2](if valid 2-digit)"),pr("#55 Jump Game [M]","Greedy: track farthest reachable index; if i exceeds it, fail"),pr("#133 Clone Graph [M]","BFS/DFS + HashMap of original node→cloned node"),pr("#417 Pacific Atlantic Water Flow [M]","Reverse-flow DFS from BOTH oceans' borders inward; intersect results")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Review cheat sheet + schedule/prep any upcoming loop","Interview-window taper.")]}
+ ]},
+ {day:"Thu",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Light maintenance: 1 design sketch + 3 STAR out loud","Loops are live — stay warm, don't cram.")]},
+  {name:"💻 LeetCode — DP",time:"Daily block",items:[pr("#53 Maximum Subarray [M]","Kadane: dp[i]=max(nums[i], dp[i-1]+nums[i])"),pr("#128 Longest Consecutive Sequence [M]","HashSet; only start counting from numbers where n-1 not in set"),pr("#261 Graph Valid Tree [M]","Valid tree iff exactly n-1 edges AND fully connected (Union-Find or DFS)"),pr("#323 Number of Connected Components in an Undirected Graph [M]","Union-Find: count distinct roots after processing all edges"),pr("#206 Reverse Linked List [E]","Iterative: prev=null, swap next pointers one at a time")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Review cheat sheet + schedule/prep any upcoming loop","Interview-window taper.")]}
+ ]},
+ {day:"Fri",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Light maintenance: 1 design sketch + 3 STAR out loud","Loops are live — stay warm, don't cram.")]},
+  {name:"💻 LeetCode — DP",time:"Daily block",items:[pr("#139 Word Break [M]","dp[i]=true if dp[j]=true and s[j:i] in wordDict, for some j<i"),pr("#141 Linked List Cycle [E]","Floyd's: slow/fast pointers; cycle exists if they ever meet"),pr("#21 Merge Two Sorted Lists [E]","Dummy head; compare heads of both lists, attach smaller, advance"),pr("#19 Remove Nth Node From End of List [M]","Two pointers with n-gap; when fast hits end, slow is at target"),pr("#143 Reorder List [M]","Find middle, reverse second half, merge two halves alternately")]},
+  {name:"Evening Study",time:"9:30 PM – 10:00 PM",items:[pr("Review cheat sheet + schedule/prep any upcoming loop","Interview-window taper.")]}
+ ]},
+ {day:"Sat",sessions:[
+  {name:"🧳 Family Outing (Sep 26)",time:"All day",items:[pr("Sep 26 — Family outing. Full rest.","")]}
+ ]},
+ {day:"Sun",sessions:[
+  {name:"Morning Study",time:"9:15 AM – 12:00 PM",items:[pr("Final coverage scan: all 18 patterns + all NALSD topics, 1 line each","The whole surface, no loose ends.")]},
+  {name:"💻 LeetCode — Revision Sweep",time:"Daily block",items:[pr("#57 Insert Interval [M]","Find insertion range; merge overlapping: start≤prevEnd"),pr("#3 Longest Substring Without Repeating Characters [M]","Sliding window + HashSet/Map; shrink window when duplicate found"),pr("#424 Longest Repeating Character Replacement [M]","Sliding window; window valid if (length-maxFreqChar)<=k replacements"),pr("#76 Minimum Window Substring [H]","Sliding window + char frequency map; expand then contract to minimize"),pr("#242 Valid Anagram [E]","Char frequency count; both strings must match exactly")]},
+  {name:"Weekly Review",time:"9:00 PM – 9:30 PM",items:[rv("Week 15 done. Every pattern drilled, revision cleared. Execution mode.","Show up and let it rip.")]}
+ ]}
+]}
 ];;
 
 // ── UTILS ─────────────────────────────────────────────
@@ -1175,7 +1202,7 @@ function getWeekNum(){
   const s=parseLocalDate(STATE.startDate);s.setHours(0,0,0,0);
   const t=new Date();t.setHours(0,0,0,0);
   const diff=Math.floor((t-s)/(7*86400000));
-  const wk=diff+1;return(wk>=1&&wk<=14)?wk:null;
+  const wk=diff+1;return(wk>=1&&wk<=15)?wk:null;
 }
 function weekDates(wkNum){
   if(!STATE.startDate)return"";
@@ -1390,7 +1417,7 @@ function renderToday(){
   const {done,total}=wk&&planDay?getDayTotals(wk,key):{done:0,total:0};
 
   let pills="";
-  if(wk)pills+="<div class=\"pill\" style=\"background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25)\"><div class=\"pill-num\" style=\"color:#3B82F6\">W"+wk+"<span style=\"font-size:10px;font-weight:400\"> of 14</span></div><div class=\"pill-lbl\" style=\"color:#3B82F6\">Prep Week</div></div>";
+  if(wk)pills+="<div class=\"pill\" style=\"background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25)\"><div class=\"pill-num\" style=\"color:#3B82F6\">W"+wk+"<span style=\"font-size:10px;font-weight:400\"> of 15</span></div><div class=\"pill-lbl\" style=\"color:#3B82F6\">Prep Week</div></div>";
   if(left!==null)pills+="<div class=\"pill\" style=\"background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25)\"><div class=\"pill-num\" style=\"color:#10B981\">"+left+"</div><div class=\"pill-lbl\" style=\"color:#10B981\">Days Left</div></div>";
   pills+="<div class=\"pill\" style=\"background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25)\"><div class=\"pill-num\" style=\"color:#8B5CF6\">"+day.hrs+"</div><div class=\"pill-lbl\" style=\"color:#8B5CF6\">Study Today</div></div>";
   if(wk&&total>0)pills+="<div class=\"pill\" style=\"background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25)\"><div class=\"pill-num\" style=\"color:#10B981\">"+done+"/"+total+"</div><div class=\"pill-lbl\" style=\"color:#10B981\">Done Today</div></div>";
@@ -1597,7 +1624,7 @@ function renderProgress(){
 
   // Motivation
   const msgs=[
-    {min:0,max:0,msg:"The journey starts today. One item at a time — that's how Google gets cracked.",sub:"You've got 14 weeks. Start now."},
+    {min:0,max:0,msg:"The journey starts today. One item at a time — that's how Google gets cracked.",sub:"You've got 15 weeks. Start now."},
     {min:1,max:15,msg:"Strong start. Momentum is the hardest thing to build and you already have it.",sub:"Keep showing up every single day."},
     {min:16,max:35,msg:"You're building real traction now. Most candidates haven't even started.",sub:"You're already ahead of the pack."},
     {min:36,max:50,msg:"Approaching the halfway mark. The hard part isn't starting — it's continuing. You're doing it.",sub:"Every checked box is a problem you won't see for the first time in the interview."},
@@ -1705,7 +1732,7 @@ function renderSettings(){
     +"<div class=\"settings-card\">"
     +"<div class=\"field-label\">Prep Start Date</div>"
     +"<input class=\"settings-input\" type=\"date\" id=\"startInput\" value=\""+(sd||"")+"\" onchange=\"updateDateHint()\">"
-    +"<div class=\"field-hint\" id=\"dateHint\">"+(wk?"Currently in Week "+wk+" of 14":sd?"Outside 14-week window":"")+"</div>"
+    +"<div class=\"field-hint\" id=\"dateHint\">"+(wk?"Currently in Week "+wk+" of 15":sd?"Outside 15-week window":"")+"</div>"
     +"<button class=\"big-btn\" id=\"saveDateBtn\" style=\"background:#3B82F6\" onclick=\"saveDate()\">Save Start Date</button>"
     +"</div>"
     +(sd&&wk?"<div class=\"settings-card\"><div class=\"field-label\">Adjusted Plan Dates</div>"+dateRows+"</div>":"")
@@ -1787,7 +1814,7 @@ function updateDateHint(){
   const s=new Date(v);s.setHours(0,0,0,0);const t=new Date();t.setHours(0,0,0,0);
   const diff=Math.floor((t-s)/(7*86400000));const wk=diff+1;
   const hint=document.getElementById("dateHint");
-  if(hint)hint.textContent=(wk>=1&&wk<=14)?"Currently in Week "+wk+" of 14":"Outside 14-week window — check your dates";
+  if(hint)hint.textContent=(wk>=1&&wk<=15)?"Currently in Week "+wk+" of 15":"Outside 15-week window — check your dates";
 }
 function saveDate(){
   const v=document.getElementById("startInput")?.value;if(!v)return;
