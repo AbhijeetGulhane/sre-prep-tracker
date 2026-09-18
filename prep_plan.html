@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Prep Plan</title>
+<style>
+:root{
+  --bg:#F8F9FC;--surface:#FFFFFF;--card:#F1F5F9;--border:#E2E8F0;
+  --text:#0F172A;--soft:#475569;--muted:#94A3B8;--nav:#FFFFFF;--nav-b:#E2E8F0;
+  --input-bg:#F1F5F9;--input-c:#0F172A;
+  --hero-a:#EFF6FF;--hero-b:#F5F3FF;--shadow:0 1px 3px rgba(0,0,0,0.08);
+  --c-routine-c:#475569;--c-routine-bg:rgba(71,85,105,0.08);
+  --c-workout-c:#DC2626;--c-workout-bg:rgba(220,38,38,0.08);
+  --c-study-c:#1D4ED8;--c-study-bg:rgba(29,78,216,0.1);
+  --c-work-c:#64748B;--c-work-bg:rgba(100,116,139,0.06);
+  --c-food-c:#059669;--c-food-bg:rgba(5,150,105,0.08);
+  --c-calligraphy-c:#7C3AED;--c-calligraphy-bg:rgba(124,58,237,0.08);
+  --c-commute-c:#B45309;--c-commute-bg:rgba(180,83,9,0.08);
+  --c-free-c:#0E7490;--c-free-bg:rgba(14,116,144,0.08);
+  --c-sleep-c:#4338CA;--c-sleep-bg:rgba(67,56,202,0.06);
+  --t-lc-c:#B45309;--t-lc-bg:rgba(180,83,9,0.08);
+  --t-read-c:#1D4ED8;--t-read-bg:rgba(29,78,216,0.08);
+  --t-watch-c:#DC2626;--t-watch-bg:rgba(220,38,38,0.08);
+  --t-listen-c:#7C3AED;--t-listen-bg:rgba(124,58,237,0.08);
+  --t-practice-c:#059669;--t-practice-bg:rgba(5,150,105,0.08);
+  --t-mock-c:#BE185D;--t-mock-bg:rgba(190,24,93,0.08);
+  --t-review-c:#0E7490;--t-review-bg:rgba(14,116,144,0.08);
+  --t-revisit-c:#BE123C;--t-revisit-bg:rgba(190,18,60,0.08);
+}
+[data-theme="dark"]{
+  --bg:#0A0F1E;--surface:#111827;--card:#1A2235;--border:#1E2D45;
+  --text:#F0F4FF;--soft:#94A3B8;--muted:#64748B;--nav:#0D1526;--nav-b:#1E2D45;
+  --input-bg:rgba(255,255,255,0.05);--input-c:#F0F4FF;
+  --hero-a:#0D1B2A;--hero-b:rgba(139,92,246,0.15);--shadow:0 1px 4px rgba(0,0,0,0.4);
+  --c-routine-c:#94A3B8;--c-routine-bg:rgba(148,163,184,0.1);
+  --c-workout-c:#EF4444;--c-workout-bg:rgba(239,68,68,0.1);
+  --c-study-c:#3B82F6;--c-study-bg:rgba(59,130,246,0.12);
+  --c-work-c:#64748B;--c-work-bg:rgba(100,116,139,0.08);
+  --c-food-c:#10B981;--c-food-bg:rgba(16,185,129,0.1);
+  --c-calligraphy-c:#8B5CF6;--c-calligraphy-bg:rgba(139,92,246,0.1);
+  --c-commute-c:#F59E0B;--c-commute-bg:rgba(245,158,11,0.1);
+  --c-free-c:#06B6D4;--c-free-bg:rgba(6,182,212,0.1);
+  --c-sleep-c:#6366F1;--c-sleep-bg:rgba(99,102,241,0.08);
+  --t-lc-c:#F59E0B;--t-lc-bg:rgba(245,158,11,0.12);
+  --t-read-c:#3B82F6;--t-read-bg:rgba(59,130,246,0.12);
+  --t-watch-c:#EF4444;--t-watch-bg:rgba(239,68,68,0.12);
+  --t-listen-c:#8B5CF6;--t-listen-bg:rgba(139,92,246,0.12);
+  --t-practice-c:#10B981;--t-practice-bg:rgba(16,185,129,0.12);
+  --t-mock-c:#EC4899;--t-mock-bg:rgba(236,72,153,0.12);
+  --t-review-c:#06B6D4;--t-review-bg:rgba(6,182,212,0.12);
+  --t-revisit-c:#FB7185;--t-revisit-bg:rgba(251,113,133,0.12);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;transition:background .2s,color .2s;overflow-x:hidden}
+button{font-family:inherit;cursor:pointer;border:none;outline:none;background:none}
+a{text-decoration:none}
+#app{max-width:480px;margin:0 auto;position:relative}
+/* TOP BAR */
+#topbar{background:var(--surface);border-bottom:1px solid var(--nav-b);padding:14px 16px 0;position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.tb-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.tb-title{font-size:17px;font-weight:800;color:var(--text)}
+.tb-sub{font-size:11px;color:var(--muted);margin-top:1px}
+.tb-right{display:flex;align-items:center;gap:8px}
+.theme-btn{width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px}
+.wk-badge{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:10px;padding:4px 10px;text-align:center}
+.wk-num{font-size:15px;font-weight:800;color:#3B82F6;line-height:1}
+.wk-lbl{font-size:9px;color:#3B82F6;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
+.ph-bar{display:flex;gap:2px;height:4px;border-radius:4px;overflow:hidden;margin-top:2px}
+/* BOTTOM NAV */
+#bottomnav{position:fixed;bottom:0;left:0;right:0;background:var(--nav);border-top:1px solid var(--nav-b);display:flex;z-index:100;max-width:480px;margin:0 auto}
+.nav-btn{flex:1;padding:9px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer}
+.nav-icon{font-size:18px;opacity:.4;transition:opacity .15s}
+.nav-label{font-size:9px;font-weight:400;color:var(--muted);letter-spacing:.01em;transition:color .15s}
+.nav-btn.active .nav-icon{opacity:1}
+.nav-btn.active .nav-label{color:#3B82F6;font-weight:700}
+.nav-dot{width:16px;height:2px;border-radius:2px;background:#3B82F6;margin-top:1px;visibility:hidden}
+.nav-btn.active .nav-dot{visibility:visible}
+/* CONTENT */
+#content{padding-bottom:76px}
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));padding:20px 16px 16px;border-bottom:1px solid var(--border)}
+.hero-date{font-size:12px;font-weight:500;color:#3B82F6;margin-bottom:3px}
+.hero-day{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.4px}
+.hero-sub{font-size:12px;color:var(--soft);margin-top:2px}
+.hero-pills{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap}
+.pill{border-radius:10px;padding:5px 11px}
+.pill-num{font-size:16px;font-weight:800;line-height:1}
+.pill-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:1px;opacity:.7}
+.phase-chip{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:3px 11px;margin-top:10px}
+.phase-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+/* TIMELINE */
+.timeline-section{padding:12px 16px 0}
+.section-head{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.tl-block{display:flex;gap:8px;margin-bottom:5px}
+.tl-time{width:58px;flex-shrink:0;padding-top:9px;text-align:right}
+.tl-ts{font-size:11px;font-weight:600}
+.tl-te{font-size:10px;color:var(--muted)}
+.tl-body{flex:1;border-radius:9px;padding:8px 11px;display:flex;align-items:center;gap:7px;border-left-width:3px;border-left-style:solid}
+.tl-icon{font-size:14px;flex-shrink:0}
+.tl-label{font-size:12px;line-height:1.3}
+.tl-note{font-size:10px;margin-top:2px}
+.tl-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-left:auto}
+/* DAY TABS */
+.day-tabs{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;padding-bottom:1px}
+.day-tabs::-webkit-scrollbar{display:none}
+.dtab{flex:0 0 auto;padding:6px 11px;border-radius:7px 7px 0 0;font-size:12px;font-weight:500;color:var(--muted);background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px}
+.dtab.active{color:var(--text);font-weight:700;background:var(--card)}
+.dtab-dot{width:4px;height:4px;border-radius:50%;opacity:.4}
+.dtab.active .dtab-dot{opacity:1}
+/* WEEK TABS */
+.week-tabs{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.week-tabs::-webkit-scrollbar{display:none}
+.wtab{flex:0 0 auto;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);background:var(--card);border:1px solid var(--border)}
+.wtab.active{color:#fff;font-weight:700}
+/* CARDS */
+.day-card{background:var(--surface);border:1px solid var(--border);border-radius:11px;margin-bottom:7px;overflow:hidden;box-shadow:var(--shadow)}
+.day-card.today{background:var(--card)}
+.day-card.all-done{border-color:rgba(16,185,129,0.4);background:rgba(16,185,129,0.04)}
+[data-theme="dark"] .day-card.all-done{background:rgba(16,185,129,0.06)}
+.day-header{display:flex;align-items:center;gap:9px;padding:10px 13px;cursor:pointer;width:100%;text-align:left}
+.day-strip{width:3px;border-radius:2px;align-self:stretch;min-height:26px;flex-shrink:0;background:var(--border)}
+.day-name{font-size:13px;font-weight:700;color:var(--text)}
+.day-meta{font-size:10px;color:var(--muted);margin-top:1px}
+.today-badge{font-size:9px;font-weight:700;padding:1px 5px;border-radius:6px;background:rgba(245,158,11,0.15);color:#B45309;margin-left:3px}
+[data-theme="dark"] .today-badge{background:rgba(245,158,11,0.2);color:#F59E0B}
+.type-chip{font-size:9px;font-weight:600;padding:2px 6px;border-radius:8px}
+.day-right{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
+.day-prog{font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;background:var(--card);border:1px solid var(--border)}
+.day-prog.prog-done{background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);color:#059669}
+[data-theme="dark"] .day-prog.prog-done{color:#10B981}
+.arrow{color:var(--muted);font-size:16px;transition:transform .2s}
+.arrow.open{transform:rotate(90deg)}
+.day-body{padding:0 13px 11px;border-top:1px solid var(--border);display:none}
+.day-body.open{display:block}
+/* ITEMS */
+.item-row{display:flex;gap:7px;margin-bottom:5px;align-items:flex-start}
+.chk{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px;cursor:pointer;background:none;font-size:11px;color:#fff;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.chk.chk-done{background:#10B981;border-color:#10B981}
+.item-icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px}
+.item-body{flex:1;min-width:0}
+.item-title{font-size:12px;font-weight:600;line-height:1.3;word-break:break-word;transition:opacity .15s}
+.item-title a{text-decoration:none}
+.item-done-title{opacity:.4;text-decoration:line-through}
+.item-note{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4;transition:opacity .15s}
+.item-done-note{opacity:.3}
+.diff{display:inline-block;font-size:9px;font-weight:700;padding:1px 4px;border-radius:4px;margin-left:4px;vertical-align:middle}
+.diff-E{background:rgba(5,150,105,0.12);color:#059669}
+.diff-M{background:rgba(180,83,9,0.12);color:#B45309}
+.diff-H{background:rgba(220,38,38,0.12);color:#DC2626}
+[data-theme="dark"] .diff-E{background:rgba(16,185,129,0.15);color:#10B981}
+[data-theme="dark"] .diff-M{background:rgba(245,158,11,0.15);color:#F59E0B}
+[data-theme="dark"] .diff-H{background:rgba(239,68,68,0.15);color:#EF4444}
+/* SESSION */
+.session-name{font-size:10px;font-weight:700;color:var(--soft);margin-bottom:5px;margin-top:9px}
+.session-time{color:var(--muted);font-weight:400}
+/* TODAY PLAN */
+.today-plan{margin:12px 16px 0;background:var(--card);border-radius:11px;border:1px solid var(--border);padding:11px 13px}
+/* STICKY */
+.sticky-hd{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:9;padding:11px 16px 0;box-shadow:var(--shadow)}
+/* SCHEDULE */
+.study-bar-wrap{margin-bottom:11px}
+.study-bar-bg{background:var(--border);border-radius:6px;height:5px;overflow:hidden;margin-bottom:3px}
+.study-bar-fg{height:100%;border-radius:6px;background:#3B82F6;transition:width .3s}
+.study-bar-lbl{font-size:10px;color:var(--muted)}
+.wk-summary{background:var(--surface);border-radius:12px;border:1px solid var(--border);padding:13px 15px;margin-top:10px;box-shadow:var(--shadow)}
+.wk-sum-row{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.wk-sum-day{width:28px;font-size:10px;font-weight:600;color:var(--muted)}
+.wk-sum-day.active{color:#3B82F6}
+.wk-sum-bar-bg{flex:1;background:var(--border);border-radius:4px;height:5px;overflow:hidden}
+.wk-sum-bar-fg{height:100%;border-radius:4px;background:var(--border)}
+.wk-sum-bar-fg.active{background:#3B82F6}
+.wk-sum-hrs{font-size:10px;color:var(--muted);width:30px;text-align:right}
+.wk-sum-total{padding-top:8px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+/* PLAN VIEW */
+.wh-card{background:var(--card);border-radius:11px;border:1px solid var(--border);padding:11px 13px;margin-bottom:9px;box-shadow:var(--shadow)}
+.wh-phase-chip{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:3px 9px;margin-bottom:5px}
+.wh-title{font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.3px}
+.wh-dates{font-size:11px;color:var(--muted);margin-top:2px}
+.milestone-box{border-radius:7px;padding:5px 9px;margin-top:7px;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600}
+/* LEGEND */
+.legend{background:var(--card);border-radius:10px;border:1px solid var(--border);padding:9px 11px;margin-top:7px}
+.legend-grid{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.leg-chip{display:flex;align-items:center;gap:3px;border-radius:6px;padding:2px 7px}
+.leg-dot{width:6px;height:6px;border-radius:2px;flex-shrink:0}
+.leg-lbl{font-size:10px;font-weight:500}
+/* PROGRESS TAB */
+.prog-hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));padding:20px 16px;border-bottom:1px solid var(--border);text-align:center}
+.prog-ring-wrap{display:flex;justify-content:center;margin-bottom:16px}
+.prog-ring{width:160px;height:160px}
+.prog-stats{display:flex;justify-content:center;gap:20px}
+.prog-stat{text-align:center}
+.prog-stat-num{font-size:22px;font-weight:800;color:var(--text)}
+.prog-stat-lbl{font-size:10px;color:var(--muted);margin-top:1px}
+.motivation-card{margin:12px 16px 0;background:var(--card);border-radius:11px;border:1px solid var(--border);padding:13px 14px}
+.motivation-text{font-size:13px;color:var(--text);font-style:italic;line-height:1.6;margin-bottom:6px}
+.motivation-sub{font-size:11px;color:var(--muted)}
+.prog-section{margin:12px 16px 0}
+.prog-section-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.phase-prog-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.phase-prog-label{font-size:12px;font-weight:600;width:68px;flex-shrink:0}
+.phase-prog-bar-bg{flex:1;background:var(--border);border-radius:6px;height:8px;overflow:hidden}
+.phase-prog-bar-fg{height:100%;border-radius:6px;transition:width .4s}
+.phase-prog-pct{font-size:11px;font-weight:700;width:36px;text-align:right;flex-shrink:0}
+.wk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.wk-cell{border-radius:10px;padding:8px 4px;text-align:center;cursor:pointer;border:1.5px solid transparent;transition:all .15s}
+.wk-cell:active{transform:scale(0.95)}
+.wk-cell-num{font-size:11px;font-weight:800;margin-bottom:3px}
+.wk-cell-pct{font-size:9px;font-weight:600}
+.wk-cell.current-wk{border-color:currentColor}
+/* SETTINGS */
+.settings-card{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:15px;margin-bottom:12px;box-shadow:var(--shadow)}
+.field-label{font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.settings-input{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:9px;padding:11px 13px;color:var(--input-c);font-size:16px;outline:none;color-scheme:light dark}
+.field-hint{font-size:11px;color:var(--muted);margin-top:5px}
+.big-btn{width:100%;padding:12px;border-radius:9px;border:none;font-size:14px;font-weight:700;cursor:pointer;color:#fff;transition:background .2s;margin-top:11px}
+.info-box{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:11px;padding:11px 13px;font-size:12px;color:#1D4ED8;line-height:1.6}
+[data-theme="dark"] .info-box{color:#93C5FD}
+.date-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border)}
+.date-wk-badge{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="topbar">
+    <div class="tb-row">
+      <div>
+        <div class="tb-title">Prep Plan</div>
+        <div class="tb-sub" id="tb-sub">Set start date in Settings</div>
+      </div>
+      <div class="tb-right">
+        <button class="theme-btn" onclick="toggleTheme()" id="theme-btn">☀️</button>
+        <div class="wk-badge"><div class="wk-num" id="tb-wk">—</div><div class="wk-lbl">Week</div></div>
+      </div>
+    </div>
+    <div class="ph-bar" id="ph-bar"></div>
+  </div>
+  <div id="content"></div>
+  <div id="bottomnav">
+    <button class="nav-btn active" onclick="setTab('today')" id="nav-today">
+      <span class="nav-icon">🏠</span><span class="nav-label">Today</span><div class="nav-dot"></div>
+    </button>
+    <button class="nav-btn" onclick="setTab('schedule')" id="nav-schedule">
+      <span class="nav-icon">📅</span><span class="nav-label">Schedule</span><div class="nav-dot"></div>
+    </button>
+    <button class="nav-btn" onclick="setTab('plan')" id="nav-plan">
+      <span class="nav-icon">📋</span><span class="nav-label">Plan</span><div class="nav-dot"></div>
+    </button>
+    <button class="nav-btn" onclick="setTab('redo')" id="nav-redo">
+      <span class="nav-icon">🔁</span><span class="nav-label">Redo</span><div class="nav-dot"></div>
+    </button>
+    <button class="nav-btn" onclick="setTab('progress')" id="nav-progress">
+      <span class="nav-icon">📊</span><span class="nav-label">Progress</span><div class="nav-dot"></div>
+    </button>
+    <button class="nav-btn" onclick="setTab('settings')" id="nav-settings">
+      <span class="nav-icon">⚙️</span><span class="nav-label">Settings</span><div class="nav-dot"></div>
+    </button>
+  </div>
+</div>
+<script>
+// ── SEED (your progress as of 29 Jun 2026 — used only as a fallback the very
+// first time this app runs on a device, before localStorage/GitHub take over) ─
+const SEED_START = "2026-09-21";
+const SEED_CHECKED = {};
+
+// ── STATE ─────────────────────────────────────────────
+let STATE = {
+  theme: localStorage.getItem("ppTheme") || "light",
+  tab: "today",
+  schedDay: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][new Date().getDay()],
+  planWk: 1,
+  openDays: {},
+  startDate: localStorage.getItem("ppStart") || SEED_START,
+  checked: JSON.parse(localStorage.getItem("ppChecked") || JSON.stringify(SEED_CHECKED)),
+  redo: JSON.parse(localStorage.getItem("ppRedo") || "{}"),
+};
+document.documentElement.setAttribute("data-theme", STATE.theme);
+document.getElementById("theme-btn").textContent = STATE.theme === "dark" ? "☀️" : "🌙";
+
+// ── GITHUB SYNC (file-based DB: progress.json in this repo) ─────
+// EDIT THESE THREE LINES before deploying:
+const GH_OWNER  = "AbhijeetGulhane";   // e.g. "abhijeetg"
+const GH_REPO   = "sre-prep-tracker";         // e.g. "sre-prep-tracker"
+const GH_BRANCH = "main";
+const GH_PATH    = "progress_prep_plan.json";
+const GH_API     = "https://api.github.com/repos/"+GH_OWNER+"/"+GH_REPO+"/contents/"+GH_PATH;
+
+let GH_SHA = null;     // sha of last-known progress.json (required to write)
+let ghTimer = null;    // debounce handle for outgoing pushes
+let ghPulling = false;
+let ghPushing = false;
+
+function ghToken(){
+  let t = localStorage.getItem("ghToken");
+  if(!t){
+    t = prompt("Paste your GitHub Personal Access Token\n(Contents: Read & write, scoped to this one repo).\nSaved on this device only.");
+    if(t) localStorage.setItem("ghToken", t.trim());
+  }
+  return t ? t.trim() : "";
+}
+function ghHeaders(){
+  return {
+    "Authorization": "Bearer "+ghToken(),
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28"
+  };
+}
+function ghEncode(obj){ return btoa(unescape(encodeURIComponent(JSON.stringify(obj)))); }
+function ghDecode(b64){ return JSON.parse(decodeURIComponent(escape(atob(b64)))); }
+
+// Pull progress.json from GitHub and merge into STATE. Remote wins,
+// but only runs when there's no unsynced local edit waiting to go out.
+async function ghPull(silent){
+  if(ghPulling || ghTimer) return;
+  ghPulling = true;
+  try{
+    const res = await fetch(GH_API+"?ref="+GH_BRANCH+"&t="+Date.now(), {headers: ghHeaders()});
+    if(res.status === 404){ ghPulling=false; return; } // file doesn't exist yet
+    if(!res.ok) throw new Error("GH pull failed: "+res.status);
+    const data = await res.json();
+    GH_SHA = data.sha;
+    const remote = ghDecode(data.content.replace(/\n/g,""));
+    let changed = false;
+    if(remote && typeof remote.checked === "object"){
+      if(JSON.stringify(remote.checked) !== JSON.stringify(STATE.checked)){STATE.checked = remote.checked; changed = true;}
+      if(remote.startDate && remote.startDate !== STATE.startDate){STATE.startDate = remote.startDate; changed = true;}
+      if(remote.redo && typeof remote.redo === "object" && JSON.stringify(remote.redo) !== JSON.stringify(STATE.redo)){STATE.redo = remote.redo; changed = true;}
+      if(remote.theme && remote.theme !== STATE.theme){
+        STATE.theme = remote.theme;
+        document.documentElement.setAttribute("data-theme", STATE.theme);
+        document.getElementById("theme-btn").textContent = STATE.theme === "dark" ? "☀️" : "🌙";
+        changed = true;
+      }
+    }
+    if(changed){
+      localStorage.setItem("ppChecked", JSON.stringify(STATE.checked));
+      localStorage.setItem("ppStart", STATE.startDate);
+      localStorage.setItem("ppRedo", JSON.stringify(STATE.redo));
+      localStorage.setItem("ppTheme", STATE.theme);
+      const wk=getWeekNum(); if(wk) STATE.planWk=wk;
+      updateHeader(); render();
+    }
+  }catch(e){
+    if(!silent) console.warn("GitHub sync (pull) failed:", e);
+  }finally{
+    ghPulling = false;
+  }
+}
+
+// Push current STATE to GitHub. Call queueGhSync() instead of this directly.
+async function ghPush(){
+  if(ghPushing) return;
+  ghPushing = true;
+  try{
+    const payload = {checked: STATE.checked, startDate: STATE.startDate, redo: STATE.redo, theme: STATE.theme, updatedAt: new Date().toISOString()};
+    const body = {message: "Update progress "+new Date().toISOString(), content: ghEncode(payload), branch: GH_BRANCH};
+    if(GH_SHA) body.sha = GH_SHA;
+    let res = await fetch(GH_API, {method:"PUT", headers: Object.assign({"Content-Type":"application/json"}, ghHeaders()), body: JSON.stringify(body)});
+    if(res.status === 409){
+      const r2 = await fetch(GH_API+"?ref="+GH_BRANCH, {headers: ghHeaders()});
+      if(r2.ok){
+        const d2 = await r2.json(); GH_SHA = d2.sha; body.sha = GH_SHA;
+        res = await fetch(GH_API, {method:"PUT", headers: Object.assign({"Content-Type":"application/json"}, ghHeaders()), body: JSON.stringify(body)});
+      }
+    }
+    if(res.ok){ const d = await res.json(); GH_SHA = d.content.sha; }
+    else console.warn("GitHub sync (push) failed:", res.status);
+  }catch(e){
+    console.warn("GitHub sync (push) error:", e);
+  }finally{
+    ghPushing = false;
+  }
+}
+function queueGhSync(){
+  clearTimeout(ghTimer);
+  ghTimer = setTimeout(()=>{ghTimer=null; ghPush();}, 2500);
+}
+function ghInit(){
+  ghPull(true).then(()=>{
+    setInterval(()=>ghPull(true), 45000);
+    document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState === "visible") ghPull(true); });
+    window.addEventListener("beforeunload", ()=>{ if(ghTimer){ clearTimeout(ghTimer); ghPush(); } });
+  });
+}
+
+// ── PHASES ────────────────────────────────────────────
+const PHASES = [
+  {id:1,label:"Phase 1",name:"Code Audit",color:"#DC2626",wks:[1,2]},
+  {id:2,label:"Phase 2",name:"Core Prep Cycle",color:"#3B82F6",wks:[3,4,5,6,7,8,9,10,11,12]},
+];
+function phaseOf(wk){return PHASES.find(p=>p.wks.includes(wk))||PHASES[0];}
+
+// ── SCHEDULE DATA ─────────────────────────────────────
+const SCH = {
+  Mon:{label:"Monday",sub:"WFH · Workout",hrs:"1h 15m",type:"wfh",blocks:[
+    {s:"6:30 AM",e:"6:45 AM",label:"Wake up & freshen",icon:"☀️",cat:"routine"},
+    {s:"6:45 AM",e:"8:15 AM",label:"Workout",icon:"🏋️",cat:"workout"},
+    {s:"8:15 AM",e:"8:45 AM",label:"Shower & get ready",icon:"🚿",cat:"routine"},
+    {s:"8:45 AM",e:"9:15 AM",label:"Cook & breakfast",icon:"🍳",cat:"food"},
+    {s:"9:15 AM",e:"8:30 PM",label:"Work",icon:"💼",cat:"work"},
+    {s:"8:30 PM",e:"9:00 PM",label:"Cook fresh dinner",icon:"🍳",cat:"food"},
+    {s:"9:00 PM",e:"9:15 PM",label:"Dinner",icon:"🍽️",cat:"food"},
+    {s:"9:15 PM",e:"10:30 PM",label:"Study Block — DSA",icon:"📚",cat:"study"},
+    {s:"10:30 PM",e:"11:00 PM",label:"Wind down",icon:"🌙",cat:"sleep"},
+    {s:"11:00 PM",e:"6:30 AM",label:"Sleep",icon:"😴",cat:"sleep"},
+  ]},
+  Tue:{label:"Tuesday",sub:"Office Day",hrs:"1h 15m",type:"office",blocks:[
+    {s:"6:30 AM",e:"6:45 AM",label:"Wake up & freshen",icon:"☀️",cat:"routine"},
+    {s:"6:45 AM",e:"9:15 AM",label:"Morning routine (flex)",icon:"☕",cat:"routine"},
+    {s:"9:15 AM",e:"10:00 AM",label:"Shower & office prep",icon:"🚿",cat:"routine"},
+    {s:"10:00 AM",e:"10:30 AM",label:"Cook & breakfast",icon:"🍳",cat:"food"},
+    {s:"10:30 AM",e:"11:00 AM",label:"Commute",icon:"🚗",cat:"commute"},
+    {s:"11:00 AM",e:"8:30 PM",label:"Work",icon:"💼",cat:"work"},
+    {s:"8:30 PM",e:"9:00 PM",label:"Cook fresh dinner",icon:"🍳",cat:"food"},
+    {s:"9:00 PM",e:"9:15 PM",label:"Dinner",icon:"🍽️",cat:"food"},
+    {s:"9:15 PM",e:"10:30 PM",label:"Study Block — DSA",icon:"📚",cat:"study"},
+    {s:"10:30 PM",e:"11:00 PM",label:"Wind down",icon:"🌙",cat:"sleep"},
+    {s:"11:00 PM",e:"6:30 AM",label:"Sleep",icon:"😴",cat:"sleep"},
+  ]},
+  Wed:{label:"Wednesday",sub:"WFH · Workout",hrs:"1h 15m",type:"wfh",blocks:[
+    {s:"6:30 AM",e:"6:45 AM",label:"Wake up & freshen",icon:"☀️",cat:"routine"},
+    {s:"6:45 AM",e:"8:15 AM",label:"Workout",icon:"🏋️",cat:"workout"},
+    {s:"8:15 AM",e:"8:45 AM",label:"Shower & get ready",icon:"🚿",cat:"routine"},
+    {s:"8:45 AM",e:"9:15 AM",label:"Cook & breakfast",icon:"🍳",cat:"food"},
+    {s:"9:15 AM",e:"8:30 PM",label:"Work",icon:"💼",cat:"work"},
+    {s:"8:30 PM",e:"9:00 PM",label:"Cook fresh dinner",icon:"🍳",cat:"food"},
+    {s:"9:00 PM",e:"9:15 PM",label:"Dinner",icon:"🍽️",cat:"food"},
+    {s:"9:15 PM",e:"10:30 PM",label:"Study Block — DSA",icon:"📚",cat:"study"},
+    {s:"10:30 PM",e:"11:00 PM",label:"Wind down",icon:"🌙",cat:"sleep"},
+    {s:"11:00 PM",e:"6:30 AM",label:"Sleep",icon:"😴",cat:"sleep"},
+  ]},
+  Thu:{label:"Thursday",sub:"Office Day",hrs:"1h 15m",type:"office",blocks:[
+    {s:"6:30 AM",e:"6:45 AM",label:"Wake up & freshen",icon:"☀️",cat:"routine"},
+    {s:"6:45 AM",e:"9:15 AM",label:"Morning routine (flex)",icon:"☕",cat:"routine"},
+    {s:"9:15 AM",e:"10:00 AM",label:"Shower & office prep",icon:"🚿",cat:"routine"},
+    {s:"10:00 AM",e:"10:30 AM",label:"Cook & breakfast",icon:"🍳",cat:"food"},
+    {s:"10:30 AM",e:"11:00 AM",label:"Commute",icon:"🚗",cat:"commute"},
+    {s:"11:00 AM",e:"8:30 PM",label:"Work",icon:"💼",cat:"work"},
+    {s:"8:30 PM",e:"9:00 PM",label:"Cook fresh dinner",icon:"🍳",cat:"food"},
+    {s:"9:00 PM",e:"9:15 PM",label:"Dinner",icon:"🍽️",cat:"food"},
+    {s:"9:15 PM",e:"10:30 PM",label:"Study Block — DSA",icon:"📚",cat:"study"},
+    {s:"10:30 PM",e:"11:00 PM",label:"Wind down",icon:"🌙",cat:"sleep"},
+    {s:"11:00 PM",e:"6:30 AM",label:"Sleep",icon:"😴",cat:"sleep"},
+  ]},
+  Fri:{label:"Friday",sub:"WFH · Workout · Calligraphy",hrs:"0h",type:"wfh",blocks:[
+    {s:"6:30 AM",e:"6:45 AM",label:"Wake up & freshen",icon:"☀️",cat:"routine"},
+    {s:"6:45 AM",e:"8:15 AM",label:"Workout",icon:"🏋️",cat:"workout"},
+    {s:"8:15 AM",e:"8:45 AM",label:"Shower & get ready",icon:"🚿",cat:"routine"},
+    {s:"8:45 AM",e:"9:15 AM",label:"Cook & breakfast",icon:"🍳",cat:"food"},
+    {s:"9:15 AM",e:"8:30 PM",label:"Work",icon:"💼",cat:"work"},
+    {s:"8:30 PM",e:"9:00 PM",label:"Cook fresh dinner",icon:"🍳",cat:"food"},
+    {s:"9:00 PM",e:"9:30 PM",label:"Dinner",icon:"🍽️",cat:"food"},
+    {s:"9:30 PM",e:"10:15 PM",label:"Calligraphy",icon:"✒️",cat:"calligraphy"},
+    {s:"10:15 PM",e:"11:00 PM",label:"Free time & decompress",icon:"✨",cat:"free"},
+    {s:"11:00 PM",e:"7:30 AM",label:"Sleep",icon:"😴",cat:"sleep"},
+  ]},
+  Sat:{label:"Saturday",sub:"Behavioral + DSA + System Design",hrs:"4h",type:"weekend",blocks:[
+    {s:"7:30 AM",e:"8:00 AM",label:"Wake up & freshen",icon:"☀️",cat:"routine"},
+    {s:"8:00 AM",e:"8:30 AM",label:"Cook & breakfast",icon:"🍳",cat:"food"},
+    {s:"8:30 AM",e:"12:30 PM",label:"Study Block — Behavioral + DSA + System Design",icon:"📚",cat:"study"},
+    {s:"12:30 PM",e:"1:00 PM",label:"Get ready",icon:"🚿",cat:"routine"},
+    {s:"1:00 PM",e:"5:00 PM",label:"Free & family time",icon:"✨",cat:"free"},
+    {s:"5:00 PM",e:"5:30 PM",label:"Cook dinner",icon:"🍳",cat:"food"},
+    {s:"5:30 PM",e:"6:00 PM",label:"Dinner",icon:"🍽️",cat:"food"},
+    {s:"6:00 PM",e:"10:30 PM",label:"Free & quality time",icon:"✨",cat:"free"},
+    {s:"10:30 PM",e:"11:00 PM",label:"Wind down",icon:"🌙",cat:"sleep"},
+    {s:"11:00 PM",e:"7:30 AM",label:"Sleep",icon:"😴",cat:"sleep"},
+  ]},
+  Sun:{label:"Sunday",sub:"Behavioral + Project (Audit in Phase 1)",hrs:"2h 45m",type:"weekend",blocks:[
+    {s:"7:30 AM",e:"8:00 AM",label:"Wake up & freshen",icon:"☀️",cat:"routine"},
+    {s:"8:00 AM",e:"9:00 AM",label:"Cook & breakfast",icon:"🍳",cat:"food"},
+    {s:"9:00 AM",e:"11:45 AM",label:"Study Block — Behavioral + Project",icon:"📚",cat:"study"},
+    {s:"11:45 AM",e:"5:00 PM",label:"Free time & wife time",icon:"✨",cat:"free"},
+    {s:"5:00 PM",e:"5:30 PM",label:"Cook dinner",icon:"🍳",cat:"food"},
+    {s:"5:30 PM",e:"6:00 PM",label:"Dinner",icon:"🍽️",cat:"food"},
+    {s:"6:00 PM",e:"9:00 PM",label:"Relax",icon:"🛋️",cat:"free"},
+    {s:"9:00 PM",e:"9:30 PM",label:"Weekly review",icon:"📝",cat:"study"},
+    {s:"9:30 PM",e:"11:00 PM",label:"Wind down",icon:"🌙",cat:"sleep"},
+    {s:"11:00 PM",e:"7:30 AM",label:"Sleep",icon:"😴",cat:"sleep"},
+  ]},
+};
+const WKHRS=[{d:"Mon",h:1.25},{d:"Tue",h:1.25},{d:"Wed",h:1.25},{d:"Thu",h:1.25},{d:"Fri",h:0},{d:"Sat",h:4},{d:"Sun",h:2.75}];
+const TYPE_C={wfh:"#10B981",office:"#F59E0B",weekend:"#06B6D4"};
+const TYPE_L={wfh:"WFH · Workout",office:"Office Day",weekend:"Weekend"};
+
+// ── PLAN DATA ─────────────────────────────────────────
+function lc(id,t,d,n){
+  const slug=t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  return {type:"lc",p:id+". "+t,d:d,n:n,url:"https://leetcode.com/problems/"+slug+"/"};
+}
+function rd(p,n){return{type:"read",p,n};}
+function pr(p,n){return{type:"practice",p,n};}
+function ls(p,n){return{type:"listen",p,n};}
+function wt(p,n){return{type:"watch",p,n};}
+function mk(p,n){return{type:"mock",p,n};}
+function rv(p,n){return{type:"review",p,n};}
+function rv2(id,t,d,n){
+  const slug=t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  return {type:"revisit",p:id+". "+t,d:d,n:n,url:"https://leetcode.com/problems/"+slug+"/"};
+}
+
+// ── REVISION POOLS ────────────────────────────────────
+// Block A: classics never explicitly taught in this plan (always safe to revise from Day 3)
+const BLIND_CLASSICS=[
+ rv2(1,"Two Sum","E","HashMap: store value→index; check complement on the fly"),
+ rv2(121,"Best Time to Buy and Sell Stock","E","Track min price seen so far; profit=price-minSoFar"),
+ rv2(217,"Contains Duplicate","E","HashSet; if len(set)<len(array) there's a duplicate"),
+ rv2(238,"Product of Array Except Self","M","Prefix product array + suffix product array, multiply"),
+ rv2(152,"Maximum Product Subarray","M","Track both max AND min running product (negatives flip sign)"),
+ rv2(153,"Find Minimum in Rotated Sorted Array","M","Binary search: compare mid to right; min is in the unsorted half"),
+ rv2(33,"Search in Rotated Sorted Array","M","Binary search: identify which half is sorted, then decide direction"),
+ rv2(15,"3Sum","M","Sort array; fix one number, two-pointer for the remaining pair"),
+ rv2(11,"Container With Most Water","M","Two pointer from both ends; move the shorter wall inward"),
+ rv2(70,"Climbing Stairs","E","dp[n]=dp[n-1]+dp[n-2]; Fibonacci pattern"),
+ rv2(322,"Coin Change","M","dp[amount]=min coins; dp[a]=min(dp[a-coin]+1) over all coins"),
+ rv2(39,"Combination Sum","M","Backtracking: try each candidate, recurse with reduced target, allow reuse"),
+ rv2(198,"House Robber","M","dp[i]=max(dp[i-2]+nums[i], dp[i-1])"),
+ rv2(213,"House Robber II","M","Run House Robber twice on [0..n-2] and [1..n-1], take max"),
+ rv2(91,"Decode Ways","M","dp[i]=dp[i-1](if valid 1-digit)+dp[i-2](if valid 2-digit)"),
+ rv2(55,"Jump Game","M","Greedy: track farthest reachable index; if i exceeds it, fail"),
+ rv2(133,"Clone Graph","M","BFS/DFS + HashMap of original node→cloned node"),
+ rv2(417,"Pacific Atlantic Water Flow","M","Reverse-flow DFS from BOTH oceans' borders inward; intersect results"),
+ rv2(128,"Longest Consecutive Sequence","M","HashSet; only start counting from numbers where n-1 not in set"),
+ rv2(261,"Graph Valid Tree","M","Valid tree iff exactly n-1 edges AND fully connected (Union-Find or DFS)"),
+ rv2(323,"Number of Connected Components in an Undirected Graph","M","Union-Find: count distinct roots after processing all edges"),
+ rv2(206,"Reverse Linked List","E","Iterative: prev=null, swap next pointers one at a time"),
+ rv2(141,"Linked List Cycle","E","Floyd's: slow/fast pointers; cycle exists if they ever meet"),
+ rv2(21,"Merge Two Sorted Lists","E","Dummy head; compare heads of both lists, attach smaller, advance"),
+ rv2(19,"Remove Nth Node From End of List","M","Two pointers with n-gap; when fast hits end, slow is at target"),
+ rv2(143,"Reorder List","M","Find middle, reverse second half, merge two halves alternately"),
+ rv2(3,"Longest Substring Without Repeating Characters","M","Sliding window + HashSet/Map; shrink window when duplicate found"),
+ rv2(424,"Longest Repeating Character Replacement","M","Sliding window; window valid if (length-maxFreqChar)<=k replacements"),
+ rv2(76,"Minimum Window Substring","H","Sliding window + char frequency map; expand then contract to minimize"),
+ rv2(242,"Valid Anagram","E","Char frequency count; both strings must match exactly"),
+ rv2(49,"Group Anagrams","M","HashMap keyed by sorted string (or char-count tuple) as group key"),
+ rv2(20,"Valid Parentheses","E","Stack: push opening brackets, pop and match on closing"),
+ rv2(125,"Valid Palindrome","E","Two pointer from both ends, skip non-alphanumeric, compare lowercase"),
+ rv2(104,"Maximum Depth of Binary Tree","E","Recursive: 1+max(depth(left), depth(right))"),
+ rv2(100,"Same Tree","E","Recursive: compare value + recurse left+right; both null = true"),
+ rv2(226,"Invert Binary Tree","E","Recursive: swap left/right children, recurse into both"),
+ rv2(124,"Binary Tree Maximum Path Sum","H","Recursive: track max single-branch gain per node; global max across all paths"),
+ rv2(102,"Binary Tree Level Order Traversal","M","BFS with a queue; process level by level using queue size snapshot"),
+ rv2(297,"Serialize and Deserialize Binary Tree","H","Preorder DFS with null markers; rebuild using same traversal order"),
+ rv2(572,"Subtree of Another Tree","E","For each node in main tree, check if Same Tree matches the subRoot"),
+ rv2(105,"Construct Binary Tree from Preorder and Inorder Traversal","M","Preorder[0]=root; find root in inorder to split left/right subtrees"),
+ rv2(98,"Validate Binary Search Tree","M","Recursive with (min,max) bounds passed down; node must fit in range"),
+ rv2(235,"Lowest Common Ancestor of a BST","M","Compare target values to node: go left/right/stop based on range"),
+ rv2(208,"Implement Trie (Prefix Tree)","M","TrieNode: children map + isEnd flag; insert/search/startsWith"),
+ rv2(347,"Top K Frequent Elements","M","Frequency map + bucket sort by count, or min-heap of size k"),
+];
+// Block B: already explicitly taught in Weeks 1-2 (revisit for reinforcement, used after they're consumed)
+const BLIND_NAMED=[
+ rv2(57,"Insert Interval","M","Find insertion range; merge overlapping: start≤prevEnd"),
+ rv2(56,"Merge Intervals","M","Sort by start; merge when curr.start ≤ prev.end"),
+ rv2(435,"Non-overlapping Intervals","M","Greedy: sort by END, keep earliest-ending"),
+ rv2(252,"Meeting Rooms","E","Sort by start; check consecutive overlap"),
+ rv2(253,"Meeting Rooms II","M","Min-heap of end times; heap size at end = rooms needed"),
+ rv2(295,"Find Median from Data Stream","H","Two heaps: max-heap left half, min-heap right half"),
+ rv2(62,"Unique Paths","M","DP: dp[i][j]=dp[i-1][j]+dp[i][j-1]"),
+ rv2(1143,"Longest Common Subsequence","M","2D DP: match→dp[i-1][j-1]+1 else max(up,left)"),
+ rv2(23,"Merge K Sorted Lists","H","Min-heap of (val, list_index); pop min, push next from same list"),
+ rv2(5,"Longest Palindromic Substring","M","Expand around center for each char and pair; O(n²)"),
+ rv2(300,"Longest Increasing Subsequence","M","dp[i]=max(dp[j]+1) for j<i where nums[j]<nums[i]"),
+ rv2(230,"Kth Smallest Element in a BST","M","Inorder traversal gives sorted order; Kth visited = answer"),
+ rv2(53,"Maximum Subarray","M","Kadane: dp[i]=max(nums[i], dp[i-1]+nums[i])"),
+ rv2(207,"Course Schedule","M","Cycle detection in directed graph: Kahn topological sort or DFS"),
+ rv2(269,"Alien Dictionary","H","Build char-order graph from adjacent word pairs; topological sort"),
+ rv2(48,"Rotate Image","M","Transpose (swap [i][j] with [j][i]), then reverse each row"),
+ rv2(54,"Spiral Matrix","M","Track 4 boundaries; shrink each after completing that direction"),
+ rv2(73,"Set Matrix Zeroes","M","Use first row/col as markers; check their own zeros first"),
+ rv2(338,"Counting Bits","E","dp[i]=dp[i>>1]+(i&1)"),
+ rv2(190,"Reverse Bits","E","Shift result left, add LSB of n, shift n right; 32 iterations"),
+ rv2(268,"Missing Number","E","XOR all indices 0..n with all nums; unpaired XOR = answer"),
+ rv2(371,"Sum of Two Integers","M","XOR=sum without carry; (a&b)<<1=carry; repeat until carry=0"),
+ rv2(211,"Design Add and Search Words Data Structure","M","Trie + DFS for wildcard; recurse into ALL children on a dot"),
+ rv2(212,"Word Search II","H","Build Trie from word list; DFS+backtracking on grid; prune found words"),
+ rv2(139,"Word Break","M","dp[i]=true if dp[j]=true and s[j:i] in wordDict, for some j<i"),
+ rv2(140,"Word Break II","H","Backtracking + memo; cache valid sentences from each start index"),
+ rv2(79,"Word Search","M","DFS+backtracking on grid; mark visited in-place, restore on backtrack"),
+ rv2(200,"Number of Islands","M","BFS/DFS flood fill from each unvisited land cell"),
+ rv2(994,"Rotting Oranges","M","Multi-source BFS from all rotten oranges simultaneously"),
+ rv2(1091,"Shortest Path in Binary Matrix","M","BFS from (0,0); 8-directional; first arrival = shortest path"),
+ rv2(981,"Time Based Key-Value Store","M","HashMap of key→sorted (timestamp,value) list; binary search on get"),
+ rv2(1235,"Maximum Profit in Job Scheduling","H","DP+binary search: sort by end time, find last non-conflicting job"),
+ rv2(380,"Insert Delete GetRandom O(1)","M","HashMap+array; O(1) delete: swap target with last element, pop"),
+];
+const BLIND_FULL=BLIND_CLASSICS.concat(BLIND_NAMED);
+// Google-tagged extras — introduced fresh starting Week 3 (Day 15)
+const GOOGLE_EXTRA=[
+ rv2(146,"LRU Cache","M","HashMap + doubly linked list; move-to-front on access, evict tail"),
+ rv2(460,"LFU Cache","H","HashMap + frequency buckets (each a doubly linked list); evict from lowest freq bucket"),
+ rv2(355,"Design Twitter","M","HashMap of user→tweet list (with timestamp); merge-k-lists for feed (heap)"),
+ rv2(528,"Random Pick with Weight","M","Prefix sum of weights + binary search on a random value in range"),
+ rv2(973,"K Closest Points to Origin","M","Max-heap of size k by distance, or quickselect for O(n) average"),
+ rv2(621,"Task Scheduler","M","Greedy: most frequent task drives idle slots; math formula or max-heap simulation"),
+ rv2(239,"Sliding Window Maximum","H","Monotonic deque: keep indices decreasing in value, pop expired/smaller"),
+ rv2(42,"Trapping Rain Water","H","Two pointer with leftMax/rightMax, or precompute max-left/max-right arrays"),
+ rv2(4,"Median of Two Sorted Arrays","H","Binary search on the smaller array to find correct partition point"),
+ rv2(31,"Next Permutation","M","Find rightmost ascent, swap with next-larger to its right, reverse suffix"),
+ rv2(227,"Basic Calculator II","M","Stack-based: track running number + last operator, handle */before +-"),
+ rv2(721,"Accounts Merge","M","Union-Find on emails; group accounts sharing any email"),
+ rv2(735,"Asteroid Collision","M","Stack: push right-movers; on left-mover, resolve collisions with stack top"),
+ rv2(1268,"Search Suggestions System","M","Sort products; binary search prefix range per typed character"),
+ rv2(304,"Range Sum Query 2D - Immutable","M","2D prefix sum matrix; O(1) query via inclusion-exclusion"),
+ rv2(287,"Find the Duplicate Number","M","Floyd's cycle detection on value-as-pointer (treat array as linked list)"),
+ rv2(759,"Employee Free Time","H","Merge all intervals across employees, sorted; gaps between merged = free time"),
+ rv2(271,"Encode and Decode Strings","M","Prefix each string with its length + delimiter (e.g. '5#hello')"),
+];
+
+const PLAN=[
+{wk:1,title:"Week 1 \u2014 Code Audit: capsule",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (two-pointer)",time:"9:15 PM \u2013 10:30 PM",items:[lc(15,"3Sum","M","Sort array; fix one number, two-pointer for the remaining pair"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (sliding-window)",time:"9:15 PM \u2013 10:30 PM",items:[lc(3,"Longest Substring Without Repeating Characters","M","Sliding window + HashSet/Map; shrink window when duplicate found"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (heap)",time:"9:15 PM \u2013 10:30 PM",items:[lc(347,"Top K Frequent Elements","M","Frequency map + bucket sort by count, or min-heap of size k"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (stack-monotonic)",time:"9:15 PM \u2013 10:30 PM",items:[lc(20,"Valid Parentheses","E","Stack: push opening brackets, pop and match on closing"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Rehearse STAR 1–4 aloud, ~2 min each","Ownership (patching tool), Technical Excellence (FD exhaustion), Conflict Resolution (AD/VAS migration), Failure (Gap VM misconfig)")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(121,"Best Time to Buy and Sell Stock","E","Track min price seen so far; profit=price-minSoFar"),lc(152,"Maximum Product Subarray","M","Track both max AND min running product (negatives flip sign)")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design URL Shortener — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udd0d Code Audit \u2014 capsule",time:"9:00 AM \u2013 11:45 AM",items:[pr("Read capsule end-to-end: namespaces, cgroups v2, pivot_root, user namespaces","For each piece: could you defend this line-by-line if asked why you built it this way? Flag anything you can't."),pr("Fix or consciously accept each flagged item","Either fix it, or write down why you're leaving it — that reasoning is itself a good interview answer."),mk("Write/update AUDIT.md in the capsule repo with dated findings","One line per item: what you found, what you did, why (if left as-is)"),mk("Commit audit findings + fixes","git commit -m ‘audit: pass 1 findings + fixes’")]}]}]},
+{wk:2,title:"Week 2 \u2014 Code Audit: search-api",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (dp)",time:"9:15 PM \u2013 10:30 PM",items:[lc(70,"Climbing Stairs","E","dp[n]=dp[n-1]+dp[n-2]; Fibonacci pattern"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (graph-bfs-dfs)",time:"9:15 PM \u2013 10:30 PM",items:[lc(133,"Clone Graph","M","BFS/DFS + HashMap of original node→cloned node"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (binary-search)",time:"9:15 PM \u2013 10:30 PM",items:[lc(153,"Find Minimum in Rotated Sorted Array","M","Binary search: compare mid to right; min is in the unsorted half"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (backtracking-trie)",time:"9:15 PM \u2013 10:30 PM",items:[lc(39,"Combination Sum","M","Backtracking: try each candidate, recurse with reduced target, allow reuse"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Rehearse STAR 5–8 aloud, ~2 min each","Cross-team Collaboration (DCR/DR failover), Ambiguity (post-release data bug), Mentorship (new-grad ramp), Intellectual Humility (2023 MIM)")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(213,"House Robber II","M","Run House Robber twice on [0..n-2] and [1..n-1], take max"),lc(55,"Jump Game","M","Greedy: track farthest reachable index; if i exceeds it, fail")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Rate Limiter — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udd0d Code Audit \u2014 search-api",time:"9:00 AM \u2013 11:45 AM",items:[pr("Read search-api end-to-end: FastAPI service code, Minikube/EKS manifests, Terraform, Prometheus/Grafana config","Same standard as capsule — flag anything built under time pressure that you're not confident defending"),pr("Review the chaos test + postmortem docs for accuracy","Do the numbers and narrative still hold up? Fix anything sloppy."),pr("Fix or consciously accept each flagged item","Either fix it, or write down why you're leaving it"),mk("Write/update AUDIT.md in the search-api repo with dated findings",""),mk("Commit audit findings + fixes","")]}]}]},
+{wk:3,title:"Week 3 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (linked-list)",time:"9:15 PM \u2013 10:30 PM",items:[lc(141,"Linked List Cycle","E","Floyd's: slow/fast pointers; cycle exists if they ever meet"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (trees-bst)",time:"9:15 PM \u2013 10:30 PM",items:[lc(105,"Construct Binary Tree from Preorder and Inorder Traversal","M","Preorder[0]=root; find root in inorder to split left/right subtrees"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (intervals)",time:"9:15 PM \u2013 10:30 PM",items:[lc(252,"Meeting Rooms","E","Sort by start; check consecutive overlap"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (hashmap-array)",time:"9:15 PM \u2013 10:30 PM",items:[lc(1,"Two Sum","E","HashMap: store value→index; check complement on the fly"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Full mock: 3–4 random behavioral prompts, recorded","Flex-map whichever story fits the actual prompt — don't just recite a fixed script"),mk("Self-score against rubric: 2 min length, clean STAR shape, no filler","")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(206,"Reverse Linked List","E","Iterative: prev=null, swap next pointers one at a time"),lc(21,"Merge Two Sorted Lists","E","Dummy head; compare heads of both lists, attach smaller, advance")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Distributed Cache (Redis-like) — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Draft the reframed FD-exhaustion story (STAR 2) — full rewrite, user-first opening","Pair with Saturday's focus session")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("SLO Error Budget Service — Prometheus ingestion","Write the ingestion function that pulls raw metrics from Prometheus. Commit when it runs against real data.")]}]}]},
+{wk:4,title:"Week 4 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (bit-manip)",time:"9:15 PM \u2013 10:30 PM",items:[lc(268,"Missing Number","E","XOR all indices 0..n with all nums; unpaired XOR = answer"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (two-pointer)",time:"9:15 PM \u2013 10:30 PM",items:[lc(11,"Container With Most Water","M","Two pointer from both ends; move the shorter wall inward"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (sliding-window)",time:"9:15 PM \u2013 10:30 PM",items:[lc(424,"Longest Repeating Character Replacement","M","Sliding window; window valid if (length-maxFreqChar)<=k replacements"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (heap)",time:"9:15 PM \u2013 10:30 PM",items:[lc(253,"Meeting Rooms II","M","Min-heap of end times; heap size at end = rooms needed"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Focus session: reframe the FD-exhaustion story (STAR 2) around user impact","Currently framed as a system-health save. Rebuild the opening around what it meant for the traders relying on that data, not just the metric.")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(143,"Reorder List","M","Find middle, reverse second half, merge two halves alternately"),lc(242,"Valid Anagram","E","Char frequency count; both strings must match exactly")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Distributed Key-Value Store — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Draft the reframed 2023 MIM story (STAR 8) — full rewrite, user-first opening","Pair with Saturday's focus session")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("SLO Error Budget Service — burn-rate calculation","Implement fast-burn (1h/5m) and slow-burn (6h/30m) window math. Commit with a working calculation.")]}]}]},
+{wk:5,title:"Week 5 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (stack-monotonic)",time:"9:15 PM \u2013 10:30 PM",items:[lc(227,"Basic Calculator II","M","Stack-based: track running number + last operator, handle */before +-"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (dp)",time:"9:15 PM \u2013 10:30 PM",items:[lc(322,"Coin Change","M","dp[amount]=min coins; dp[a]=min(dp[a-coin]+1) over all coins"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (graph-bfs-dfs)",time:"9:15 PM \u2013 10:30 PM",items:[lc(417,"Pacific Atlantic Water Flow","M","Reverse-flow DFS from BOTH oceans' borders inward; intersect results"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (binary-search)",time:"9:15 PM \u2013 10:30 PM",items:[lc(33,"Search in Rotated Sorted Array","M","Binary search: identify which half is sorted, then decide direction"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Focus session: reframe the 2023 MIM story (STAR 8) around user impact","Currently framed as being right about the network diagnosis. Rebuild toward what the outage meant for whoever depended on that traffic.")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(104,"Maximum Depth of Binary Tree","E","Recursive: 1+max(depth(left), depth(right))"),lc(100,"Same Tree","E","Recursive: compare value + recurse left+right; both null = true")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Distributed Lock Service (Chubby/ZooKeeper-style) — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Record both reframed stories; play back and self-score against Googleyness rubric","")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("SLO Error Budget Service — alerting rule logic","Wire burn-rate thresholds to fire alerts. Commit.")]}]}]},
+{wk:6,title:"Week 6 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (backtracking-trie)",time:"9:15 PM \u2013 10:30 PM",items:[lc(208,"Implement Trie (Prefix Tree)","M","TrieNode: children map + isEnd flag; insert/search/startsWith"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (linked-list)",time:"9:15 PM \u2013 10:30 PM",items:[lc(146,"LRU Cache","M","HashMap + doubly linked list; move-to-front on access, evict tail"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (trees-bst)",time:"9:15 PM \u2013 10:30 PM",items:[lc(230,"Kth Smallest Element in a BST","M","Inorder traversal gives sorted order; Kth visited = answer"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (intervals)",time:"9:15 PM \u2013 10:30 PM",items:[lc(759,"Employee Free Time","H","Merge all intervals across employees, sorted; gaps between merged = free time"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Full mock: 3–4 random behavioral prompts, recorded, using both reframed stories","Check: does the user-first version land naturally, or does it still read like a system-health story with a user sentence bolted on?"),mk("Self-score against Googleyness rubric","Is the ambiguity/conflict/ownership coverage still complete after the reframe?")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(226,"Invert Binary Tree","E","Recursive: swap left/right children, recurse into both"),lc(124,"Binary Tree Maximum Path Sum","H","Recursive: track max single-branch gain per node; global max across all paths")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Gmail / Email System — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Tighten STAR 1 (Ownership) and STAR 3 (Conflict) to ~2 min each; re-record","")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("SLO Error Budget Service — unit tests","pytest coverage for budget + burn-rate math, including edge cases at 0% and 100% budget. Commit.")]}]}]},
+{wk:7,title:"Week 7 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (hashmap-array)",time:"9:15 PM \u2013 10:30 PM",items:[lc(217,"Contains Duplicate","E","HashSet; if len(set)<len(array) there's a duplicate"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (bit-manip)",time:"9:15 PM \u2013 10:30 PM",items:[lc(371,"Sum of Two Integers","M","XOR=sum without carry; (a&b)<<1=carry; repeat until carry=0"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (two-pointer)",time:"9:15 PM \u2013 10:30 PM",items:[lc(19,"Remove Nth Node From End of List","M","Two pointers with n-gap; when fast hits end, slow is at target"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (sliding-window)",time:"9:15 PM \u2013 10:30 PM",items:[lc(76,"Minimum Window Substring","H","Sliding window + char frequency map; expand then contract to minimize"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Rehearse ‘Why this role / why SRE’ — target the specific company, not a generic pitch","Swap in company-specific vocabulary depending which loop is live that week"),mk("Prep one system you admire technically, cold, ~60 sec","Borg/Spanner for Google-style loops, or the equivalent for whichever company is active")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(572,"Subtree of Another Tree","E","For each node in main tree, check if Same Tree matches the subRoot"),lc(98,"Validate Binary Search Tree","M","Recursive with (min,max) bounds passed down; node must fit in range")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design YouTube Video Platform — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Tighten STAR 4 (Failure) and STAR 5 (Cross-team) to ~2 min each; re-record","")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("SLO Error Budget Service — postmortem-style writeup","Write it up like a real incident retro, even though nothing broke — practice the format. Commit + tag as done.")]}]}]},
+{wk:8,title:"Week 8 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (heap)",time:"9:15 PM \u2013 10:30 PM",items:[lc(295,"Find Median from Data Stream","H","Two heaps: max-heap left half, min-heap right half"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (stack-monotonic)",time:"9:15 PM \u2013 10:30 PM",items:[lc(735,"Asteroid Collision","M","Stack: push right-movers; on left-mover, resolve collisions with stack top"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (dp)",time:"9:15 PM \u2013 10:30 PM",items:[lc(198,"House Robber","M","dp[i]=max(dp[i-2]+nums[i], dp[i-1])"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (graph-bfs-dfs)",time:"9:15 PM \u2013 10:30 PM",items:[lc(261,"Graph Valid Tree","M","Valid tree iff exactly n-1 edges AND fully connected (Union-Find or DFS)"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Full mock: 3–4 random behavioral prompts, recorded","Rotate emphasis — pick prompts you haven't drilled the last 2 mocks"),mk("Self-score: complexity-justification habit and narration habit, same rubric as the coding side","Behavioral answers should show the same 'no unexplained gaps' discipline as your code")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(235,"Lowest Common Ancestor of a BST","M","Compare target values to node: go left/right/stop based on range"),lc(57,"Insert Interval","M","Find insertion range; merge overlapping: start≤prevEnd")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Logging Pipeline — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Tighten STAR 6 (Ambiguity) and STAR 7 (Mentorship) to ~2 min each; re-record","")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("Distributed Tracing Pipeline — OpenTelemetry instrumentation on search-api","Add OTel spans to the service. Commit when a request produces a real trace.")]}]}]},
+{wk:9,title:"Week 9 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (binary-search)",time:"9:15 PM \u2013 10:30 PM",items:[lc(981,"Time Based Key-Value Store","M","HashMap of key→sorted (timestamp,value) list; binary search on get"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (backtracking-trie)",time:"9:15 PM \u2013 10:30 PM",items:[lc(211,"Design Add and Search Words Data Structure","M","Trie + DFS for wildcard; recurse into ALL children on a dot"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (linked-list)",time:"9:15 PM \u2013 10:30 PM",items:[lc(460,"LFU Cache","H","HashMap + frequency buckets (each a doubly linked list); evict from lowest freq bucket"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (trees-bst)",time:"9:15 PM \u2013 10:30 PM",items:[lc(105,"Construct Binary Tree from Preorder and Inorder Traversal","M","Preorder[0]=root; find root in inorder to split left/right subtrees"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Rehearse comp-deflection and ‘why leaving Barclays’ scripts","Keep the restructure-framing departure story tight and consistent across companies")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(56,"Merge Intervals","M","Sort by start; merge when curr.start ≤ prev.end"),lc(435,"Non-overlapping Intervals","M","Greedy: sort by END, keep earliest-ending")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Monitoring & Alerting System (Prometheus-like) — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Build a project-based STAR story from the SLO Error Budget Service work","Now you have real material — draft it fresh rather than retrofitting an old story")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("Distributed Tracing Pipeline — Jaeger on Minikube","Deploy Jaeger, verify traces flow end-to-end from search-api. Commit.")]}]}]},
+{wk:10,title:"Week 10 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (intervals)",time:"9:15 PM \u2013 10:30 PM",items:[lc(252,"Meeting Rooms","E","Sort by start; check consecutive overlap"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (hashmap-array)",time:"9:15 PM \u2013 10:30 PM",items:[lc(238,"Product of Array Except Self","M","Prefix product array + suffix product array, multiply"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (bit-manip)",time:"9:15 PM \u2013 10:30 PM",items:[lc(268,"Missing Number","E","XOR all indices 0..n with all nums; unpaired XOR = answer"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (two-pointer)",time:"9:15 PM \u2013 10:30 PM",items:[lc(125,"Valid Palindrome","E","Two pointer from both ends, skip non-alphanumeric, compare lowercase"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Full mock: 3–4 random behavioral prompts, recorded","")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(5,"Longest Palindromic Substring","M","Expand around center for each char and pair; O(n²)"),lc(48,"Rotate Image","M","Transpose (swap [i][j] with [j][i]), then reverse each row")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Distributed Message Queue (Kafka-like) — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Record the full story set (all 8 + 2 reframed + 1 project story); listen for filler and pacing","")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("Distributed Tracing Pipeline — Grafana Tempo / trace-to-log correlation","Wire correlation IDs so a trace links back to its logs. Commit.")]}]}]},
+{wk:11,title:"Week 11 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (sliding-window)",time:"9:15 PM \u2013 10:30 PM",items:[lc(3,"Longest Substring Without Repeating Characters","M","Sliding window + HashSet/Map; shrink window when duplicate found"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (heap)",time:"9:15 PM \u2013 10:30 PM",items:[lc(23,"Merge K Sorted Lists","H","Min-heap of (val, list_index); pop min, push next from same list"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (stack-monotonic)",time:"9:15 PM \u2013 10:30 PM",items:[lc(20,"Valid Parentheses","E","Stack: push opening brackets, pop and match on closing"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (dp)",time:"9:15 PM \u2013 10:30 PM",items:[lc(91,"Decode Ways","M","dp[i]=dp[i-1](if valid 1-digit)+dp[i-2](if valid 2-digit)"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Rehearse gap lines: bare-metal, kernel/performance tuning, production cloud","Own the gap directly, then pivot to the adjacent thing you do have — don't over-explain")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(54,"Spiral Matrix","M","Track 4 boundaries; shrink each after completing that direction"),lc(73,"Set Matrix Zeroes","M","Use first row/col as markers; check their own zeros first")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Unique ID Generator — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Company-specific pass: adapt vocabulary for whichever loop is active that week","")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("Buffer — catch up on either project","Use this week to close whatever slipped in weeks 3–10 rather than starting new scope.")]}]}]},
+{wk:12,title:"Week 12 \u2014 Core Prep Cycle",days:[{day:"Mon",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (graph-bfs-dfs)",time:"9:15 PM \u2013 10:30 PM",items:[lc(323,"Number of Connected Components in an Undirected Graph","M","Union-Find: count distinct roots after processing all edges"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Tue",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (binary-search)",time:"9:15 PM \u2013 10:30 PM",items:[lc(1235,"Maximum Profit in Job Scheduling","H","DP+binary search: sort by end time, find last non-conflicting job"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Wed",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (backtracking-trie)",time:"9:15 PM \u2013 10:30 PM",items:[lc(212,"Word Search II","H","Build Trie from word list; DFS+backtracking on grid; prune found words"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Thu",sessions:[{name:"\ud83d\udcbb DSA \u2014 Cold Pattern Rep (linked-list)",time:"9:15 PM \u2013 10:30 PM",items:[lc(141,"Linked List Cycle","E","Floyd's: slow/fast pointers; cycle exists if they ever meet"),mk("RITUAL 1 — identifier-read pass before running","Read every variable name aloud against its declaration before you call it done."),mk("RITUAL 2 — adversarial verify","Trace the case built to break it (empty/single/dup/boundary), not the comfortable one."),mk("RITUAL 3 — dry-run OUT LOUD, narrating state","This is the specific habit your Round 1 feedback flagged — narrate instead of going silent.")]}]},{day:"Sat",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 Mock Interview",time:"8:30 AM \u2013 10:00 AM",items:[mk("Full mock: comprehensive run across all 8+2 stories, recorded","Checkpoint mock — this is the one to compare against your Week 3 baseline")]},{name:"\ud83d\udcbb DSA \u2014 Harder Mixed Set",time:"10:00 AM \u2013 11:30 AM",items:[lc(190,"Reverse Bits","E","Shift result left, add LSB of n, shift n right; 32 iterations"),lc(239,"Sliding Window Maximum","H","Monotonic deque: keep indices decreasing in value, pop expired/smaller")]},{name:"\ud83c\udff0 System Design \u2014 NALSD Topic",time:"11:30 AM \u2013 12:30 PM",items:[pr("Design Web Crawler — re-derive cold, no notes, 45 min","Full NALSD pass: requirements → capacity estimate → API → data model → architecture → scale/failure. Check against your existing sre-prep-notes write-up after — note any gap.")]}]},{day:"Sun",sessions:[{name:"\ud83d\udde3\ufe0f Behavioral \u2014 STAR Rebuild",time:"9:00 AM \u2013 10:30 AM",items:[mk("Final full-set rehearsal — comprehensive run, recorded","Checkpoint against Week 3 baseline")]},{name:"\ud83d\udee0\ufe0f Project Drill",time:"10:30 AM \u2013 11:45 AM",items:[pr("Final polish + resume bullets","Both projects should be defensible end-to-end. Draft 3–4 resume bullets from each. Commit final state.")]}]}]}
+];
+
+// ── UTILS ─────────────────────────────────────────────
+function parseLocalDate(dateStr){
+  if(!dateStr)return null;
+  const[y,m,d]=dateStr.split("-").map(Number);
+  return new Date(y,m-1,d);
+}
+function getWeekNum(){
+  if(!STATE.startDate)return null;
+  const s=parseLocalDate(STATE.startDate);s.setHours(0,0,0,0);
+  const t=new Date();t.setHours(0,0,0,0);
+  const diff=Math.floor((t-s)/(7*86400000));
+  const wk=diff+1;return(wk>=1&&wk<=12)?wk:null;
+}
+function weekDates(wkNum){
+  if(!STATE.startDate)return"";
+  const s=parseLocalDate(STATE.startDate);
+  const ws=new Date(s);ws.setDate(s.getDate()+(wkNum-1)*7);
+  const we=new Date(ws);we.setDate(ws.getDate()+6);
+  const f=d=>d.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+  return f(ws)+" – "+f(we);
+}
+function daysLeft(){
+  if(!STATE.startDate)return null;
+  const end=parseLocalDate(STATE.startDate);end.setDate(end.getDate()+84);
+  const t=new Date();t.setHours(0,0,0,0);
+  return Math.max(0,Math.ceil((end-t)/86400000));
+}
+function toMins(t){
+  const[time,p]=t.split(" ");let[h,m]=time.split(":").map(Number);
+  if(p==="PM"&&h!==12)h+=12;if(p==="AM"&&h===12)h=0;return h*60+m;
+}
+function currentBlockIdx(blocks){
+  const now=new Date().getHours()*60+new Date().getMinutes();
+  return blocks.findIndex(b=>{
+    const s=toMins(b.s),e=toMins(b.e);
+    return e<s?now>=s||now<e:now>=s&&now<e;
+  });
+}
+function todayKey(){return["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][new Date().getDay()];}
+
+// ── REVISION SCHEDULING ───────────────────────────────
+const DAY_ORDER=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+function globalDayOf(wk,dayName){
+  return (wk-1)*7 + DAY_ORDER.indexOf(dayName) + 1;
+}
+function getDailyRevision(targetDay){
+  if(targetDay<3||targetDay>56)return[];
+  let blindPtr=0,googlePtr=0,result=[];
+  for(let d=3;d<=targetDay;d++){
+    const dow=(d-1)%7; // 0=Mon..6=Sun
+    const needed=(dow===5||dow===6)?2:1;
+    const items=[];
+    for(let k=0;k<needed;k++){
+      let useGoogle=false;
+      if(d>=15){
+        useGoogle = needed===2 ? (k===1) : (d%3===0);
+      }
+      if(useGoogle){items.push(GOOGLE_EXTRA[googlePtr%GOOGLE_EXTRA.length]);googlePtr++;}
+      else{items.push(BLIND_FULL[blindPtr%BLIND_FULL.length]);blindPtr++;}
+    }
+    if(d===targetDay)result=items;
+  }
+  return result;
+}
+function getRevisionTotals(){
+  let total=0,done=0;
+  for(let d=3;d<=56;d++){
+    const items=getDailyRevision(d);
+    items.forEach((it,idx)=>{
+      total++;
+      if(STATE.checked["REV_"+d+"_0_"+idx])done++;
+    });
+  }
+  return{total,done};
+}
+function getDayRevisionTotals(globalDay){
+  const items=getDailyRevision(globalDay);
+  let done=0;
+  items.forEach((it,idx)=>{if(STATE.checked["REV_"+globalDay+"_0_"+idx])done++;});
+  return{total:items.length,done};
+}
+
+// ── PROGRESS CALC ─────────────────────────────────────
+function getTotals(){
+  let total=0,done=0;
+  PLAN.forEach(wData=>wData.days.forEach(dayData=>dayData.sessions.forEach((s,si)=>s.items.forEach((item,ii)=>{
+    total++;
+    if(STATE.checked[wData.wk+"_"+dayData.day+"_"+si+"_"+ii])done++;
+  }))));
+  return{total,done};
+}
+function getWeekTotals(wk){
+  const wData=PLAN.find(w=>w.wk===wk);
+  if(!wData)return{total:0,done:0};
+  let total=0,done=0;
+  wData.days.forEach(dayData=>dayData.sessions.forEach((s,si)=>s.items.forEach((item,ii)=>{
+    total++;
+    if(STATE.checked[wk+"_"+dayData.day+"_"+si+"_"+ii])done++;
+  })));
+  return{total,done};
+}
+function getDayTotals(wk,day){
+  const wData=PLAN.find(w=>w.wk===wk);
+  if(!wData)return{total:0,done:0};
+  const dayData=wData.days.find(d=>d.day===day);
+  if(!dayData)return{total:0,done:0};
+  let total=0,done=0;
+  dayData.sessions.forEach((s,si)=>s.items.forEach((item,ii)=>{
+    total++;
+    if(STATE.checked[wk+"_"+day+"_"+si+"_"+ii])done++;
+  }));
+  return{total,done};
+}
+function getPhaseTotals(phId){
+  const ph=PHASES.find(p=>p.id===phId);
+  let total=0,done=0;
+  ph.wks.forEach(wk=>{const t=getWeekTotals(wk);total+=t.total;done+=t.done;});
+  return{total,done};
+}
+
+// ── RENDER HELPERS ────────────────────────────────────
+function escH(s){return(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+function itemHtml(item,wk,day,si,ii){
+  const key=wk+"_"+day+"_"+si+"_"+ii;
+  const isDone=!!STATE.checked[key];
+  const t=item.type||"review";
+  const cc="var(--t-"+t+"-c)";
+  const cb="var(--t-"+t+"-bg)";
+  const icons={lc:"💡",read:"📖",watch:"▶️",listen:"🎧",practice:"✍️",mock:"🎯",review:"🔁",revisit:"🔄"};
+  const icon=icons[t]||"📌";
+  const diffMap={E:"Easy",M:"Med",H:"Hard"};
+  const diffBadge=item.d?"<span class=\"diff diff-"+item.d+"\">"+diffMap[item.d]+"</span>":"";
+  const title=item.url
+    ?"<a href=\""+item.url+"\" target=\"_blank\" rel=\"noopener\" style=\"color:"+cc+"\">"+escH(item.p)+diffBadge+"</a>"
+    :"<span style=\"color:"+cc+"\">"+escH(item.p)+diffBadge+"</span>";
+  const note=item.n?"<div class=\"item-note"+(isDone?" item-done-note":"")+"\">"+escH(item.n)+"</div>":"";
+  const isRedo=!!STATE.redo[key];
+  const redoBtn=t==="lc"
+    ?"<button class=\"chk\""+" style=\"color:"+(isRedo?"#EC4899":"var(--muted)")+";border-color:"+(isRedo?"#EC4899":"var(--border)")+"\" onclick=\"toggleRedo('"+key+"');event.stopPropagation()\" title=\"Flag for redo\">🔁</button>"
+    :"";
+  return "<div class=\"item-row\">"
+    +"<button class=\"chk"+(isDone?" chk-done":"")+"\" onclick=\"toggleCheck('"+key+"');event.stopPropagation()\">"+(isDone?"✓":"")+"</button>"
+    +"<div class=\"item-icon\" style=\"background:"+cb+"\">"+icon+"</div>"
+    +"<div class=\"item-body\">"
+    +"<div class=\"item-title"+(isDone?" item-done-title":"")+"\">"+title+"</div>"
+    +note
+    +"</div>"
+    +redoBtn
+    +"</div>";
+}
+
+function tlBlock(b,isCurrent){
+  const cat="c-"+b.cat;
+  const cc="var(--"+cat+"-c)";
+  const cb="var(--"+cat+"-bg)";
+  const bl=isCurrent?cc:"var(--border)";
+  const bg=isCurrent?cb:"var(--card)";
+  const fc=isCurrent?cc:"var(--soft)";
+  const fw=isCurrent?"700":"500";
+  const dot=isCurrent?"<div class=\"tl-dot\" style=\"background:"+cc+";box-shadow:0 0 6px "+cc+"22\"></div>":"";
+  const note="";
+  return "<div class=\"tl-block\">"
+    +"<div class=\"tl-time\"><div class=\"tl-ts\" style=\"color:"+fc+"\">"+b.s+"</div><div class=\"tl-te\">→"+b.e+"</div></div>"
+    +"<div class=\"tl-body\" style=\"background:"+bg+";border-left-color:"+bl+"\">"
+    +"<span class=\"tl-icon\">"+b.icon+"</span>"
+    +"<div style=\"flex:1\"><div class=\"tl-label\" style=\"font-weight:"+fw+";color:"+fc+"\">"+b.label+"</div>"+note+"</div>"
+    +dot+"</div></div>";
+}
+
+// ── HEADER UPDATE ─────────────────────────────────────
+function updateHeader(){
+  const wk=getWeekNum();
+  document.getElementById("tb-wk").textContent=wk?"W"+wk+"/12":"—";
+  const ph=wk?phaseOf(wk):null;
+  const left=daysLeft();
+  document.getElementById("tb-sub").textContent=ph
+    ?ph.label+": "+ph.name+(left!==null?" · "+left+"d left":"")
+    :"Set start date in Settings";
+  const bar=document.getElementById("ph-bar");
+  bar.innerHTML=PHASES.map(p=>"<div style=\"flex:"+p.wks.length+";background:"+p.color+";opacity:"+(wk&&p.wks.includes(wk)?1:0.25)+"\"></div>").join("");
+}
+
+// ── TAB CONTROL ───────────────────────────────────────
+function setTab(t){
+  STATE.tab=t;
+  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+  document.getElementById("nav-"+t).classList.add("active");
+  render();window.scrollTo({top:0});
+}
+function toggleTheme(){
+  STATE.theme=STATE.theme==="light"?"dark":"light";
+  document.documentElement.setAttribute("data-theme",STATE.theme);
+  document.getElementById("theme-btn").textContent=STATE.theme==="dark"?"☀️":"🌙";
+  localStorage.setItem("ppTheme",STATE.theme);
+  queueGhSync();
+}
+function goPlan(wk){STATE.planWk=wk;setTab("plan");}
+
+// ── ACTIONS ───────────────────────────────────────────
+function toggleCheck(key){
+  if(STATE.checked[key])delete STATE.checked[key];
+  else STATE.checked[key]=true;
+  localStorage.setItem("ppChecked",JSON.stringify(STATE.checked));
+  queueGhSync();
+  render();
+}
+function toggleRedo(key){
+  if(STATE.redo[key])delete STATE.redo[key];
+  else STATE.redo[key]=true;
+  localStorage.setItem("ppRedo",JSON.stringify(STATE.redo));
+  queueGhSync();
+  render();
+}
+function resolveRedo(key){
+  delete STATE.redo[key];
+  localStorage.setItem("ppRedo",JSON.stringify(STATE.redo));
+  queueGhSync();
+  render();
+}
+function setSchedDay(d){STATE.schedDay=d;render();}
+function setPlanWk(wk){STATE.planWk=wk;STATE.openDays={};render();scrollWkTab(wk);}
+function toggleDay(key){STATE.openDays[key]=!(STATE.openDays[key]);render();}
+function scrollWkTab(wk){
+  setTimeout(()=>{
+    const tabs=document.querySelector(".week-tabs");
+    const btns=tabs?tabs.querySelectorAll(".wtab"):[];
+    if(btns[wk-1])btns[wk-1].scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
+  },50);
+}
+
+// ── TODAY VIEW ────────────────────────────────────────
+function renderToday(){
+  const key=todayKey();
+  const day=SCH[key];
+  const wk=getWeekNum();
+  const curIdx=currentBlockIdx(day.blocks);
+  const ph=wk?phaseOf(wk):null;
+  const left=daysLeft();
+  const now=new Date();
+  const planDay=wk?PLAN[wk-1]?.days.find(d=>d.day===key):null;
+  const tc=TYPE_C[day.type]||"#94A3B8";
+  const {done,total}=wk&&planDay?getDayTotals(wk,key):{done:0,total:0};
+
+  let pills="";
+  if(wk)pills+="<div class=\"pill\" style=\"background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25)\"><div class=\"pill-num\" style=\"color:#3B82F6\">W"+wk+"<span style=\"font-size:10px;font-weight:400\"> of 12</span></div><div class=\"pill-lbl\" style=\"color:#3B82F6\">Prep Week</div></div>";
+  if(left!==null)pills+="<div class=\"pill\" style=\"background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25)\"><div class=\"pill-num\" style=\"color:#10B981\">"+left+"</div><div class=\"pill-lbl\" style=\"color:#10B981\">Days Left</div></div>";
+  pills+="<div class=\"pill\" style=\"background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25)\"><div class=\"pill-num\" style=\"color:#8B5CF6\">"+day.hrs+"</div><div class=\"pill-lbl\" style=\"color:#8B5CF6\">Study Today</div></div>";
+  if(wk&&total>0)pills+="<div class=\"pill\" style=\"background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25)\"><div class=\"pill-num\" style=\"color:#10B981\">"+done+"/"+total+"</div><div class=\"pill-lbl\" style=\"color:#10B981\">Done Today</div></div>";
+
+  const phaseChip=ph?"<div class=\"phase-chip\" style=\"background:"+ph.color+"18;border:1px solid "+ph.color+"33\"><div class=\"phase-dot\" style=\"background:"+ph.color+"\"></div><span style=\"font-size:12px;font-weight:600;color:"+ph.color+"\">"+ph.label+": "+ph.name+"</span></div>":"";
+
+  let setupBanner="";
+  if(!wk){
+    setupBanner="<div style=\"margin:12px 16px 0;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:11px;padding:13px 14px\">"
+      +"<div style=\"font-size:13px;font-weight:700;color:#B45309\">⚙️ Set your start date to see today's plan</div>"
+      +"<div style=\"font-size:12px;color:var(--soft);margin-top:4px;line-height:1.5\">Your start date didn't carry over to this copy of the file (this happens when opening a freshly downloaded file — your browser's saved settings are tied to the previous file). Go to the ⚙️ Settings tab and re-enter it — it only takes one tap.</div>"
+      +"</div>";
+  }
+
+  let planHtml="";
+  if(planDay){
+    planHtml="<div class=\"today-plan\"><div class=\"section-head\">Today's Study Plan</div>";
+    planDay.sessions.forEach((s,si)=>{
+      planHtml+="<div class=\"session-name\">"+escH(s.name)+"<span class=\"session-time\"> · "+escH(s.time)+"</span></div>";
+      s.items.forEach((item,ii)=>{planHtml+=itemHtml(item,wk,key,si,ii);});
+    });
+    planHtml+="</div>";
+  }
+
+  return "<div class=\"hero\">"
+    +"<div class=\"hero-date\">"+now.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})+"</div>"
+    +"<div class=\"hero-day\">"+day.label+"</div>"
+    +"<div class=\"hero-sub\">"+day.sub+"</div>"
+    +"<div class=\"hero-pills\">"+pills+"</div>"
+    +phaseChip+"</div>"
+    +setupBanner
+    +planHtml
+    +"<div class=\"timeline-section\" style=\"display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer\" onclick=\"setTab('schedule')\">"
+    +"<div><div style=\"font-size:13px;font-weight:700;color:var(--text)\">Today's fixed schedule</div><div style=\"font-size:11px;color:var(--muted);margin-top:2px\">"+day.blocks.length+" blocks · "+day.hrs+" study</div></div>"
+    +"<div style=\"font-size:12px;font-weight:600;color:#3B82F6\">View full day →</div>"
+    +"</div>";
+}
+
+// ── SCHEDULE VIEW ─────────────────────────────────────
+function renderSchedule(){
+  const DAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  const day=SCH[STATE.schedDay];
+  const totalH=WKHRS.reduce((a,b)=>a+b.h,0);
+  const curH=WKHRS.find(w=>w.d===STATE.schedDay)?.h||0;
+  const tc=TYPE_C[day.type]||"#94A3B8";
+
+  const tabs=DAYS.map(d=>{
+    const tc2=TYPE_C[SCH[d].type]||"#94A3B8";
+    const a=d===STATE.schedDay;
+    return "<button class=\"dtab"+(a?" active":"")+"\" onclick=\"setSchedDay('"+d+"')\">"+d+"<div class=\"dtab-dot\" style=\"background:"+tc2+"\"></div></button>";
+  }).join("");
+
+  const pct=(curH/totalH*100).toFixed(1);
+  return "<div class=\"sticky-hd\"><div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:10px\">"
+    +"<div style=\"font-size:16px;font-weight:700;color:var(--text)\">Weekly Schedule</div>"
+    +"<div style=\"background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:10px;padding:4px 10px;font-size:12px;font-weight:600;color:#3B82F6\">📚 "+totalH+"h/wk</div></div>"
+    +"<div class=\"day-tabs\">"+tabs+"</div></div>"
+    +"<div style=\"padding:12px 16px 0\">"
+    +"<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:9px\">"
+    +"<div><div style=\"font-size:19px;font-weight:700;color:var(--text)\">"+day.label+"</div><div style=\"font-size:11px;color:"+tc+";margin-top:2px\">"+day.sub+"</div></div>"
+    +"<div style=\"background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:10px;padding:5px 11px;font-size:11px;font-weight:600;color:#3B82F6\">📚 "+day.hrs+"</div></div>"
+    +"<div class=\"study-bar-wrap\"><div class=\"study-bar-bg\"><div class=\"study-bar-fg\" style=\"width:"+pct+"%\"></div></div><div class=\"study-bar-lbl\">"+curH+"h of "+totalH+"h weekly study</div></div>"
+    +day.blocks.map(b=>tlBlock(b,false)).join("")
+    +"<div class=\"wk-summary\"><div class=\"section-head\" style=\"margin-bottom:9px\">Weekly Study Hours</div>"
+    +WKHRS.map(w=>{const a=w.d===STATE.schedDay;return "<div class=\"wk-sum-row\"><div class=\"wk-sum-day"+(a?" active":"")+"\">"+w.d+"</div><div class=\"wk-sum-bar-bg\"><div class=\"wk-sum-bar-fg"+(a?" active":"")+"\" style=\"width:"+(w.h/6*100).toFixed(0)+"%\"></div></div><div class=\"wk-sum-hrs\">"+w.h+"h</div></div>";}).join("")
+    +"<div class=\"wk-sum-total\"><span style=\"font-size:11px;color:var(--muted)\">Total weekly study</span><span style=\"font-size:14px;font-weight:700;color:#3B82F6\">"+totalH+"h + 1.5h audio</span></div></div></div>";
+}
+
+// ── PLAN VIEW ─────────────────────────────────────────
+function renderPlan(){
+  const wk=getWeekNum();
+  const wData=PLAN.find(w=>w.wk===STATE.planWk);
+  const ph=phaseOf(STATE.planWk);
+  const today=todayKey();
+  const ITEM_TYPES=[{t:"lc",icon:"💡",label:"LeetCode"},{t:"read",icon:"📖",label:"Read"},{t:"watch",icon:"▶️",label:"Watch"},{t:"listen",icon:"🎧",label:"Podcast"},{t:"practice",icon:"✍️",label:"Practice"},{t:"mock",icon:"🎯",label:"Mock"},{t:"review",icon:"🔁",label:"Review"},{t:"revisit",icon:"🔄",label:"Revision"}];
+
+  const weekTabs=PLAN.map(w=>{
+    const p=phaseOf(w.wk);const a=w.wk===STATE.planWk;const isCur=w.wk===wk;
+    const {done,total}=getWeekTotals(w.wk);
+    const allDone=total>0&&done===total;
+    return "<button class=\"wtab"+(a?" active":"")+(isCur&&!a?" current":"")+"\" onclick=\"setPlanWk("+w.wk+")\" style=\""+(a?"background:"+p.color+";border-color:"+p.color+";color:#fff":isCur?"border-color:"+p.color+";color:"+p.color:"")+"\">W"+w.wk+(allDone?"✓":isCur&&!a?"★":"")+"</button>";
+  }).join("");
+
+  const dates=weekDates(STATE.planWk);
+  const wkTotals=getWeekTotals(STATE.planWk);
+  const wkPct=wkTotals.total>0?Math.round(wkTotals.done/wkTotals.total*100):0;
+
+  let dayCards="";
+  if(wData){
+    dayCards=wData.days.map(dayData=>{
+      const key=STATE.planWk+"-"+dayData.day;
+      const isToday=dayData.day===today&&STATE.planWk===wk;
+      const isOpen=(key in STATE.openDays)?STATE.openDays[key]:isToday;
+      const dayType=(SCH[dayData.day]||{}).type||"wfh";
+      const tc=TYPE_C[dayType]||"#94A3B8";
+      const {done,total}=getDayTotals(STATE.planWk,dayData.day);
+      const allDone=total>0&&done===total;
+
+      const gDay=globalDayOf(STATE.planWk,dayData.day);
+      const revItems=getDailyRevision(gDay);
+
+      let bodyHtml="";
+      if(isOpen){
+        bodyHtml="<div class=\"day-body open\">";
+        dayData.sessions.forEach((s,si)=>{
+          bodyHtml+="<div class=\"session-name\">"+escH(s.name)+"<span class=\"session-time\"> · "+escH(s.time)+"</span></div>";
+          s.items.forEach((item,ii)=>{bodyHtml+=itemHtml(item,STATE.planWk,dayData.day,si,ii);});
+        });
+        if(revItems.length>0){
+          const {done:rd2,total:rt2}=getDayRevisionTotals(gDay);
+          bodyHtml+="<div class=\"session-name\" style=\"color:var(--t-revisit-c);display:flex;justify-content:space-between\">"
+            +"<span>🔄 Daily Revision</span><span>"+rd2+"/"+rt2+"</span></div>";
+          revItems.forEach((it,idx)=>{bodyHtml+=itemHtml(it,"REV",gDay,0,idx);});
+        }
+        bodyHtml+="</div>";
+      }
+
+      const progClass=allDone?" prog-done":"";
+      const progText=total>0?(allDone?"✓ All done":done+"/"+total):"";
+
+      return "<div class=\"day-card"+(isToday?" today":"")+(allDone?" all-done":"")+"\">"
+        +"<button class=\"day-header\" onclick=\"toggleDay('"+key+"')\">"
+        +"<div class=\"day-strip\" style=\"background:"+(isToday?tc:"var(--border)")+"\"></div>"
+        +"<div style=\"flex:1\">"
+        +"<div style=\"display:flex;align-items:center;gap:5px\">"
+        +"<span class=\"day-name\">"+dayData.day+"</span>"
+        +(isToday?"<span class=\"today-badge\">TODAY</span>":"")
+        +"<span class=\"type-chip\" style=\"color:"+tc+";background:"+tc+"18\">"+TYPE_L[dayType]+"</span>"
+        +"</div>"
+        +"<div class=\"day-meta\">"+dayData.sessions.reduce((a,s)=>a+s.items.length,0)+" items · "+dayData.sessions.length+" sessions"+(revItems.length>0?" · +"+revItems.length+" revision":"")+"</div>"
+        +"</div>"
+        +"<div class=\"day-right\">"
+        +(progText?"<div class=\"day-prog"+progClass+"\">"+progText+"</div>":"")
+        +"<span class=\"arrow"+(isOpen?" open":"")+"\">›</span>"
+        +"</div></button>"+bodyHtml+"</div>";
+    }).join("");
+  }
+
+  return "<div class=\"sticky-hd\">"
+    +"<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:6px\">"
+    +"<div style=\"font-size:15px;font-weight:700;color:var(--text)\">12-Week Prep Plan</div>"
+    +"<div style=\"font-size:11px;font-weight:600;color:"+ph.color+"\">Week "+STATE.planWk+": "+wkPct+"%</div>"
+    +"</div>"
+    +"<div style=\"display:flex;gap:2px;height:4px;border-radius:4px;overflow:hidden;margin-bottom:7px\">"
+    +PHASES.map(p=>"<div style=\"flex:"+p.wks.length+";background:"+p.color+";opacity:"+(p.wks.includes(STATE.planWk)?1:0.25)+"\"></div>").join("")
+    +"</div>"
+    +"<div class=\"week-tabs\">"+weekTabs+"</div></div>"
+    +"<div style=\"padding:10px 16px\">"
+    +"<div class=\"wh-card\">"
+    +"<div class=\"wh-phase-chip\" style=\"background:"+ph.color+"18;border:1px solid "+ph.color+"33\">"
+    +"<div class=\"phase-dot\" style=\"background:"+ph.color+"\"></div>"
+    +"<span style=\"font-size:11px;font-weight:600;color:"+ph.color+"\">"+ph.label+" — "+ph.name+"</span></div>"
+    +"<div class=\"wh-title\">"+(wData?escH(wData.title):"")+"</div>"
+    +(dates?"<div class=\"wh-dates\">📅 "+dates+"</div>":"")
+    +"<div class=\"milestone-box\" style=\"background:"+ph.color+"12;color:"+ph.color+"\">🏁 <span>"+(wData?escH(wData.milestone):"")+"</span></div>"
+    +"<div style=\"margin-top:8px\">"
+    +"<div style=\"display:flex;justify-content:space-between;margin-bottom:4px\">"
+    +"<span style=\"font-size:10px;font-weight:600;color:var(--muted)\">Week progress</span>"
+    +"<span style=\"font-size:10px;font-weight:700;color:"+ph.color+"\">"+wkTotals.done+"/"+wkTotals.total+" items</span>"
+    +"</div>"
+    +"<div style=\"background:var(--border);border-radius:6px;height:6px;overflow:hidden\">"
+    +"<div style=\"height:100%;border-radius:6px;background:"+ph.color+";width:"+wkPct+"%\"></div></div>"
+    +"</div></div>"
+    +dayCards
+    +"<div class=\"legend\"><div class=\"section-head\">Legend — tap ✍️ items to check off</div><div class=\"legend-grid\">"
+    +ITEM_TYPES.map(it=>"<div class=\"leg-chip\" style=\"background:var(--t-"+it.t+"-bg)\"><span style=\"font-size:11px\">"+it.icon+"</span><span class=\"leg-lbl\" style=\"color:var(--t-"+it.t+"-c)\">"+it.label+"</span></div>").join("")
+    +"</div></div></div>";
+}
+
+// ── REDO VIEW ─────────────────────────────────────────
+function renderRedo(){
+  const rows=[];
+  PLAN.forEach(wData=>{
+    wData.days.forEach(dayData=>{
+      dayData.sessions.forEach((s,si)=>{
+        s.items.forEach((item,ii)=>{
+          const key=wData.wk+"_"+dayData.day+"_"+si+"_"+ii;
+          if(item.type==="lc" && STATE.redo[key]){
+            rows.push({key,item,wk:wData.wk,day:dayData.day});
+          }
+        });
+      });
+    });
+  });
+  const count=rows.length;
+  let body="";
+  if(count===0){
+    body="<div style=\"padding:40px 20px;text-align:center;color:var(--muted);font-size:13px\">No problems flagged for redo right now.<br>Tap the 🔁 icon on any DSA item to flag it here.</div>";
+  } else {
+    body=rows.map(r=>{
+      const title=r.item.url
+        ?"<a href=\""+r.item.url+"\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--t-lc-c)\">"+escH(r.item.p)+"</a>"
+        :"<span style=\"color:var(--t-lc-c)\">"+escH(r.item.p)+"</span>";
+      const note=r.item.n?"<div class=\"item-note\">"+escH(r.item.n)+"</div>":"";
+      return "<div class=\"item-row\">"
+        +"<div class=\"item-icon\" style=\"background:var(--t-lc-bg)\">💡</div>"
+        +"<div class=\"item-body\"><div class=\"item-title\">"+title+"</div>"
+        +"<div style=\"font-size:10px;color:var(--muted);margin-top:2px\">Week "+r.wk+" · "+r.day+"</div>"
+        +note+"</div>"
+        +"<button class=\"chk\" style=\"color:#10B981;border-color:#10B981\" onclick=\"resolveRedo('"+r.key+"');event.stopPropagation()\" title=\"Mark resolved\">✓</button>"
+        +"</div>";
+    }).join("");
+  }
+  return "<div class=\"sticky-hd\"><div style=\"display:flex;justify-content:space-between;align-items:center\">"
+    +"<div style=\"font-size:16px;font-weight:700;color:var(--text)\">Redo Queue</div>"
+    +"<div style=\"background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.2);border-radius:10px;padding:4px 10px;font-size:12px;font-weight:600;color:#EC4899\">🔁 "+count+"</div></div></div>"
+    +"<div style=\"padding:12px 16px 0;font-size:11px;color:var(--muted)\">DSA problems flagged for a redo. Solve it again, then mark it resolved here.</div>"
+    +"<div style=\"padding:0 16px\">"+body+"</div>";
+}
+
+// ── PROGRESS VIEW ─────────────────────────────────────
+function renderProgress(){
+  const {total,done}=getTotals();
+  const pct=total>0?Math.round(done/total*100):0;
+  const wk=getWeekNum();
+  const left=daysLeft();
+
+  // SVG progress ring
+  const r=72,cx=90,cy=90,circ=2*Math.PI*r;
+  const dash=pct/100*circ;
+  const ring="<svg class=\"prog-ring\" viewBox=\"0 0 180 180\">"
+    +"<circle cx=\""+cx+"\" cy=\""+cy+"\" r=\""+r+"\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"10\"/>"
+    +"<circle cx=\""+cx+"\" cy=\""+cy+"\" r=\""+r+"\" fill=\"none\" stroke=\"#10B981\" stroke-width=\"10\" stroke-linecap=\"round\""
+    +" stroke-dasharray=\""+dash.toFixed(1)+" "+circ.toFixed(1)+"\""
+    +" transform=\"rotate(-90 "+cx+" "+cy+")\"/>"
+    +"<text x=\""+cx+"\" y=\""+(cy-10)+"\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"800\" fill=\"var(--text)\">"+pct+"%</text>"
+    +"<text x=\""+cx+"\" y=\""+(cy+14)+"\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--muted)\">Complete</text>"
+    +"<text x=\""+cx+"\" y=\""+(cy+32)+"\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--soft)\" font-weight=\"600\">"+done+"/"+total+" items</text>"
+    +"</svg>";
+
+  // Motivation
+  const msgs=[
+    {min:0,max:0,msg:"The journey starts today. One item at a time — steady reps compound.",sub:"You've got 12 weeks. Start now."},
+    {min:1,max:12,msg:"Strong start. Momentum is the hardest thing to build and you already have it.",sub:"Keep showing up every single day."},
+    {min:16,max:35,msg:"You're building real traction now. Most candidates haven't even started.",sub:"You're already ahead of the pack."},
+    {min:36,max:50,msg:"Approaching the halfway mark. The hard part isn't starting — it's continuing. You're doing it.",sub:"Every checked box is a problem you won't see for the first time in the interview."},
+    {min:51,max:70,msg:"Past the halfway mark. Google interviews are starting to feel less abstract, aren't they?",sub:"The work is working. Trust the process."},
+    {min:71,max:85,msg:"The finish line is visible. Every review session now is compounding everything before it.",sub:"Your wife's $120K, your $133K — that's a life you're about to upgrade significantly."},
+    {min:86,max:99,msg:"Almost there. The interview is not far off. You're more ready than you feel.",sub:"One last push. Trust everything you've built."},
+    {min:100,max:100,msg:"100% complete. Every single item. You've done the work.",sub:"Now go show them what you're made of. 🚀"},
+  ];
+  const m=msgs.find(m=>pct>=m.min&&pct<=m.max)||msgs[0];
+
+  // Revision progress (separate metric)
+  const {total:revTotal,done:revDone}=getRevisionTotals();
+  const revPct=revTotal>0?Math.round(revDone/revTotal*100):0;
+
+  // Phase bars
+  const phaseBars=PHASES.map(ph=>{
+    const {total:pt,done:pd}=getPhaseTotals(ph.id);
+    const ppct=pt>0?Math.round(pd/pt*100):0;
+    return "<div class=\"phase-prog-row\">"
+      +"<div class=\"phase-prog-label\" style=\"color:"+ph.color+"\">"+ph.label+"</div>"
+      +"<div class=\"phase-prog-bar-bg\"><div class=\"phase-prog-bar-fg\" style=\"width:"+ppct+"%;background:"+ph.color+"\"></div></div>"
+      +"<div class=\"phase-prog-pct\" style=\"color:"+ph.color+"\">"+ppct+"%</div>"
+      +"</div>";
+  }).join("");
+
+  // Week grid
+  const wkCells=PLAN.map(w=>{
+    const ph=phaseOf(w.wk);
+    const {total:wt,done:wd}=getWeekTotals(w.wk);
+    const wpct=wt>0?Math.round(wd/wt*100):0;
+    const opacity=wpct===0?0:wpct<25?0.15:wpct<50?0.3:wpct<75?0.5:wpct<100?0.7:0.9;
+    const bg=wpct===0?"var(--card)":ph.color;
+    const textC=wpct>60?("#fff"):ph.color;
+    const isCur=w.wk===wk;
+    const label=wpct===100?"✓":wpct+"%";
+    return "<div class=\"wk-cell"+(isCur?" current-wk":"")+"\" onclick=\"goPlan("+w.wk+")\" "
+      +"style=\"background:"+(wpct===0?"var(--card)":ph.color+(Math.round(opacity*255).toString(16).padStart(2,'0')))+";border-color:"+(isCur?ph.color:"transparent")+";color:"+(wpct===0?"var(--muted)":wpct>60?"#fff":ph.color)+"\">"
+      +"<div class=\"wk-cell-num\">W"+w.wk+"</div>"
+      +"<div class=\"wk-cell-pct\">"+label+"</div>"
+      +"</div>";
+  }).join("");
+
+  return "<div class=\"prog-hero\">"
+    +"<div style=\"font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px\">Your Progress</div>"
+    +"<div class=\"prog-ring-wrap\">"+ring+"</div>"
+    +"<div class=\"prog-stats\">"
+    +(wk?"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#3B82F6\">W"+wk+"/12</div><div class=\"prog-stat-lbl\">Current Week</div></div>":"")
+    +(left!==null?"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#F59E0B\">"+left+"</div><div class=\"prog-stat-lbl\">Days Left</div></div>":"")
+    +"<div class=\"prog-stat\"><div class=\"prog-stat-num\" style=\"color:#10B981\">"+done+"</div><div class=\"prog-stat-lbl\">Items Done</div></div>"
+    +"</div></div>"
+    +"<div class=\"motivation-card\">"
+    +"<div class=\"motivation-text\">\""+m.msg+"\"</div>"
+    +"<div class=\"motivation-sub\">"+m.sub+"</div>"
+    +"</div>"
+    +"<div class=\"prog-section\"><div style=\"background:var(--card);border-radius:11px;border:1px solid var(--t-revisit-c)33;padding:12px 14px\">"
+    +"<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px\">"
+    +"<div style=\"font-size:12px;font-weight:700;color:var(--t-revisit-c)\">🔄 Revision Progress</div>"
+    +"<div style=\"font-size:12px;font-weight:700;color:var(--t-revisit-c)\">"+revDone+"/"+revTotal+" · "+revPct+"%</div>"
+    +"</div>"
+    +"<div style=\"background:var(--border);border-radius:6px;height:7px;overflow:hidden\">"
+    +"<div style=\"height:100%;border-radius:6px;background:var(--t-revisit-c);width:"+revPct+"%\"></div></div>"
+    +"<div style=\"font-size:10px;color:var(--muted);margin-top:6px\">Tracked separately from your main plan — daily LeetCode + Google-tagged revivals, Days 3–70</div>"
+    +"</div></div>"
+    +"<div class=\"prog-section\"><div class=\"prog-section-title\">Phase Breakdown</div>"+phaseBars+"</div>"
+    +"<div class=\"prog-section\"><div class=\"prog-section-title\">Week-by-Week — tap to navigate</div><div class=\"wk-grid\">"+wkCells+"</div></div>"
+    +"<div style=\"margin:12px 16px 0;background:var(--card);border-radius:11px;border:1px solid var(--border);padding:11px 13px\">"
+    +"<div class=\"section-head\" style=\"margin-bottom:8px\">Detailed Week Progress</div>"
+    +PLAN.map(w=>{
+      const ph=phaseOf(w.wk);
+      const {total:wt,done:wd}=getWeekTotals(w.wk);
+      const wpct=wt>0?Math.round(wd/wt*100):0;
+      const isCur=w.wk===wk;
+      return "<div style=\"display:flex;align-items:center;gap:8px;margin-bottom:7px;cursor:pointer\" onclick=\"goPlan("+w.wk+")\">"
+        +"<div style=\"width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;background:"+(isCur?ph.color:wpct===100?"rgba(16,185,129,0.15)":"var(--border)")+";color:"+(isCur?"#fff":wpct===100?"#10B981":"var(--muted)")+";flex-shrink:0\">"+(wpct===100?"✓":"W"+w.wk)+"</div>"
+        +"<div style=\"flex:1;min-width:0\">"
+        +"<div style=\"font-size:11px;font-weight:600;color:"+(isCur?"var(--text)":"var(--soft)")+"\">"+escH(w.title)+"</div>"
+        +"<div style=\"background:var(--border);border-radius:4px;height:4px;overflow:hidden;margin-top:4px\">"
+        +"<div style=\"height:100%;border-radius:4px;background:"+ph.color+";width:"+wpct+"%\"></div></div>"
+        +"</div>"
+        +"<div style=\"font-size:11px;font-weight:700;color:"+ph.color+";flex-shrink:0;width:32px;text-align:right\">"+wpct+"%</div>"
+        +"</div>";
+    }).join("")
+    +"</div>";
+}
+
+// ── SETTINGS VIEW ─────────────────────────────────────
+function renderSettings(){
+  const wk=getWeekNum();const sd=STATE.startDate;
+  let dateRows="";
+  if(sd&&wk){
+    dateRows=PLAN.map(w=>{
+      const ph=phaseOf(w.wk);const isCur=w.wk===wk;const isPast=w.wk<wk;
+      return "<div class=\"date-row\" style=\"opacity:"+(isPast?0.45:1)+"\">"
+        +"<div style=\"display:flex;align-items:center;gap:7px\">"
+        +"<div class=\"date-wk-badge\" style=\"background:"+(isCur?ph.color:isPast?"rgba(16,185,129,0.15)":"var(--card)")+";color:"+(isCur?"#fff":isPast?"#10B981":"var(--muted)")+"\">"+(isPast?"✓":"W"+w.wk)+"</div>"
+        +"<span style=\"font-size:11px;color:"+(isCur?"var(--text)":"var(--soft)")+"\">"+escH(w.title)+"</span>"
+        +"</div>"
+        +"<span style=\"font-size:10px;color:var(--muted);flex-shrink:0;margin-left:6px\">"+weekDates(w.wk)+"</span>"
+        +"</div>";
+    }).join("");
+  }
+  return "<div style=\"padding:22px 16px\">"
+    +"<div style=\"font-size:19px;font-weight:700;color:var(--text);margin-bottom:4px\">Settings</div>"
+    +"<div style=\"font-size:12px;color:var(--muted);margin-bottom:18px\">Set your prep start date and the whole plan adjusts automatically.</div>"
+    +"<div class=\"settings-card\">"
+    +"<div class=\"field-label\">Prep Start Date</div>"
+    +"<input class=\"settings-input\" type=\"date\" id=\"startInput\" value=\""+(sd||"")+"\" onchange=\"updateDateHint()\">"
+    +"<div class=\"field-hint\" id=\"dateHint\">"+(wk?"Currently in Week "+wk+" of 12":sd?"Outside 12-week window":"")+"</div>"
+    +"<button class=\"big-btn\" id=\"saveDateBtn\" style=\"background:#3B82F6\" onclick=\"saveDate()\">Save Start Date</button>"
+    +"</div>"
+    +(sd&&wk?"<div class=\"settings-card\"><div class=\"field-label\">Adjusted Plan Dates</div>"+dateRows+"</div>":"")
+    +"<div class=\"settings-card\">"
+    +"<div class=\"field-label\">💾 Backup & Restore</div>"
+    +"<div class=\"field-hint\" style=\"margin-top:0;margin-bottom:11px\">Progress lives in this browser only. Copy a backup code and save it somewhere safe (Notes, Google Keep) so you never lose it if the browser data ever clears.</div>"
+    +"<button class=\"big-btn\" id=\"copyBackupBtn\" style=\"background:#3B82F6;margin-top:0\" onclick=\"copyBackup()\">📋 Copy Backup Code</button>"
+    +"<div style=\"margin-top:14px\">"
+    +"<div class=\"field-label\">Restore from a Backup Code</div>"
+    +"<textarea id=\"restoreInput\" class=\"settings-input\" style=\"min-height:70px;font-family:monospace;font-size:12px;resize:vertical\" placeholder=\"Paste your backup code here\"></textarea>"
+    +"<button class=\"big-btn\" id=\"restoreBtn\" style=\"background:#10B981\" onclick=\"restoreBackup()\">Restore Progress</button>"
+    +"</div>"
+    +"</div>"
+    +"<div class=\"settings-card\">"
+    +"<div class=\"field-label\">🗑️ Start Fresh</div>"
+    +"<div class=\"field-hint\" style=\"margin-top:0;margin-bottom:11px\">Wipes all checked progress on every device and clears the start date, so you can begin a brand-new prep session. This cannot be undone — copy a backup code above first if you might want this progress back.</div>"
+    +"<button class=\"big-btn\" id=\"startFreshBtn\" style=\"background:#DC2626\" onclick=\"startFresh()\">🗑️ Start Fresh</button>"
+    +"</div>"
+    +"<div class=\"info-box\">💡 Trigger to reactivate System Design + Projects at full depth: clearing a first-round screen with any company.</div>"
+    +"</div>";
+}
+
+function copyBackup(){
+  const payload=JSON.stringify({startDate:STATE.startDate,checked:STATE.checked,redo:STATE.redo,theme:STATE.theme});
+  const code=btoa(unescape(encodeURIComponent(payload)));
+  const btn=document.getElementById("copyBackupBtn");
+  const showResult=(ok)=>{
+    if(!btn)return;
+    btn.textContent=ok?"✓ Copied! Paste it somewhere safe":"Copy failed — long-press to select below";
+    btn.style.background=ok?"#10B981":"#DC2626";
+    setTimeout(()=>{btn.textContent="📋 Copy Backup Code";btn.style.background="#3B82F6";},2500);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(code).then(()=>showResult(true)).catch(()=>showResult(false));
+  } else {
+    showResult(false);
+  }
+}
+
+function restoreBackup(){
+  const ta=document.getElementById("restoreInput");
+  const btn=document.getElementById("restoreBtn");
+  const code=ta?ta.value.trim():"";
+  if(!code)return;
+  try{
+    const payload=JSON.parse(decodeURIComponent(escape(atob(code))));
+    if(!payload||typeof payload.checked!=="object")throw new Error("bad shape");
+    STATE.checked=payload.checked||{};
+    STATE.redo=payload.redo||{};
+    if(payload.startDate)STATE.startDate=payload.startDate;
+    if(payload.theme){STATE.theme=payload.theme;document.documentElement.setAttribute("data-theme",STATE.theme);document.getElementById("theme-btn").textContent=STATE.theme==="dark"?"☀️":"🌙";localStorage.setItem("ppTheme",STATE.theme);}
+    localStorage.setItem("ppChecked",JSON.stringify(STATE.checked));
+    localStorage.setItem("ppRedo",JSON.stringify(STATE.redo));
+    localStorage.setItem("ppStart",STATE.startDate);
+    queueGhSync();
+    if(btn){btn.textContent="✓ Restored!";btn.style.background="#10B981";setTimeout(()=>{btn.textContent="Restore Progress";},2000);}
+    const wk=getWeekNum();if(wk)STATE.planWk=wk;
+    updateHeader();render();
+  }catch(e){
+    if(btn){btn.textContent="✗ Invalid code — check and try again";btn.style.background="#DC2626";setTimeout(()=>{btn.textContent="Restore Progress";btn.style.background="#10B981";},2500);}
+  }
+}
+
+function startFresh(){
+  const ok = confirm("This will permanently erase ALL checked progress and clear your start date on every synced device. This cannot be undone. Continue?");
+  if(!ok)return;
+  STATE.checked = {};
+  STATE.redo = {};
+  STATE.startDate = "";
+  STATE.openDays = {};
+  STATE.planWk = 1;
+  localStorage.setItem("ppChecked", "{}");
+  localStorage.setItem("ppRedo", "{}");
+  localStorage.setItem("ppStart", "");
+  queueGhSync();
+  const btn=document.getElementById("startFreshBtn");
+  if(btn){btn.textContent="✓ Wiped — set a new start date above";setTimeout(()=>{btn.textContent="🗑️ Start Fresh";},3000);}
+  updateHeader();render();
+}
+
+function updateDateHint(){
+  const v=document.getElementById("startInput")?.value;if(!v)return;
+  const s=new Date(v);s.setHours(0,0,0,0);const t=new Date();t.setHours(0,0,0,0);
+  const diff=Math.floor((t-s)/(7*86400000));const wk=diff+1;
+  const hint=document.getElementById("dateHint");
+  if(hint)hint.textContent=(wk>=1&&wk<=12)?"Currently in Week "+wk+" of 12":"Outside 12-week window — check your dates";
+}
+function saveDate(){
+  const v=document.getElementById("startInput")?.value;if(!v)return;
+  STATE.startDate=v;localStorage.setItem("ppStart",v);
+  queueGhSync();
+  const btn=document.getElementById("saveDateBtn");
+  if(btn){btn.textContent="✓ Saved!";btn.style.background="#10B981";setTimeout(()=>{btn.textContent="Save Start Date";btn.style.background="#3B82F6";},2000);}
+  const wk=getWeekNum();if(wk){STATE.planWk=wk;}
+  updateHeader();render();
+}
+
+// ── MAIN RENDER ───────────────────────────────────────
+function render(){
+  let html="";
+  if(STATE.tab==="today")html=renderToday();
+  else if(STATE.tab==="schedule")html=renderSchedule();
+  else if(STATE.tab==="plan")html=renderPlan();
+  else if(STATE.tab==="redo")html=renderRedo();
+  else if(STATE.tab==="progress")html=renderProgress();
+  else if(STATE.tab==="settings")html=renderSettings();
+  document.getElementById("content").innerHTML=html;
+  if(STATE.tab==="plan")scrollWkTab(STATE.planWk);
+}
+
+// ── INIT ──────────────────────────────────────────────
+function autoCheckPastDays(){
+  const hadSavedProgress = localStorage.getItem("ppChecked") !== null;
+  if(hadSavedProgress) return;
+  if(!STATE.startDate) return;
+  const start = parseLocalDate(STATE.startDate);
+  start.setHours(0,0,0,0);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  PLAN.forEach(wData=>{
+    wData.days.forEach(dayData=>{
+      const dayIdx = DAY_ORDER.indexOf(dayData.day);
+      const dayDate = new Date(start);
+      dayDate.setDate(start.getDate() + (wData.wk-1)*7 + dayIdx);
+      if(dayDate < today){
+        dayData.sessions.forEach((s,si)=>{
+          s.items.forEach((item,ii)=>{
+            STATE.checked[wData.wk+"_"+dayData.day+"_"+si+"_"+ii] = true;
+          });
+        });
+      }
+    });
+  });
+  localStorage.setItem("ppChecked", JSON.stringify(STATE.checked));
+}
+autoCheckPastDays();
+const initWk=getWeekNum();
+if(initWk)STATE.planWk=initWk;
+updateHeader();render();
+ghInit();
+</script>
+</body>
+</html>
