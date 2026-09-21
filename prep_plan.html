@@ -226,7 +226,7 @@ a{text-decoration:none}
   <div id="topbar">
     <div class="tb-row">
       <div>
-        <div class="tb-title">Prep Plan</div>
+        <div class="tb-title">Infra Interview Prep</div>
         <div class="tb-sub" id="tb-sub">Set start date in Settings</div>
       </div>
       <div class="tb-right">
@@ -642,7 +642,7 @@ function weekDates(wkNum){
 }
 function daysLeft(){
   if(!STATE.startDate)return null;
-  const end=parseLocalDate(STATE.startDate);end.setDate(end.getDate()+84);
+  const end=parseLocalDate(STATE.startDate);end.setDate(end.getDate()+56);
   const t=new Date();t.setHours(0,0,0,0);
   return Math.max(0,Math.ceil((end-t)/86400000));
 }
