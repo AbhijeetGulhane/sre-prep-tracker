@@ -890,6 +890,17 @@ function renderToday(){
       planHtml+="<div class=\"session-name\">"+escH(s.name)+"<span class=\"session-time\"> · "+escH(s.time)+"</span></div>";
       s.items.forEach((item,ii)=>{planHtml+=itemHtml(item,wk,key,si,ii);});
     });
+    const gDay=globalDayOf(wk,key);
+    const revItems=getDailyRevision(gDay);
+    if(revItems.length>0){
+      const {done:rd2,total:rt2}=getDayRevisionTotals(gDay);
+      planHtml+="<div class=\"session-name\" style=\"color:var(--t-revisit-c);display:flex;justify-content:space-between\">"
+        +"<span>🔄 Daily Revision</span><span>"+rd2+"/"+rt2+"</span></div>";
+      revItems.forEach((it,idx)=>{planHtml+=itemHtml(it,"REV",gDay,0,idx);});
+    }
+    if(planDay.sessions.length===0&&revItems.length===0){
+      planHtml+="<div class=\"session-name\">😌 Rest day — no prep today. Recovery is part of the plan.</div>";
+    }
     planHtml+="</div>";
   }
 
