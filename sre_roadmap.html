@@ -142,7 +142,7 @@ a{color:var(--accent);text-decoration:none}
 // One flat list. Each task: wk, day, p (pillar), slot, title, and optional
 // min (minutes), d (E/M/H), kind (cold/learn/variant/timed/revisit/base), note, url, lc (true = DSA problem, gets a 🔁 button).
 // IDs are derived from week + day + title. If you rename a task later, its tick resets.
-// Step 2 adds Weeks 3-16 here.
+// Weeks 3-5 loaded. Weeks 6-16 arrive in Step 2b/2c.
 const PILLARS={
   dsa:{n:"DSA & scripting",i:"💻"},design:{n:"System design",i:"🏗️"},linux:{n:"Linux & storage",i:"🐧"},
   net:{n:"Networking",i:"🌐"},cloud:{n:"Cloud & K8s",i:"☁️"},fleet:{n:"fleetguard",i:"🛡️"},misc:{n:"Mocks & admin",i:"🎯"}
@@ -277,6 +277,163 @@ add(2,"Sun","misc","Review","Weekly review: what got done, what slipped, what ch
 add(2,"Sun","misc","Review","Draft one behavioral story in STAR with numbers: the user-first story, v1",{min:15});
 
 function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+// ── WEEK 3 · Oct 26 – Nov 1 · graphs ───────────────────────────────────
+// Mon
+lc(3,"Mon","Morning",733,"Flood Fill","flood-fill","E",10,"learn","DFS/BFS from the start cell; recolor and skip cells that already have the new color.");
+lc(3,"Mon","Morning",200,"Number of Islands","number-of-islands","M",30,"learn","Scan the grid; on each unvisited '1' run DFS/BFS to sink the island and count++.");
+lc(3,"Mon","Morning",695,"Max Area of Island","max-area-of-island","M",15,"variant","Same traversal; return the size of each component and keep the max.");
+lc(3,"Mon","Morning",133,"Clone Graph","clone-graph","M",30,"learn","HashMap old→new; copy the node on first visit, then wire up neighbors recursively.");
+add(3,"Mon","linux","Evening","Read OSTEP Ch 39–40: files, directories and file-system implementation",{min:30,url:"https://pages.cs.wisc.edu/~remzi/OSTEP/",note:"Inodes, data blocks, directories as files, hard vs symbolic links."});
+add(3,"Mon","linux","Evening","Skim man pages: inode(7), mount(8), fstab(5)",{min:15,url:"https://man7.org/linux/man-pages/man7/inode.7.html"});
+add(3,"Mon","linux","Evening","Answer aloud: df says 100% but du adds up to far less — name 3 causes",{min:15,note:"Deleted-but-open files, reserved blocks, a mount hiding files underneath."});
+// Tue
+lc(3,"Tue","Morning",994,"Rotting Oranges","rotting-oranges","M",30,"learn","Multi-source BFS: seed the queue with every rotten orange; the number of levels is the minutes.");
+lc(3,"Tue","Morning",417,"Pacific Atlantic Water Flow","pacific-atlantic-water-flow","M",30,"learn","Search inward from each ocean's border; the answer is the cells reached from both.");
+lc(3,"Tue","Morning",130,"Surrounded Regions","surrounded-regions","M",15,"variant","Mark the O's connected to the border as safe; flip every other O.");
+add(3,"Tue","net","Evening","Read HPBN Ch 4: Transport Layer Security (TLS)",{min:30,url:"https://hpbn.co/transport-layer-security-tls/",note:"Handshake round trips, session resumption, certificate chain."});
+add(3,"Tue","net","Evening","Read howdns.works end to end",{min:15,url:"https://howdns.works/",note:"Resolver, root, TLD, authoritative, caching and TTL."});
+add(3,"Tue","net","Evening","Drill: dig +trace example.com and name every hop and what it returned",{min:15});
+// Wed
+lc(3,"Wed","Morning",207,"Course Schedule","course-schedule","M",30,"learn","Detect a cycle in a directed graph: Kahn's algorithm (indegree) or DFS with 3 states.");
+lc(3,"Wed","Morning",210,"Course Schedule II","course-schedule-ii","M",15,"variant","Same topological sort; return the order instead of a boolean.");
+lc(3,"Wed","Morning",684,"Redundant Connection","redundant-connection","M",30,"learn","Union-find: the first edge whose endpoints already share a root is the answer.");
+add(3,"Wed","design","Evening","Timed design: distributed cache (45 min, blank page, out loud)",{min:45,note:"Eviction, consistent hashing, replication, stampede, invalidation. Capacity math with units."});
+add(3,"Wed","design","Evening","Self-score the design and list the gaps",{min:15});
+// Thu
+lc(3,"Thu","Morning",547,"Number of Provinces","number-of-provinces","M",15,"variant","Union-find or DFS over the adjacency matrix; count components.");
+lc(3,"Thu","Morning",127,"Word Ladder","word-ladder","H",30,"learn","BFS over words; bucket by wildcard patterns like h*t to find neighbors fast.");
+lc(3,"Thu","Morning",785,"Is Graph Bipartite?","is-graph-bipartite","M",15,"variant","BFS/DFS 2-coloring; a conflict means an odd cycle.");
+lc(3,"Thu","Morning",797,"All Paths From Source to Target","all-paths-from-source-to-target","M",15,"variant","DFS with a path list on a DAG; copy the path when you reach the target.");
+add(3,"Thu","cloud","Evening","Read k8s docs: Service — ClusterIP, NodePort, LoadBalancer and EndpointSlices",{min:20,url:"https://kubernetes.io/docs/concepts/services-networking/service/"});
+add(3,"Thu","cloud","Evening","Read k8s docs: DNS for Services and Pods",{min:15,url:"https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/"});
+add(3,"Thu","cloud","Evening","Answer aloud: trace a pod → ClusterIP request. Who rewrites it? What if kube-proxy dies? Why does a failed readiness probe drop the endpoint?",{min:25});
+// Fri
+lc(3,"Fri","Morning",153,"Find Minimum in Rotated Sorted Array (revisit)","find-minimum-in-rotated-sorted-array","M",15,"revisit","Compare mid to right; the min is in the unsorted half.");
+lc(3,"Fri","Morning",102,"Binary Tree Level Order Traversal (revisit)","binary-tree-level-order-traversal","M",15,"revisit","BFS with a queue; process level by level using the queue size.");
+add(3,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30,note:"Nothing flagged? Re-do the two problems that felt slowest."});
+add(3,"Fri","dsa","Scripting","awk: top 10 slowest URLs from an nginx access log (request_time field)",{min:30,note:"Then redo it once from a blank file with the clock running."});
+add(3,"Fri","fleet","Evening","Read /proc/stat and write the CPU collector test fixtures",{min:30,note:"Fixtures first, collector tomorrow. CPU usage is a delta between two reads."});
+// Sat
+lc(3,"Sat","Timed set",542,"01 Matrix","01-matrix","M",35,"timed","Multi-source BFS from every 0; distances fill outward.");
+lc(3,"Sat","Timed set",743,"Network Delay Time","network-delay-time","M",35,"timed","Dijkstra with a min-heap; the answer is the max shortest distance (or -1).");
+lc(3,"Sat","Timed set",841,"Keys and Rooms","keys-and-rooms","M",35,"timed","DFS/BFS from room 0; true if every room is visited.");
+add(3,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(3,"Sat","linux","Lab","Lab: tail -f a log, rm it, find the deleted-but-open file with lsof +L1 and reclaim the space",{min:35});
+add(3,"Sat","linux","Lab","Lab: make an ext4 image on a loop device, mount it, exhaust inodes with tiny files, compare df and df -i",{min:35});
+add(3,"Sat","linux","Lab","Exit test: answer 'No space left on device but df shows free space' and the df/du mismatch",{min:20});
+add(3,"Sat","fleet","Build","Build the CPU collector from /proc/stat deltas + a Prometheus metric; fixtures green; commit",{min:75});
+add(3,"Sat","fleet","Build","README: list the collectors and metrics so far",{min:15});
+// Sun
+add(3,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:60,note:"Fully caught up? Re-do any problem you flagged 🔁."});
+add(3,"Sun","design","Evening","Redo the distributed-cache capacity chain from memory, with units, for two different number sets",{min:45});
+add(3,"Sun","design","Evening","Second pass on your weakest section: 30 min timed, 15 min self-score",{min:45});
+add(3,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+add(3,"Sun","misc","Review","Draft STAR story 2: cross-team influence, v1 with numbers",{min:15});
+
+// ── WEEK 4 · Nov 2–8 · heaps, intervals, greedy ────────────────────────
+// Mon
+lc(4,"Mon","Morning",703,"Kth Largest Element in a Stream","kth-largest-element-in-a-stream","E",30,"learn","Min-heap of size k; the root is the kth largest.");
+lc(4,"Mon","Morning",1046,"Last Stone Weight","last-stone-weight","E",15,"variant","Max-heap (negate values in Python); smash the top two repeatedly.");
+lc(4,"Mon","Morning",973,"K Closest Points to Origin","k-closest-points-to-origin","M",15,"variant","Max-heap of size k on squared distance, or quickselect.");
+add(4,"Mon","linux","Evening","Read OSTEP Ch 7–9: CPU scheduling, MLFQ and proportional share",{min:30,url:"https://pages.cs.wisc.edu/~remzi/OSTEP/",note:"Turnaround vs response time; what CFS is trying to be fair about."});
+add(4,"Mon","linux","Evening","Read Brendan Gregg: the USE method",{min:20,url:"https://www.brendangregg.com/usemethod.html",note:"Utilization, saturation, errors for every resource."});
+add(4,"Mon","linux","Evening","Read Brendan Gregg: Linux Load Averages — Solving the Mystery",{min:10,url:"https://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html"});
+// Tue
+lc(4,"Tue","Morning",215,"Kth Largest Element in an Array","kth-largest-element-in-an-array","M",15,"variant","Min-heap of size k, or quickselect for O(n) average.");
+lc(4,"Tue","Morning",621,"Task Scheduler","task-scheduler","M",30,"learn","Max-heap by count plus a cooldown queue; or the closed-form (maxCount-1)*(n+1)+ties.");
+lc(4,"Tue","Morning",295,"Find Median from Data Stream","find-median-from-data-stream","H",30,"learn","Two heaps: a max-heap for the lower half, a min-heap for the upper half; keep sizes within 1.");
+add(4,"Tue","net","Evening","Read HPBN: HTTP/2",{min:30,url:"https://hpbn.co/http2/",note:"Multiplexing, header compression, and what it does not fix (TCP head-of-line blocking)."});
+add(4,"Tue","net","Evening","Answer aloud: L4 vs L7 load balancing, consistent hashing, health checks, connection draining",{min:20});
+add(4,"Tue","net","Evening","Write down 5 distinct causes each for 502, 503 and 504 from a load balancer",{min:10});
+// Wed
+lc(4,"Wed","Morning",57,"Insert Interval","insert-interval","M",30,"learn","Add intervals ending before the new one, merge the overlapping ones, then add the rest.");
+lc(4,"Wed","Morning",56,"Merge Intervals","merge-intervals","M",15,"variant","Sort by start; extend the last merged interval while they overlap.");
+lc(4,"Wed","Morning",435,"Non-overlapping Intervals","non-overlapping-intervals","M",15,"variant","Sort by end; keep the earliest-ending interval, count the removals.");
+lc(4,"Wed","Morning",986,"Interval List Intersections","interval-list-intersections","M",15,"variant","Two pointers; intersect, then advance the one that ends first.");
+add(4,"Wed","design","Evening","Timed design: monitoring and alerting system (45 min, blank page, out loud)",{min:45,note:"Collection (pull vs push), TSDB, retention and downsampling, alert evaluation, noise, and who monitors the monitor."});
+add(4,"Wed","design","Evening","Self-score the design and list the gaps",{min:15});
+// Thu
+lc(4,"Thu","Morning",55,"Jump Game","jump-game","M",30,"learn","Track the farthest reachable index; fail if you hit an index beyond it.");
+lc(4,"Thu","Morning",45,"Jump Game II","jump-game-ii","M",15,"variant","Greedy BFS in windows: count a jump each time you pass the current window's end.");
+lc(4,"Thu","Morning",134,"Gas Station","gas-station","M",30,"learn","If total gas >= total cost a solution exists; restart the start index whenever the running tank goes negative.");
+add(4,"Thu","cloud","Evening","Read k8s docs: Pod lifecycle — probes and termination",{min:25,url:"https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/"});
+add(4,"Thu","cloud","Evening","Read k8s docs: Deployments — rolling update, maxSurge and maxUnavailable",{min:20,url:"https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"});
+add(4,"Thu","cloud","Evening","Answer aloud: a rolling update where readiness never passes; how SIGTERM, preStop and terminationGracePeriod interact",{min:15});
+// Fri
+lc(4,"Fri","Morning",200,"Number of Islands (revisit)","number-of-islands","M",15,"revisit","Scan the grid; DFS/BFS from each unvisited '1'.");
+lc(4,"Fri","Morning",207,"Course Schedule (revisit)","course-schedule","M",15,"revisit","Detect a cycle: Kahn's algorithm or 3-state DFS.");
+add(4,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
+add(4,"Fri","dsa","Scripting","Python: read a log file and print p50/p95/p99 latency per endpoint (no pandas)",{min:30,note:"Then redo it once from a blank file with the clock running."});
+add(4,"Fri","fleet","Evening","Write the disk collector fixtures (statfs numbers + /proc/diskstats lines)",{min:30});
+// Sat
+lc(4,"Sat","Timed set",692,"Top K Frequent Words","top-k-frequent-words","M",35,"timed","Count, then heap with a (-count, word) key so ties sort alphabetically.");
+lc(4,"Sat","Timed set",452,"Minimum Number of Arrows to Burst Balloons","minimum-number-of-arrows-to-burst-balloons","M",35,"timed","Sort by end; shoot at the end of the first balloon, skip everything it pops.");
+lc(4,"Sat","Timed set",763,"Partition Labels","partition-labels","M",35,"timed","Record each letter's last index; extend the current cut to the farthest last index seen.");
+add(4,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(4,"Sat","linux","Lab","Lab: run stress-ng --cpu 4 under nice 0 and nice 19, watch with top and pidstat, and explain the split",{min:35});
+add(4,"Sat","linux","Lab","Lab: produce a load average of 8 on 2 CPUs using CPU-bound (R) and IO-blocked (D) processes; read /proc/loadavg and explain the difference",{min:35});
+add(4,"Sat","linux","Lab","Exit test: answer 'load average is 20 but the CPU is idle — what is happening?'",{min:20});
+add(4,"Sat","fleet","Build","Build the disk collector + metric; fixtures green; commit",{min:75});
+add(4,"Sat","fleet","Build","Add a YAML config file for collector intervals and load it at startup",{min:15});
+// Sun
+add(4,"Sun","dsa","Mock","Coding mock #2 — 45 min coding + 15 min feedback (with your referrer or a peer)",{min:60,note:"Ask for a verdict (Strong No Hire … Strong Hire) and the top 2 fixes. If it falls through, self-mock 2 unseen mediums back to back, 35 min each."});
+add(4,"Sun","design","Evening","Redo the monitoring-system capacity chain from memory, with units, for two different number sets",{min:45});
+add(4,"Sun","design","Evening","Second pass on your weakest section: 30 min timed, 15 min self-score",{min:45});
+add(4,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+add(4,"Sun","misc","Review","Draft STAR story 3: a failure or mistake, v1 with numbers",{min:15});
+
+// ── WEEK 5 · Nov 9–15 · backtracking, 1-D dynamic programming ──────────
+// Mon
+lc(5,"Mon","Morning",78,"Subsets","subsets","M",30,"learn","Backtrack: at each index choose to include or skip; record the path at every node.");
+lc(5,"Mon","Morning",46,"Permutations","permutations","M",15,"variant","Backtrack with a used[] set; record when the path length equals n.");
+lc(5,"Mon","Morning",39,"Combination Sum","combination-sum","M",30,"learn","Backtrack with a start index so you can reuse an element but never go backwards.");
+add(5,"Mon","linux","Evening","Read OSTEP Ch 37–38: hard disk drives and RAID",{min:30,url:"https://pages.cs.wisc.edu/~remzi/OSTEP/",note:"Seek, rotation and transfer; RAID 0/1/4/5 capacity and failure tolerance."});
+add(5,"Mon","linux","Evening","Skim man pages: lvm(8), mdadm(8), iostat(1)",{min:20,url:"https://man7.org/linux/man-pages/",note:"Know what await and %util mean and why %util lies on SSDs."});
+add(5,"Mon","linux","Evening","Answer aloud: RAID 1/5/6/10 — failure tolerance and write penalty; what an LVM snapshot is",{min:10});
+// Tue
+lc(5,"Tue","Morning",40,"Combination Sum II","combination-sum-ii","M",15,"variant","Sort; skip duplicates at the same depth; each element used once.");
+lc(5,"Tue","Morning",79,"Word Search","word-search","M",30,"learn","DFS from every cell; mark visited in place and restore on backtrack.");
+lc(5,"Tue","Morning",131,"Palindrome Partitioning","palindrome-partitioning","M",30,"learn","Backtrack on cut positions; only continue when the prefix is a palindrome.");
+add(5,"Tue","net","Evening","Read HPBN: Building Blocks of UDP",{min:20,url:"https://hpbn.co/building-blocks-of-udp/",note:"Why UDP exists, NAT traversal, and what QUIC builds on it."});
+add(5,"Tue","net","Evening","Read tcp(7): backlog, retransmit and keepalive knobs, and the TIME_WAIT behavior",{min:25,url:"https://man7.org/linux/man-pages/man7/tcp.7.html"});
+add(5,"Tue","net","Evening","Drill: tcpdump -nn -i lo a 3-way handshake and a forced retransmit; annotate the flags and sequence numbers",{min:15});
+// Wed
+lc(5,"Wed","Morning",70,"Climbing Stairs","climbing-stairs","E",15,"learn","dp[i] = dp[i-1] + dp[i-2]; keep only the last two values.");
+lc(5,"Wed","Morning",746,"Min Cost Climbing Stairs","min-cost-climbing-stairs","E",15,"variant","dp[i] = cost[i] + min(dp[i-1], dp[i-2]); the answer is the min of the last two.");
+lc(5,"Wed","Morning",198,"House Robber","house-robber","M",30,"learn","dp[i] = max(dp[i-1], dp[i-2] + nums[i]).");
+lc(5,"Wed","Morning",213,"House Robber II","house-robber-ii","M",15,"variant","Circular: the max of robbing houses [0..n-2] and [1..n-1].");
+add(5,"Wed","design","Evening","Timed design: job scheduler / cron service (45 min, blank page, out loud)",{min:45,note:"Exactly-once vs at-least-once, leader election, missed runs, retries and backoff, and idempotency."});
+add(5,"Wed","design","Evening","Self-score the design and list the gaps",{min:15});
+// Thu
+lc(5,"Thu","Morning",322,"Coin Change","coin-change","M",30,"learn","dp[a] = 1 + min(dp[a - c]) over coins; unreachable stays at infinity.");
+lc(5,"Thu","Morning",300,"Longest Increasing Subsequence","longest-increasing-subsequence","M",30,"learn","O(n^2) dp first; then the patience-sorting O(n log n) with binary search.");
+lc(5,"Thu","Morning",647,"Palindromic Substrings","palindromic-substrings","M",15,"variant","Expand around each of the 2n-1 centers and count.");
+add(5,"Thu","cloud","Evening","Read AWS Well-Architected: the Reliability pillar overview",{min:30,url:"https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"});
+add(5,"Thu","cloud","Evening","Read k8s docs: Persistent Volumes and StorageClasses",{min:20,url:"https://kubernetes.io/docs/concepts/storage/persistent-volumes/"});
+add(5,"Thu","cloud","Evening","Answer aloud: a PVC stuck Pending, StatefulSet vs Deployment, and what happens to the data when the node dies",{min:10});
+// Fri
+lc(5,"Fri","Morning",56,"Merge Intervals (revisit)","merge-intervals","M",15,"revisit","Sort by start; extend the last merged interval while they overlap.");
+lc(5,"Fri","Morning",133,"Clone Graph (revisit)","clone-graph","M",15,"revisit","HashMap old→new; copy on first visit, wire neighbors recursively.");
+add(5,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
+add(5,"Fri","dsa","Scripting","bash: a safe log-rotation script (set -euo pipefail, trap cleanup, flock); clean under shellcheck",{min:30});
+add(5,"Fri","fleet","Evening","Write the TCP-state collector fixtures (/proc/net/tcp lines)",{min:30});
+// Sat
+lc(5,"Sat","Timed set",139,"Word Break","word-break","M",35,"timed","dp[i] = true if some j < i has dp[j] and s[j:i] is in the dictionary.");
+lc(5,"Sat","Timed set",152,"Maximum Product Subarray","maximum-product-subarray","M",35,"timed","Track both the running max and min product, since a negative can flip them.");
+lc(5,"Sat","Timed set",416,"Partition Equal Subset Sum","partition-equal-subset-sum","M",35,"timed","0/1 knapsack to total/2 with a boolean dp over sums, iterated downward.");
+add(5,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(5,"Sat","linux","Lab","Lab: build a RAID1 with mdadm on two loop devices, fail one, replace it and watch the resync",{min:40});
+add(5,"Sat","linux","Lab","Lab: LVM on loop devices — create PV/VG/LV, extend the LV, resize2fs online, take a snapshot",{min:40});
+add(5,"Sat","linux","Lab","Exit test: explain iostat await and %util on an SSD vs an HDD",{min:10});
+add(5,"Sat","fleet","Build","Build the TCP-state collector (ESTABLISHED, TIME_WAIT, CLOSE_WAIT counts) + metric; fixtures green; commit",{min:75});
+add(5,"Sat","fleet","Build","Run the agent on WSL, curl /metrics and paste the output into the README",{min:15,note:"All four collectors should now be live."});
+// Sun
+add(5,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:60,note:"Fully caught up? Re-do any problem you flagged 🔁."});
+add(5,"Sun","design","Evening","Redo the job-scheduler capacity chain from memory, with units, for two different number sets",{min:45});
+add(5,"Sun","design","Evening","Second pass on your weakest section: 30 min timed, 15 min self-score",{min:45});
+add(5,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+add(5,"Sun","misc","Review","Draft STAR story 4: a conflict or disagreement, v1 with numbers",{min:15});
+
 TASKS.forEach(function(t){t.id=t.id||(t.wk+t.day+"-"+slugify(t.title));});
 
 // ══ STATE ═════════════════════════════════════════════════════════════
@@ -372,7 +529,7 @@ function renderToday(){
   }
   var weekLoaded=TASKS.some(function(t){return t.wk===pos.wk;});
   if(!weekLoaded){
-    h+="<div class=\"empty\">Week "+pos.wk+" isn't loaded yet. Weeks 3–16 arrive in Step 2.</div>";
+    h+="<div class=\"empty\">Week "+pos.wk+" isn't loaded yet. Weeks 6–16 are still being written.</div>";
     return h;
   }
   if(!tasks.length){
@@ -404,7 +561,9 @@ const WEEKMETA={
   0:{t:"Baseline",m:"3 baselines logged · Week 2 mock booked · fleetguard repo created"},
   1:{t:"Arrays & hashing · two pointers · sliding window · stack",m:"Redo list cleared on Friday"},
   2:{t:"Binary search · linked lists · trees & BST",m:"Sunday: coding mock #1"},
-  4:{m:"Sunday: coding mock #2"},
+  3:{t:"Graphs · BFS/DFS, grids, topological sort, union-find",m:"Redo list cleared Friday · CPU collector working"},
+  4:{t:"Heaps · intervals · greedy",m:"Sunday: coding mock #2 · disk collector working"},
+  5:{t:"Backtracking · 1-D dynamic programming",m:"Redo list cleared Friday · fleetguard agent has 4 collectors"},
   6:{m:"Sunday: coding + behavioral mock #3 · DSA CHECKPOINT: 8 of 10 unseen mediums ≤35 min (fail = repeat Week 6)"},
   8:{m:"Sunday: system design mock"},
   10:{m:"Sunday: troubleshooting mock"},
@@ -472,7 +631,7 @@ function renderPlan(){
   var days=pw===0?["Thu","Fri","Sat","Sun"]:DORDER;
   var cards="";
   if(!wkTasks.length){
-    cards="<div class=\"empty\">Week "+pw+" tasks arrive in Step 2.</div>";
+    cards="<div class=\"empty\">Week "+pw+" tasks are still being written.</div>";
   }else days.forEach(function(dn){
     var dt=wkTasks.filter(function(t){return t.day===dn;});
     var key=pw+"-"+dn,isToday=cur.wk===pw&&cur.day===dn;
