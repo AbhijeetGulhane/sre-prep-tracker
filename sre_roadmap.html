@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
+<title>SRE Roadmap</title>
+<style>
+:root{
+  --bg:#F8F9FC;--surface:#FFFFFF;--card:#F1F5F9;--border:#E2E8F0;
+  --text:#0F172A;--soft:#475569;--muted:#94A3B8;--nav:#FFFFFF;--nav-b:#E2E8F0;
+  --input-bg:#F1F5F9;--shadow:0 1px 3px rgba(0,0,0,0.08);
+  --hero-a:#EFF6FF;--hero-b:#F5F3FF;--accent:#3B82F6;--ok:#10B981;--redo:#EC4899;
+  --p-dsa:#1D4ED8;--p-design:#BE185D;--p-linux:#B45309;--p-net:#0E7490;--p-cloud:#7C3AED;--p-fleet:#059669;--p-misc:#64748B;
+}
+[data-theme="dark"]{
+  --bg:#0A0F1E;--surface:#111827;--card:#1A2235;--border:#1E2D45;
+  --text:#F0F4FF;--soft:#94A3B8;--muted:#64748B;--nav:#0D1526;--nav-b:#1E2D45;
+  --input-bg:rgba(255,255,255,0.05);--shadow:0 1px 4px rgba(0,0,0,0.4);
+  --hero-a:#0D1B2A;--hero-b:rgba(139,92,246,0.15);
+  --p-dsa:#3B82F6;--p-design:#EC4899;--p-linux:#F59E0B;--p-net:#06B6D4;--p-cloud:#8B5CF6;--p-fleet:#10B981;--p-misc:#94A3B8;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden}
+button{font-family:inherit;cursor:pointer;border:none;outline:none;background:none;color:inherit}
+a{color:var(--accent);text-decoration:none}
+#app{max-width:480px;margin:0 auto}
+#topbar{background:var(--surface);border-bottom:1px solid var(--nav-b);padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center}
+.tb-title{font-size:17px;font-weight:800}
+.tb-sub{font-size:11px;color:var(--muted);margin-top:1px}
+.theme-btn{width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--border);font-size:15px}
+#content{padding-bottom:76px}
+#bottomnav{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:var(--nav);border-top:1px solid var(--nav-b);display:flex;z-index:100}
+.nav-btn{flex:1;padding:9px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.nav-icon{font-size:19px;opacity:.4}
+.nav-label{font-size:10px;color:var(--muted)}
+.nav-btn.active .nav-icon{opacity:1}
+.nav-btn.active .nav-label{color:var(--accent);font-weight:700}
+/* hero */
+.hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));padding:16px;border-bottom:1px solid var(--border)}
+.hero-top{display:flex;justify-content:space-between;align-items:center}
+.hero-date{font-size:12px;font-weight:500;color:var(--accent)}
+.hero-day{font-size:22px;font-weight:800;letter-spacing:-.4px;margin-top:2px}
+.arrows{display:flex;gap:6px}
+.arrow-btn{width:34px;height:34px;border-radius:50%;background:var(--surface);border:1px solid var(--border);font-size:18px;line-height:1}
+.hero-meta{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:12px;color:var(--soft)}
+.bar{flex:1;height:6px;border-radius:6px;background:var(--border);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--ok);border-radius:6px}
+.back-today{font-size:11px;font-weight:600;color:var(--accent);margin-top:8px}
+/* groups & tasks */
+.group{margin:14px 16px 0}
+.ghead{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.ghead .slot{font-weight:400;color:var(--muted);text-transform:none;letter-spacing:0}
+.task{display:flex;gap:9px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-left-width:3px;border-radius:10px;padding:9px 10px;margin-bottom:6px;box-shadow:var(--shadow)}
+.chk{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;margin-top:1px;font-size:12px;color:#fff;display:flex;align-items:center;justify-content:center}
+.chk.done{background:var(--ok);border-color:var(--ok)}
+.tmain{flex:1;min-width:0;cursor:pointer}
+.trow{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.ttitle{font-size:13px;font-weight:600;line-height:1.35;word-break:break-word}
+.task.isdone .ttitle{opacity:.4;text-decoration:line-through}
+.chip{font-size:10px;font-weight:700;padding:1px 5px;border-radius:5px;background:var(--card);color:var(--muted)}
+.chip.E{color:#059669}.chip.M{color:#B45309}.chip.H{color:#DC2626}
+.more{margin-left:auto;font-size:11px;color:var(--muted)}
+.det{margin-top:7px;font-size:11px;color:var(--soft);line-height:1.5;display:flex;flex-direction:column;gap:4px}
+.redo-btn{font-size:14px;opacity:.35;flex-shrink:0;margin-top:1px}
+.redo-btn.on{opacity:1}
+.empty{padding:40px 24px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}
+/* plan (old-tracker structure) */
+.sticky-hd{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:58px;z-index:9;padding:11px 16px 8px;box-shadow:var(--shadow)}
+.week-tabs{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.week-tabs::-webkit-scrollbar{display:none}
+.wtab{flex:0 0 auto;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);background:var(--card);border:1px solid var(--border)}
+.wtab.active{color:#fff;font-weight:700}
+.wh-card{background:var(--card);border-radius:11px;border:1px solid var(--border);padding:11px 13px;margin-bottom:9px;box-shadow:var(--shadow)}
+.wh-phase-chip{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:3px 9px;margin-bottom:5px}
+.phase-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.wh-title{font-size:16px;font-weight:800;letter-spacing:-.3px}
+.wh-dates{font-size:11px;color:var(--muted);margin-top:2px}
+.milestone-box{border-radius:7px;padding:5px 9px;margin-top:7px;display:flex;align-items:flex-start;gap:5px;font-size:11px;font-weight:600;line-height:1.4}
+.day-card{background:var(--surface);border:1px solid var(--border);border-radius:11px;margin-bottom:7px;overflow:hidden;box-shadow:var(--shadow)}
+.day-card.today{background:var(--card)}
+.day-card.all-done{border-color:rgba(16,185,129,0.4)}
+.day-header{display:flex;align-items:center;gap:9px;padding:10px 13px;width:100%;text-align:left}
+.day-strip{width:3px;border-radius:2px;align-self:stretch;min-height:26px;flex-shrink:0}
+.day-name{font-size:13px;font-weight:700}
+.day-meta{font-size:10px;color:var(--muted);margin-top:1px}
+.today-badge{font-size:9px;font-weight:700;padding:1px 5px;border-radius:6px;background:rgba(245,158,11,0.15);color:#B45309;margin-left:3px}
+[data-theme="dark"] .today-badge{background:rgba(245,158,11,0.2);color:#F59E0B}
+.day-right{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
+.day-prog{font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;background:var(--card);border:1px solid var(--border)}
+.day-prog.prog-done{background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);color:#059669}
+.arrow{color:var(--muted);font-size:16px;transition:transform .2s}
+.arrow.open{transform:rotate(90deg)}
+.day-body{padding:0 13px 8px;border-top:1px solid var(--border)}
+/* redo + settings */
+.page{padding:16px}
+.page h2{font-size:19px;font-weight:700}
+.page .sub{font-size:12px;color:var(--muted);margin:4px 0 14px}
+.rtask{display:flex;gap:9px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:7px}
+.rmeta{font-size:10px;color:var(--muted);margin-top:2px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:12px}
+.label{font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.input{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:9px;padding:11px 13px;color:var(--text);font-size:16px;color-scheme:light dark}
+.hint{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5}
+.big-btn{width:100%;padding:12px;border-radius:9px;font-size:14px;font-weight:700;color:#fff;margin-top:11px}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="topbar">
+    <div><div class="tb-title">SRE Roadmap</div><div class="tb-sub" id="tb-sub"></div></div>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">🌙</button>
+  </div>
+  <div id="content"></div>
+  <div id="bottomnav">
+    <button class="nav-btn active" id="nav-today" onclick="setTab('today')"><span class="nav-icon">🏠</span><span class="nav-label">Today</span></button>
+    <button class="nav-btn" id="nav-plan" onclick="setTab('plan')"><span class="nav-icon">🗓️</span><span class="nav-label">Plan</span></button>
+    <button class="nav-btn" id="nav-redo" onclick="setTab('redo')"><span class="nav-icon">🔁</span><span class="nav-label">Redo</span></button>
+    <button class="nav-btn" id="nav-settings" onclick="setTab('settings')"><span class="nav-icon">⚙️</span><span class="nav-label">Settings</span></button>
+  </div>
+</div>
+<script>
+// ══ PLAN DATA ═════════════════════════════════════════════════════════
+// One flat list. Each task: wk, day, p (pillar), slot, title, and optional
+// min (minutes), d (E/M/H), kind (cold/learn/variant/timed/revisit/base), note, url, lc (true = DSA problem, gets a 🔁 button).
+// IDs are derived from week + day + title. If you rename a task later, its tick resets.
+// Step 2 adds Weeks 3-16 here.
+const PILLARS={
+  dsa:{n:"DSA & scripting",i:"💻"},design:{n:"System design",i:"🏗️"},linux:{n:"Linux & storage",i:"🐧"},
+  net:{n:"Networking",i:"🌐"},cloud:{n:"Cloud & K8s",i:"☁️"},fleet:{n:"fleetguard",i:"🛡️"},misc:{n:"Mocks & admin",i:"🎯"}
+};
+const KIND={
+  base:"Baseline — 35 min, plain doc, no hints. Write down your time, hints needed and where you got stuck.",
+  cold:"Cold re-solve — aim for 10 min. Can't do it cold? Flag 🔁.",
+  learn:"Learn — 30 min cap. Stuck at 20 min: read the approach (not the code), then code it. Flag 🔁 if you needed the approach.",
+  variant:"Variant — 15 min cap. Apply the pattern from the learn problem.",
+  timed:"Timed — 35 min, narrated, plain doc, no hints. Missed it? Read the approach, re-solve cold within 2 days, flag 🔁.",
+  revisit:"Revisit — cold, 15 min cap. Stuck? Flag 🔁."
+};
+const TASKS=[];
+function add(wk,day,p,slot,title,o){TASKS.push(Object.assign({wk:wk,day:day,p:p,slot:slot,title:title},o||{}));}
+function lc(wk,day,slot,num,title,slug,d,min,kind,note){
+  add(wk,day,"dsa",slot,num+". "+title,{d:d,min:min,kind:kind,note:note,url:"https://leetcode.com/problems/"+slug+"/",lc:true});
+}
+
+// ── WEEK 0 · Thu Oct 8 – Sun Oct 11 · baseline ─────────────────────────
+lc(0,"Thu","Baseline",394,"Decode String","decode-string","M",35,"base","Stack of (previous string, repeat count); build the string on ']'.");
+lc(0,"Fri","Baseline",767,"Reorganize String","reorganize-string","M",35,"base","Max-heap by count; place the top char unless it equals the last one placed.");
+lc(0,"Sat","Baseline",399,"Evaluate Division","evaluate-division","M",35,"base","Weighted graph: a→b = v and b→a = 1/v; DFS/BFS multiplying along the path.");
+add(0,"Sat","misc","Admin","Book the Week 2 mock (Sun Oct 25) with your referrer or a peer",{min:15,note:"A person expecting you is a deadline you control."});
+add(0,"Sat","misc","Admin","Decide the ladder with your referrer: SWE-SRE or SRE-SE",{min:15,note:"It changes how much coding vs systems the loops weigh. Write the decision and why."});
+add(0,"Sun","misc","Admin","Log the 3 baselines: time, hints needed, where you got stuck",{min:15,note:"This is your starting point. Keep it in your notes repo."});
+add(0,"Sun","fleet","Setup","Create the fleetguard repo (README + Go module, nothing else)",{min:30,note:"Design doc comes first in Week 1. No code before it."});
+
+// ── WEEK 1 · Oct 12–18 · hashing, two pointers, sliding window, stack ──
+// Mon
+lc(1,"Mon","Morning",217,"Contains Duplicate","contains-duplicate","E",10,"cold","HashSet; duplicate exists if len(set) < len(array).");
+lc(1,"Mon","Morning",1,"Two Sum","two-sum","E",10,"cold","HashMap value→index; check the complement as you go.");
+lc(1,"Mon","Morning",49,"Group Anagrams","group-anagrams","M",30,"learn","HashMap keyed by sorted string (or a 26-count tuple).");
+lc(1,"Mon","Morning",347,"Top K Frequent Elements","top-k-frequent-elements","M",15,"variant","Frequency map + bucket sort by count, or a min-heap of size k.");
+add(1,"Mon","linux","Evening","Read OSTEP Ch 4–5: the process and the process API",{min:30,url:"https://pages.cs.wisc.edu/~remzi/OSTEP/",note:"fork/exec/wait and process states. Free."});
+add(1,"Mon","linux","Evening","Skim man pages: fork(2), execve(2), wait(2), signal(7)",{min:20,url:"https://man7.org/linux/man-pages/",note:"Know what SIGKILL skips that SIGTERM allows."});
+add(1,"Mon","linux","Evening","Skim the boot sequence and a systemd service unit: bootup(7), systemd.service(5)",{min:10,url:"https://man7.org/linux/man-pages/man7/bootup.7.html"});
+// Tue
+lc(1,"Tue","Morning",125,"Valid Palindrome","valid-palindrome","E",10,"cold","Two pointers inward; skip non-alphanumeric; compare lowercase.");
+lc(1,"Tue","Morning",167,"Two Sum II – Input Array Is Sorted","two-sum-ii-input-array-is-sorted","M",15,"variant","Sorted array: sum too small → move left up, too big → move right down.");
+lc(1,"Tue","Morning",15,"3Sum","3sum","M",30,"learn","Sort; fix one number, two-pointer the rest; skip duplicates.");
+add(1,"Tue","net","Evening","Read HPBN Ch 2: Building Blocks of TCP",{min:30,url:"https://hpbn.co/building-blocks-of-tcp/",note:"Handshake, flow control (rwnd), congestion control (cwnd, slow start, AIMD)."});
+add(1,"Tue","net","Evening","Read Cloudflare: SYN packet handling in the wild",{min:20,url:"https://blog.cloudflare.com/syn-packet-handling-in-the-wild/",note:"SYN queue vs accept queue, and what an overflow looks like."});
+add(1,"Tue","net","Evening","Say the TCP state machine aloud from memory, including TIME_WAIT and CLOSE_WAIT",{min:10,note:"Write down anything you couldn't recall and re-read just that."});
+// Wed
+lc(1,"Wed","Morning",121,"Best Time to Buy and Sell Stock","best-time-to-buy-and-sell-stock","E",10,"cold","Track the min price so far; profit = price − minSoFar.");
+lc(1,"Wed","Morning",3,"Longest Substring Without Repeating Characters","longest-substring-without-repeating-characters","M",30,"learn","Sliding window + set/map; shrink from the left on a duplicate.");
+lc(1,"Wed","Morning",424,"Longest Repeating Character Replacement","longest-repeating-character-replacement","M",15,"variant","Window is valid if (length − maxFreq) ≤ k.");
+add(1,"Wed","design","Evening","Timed design: URL shortener (45 min, blank page, out loud)",{min:45,note:"Requirements → capacity math with units → API → storage → bottlenecks → failure modes."});
+add(1,"Wed","design","Evening","Self-score the design and list the gaps",{min:15,note:"Did you state requirements first, show capacity math, and name 3+ failure modes?"});
+// Thu
+lc(1,"Thu","Morning",20,"Valid Parentheses","valid-parentheses","E",10,"cold","Stack: push openers, pop and match on closers.");
+lc(1,"Thu","Morning",155,"Min Stack","min-stack","M",30,"learn","Second stack (or pairs) holding the running min next to each push.");
+lc(1,"Thu","Morning",739,"Daily Temperatures","daily-temperatures","M",15,"variant","Monotonic decreasing stack of indices; pop while today is warmer.");
+add(1,"Thu","cloud","Evening","Open every .tf file in ml-inference-sre and draw the resource graph",{min:25,note:"VPC, subnets, EKS control plane, node group, IAM roles. Use your own files as the source."});
+add(1,"Thu","cloud","Evening","Read Terraform docs: state, backends and locking",{min:15,url:"https://developer.hashicorp.com/terraform/language/state"});
+add(1,"Thu","cloud","Evening","Answer aloud: Terraform vs manifests, state + locking, two people applying at once, drift, why not eksctl, node IAM",{min:20,note:"Write the answers into your notes repo (project-notes/ml-inference-sre-terraform.md)."});
+// Fri
+lc(1,"Fri","Morning",238,"Product of Array Except Self","product-of-array-except-self","M",30,"learn","Prefix products × suffix products.");
+add(1,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30,note:"Nothing flagged? Re-do the two problems that felt slowest."});
+add(1,"Fri","dsa","Scripting","awk: count logins per user from who/last output",{min:30,note:"Associative array as the accumulator. Then redo it once from a blank file with the clock running."});
+add(1,"Fri","fleet","Evening","Write the 1-page fleetguard design doc",{min:30,note:"Goals, non-goals, components (agent, controller), failure modes. IN: agent with memory/CPU/disk/TCP collectors; controller with canary waves, health gate, auto-pause, rollback, resume after a crash. OUT: SLO gating, UI, cloud fleet."});
+// Sat
+lc(1,"Sat","Timed set",128,"Longest Consecutive Sequence","longest-consecutive-sequence","M",35,"timed","HashSet; only start counting where n−1 is absent.");
+lc(1,"Sat","Timed set",853,"Car Fleet","car-fleet","M",35,"timed","Sort by position descending; time = (target − pos)/speed; new fleet when time > stack top.");
+lc(1,"Sat","Timed set",567,"Permutation in String","permutation-in-string","M",35,"timed","Fixed-size window; compare character counts.");
+add(1,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10,note:"Keeps the explain-while-coding habit alive."});
+add(1,"Sat","linux","Lab","Lab: strace -f -e trace=process,execve bash -c 'ls' and name every syscall",{min:30,note:"WSL or the RHEL lab VM. Then trace ls from keypress to output without notes."});
+add(1,"Sat","linux","Lab","Lab: make a zombie and an orphan, find them with ps -eo pid,ppid,stat,cmd, fix both",{min:30});
+add(1,"Sat","linux","Lab","Lab: write a systemd unit with a bad ExecStart, diagnose with systemctl status + journalctl -b -u",{min:30});
+add(1,"Sat","fleet","Build","Create the repo, Go module and CI (vet, lint, test, build on every push)",{min:45});
+add(1,"Sat","fleet","Build","Scaffold the agent: main, config, and a /metrics endpoint with one placeholder gauge",{min:45});
+// Sun
+add(1,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:60,note:"Fully caught up? Re-do any problem you flagged 🔁."});
+add(1,"Sun","design","Evening","Redo the URL shortener capacity chain from memory, with units, for two different number sets",{min:45});
+add(1,"Sun","design","Evening","Second pass on your weakest section: 30 min timed, 15 min self-score",{min:45});
+add(1,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+add(1,"Sun","misc","Review","Map your 8 STAR stories to the rubric and mark the 2 gaps (user-first, cross-team influence)",{min:15,note:"No writing yet, just the map."});
+
+// ── WEEK 2 · Oct 19–25 · binary search, linked lists, trees, tries ─────
+// Mon
+lc(2,"Mon","Morning",704,"Binary Search","binary-search","E",10,"cold","Classic lo/hi/mid; decide how you handle the boundaries.");
+lc(2,"Mon","Morning",153,"Find Minimum in Rotated Sorted Array","find-minimum-in-rotated-sorted-array","M",30,"learn","Compare mid to right; the min is in the unsorted half.");
+lc(2,"Mon","Morning",33,"Search in Rotated Sorted Array","search-in-rotated-sorted-array","M",15,"variant","Find the sorted half, then decide which side to search.");
+lc(2,"Mon","Morning",875,"Koko Eating Bananas","koko-eating-bananas","M",30,"learn","Binary search on the answer k in [1, max]; feasible if sum(ceil(p/k)) ≤ h.");
+add(2,"Mon","linux","Evening","Read OSTEP Ch 13, 18, 19: address spaces, paging, TLBs",{min:30,url:"https://pages.cs.wisc.edu/~remzi/OSTEP/"});
+add(2,"Mon","linux","Evening","Read kernel docs: vm sysctl (overcommit_memory, swappiness, dirty_*)",{min:15,url:"https://docs.kernel.org/admin-guide/sysctl/vm.html",note:"Why can a box with no free memory be perfectly healthy?"});
+add(2,"Mon","linux","Evening","Read proc(5): oom_score, oom_score_adj and the /proc/meminfo fields",{min:15,url:"https://man7.org/linux/man-pages/man5/proc.5.html"});
+// Tue
+lc(2,"Tue","Morning",206,"Reverse Linked List","reverse-linked-list","E",10,"cold","Iterative: prev/curr pointer flip.");
+lc(2,"Tue","Morning",21,"Merge Two Sorted Lists","merge-two-sorted-lists","E",10,"cold","Dummy head; attach the smaller node and advance.");
+lc(2,"Tue","Morning",141,"Linked List Cycle","linked-list-cycle","E",10,"cold","Floyd: slow/fast pointers; a cycle exists if they meet.");
+lc(2,"Tue","Morning",19,"Remove Nth Node From End of List","remove-nth-node-from-end-of-list","M",30,"learn","Two pointers n apart; when fast hits the end, slow is at the target.");
+lc(2,"Tue","Morning",143,"Reorder List","reorder-list","M",30,"learn","Find the middle, reverse the second half, merge alternately.");
+add(2,"Tue","net","Evening","Read Dordal: the IPv4 and ARP chapters",{min:30,url:"https://intronetworks.cs.luc.edu/"});
+add(2,"Tue","net","Evening","CIDR drill: 20 random prefixes → network, broadcast, host count, in your head",{min:20,note:"Target: 5 prefixes in under 3 minutes by next week."});
+add(2,"Tue","net","Evening","Skim ip-route(8) and the nftables NAT wiki page",{min:10,url:"https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_(NAT)"});
+// Wed
+lc(2,"Wed","Morning",226,"Invert Binary Tree","invert-binary-tree","E",10,"cold","Swap children, recurse into both.");
+lc(2,"Wed","Morning",104,"Maximum Depth of Binary Tree","maximum-depth-of-binary-tree","E",10,"cold","1 + max(depth(left), depth(right)).");
+lc(2,"Wed","Morning",100,"Same Tree","same-tree","E",10,"cold","Compare values, recurse both sides; both null = true.");
+lc(2,"Wed","Morning",102,"Binary Tree Level Order Traversal","binary-tree-level-order-traversal","M",30,"learn","BFS with a queue; process level by level using the queue size.");
+add(2,"Wed","design","Evening","Timed design: rate limiter (45 min, blank page, out loud)",{min:45,note:"Token bucket vs leaky bucket vs sliding window; where it sits; Redis INCR/EXPIRE."});
+add(2,"Wed","design","Evening","Self-score the design and list the gaps",{min:15});
+// Thu
+lc(2,"Thu","Morning",98,"Validate Binary Search Tree","validate-binary-search-tree","M",30,"learn","Recurse with (min, max) bounds; the node must fit in the range.");
+lc(2,"Thu","Morning",230,"Kth Smallest Element in a BST","kth-smallest-element-in-a-bst","M",15,"variant","Inorder traversal is sorted; the kth visited is the answer.");
+lc(2,"Thu","Morning",105,"Construct Binary Tree from Preorder and Inorder Traversal","construct-binary-tree-from-preorder-and-inorder-traversal","M",30,"learn","preorder[0] is the root; find it in inorder to split left/right.");
+add(2,"Thu","cloud","Evening","Read the ml-inference-sre Dockerfile line by line; note the uvicorn workers and where the model loads",{min:20,note:"Measure the model's RSS yourself."});
+add(2,"Thu","cloud","Evening","Read k8s docs: Horizontal Pod Autoscaling — the algorithm section",{min:20,url:"https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"});
+add(2,"Thu","cloud","Evening","Answer aloud: your requests vs limits, the resulting QoS class, what OOMKilled looks like, the desiredReplicas formula",{min:20});
+// Fri
+lc(2,"Fri","Morning",208,"Implement Trie (Prefix Tree)","implement-trie-prefix-tree","M",30,"learn","TrieNode: children map + isEnd flag; insert/search/startsWith.");
+lc(2,"Fri","Morning",15,"3Sum (revisit)","3sum","M",15,"revisit","Sort; fix one, two-pointer the rest; skip duplicates.");
+lc(2,"Fri","Morning",3,"Longest Substring Without Repeating Characters (revisit)","longest-substring-without-repeating-characters","M",15,"revisit","Sliding window + set/map.");
+add(2,"Fri","dsa","Scripting","awk: failed SSH logins per source IP, top 5 (from /var/log/secure)",{min:30,note:"awk + sort -nr + head. Then redo it once from a blank file with the clock running."});
+add(2,"Fri","fleet","Evening","Read the /proc/meminfo and /proc/pressure/memory fields and write the test fixtures",{min:30,note:"Fixtures first, collector tomorrow."});
+// Sat
+lc(2,"Sat","Timed set",981,"Time Based Key-Value Store","time-based-key-value-store","M",35,"timed","HashMap of key → sorted (timestamp, value) list; binary search on get.");
+lc(2,"Sat","Timed set",236,"Lowest Common Ancestor of a Binary Tree","lowest-common-ancestor-of-a-binary-tree","M",35,"timed","Recurse; the LCA is the node where both sides report a find.");
+lc(2,"Sat","Timed set",211,"Design Add and Search Words Data Structure","design-add-and-search-words-data-structure","M",35,"timed","Trie + DFS; on a '.' recurse into all children.");
+add(2,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(2,"Sat","linux","Lab","Lab: systemd-run --scope -p MemoryMax=200M stress-ng --vm 1 --vm-bytes 400M, then read the dmesg OOM report line by line",{min:40,note:"Name which cgroup, which task, and why that task."});
+add(2,"Sat","linux","Lab","Lab: watch the page cache grow (cat a big file; free -m, Cached in /proc/meminfo), then drop_caches",{min:30,note:"Explain buff/cache vs available."});
+add(2,"Sat","linux","Lab","Exit test: answer 'free shows 200MB free — is that bad?' and how the OOM killer picks a victim",{min:20});
+add(2,"Sat","fleet","Build","Check that /proc/pressure/* exists on WSL and on the lab VM",{min:15,note:"Do this first. Don't rely on PSI until you've confirmed it."});
+add(2,"Sat","fleet","Build","Build the memory collector + a Prometheus metric; make the fixture tests pass; commit",{min:75});
+// Sun
+add(2,"Sun","dsa","Mock","Coding mock #1 — 45 min coding + 15 min feedback (calibration, with your referrer or a peer)",{min:60,note:"Ask for a verdict (Strong No Hire … Strong Hire) and the top 2 fixes. If it falls through, self-mock 2 unseen mediums and rebook within 7 days."});
+add(2,"Sun","design","Evening","Redo the rate limiter capacity chain from memory, with units, for two different number sets",{min:45});
+add(2,"Sun","design","Evening","Second pass on your weakest section: 30 min timed, 15 min self-score",{min:45});
+add(2,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+add(2,"Sun","misc","Review","Draft one behavioral story in STAR with numbers: the user-first story, v1",{min:15});
+
+function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+TASKS.forEach(function(t){t.id=t.id||(t.wk+t.day+"-"+slugify(t.title));});
+
+// ══ STATE ═════════════════════════════════════════════════════════════
+const SEED_START="2026-10-12"; // Monday of Week 1. Week 0 = the 4 days before it (Thu–Sun).
+const TOTAL_WEEKS=16;
+function load(k,fallback){try{var v=localStorage.getItem(k);return v===null?fallback:JSON.parse(v);}catch(e){return fallback;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+const STATE={
+  tab:"today",
+  theme:load("v3Theme","light"),
+  startDate:load("v3Start",SEED_START),
+  checked:load("v3Checked",{}),
+  redo:load("v3Redo",{}),
+  open:{},
+  offset:0,
+  planWk:null,
+  planDays:{}
+};
+
+// ══ DATES ═════════════════════════════════════════════════════════════
+function NOW(){
+  var m=/[?&]d=(\d{4})-(\d\d)-(\d\d)/.exec(location.search);   // ?d=2026-10-14 previews another day
+  return m?new Date(+m[1],+m[2]-1,+m[3],12):new Date();
+}
+function midnight(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate());}
+function parseLocal(s){var p=s.split("-").map(Number);return new Date(p[0],p[1]-1,p[2]);}
+function viewDate(){var d=midnight(NOW());d.setDate(d.getDate()+STATE.offset);return d;}
+const DAYNAMES=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function posOf(d){
+  if(!STATE.startDate)return {wk:null,day:DAYNAMES[d.getDay()]};
+  var diff=Math.round((midnight(d)-parseLocal(STATE.startDate))/864e5); // round, not floor: survives DST changes
+  var wk=diff>=0?Math.floor(diff/7)+1:(diff>=-4?0:null);
+  if(wk!==null&&wk>TOTAL_WEEKS)wk=null;
+  return {wk:wk,day:DAYNAMES[d.getDay()],diff:diff};
+}
+function fmt(d,o){return d.toLocaleDateString("en-US",o);}
+
+// ══ RENDER ════════════════════════════════════════════════════════════
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+function taskHtml(t){
+  var done=!!STATE.checked[t.id],open=!!STATE.open[t.id],rd=!!STATE.redo[t.id];
+  var hasDet=!!(t.note||t.url||t.kind);
+  var det="";
+  if(open&&hasDet){
+    det="<div class=\"det\">"
+      +(t.kind?"<div>"+esc(KIND[t.kind])+"</div>":"")
+      +(t.note?"<div>"+esc(t.note)+"</div>":"")
+      +(t.url?"<div><a href=\""+esc(t.url)+"\" target=\"_blank\" rel=\"noopener\">Open ↗</a></div>":"")
+      +"</div>";
+  }
+  var chips=(t.d?"<span class=\"chip "+t.d+"\">"+({E:"Easy",M:"Med",H:"Hard"})[t.d]+"</span>":"")
+    +(t.min?"<span class=\"chip\">"+t.min+"m</span>":"");
+  return "<div class=\"task"+(done?" isdone":"")+"\" style=\"border-left-color:var(--p-"+t.p+")\">"
+    +"<button class=\"chk"+(done?" done":"")+"\" onclick=\"toggleCheck('"+t.id+"')\" aria-label=\"Mark done\">"+(done?"✓":"")+"</button>"
+    +"<div class=\"tmain\" onclick=\"toggleOpen('"+t.id+"')\">"
+    +"<div class=\"trow\"><span class=\"ttitle\">"+esc(t.title)+"</span>"+chips+(hasDet?"<span class=\"more\">"+(open?"▾":"▸")+"</span>":"")+"</div>"
+    +det+"</div>"
+    +(t.lc?"<button class=\"redo-btn"+(rd?" on":"")+"\" onclick=\"toggleRedo('"+t.id+"')\" aria-label=\"Flag for redo\">🔁</button>":"")
+    +"</div>";
+}
+
+function renderToday(){
+  var d=viewDate(),pos=posOf(d);
+  var isToday=STATE.offset===0;
+  var tasks=pos.wk===null?[]:TASKS.filter(function(t){return t.wk===pos.wk&&t.day===pos.day;});
+  var done=tasks.filter(function(t){return STATE.checked[t.id];}).length;
+  var pct=tasks.length?Math.round(done/tasks.length*100):0;
+  var mins=tasks.reduce(function(a,t){return a+(t.min||0);},0);
+  var wkLabel=pos.wk===null?"Outside the plan":(pos.wk===0?"Week 0":"Week "+pos.wk+" of "+TOTAL_WEEKS);
+
+  var h="<div class=\"hero\"><div class=\"hero-top\"><div>"
+    +"<div class=\"hero-date\">"+esc(fmt(d,{month:"long",day:"numeric"}))+" · "+wkLabel+"</div>"
+    +"<div class=\"hero-day\">"+esc(fmt(d,{weekday:"long"}))+"</div></div>"
+    +"<div class=\"arrows\"><button class=\"arrow-btn\" onclick=\"shiftDay(-1)\" aria-label=\"Previous day\">‹</button><button class=\"arrow-btn\" onclick=\"shiftDay(1)\" aria-label=\"Next day\">›</button></div></div>";
+  if(tasks.length){
+    h+="<div class=\"hero-meta\"><span>"+done+"/"+tasks.length+" done</span><div class=\"bar\"><i style=\"width:"+pct+"%\"></i></div><span>~"+(mins>=60?Math.floor(mins/60)+"h"+(mins%60?" "+(mins%60)+"m":""):mins+"m")+"</span></div>";
+  }
+  if(!isToday)h+="<button class=\"back-today\" onclick=\"shiftDay(0)\">← Back to today</button>";
+  h+="</div>";
+
+  if(pos.wk===null){
+    h+="<div class=\"empty\">"+(pos.diff!==undefined&&pos.diff<-4?"The plan starts Thu Oct 8 (Week 0). Use the arrows to preview.":"This date is outside the 16-week plan.")+"</div>";
+    return h;
+  }
+  var weekLoaded=TASKS.some(function(t){return t.wk===pos.wk;});
+  if(!weekLoaded){
+    h+="<div class=\"empty\">Week "+pos.wk+" isn't loaded yet. Weeks 3–16 arrive in Step 2.</div>";
+    return h;
+  }
+  if(!tasks.length){
+    h+="<div class=\"empty\">Nothing scheduled for "+esc(pos.day)+" this week.</div>";
+    return h;
+  }
+  var lastKey="";
+  tasks.forEach(function(t){
+    var key=t.p+"|"+t.slot;
+    if(key!==lastKey){
+      if(lastKey)h+="</div>";
+      h+="<div class=\"group\"><div class=\"ghead\" style=\"color:var(--p-"+t.p+")\"><span>"+PILLARS[t.p].i+" "+esc(PILLARS[t.p].n)+"</span><span class=\"slot\">· "+esc(t.slot)+"</span></div>";
+      lastKey=key;
+    }
+    h+=taskHtml(t);
+  });
+  h+="</div>";
+  return h;
+}
+
+// ══ PLAN (same structure as the old trackers: week tabs → week card → day accordion) ══
+const PHASES=[
+  {name:"Topic weeks",color:"#3B82F6",wks:[0,1,2,3,4,5]},
+  {name:"Mixed practice",color:"#8B5CF6",wks:[6,7,8,9,10,11]},
+  {name:"Interview mode",color:"#10B981",wks:[12,13,14,15,16]}
+];
+function phaseOf(w){return PHASES.find(function(p){return p.wks.indexOf(w)>=0;})||PHASES[0];}
+const WEEKMETA={
+  0:{t:"Baseline",m:"3 baselines logged · Week 2 mock booked · fleetguard repo created"},
+  1:{t:"Arrays & hashing · two pointers · sliding window · stack",m:"Redo list cleared on Friday"},
+  2:{t:"Binary search · linked lists · trees & BST",m:"Sunday: coding mock #1"},
+  4:{m:"Sunday: coding mock #2"},
+  6:{m:"Sunday: coding + behavioral mock #3 · DSA CHECKPOINT: 8 of 10 unseen mediums ≤35 min (fail = repeat Week 6)"},
+  8:{m:"Sunday: system design mock"},
+  10:{m:"Sunday: troubleshooting mock"},
+  12:{m:"Sunday: system design mock"},
+  14:{m:"Sunday: full-loop mock"},
+  16:{m:"Sunday: full-loop mock"}
+};
+const DORDER=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+function addDays(d,n){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()+n);return x;}
+function dayDate(wk,day){
+  if(!STATE.startDate)return null;
+  var st=parseLocal(STATE.startDate),i=DORDER.indexOf(day);
+  return wk===0?addDays(st,i-7):addDays(st,(wk-1)*7+i);   // Week 0: Thu..Sun = start-4..start-1
+}
+function hm(m){return m>=60?Math.floor(m/60)+"h"+(m%60?" "+(m%60)+"m":""):m+"m";}
+function planWeek(){
+  if(STATE.planWk!==null)return STATE.planWk;
+  var p=posOf(midnight(NOW()));return p.wk===null?1:p.wk;
+}
+function setPlanWk(n){STATE.planWk=n;STATE.planDays={};render();scrollWkTab(n);}
+function togglePlanDay(key){STATE.planDays[key]=!STATE.planDays[key];render();}
+function scrollWkTab(n){
+  setTimeout(function(){
+    var t=document.querySelector&&document.querySelector(".week-tabs");
+    var b=t&&t.querySelectorAll(".wtab")[n];
+    if(b&&b.scrollIntoView)b.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
+  },50);
+}
+function groupedHtml(tasks){
+  var h="",lastKey="";
+  tasks.forEach(function(t){
+    var key=t.p+"|"+t.slot;
+    if(key!==lastKey){
+      if(lastKey)h+="</div>";
+      h+="<div class=\"group\" style=\"margin:10px 0 0\"><div class=\"ghead\" style=\"color:var(--p-"+t.p+")\"><span>"+PILLARS[t.p].i+" "+esc(PILLARS[t.p].n)+"</span><span class=\"slot\">· "+esc(t.slot)+"</span></div>";
+      lastKey=key;
+    }
+    h+=taskHtml(t);
+  });
+  return h+(lastKey?"</div>":"");
+}
+function renderPlan(){
+  var cur=posOf(midnight(NOW())),pw=planWeek(),ph=phaseOf(pw),meta=WEEKMETA[pw]||{};
+  var wkTasks=TASKS.filter(function(t){return t.wk===pw;});
+  var wkDone=wkTasks.filter(function(t){return STATE.checked[t.id];}).length;
+  var wkPct=wkTasks.length?Math.round(wkDone/wkTasks.length*100):0;
+
+  var tabs="";
+  for(var w=0;w<=TOTAL_WEEKS;w++){
+    var ts=TASKS.filter(function(t){return t.wk===w;}),dn=ts.filter(function(t){return STATE.checked[t.id];}).length;
+    var all=ts.length>0&&dn===ts.length,a=w===pw,isCur=cur.wk===w,c=phaseOf(w).color;
+    tabs+="<button class=\"wtab"+(a?" active":"")+(isCur&&!a?" current":"")+"\" onclick=\"setPlanWk("+w+")\" style=\""+(a?"background:"+c+";border-color:"+c+";color:#fff":isCur?"border-color:"+c+";color:"+c:"")+"\">W"+w+(all?"✓":isCur&&!a?"★":"")+"</button>";
+  }
+
+  var first=dayDate(pw,pw===0?"Thu":"Mon"),last=dayDate(pw,"Sun");
+  var rng=first?fmt(first,{month:"short",day:"numeric"})+" – "+fmt(last,{month:"short",day:"numeric"}):"";
+  var title=meta.t||(wkTasks.length?"Week "+pw:"Week "+pw+" — not loaded yet");
+
+  var days=pw===0?["Thu","Fri","Sat","Sun"]:DORDER;
+  var cards="";
+  if(!wkTasks.length){
+    cards="<div class=\"empty\">Week "+pw+" tasks arrive in Step 2.</div>";
+  }else days.forEach(function(dn){
+    var dt=wkTasks.filter(function(t){return t.day===dn;});
+    var key=pw+"-"+dn,isToday=cur.wk===pw&&cur.day===dn;
+    var isOpen=(key in STATE.planDays)?STATE.planDays[key]:isToday;
+    var done=dt.filter(function(t){return STATE.checked[t.id];}).length,total=dt.length,all=total>0&&done===total;
+    var mins=dt.reduce(function(a,t){return a+(t.min||0);},0),dsa=dt.filter(function(t){return t.lc;}).length;
+    var dd=dayDate(pw,dn);
+    cards+="<div class=\"day-card"+(isToday?" today":"")+(all?" all-done":"")+"\">"
+      +"<button class=\"day-header\" onclick=\"togglePlanDay('"+key+"')\">"
+      +"<div class=\"day-strip\" style=\"background:"+(isToday?ph.color:"var(--border)")+"\"></div>"
+      +"<div style=\"flex:1\"><div style=\"display:flex;align-items:center;gap:5px\"><span class=\"day-name\">"+dn+(dd?" "+fmt(dd,{month:"short",day:"numeric"}):"")+"</span>"+(isToday?"<span class=\"today-badge\">TODAY</span>":"")+"</div>"
+      +"<div class=\"day-meta\">"+(total?total+" tasks · "+hm(mins)+(dsa?" · "+dsa+" DSA":""):"Nothing scheduled")+"</div></div>"
+      +"<div class=\"day-right\">"+(total?"<div class=\"day-prog"+(all?" prog-done":"")+"\">"+(all?"✓ All done":done+"/"+total)+"</div>":"")+"<span class=\"arrow"+(isOpen?" open":"")+"\">›</span></div></button>"
+      +(isOpen&&total?"<div class=\"day-body\">"+groupedHtml(dt)+"</div>":"")+"</div>";
+  });
+
+  return "<div class=\"sticky-hd\" id=\"plan-hd\">"
+    +"<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:6px\"><div style=\"font-size:15px;font-weight:700\">"+TOTAL_WEEKS+"-Week Prep Plan</div>"
+    +"<div style=\"font-size:11px;font-weight:600;color:"+ph.color+"\">"+(pw===0?"Week 0":"Week "+pw)+": "+wkPct+"%</div></div>"
+    +"<div style=\"display:flex;gap:2px;height:4px;border-radius:4px;overflow:hidden;margin-bottom:7px\">"
+    +PHASES.map(function(p){return "<div style=\"flex:"+p.wks.length+";background:"+p.color+";opacity:"+(p.wks.indexOf(pw)>=0?1:0.25)+"\"></div>";}).join("")+"</div>"
+    +"<div class=\"week-tabs\">"+tabs+"</div></div>"
+    +"<div style=\"padding:10px 16px\"><div class=\"wh-card\">"
+    +"<div class=\"wh-phase-chip\" style=\"background:"+ph.color+"18;border:1px solid "+ph.color+"33\"><div class=\"phase-dot\" style=\"background:"+ph.color+"\"></div><span style=\"font-size:11px;font-weight:600;color:"+ph.color+"\">"+esc(ph.name)+"</span></div>"
+    +"<div class=\"wh-title\">"+esc(title)+"</div>"
+    +(rng?"<div class=\"wh-dates\">📅 "+esc(rng)+"</div>":"")
+    +(meta.m?"<div class=\"milestone-box\" style=\"background:"+ph.color+"12;color:"+ph.color+"\">🏁 <span>"+esc(meta.m)+"</span></div>":"")
+    +(wkTasks.length?"<div style=\"margin-top:8px\"><div style=\"display:flex;justify-content:space-between;margin-bottom:4px\"><span style=\"font-size:10px;font-weight:600;color:var(--muted)\">Week progress</span>"
+      +"<span style=\"font-size:10px;font-weight:700;color:"+ph.color+"\">"+wkDone+"/"+wkTasks.length+" tasks</span></div>"
+      +"<div class=\"bar\" style=\"height:6px\"><i style=\"width:"+wkPct+"%;background:"+ph.color+"\"></i></div></div>":"")
+    +"</div>"+cards+"</div>";
+}
+
+function renderRedo(){
+  var rows=TASKS.filter(function(t){return t.lc&&STATE.redo[t.id];});
+  var body=rows.length?rows.map(function(t){
+    return "<div class=\"rtask\"><div class=\"tmain\"><div class=\"ttitle\">"
+      +(t.url?"<a href=\""+esc(t.url)+"\" target=\"_blank\" rel=\"noopener\">"+esc(t.title)+"</a>":esc(t.title))+"</div>"
+      +"<div class=\"rmeta\">Week "+t.wk+" · "+esc(t.day)+(t.note?" · "+esc(t.note):"")+"</div></div>"
+      +"<button class=\"chk done\" onclick=\"resolveRedo('"+t.id+"')\" aria-label=\"Mark resolved\">✓</button></div>";
+  }).join(""):"<div class=\"empty\">Nothing flagged. Tap 🔁 on any DSA problem to put it here.</div>";
+  return "<div class=\"page\"><h2>Redo 🔁 <span style=\"font-size:13px;color:var(--muted);font-weight:500\">"+rows.length+" flagged</span></h2>"
+    +"<div class=\"sub\">Problems you flagged. Solve each cold, then tap ✓ to clear it. Friday's DSA slot is for this list.</div>"+body+"</div>";
+}
+
+function renderSettings(){
+  var pos=posOf(midnight(NOW()));
+  return "<div class=\"page\"><h2>Settings</h2><div class=\"sub\">Everything here is saved in this browser only until GitHub sync is added in Step 4.</div>"
+    +"<div class=\"card\"><div class=\"label\">Start date (Monday of Week 1)</div>"
+    +"<input class=\"input\" type=\"date\" id=\"startInput\" value=\""+esc(STATE.startDate||"")+"\">"
+    +"<div class=\"hint\">"+(pos.wk===null?"Today is outside the plan window.":"Today is in "+(pos.wk===0?"Week 0":"Week "+pos.wk)+".")+" If you fall behind, move this date forward 7 days and the whole plan shifts.</div>"
+    +"<button class=\"big-btn\" id=\"saveDateBtn\" style=\"background:var(--accent)\" onclick=\"saveDate()\">Save start date</button></div>"
+    +"<div class=\"card\"><div class=\"label\">Backup &amp; restore</div>"
+    +"<div class=\"hint\" style=\"margin-top:0\">Copy a backup code into Notes so you can restore if browser data clears or you switch phones.</div>"
+    +"<button class=\"big-btn\" id=\"copyBtn\" style=\"background:var(--accent);margin-top:11px\" onclick=\"copyBackup()\">📋 Copy backup code</button>"
+    +"<textarea class=\"input\" id=\"restoreInput\" style=\"min-height:70px;margin-top:14px;font-family:monospace;font-size:12px\" placeholder=\"Paste a backup code here\"></textarea>"
+    +"<button class=\"big-btn\" id=\"restoreBtn\" style=\"background:var(--ok)\" onclick=\"restoreBackup()\">Restore progress</button></div>"
+    +"<div class=\"card\"><div class=\"label\">🗑️ Start fresh</div>"
+    +"<div class=\"hint\" style=\"margin-top:0\">Erases all ticks and Redo flags in this browser. Copy a backup code first.</div>"
+    +"<button class=\"big-btn\" id=\"freshBtn\" style=\"background:#DC2626\" onclick=\"startFresh()\">Start fresh</button></div></div>";
+}
+
+function updateHeader(){
+  var pos=posOf(midnight(NOW()));
+  var done=Object.keys(STATE.checked).length;
+  document.getElementById("tb-sub").textContent=(pos.wk===null?"Outside plan":pos.wk===0?"Week 0":"Week "+pos.wk+" of "+TOTAL_WEEKS)+" · "+done+" tasks done";
+  document.getElementById("theme-btn").textContent=STATE.theme==="dark"?"☀️":"🌙";
+  var rn=document.querySelector("#nav-redo .nav-label");
+  var n=TASKS.filter(function(t){return t.lc&&STATE.redo[t.id];}).length;
+  if(rn)rn.textContent=n?"Redo ("+n+")":"Redo";
+}
+function render(){
+  var html=STATE.tab==="today"?renderToday():STATE.tab==="plan"?renderPlan():STATE.tab==="redo"?renderRedo():renderSettings();
+  var wt=document.querySelector&&document.querySelector(".week-tabs"),sl=wt?wt.scrollLeft:0;
+  document.getElementById("content").innerHTML=html;
+  var wt2=document.querySelector&&document.querySelector(".week-tabs");if(wt2&&sl)wt2.scrollLeft=sl;
+  var tb=document.getElementById("topbar"),hd=document.getElementById("plan-hd");
+  if(tb&&hd&&tb.offsetHeight)hd.style.top=tb.offsetHeight+"px";
+  updateHeader();
+}
+
+// ══ ACTIONS ═══════════════════════════════════════════════════════════
+function setTab(t){
+  STATE.tab=t;
+  ["today","plan","redo","settings"].forEach(function(n){document.getElementById("nav-"+n).classList.toggle("active",n===t);});
+  render();window.scrollTo(0,0);
+}
+function toggleTheme(){
+  STATE.theme=STATE.theme==="light"?"dark":"light";
+  document.documentElement.setAttribute("data-theme",STATE.theme);
+  save("v3Theme",STATE.theme);updateHeader();
+}
+function toggleCheck(id){
+  if(STATE.checked[id])delete STATE.checked[id];else STATE.checked[id]=true;
+  save("v3Checked",STATE.checked);render();
+}
+function toggleOpen(id){STATE.open[id]=!STATE.open[id];render();}
+function toggleRedo(id){
+  if(STATE.redo[id])delete STATE.redo[id];else STATE.redo[id]=true;
+  save("v3Redo",STATE.redo);render();
+}
+function resolveRedo(id){delete STATE.redo[id];save("v3Redo",STATE.redo);render();}
+function shiftDay(n){STATE.offset=n===0?0:STATE.offset+n;render();window.scrollTo(0,0);}
+function saveDate(){
+  var v=document.getElementById("startInput").value;if(!v)return;
+  STATE.startDate=v;save("v3Start",v);STATE.offset=0;
+  var b=document.getElementById("saveDateBtn");
+  render();
+  b=document.getElementById("saveDateBtn");
+  if(b){b.textContent="✓ Saved";setTimeout(function(){var x=document.getElementById("saveDateBtn");if(x)x.textContent="Save start date";},1500);}
+}
+function copyBackup(){
+  var code=btoa(unescape(encodeURIComponent(JSON.stringify({startDate:STATE.startDate,checked:STATE.checked,redo:STATE.redo,theme:STATE.theme}))));
+  var b=document.getElementById("copyBtn");
+  function res(ok){if(!b)return;b.textContent=ok?"✓ Copied":"Copy failed";setTimeout(function(){b.textContent="📋 Copy backup code";},2000);}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(code).then(function(){res(true);},function(){res(false);});
+  else res(false);
+}
+function restoreBackup(){
+  var code=document.getElementById("restoreInput").value.trim();if(!code)return;
+  var b=document.getElementById("restoreBtn");
+  try{
+    var p=JSON.parse(decodeURIComponent(escape(atob(code))));
+    if(!p||typeof p.checked!=="object")throw new Error("bad");
+    STATE.checked=p.checked||{};STATE.redo=p.redo||{};
+    if(p.startDate)STATE.startDate=p.startDate;
+    if(p.theme){STATE.theme=p.theme;document.documentElement.setAttribute("data-theme",p.theme);save("v3Theme",p.theme);}
+    save("v3Checked",STATE.checked);save("v3Redo",STATE.redo);save("v3Start",STATE.startDate);
+    render();
+    b=document.getElementById("restoreBtn");if(b)b.textContent="✓ Restored";
+  }catch(e){if(b)b.textContent="✗ Invalid code";}
+}
+function startFresh(){
+  if(!confirm("Erase all ticks and Redo flags in this browser? This can't be undone."))return;
+  STATE.checked={};STATE.redo={};STATE.open={};STATE.offset=0;
+  save("v3Checked",{});save("v3Redo",{});render();
+}
+
+// ══ INIT ══════════════════════════════════════════════════════════════
+document.documentElement.setAttribute("data-theme",STATE.theme);
+render();
+</script>
+</body>
+</html>
