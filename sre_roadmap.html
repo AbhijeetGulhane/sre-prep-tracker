@@ -25,7 +25,19 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 button{font-family:inherit;cursor:pointer;border:none;outline:none;background:none;color:inherit}
 a{color:var(--accent);text-decoration:none}
 #app{max-width:480px;margin:0 auto}
-#topbar{background:var(--surface);border-bottom:1px solid var(--nav-b);padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center}
+#topbar{background:var(--surface);border-bottom:1px solid var(--nav-b);padding:14px 16px 0;position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.tb-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.tb-right{display:flex;align-items:center;gap:8px}
+.wk-badge{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:10px;padding:4px 10px;text-align:center}
+.wk-num{font-size:15px;font-weight:800;color:#3B82F6;line-height:1}
+.wk-lbl{font-size:9px;color:#3B82F6;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
+.ph-bar{display:flex;gap:2px;height:4px;border-radius:4px;overflow:hidden;margin-top:2px}
+.hero-sub{font-size:12px;color:var(--soft);margin-top:2px}
+.hero-pills{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap}
+.pill{border-radius:10px;padding:5px 11px}
+.pill-num{font-size:16px;font-weight:800;line-height:1}
+.pill-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:1px;opacity:.7}
+.phase-chip{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:3px 11px;margin-top:10px}
 .tb-title{font-size:17px;font-weight:800}
 .tb-sub{font-size:11px;color:var(--muted);margin-top:1px}
 .theme-btn{width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--border);font-size:15px}
@@ -108,8 +120,14 @@ a{color:var(--accent);text-decoration:none}
 <body>
 <div id="app">
   <div id="topbar">
-    <div><div class="tb-title">SRE Roadmap</div><div class="tb-sub" id="tb-sub"></div></div>
-    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">🌙</button>
+    <div class="tb-row">
+      <div><div class="tb-title">SRE Roadmap</div><div class="tb-sub" id="tb-sub"></div></div>
+      <div class="tb-right">
+        <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">🌙</button>
+        <div class="wk-badge"><div class="wk-num" id="tb-wk">—</div><div class="wk-lbl">Week</div></div>
+      </div>
+    </div>
+    <div class="ph-bar" id="ph-bar"></div>
   </div>
   <div id="content"></div>
   <div id="bottomnav">
@@ -328,15 +346,23 @@ function renderToday(){
   var done=tasks.filter(function(t){return STATE.checked[t.id];}).length;
   var pct=tasks.length?Math.round(done/tasks.length*100):0;
   var mins=tasks.reduce(function(a,t){return a+(t.min||0);},0);
-  var wkLabel=pos.wk===null?"Outside the plan":(pos.wk===0?"Week 0":"Week "+pos.wk+" of "+TOTAL_WEEKS);
+  var ph=pos.wk===null?null:phaseOf(pos.wk),left=daysLeft();
+  var extra=[];tasks.forEach(function(t){if(t.p!=="dsa"&&t.p!=="misc"&&extra.indexOf(PILLARS[t.p].n)<0)extra.push(PILLARS[t.p].n);});
+  var sub=pos.day==="Sat"?"Weekend · long session":pos.day==="Sun"?"Weekend · review day":"Weekday"+(extra.length?" · "+extra.join(" + "):"");
+  function pill(c,num,lbl){return "<div class=\"pill\" style=\"background:"+c+"1A;border:1px solid "+c+"40\"><div class=\"pill-num\" style=\"color:"+c+"\">"+num+"</div><div class=\"pill-lbl\" style=\"color:"+c+"\">"+lbl+"</div></div>";}
+  var pills="";
+  if(pos.wk!==null)pills+=pill("#3B82F6","W"+pos.wk+"<span style=\"font-size:10px;font-weight:400\"> of "+TOTAL_WEEKS+"</span>","Prep Week");
+  if(left!==null)pills+=pill("#10B981",left,"Days Left");
+  if(tasks.length)pills+=pill("#8B5CF6","~"+hm(mins),"Study Today");
+  if(tasks.length)pills+=pill("#10B981",done+"/"+tasks.length,"Done Today");
 
   var h="<div class=\"hero\"><div class=\"hero-top\"><div>"
-    +"<div class=\"hero-date\">"+esc(fmt(d,{month:"long",day:"numeric"}))+" · "+wkLabel+"</div>"
-    +"<div class=\"hero-day\">"+esc(fmt(d,{weekday:"long"}))+"</div></div>"
-    +"<div class=\"arrows\"><button class=\"arrow-btn\" onclick=\"shiftDay(-1)\" aria-label=\"Previous day\">‹</button><button class=\"arrow-btn\" onclick=\"shiftDay(1)\" aria-label=\"Next day\">›</button></div></div>";
-  if(tasks.length){
-    h+="<div class=\"hero-meta\"><span>"+done+"/"+tasks.length+" done</span><div class=\"bar\"><i style=\"width:"+pct+"%\"></i></div><span>~"+(mins>=60?Math.floor(mins/60)+"h"+(mins%60?" "+(mins%60)+"m":""):mins+"m")+"</span></div>";
-  }
+    +"<div class=\"hero-date\">"+esc(fmt(d,{weekday:"long",month:"long",day:"numeric"}))+"</div>"
+    +"<div class=\"hero-day\">"+esc(fmt(d,{weekday:"long"}))+"</div>"
+    +"<div class=\"hero-sub\">"+esc(pos.wk===null?"Outside the plan":sub)+"</div></div>"
+    +"<div class=\"arrows\"><button class=\"arrow-btn\" onclick=\"shiftDay(-1)\" aria-label=\"Previous day\">‹</button><button class=\"arrow-btn\" onclick=\"shiftDay(1)\" aria-label=\"Next day\">›</button></div></div>"
+    +(pills?"<div class=\"hero-pills\">"+pills+"</div>":"")
+    +(ph?"<div class=\"phase-chip\" style=\"background:"+ph.color+"18;border:1px solid "+ph.color+"33\"><div class=\"phase-dot\" style=\"background:"+ph.color+"\"></div><span style=\"font-size:12px;font-weight:600;color:"+ph.color+"\">"+esc(ph.label+": "+ph.name)+"</span></div>":"");
   if(!isToday)h+="<button class=\"back-today\" onclick=\"shiftDay(0)\">← Back to today</button>";
   h+="</div>";
 
@@ -369,9 +395,9 @@ function renderToday(){
 
 // ══ PLAN (same structure as the old trackers: week tabs → week card → day accordion) ══
 const PHASES=[
-  {name:"Topic weeks",color:"#3B82F6",wks:[0,1,2,3,4,5]},
-  {name:"Mixed practice",color:"#8B5CF6",wks:[6,7,8,9,10,11]},
-  {name:"Interview mode",color:"#10B981",wks:[12,13,14,15,16]}
+  {label:"Phase 1",name:"Topic weeks",color:"#3B82F6",wks:[0,1,2,3,4,5]},
+  {label:"Phase 2",name:"Mixed practice",color:"#8B5CF6",wks:[6,7,8,9,10,11]},
+  {label:"Phase 3",name:"Interview mode",color:"#10B981",wks:[12,13,14,15,16]}
 ];
 function phaseOf(w){return PHASES.find(function(p){return p.wks.indexOf(w)>=0;})||PHASES[0];}
 const WEEKMETA={
@@ -392,6 +418,12 @@ function dayDate(wk,day){
   if(!STATE.startDate)return null;
   var st=parseLocal(STATE.startDate),i=DORDER.indexOf(day);
   return wk===0?addDays(st,i-7):addDays(st,(wk-1)*7+i);   // Week 0: Thu..Sun = start-4..start-1
+}
+function daysLeft(){
+  if(!STATE.startDate)return null;
+  var end=addDays(parseLocal(STATE.startDate),TOTAL_WEEKS*7-1);   // last Sunday of the plan
+  var n=Math.round((end-midnight(NOW()))/864e5);
+  return n>=0?n:null;
 }
 function hm(m){return m>=60?Math.floor(m/60)+"h"+(m%60?" "+(m%60)+"m":""):m+"m";}
 function planWeek(){
@@ -504,10 +536,13 @@ function renderSettings(){
 }
 
 function updateHeader(){
-  var pos=posOf(midnight(NOW()));
-  var done=Object.keys(STATE.checked).length;
-  document.getElementById("tb-sub").textContent=(pos.wk===null?"Outside plan":pos.wk===0?"Week 0":"Week "+pos.wk+" of "+TOTAL_WEEKS)+" · "+done+" tasks done";
-  document.getElementById("theme-btn").textContent=STATE.theme==="dark"?"☀️":"🌙";
+  var pos=posOf(midnight(NOW())),ph=pos.wk===null?null:phaseOf(pos.wk),left=daysLeft();
+  var set=function(id,v){var e=document.getElementById(id);if(e)e.textContent=v;};
+  set("tb-wk",pos.wk===null?"—":"W"+pos.wk+"/"+TOTAL_WEEKS);
+  set("tb-sub",ph?ph.label+": "+ph.name+(left!==null?" · "+left+"d left":""):"Outside the plan");
+  set("theme-btn",STATE.theme==="dark"?"☀️":"🌙");
+  var bar=document.getElementById("ph-bar");
+  if(bar)bar.innerHTML=PHASES.map(function(p){return "<div style=\"flex:"+p.wks.length+";background:"+p.color+";opacity:"+(pos.wk!==null&&p.wks.indexOf(pos.wk)>=0?1:0.25)+"\"></div>";}).join("");
   var rn=document.querySelector("#nav-redo .nav-label");
   var n=TASKS.filter(function(t){return t.lc&&STATE.redo[t.id];}).length;
   if(rn)rn.textContent=n?"Redo ("+n+")":"Redo";
