@@ -104,6 +104,27 @@ a{color:var(--accent);text-decoration:none}
 .arrow{color:var(--muted);font-size:16px;transition:transform .2s}
 .arrow.open{transform:rotate(90deg)}
 .day-body{padding:0 13px 8px;border-top:1px solid var(--border)}
+/* progress */
+.pcard{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:var(--shadow)}
+.big{font-size:30px;font-weight:800;letter-spacing:-.5px;line-height:1}
+.prow{display:flex;align-items:center;gap:9px;margin-bottom:9px;font-size:12px}
+.prow .pn{width:112px;flex-shrink:0;font-weight:600}
+.prow .bar{height:8px}
+.prow .pv{width:64px;text-align:right;color:var(--muted);font-size:11px;flex-shrink:0}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+.tile .tn{font-size:20px;font-weight:800;line-height:1}
+.tile .tl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:3px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.wcell{border-radius:10px;padding:8px 2px;text-align:center;border:1.5px solid transparent;position:relative}
+.wcell .wn{font-size:11px;font-weight:800;margin-bottom:2px}
+.wcell .wp{font-size:9px;font-weight:600}
+.wcell .od{position:absolute;top:4px;right:5px;width:6px;height:6px;border-radius:50%;background:#DC2626}
+.warn{margin-top:10px;font-size:12px;color:var(--soft);line-height:1.5}
+.warn b{color:#DC2626}
+.syncline{font-size:12px;margin-top:8px;line-height:1.5}
+.btnrow{display:flex;gap:8px}
+.btnrow .big-btn{margin-top:11px}
 /* redo + settings */
 .page{padding:16px}
 .page h2{font-size:19px;font-weight:700}
@@ -133,6 +154,7 @@ a{color:var(--accent);text-decoration:none}
   <div id="bottomnav">
     <button class="nav-btn active" id="nav-today" onclick="setTab('today')"><span class="nav-icon">🏠</span><span class="nav-label">Today</span></button>
     <button class="nav-btn" id="nav-plan" onclick="setTab('plan')"><span class="nav-icon">🗓️</span><span class="nav-label">Plan</span></button>
+    <button class="nav-btn" id="nav-progress" onclick="setTab('progress')"><span class="nav-icon">📊</span><span class="nav-label">Progress</span></button>
     <button class="nav-btn" id="nav-redo" onclick="setTab('redo')"><span class="nav-icon">🔁</span><span class="nav-label">Redo</span></button>
     <button class="nav-btn" id="nav-settings" onclick="setTab('settings')"><span class="nav-icon">⚙️</span><span class="nav-label">Settings</span></button>
   </div>
@@ -142,7 +164,7 @@ a{color:var(--accent);text-decoration:none}
 // One flat list. Each task: wk, day, p (pillar), slot, title, and optional
 // min (minutes), d (E/M/H), kind (cold/learn/variant/timed/revisit/base), note, url, lc (true = DSA problem, gets a 🔁 button).
 // IDs are derived from week + day + title. If you rename a task later, its tick resets.
-// Weeks 3-10 loaded. Weeks 11-16 arrive in Step 2c.
+// All 16 weeks loaded.
 const PILLARS={
   dsa:{n:"DSA & scripting",i:"💻"},design:{n:"System design",i:"🏗️"},linux:{n:"Linux & storage",i:"🐧"},
   net:{n:"Networking",i:"🌐"},cloud:{n:"Cloud & K8s",i:"☁️"},fleet:{n:"fleetguard",i:"🛡️"},misc:{n:"Mocks & admin",i:"🎯"}
@@ -683,6 +705,230 @@ add(10,"Sun","design","Evening","Redo the failover design from memory with units
 add(10,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
 add(10,"Sun","misc","Review","Draft STAR story 8: ambiguity or learning something fast, v1 with numbers",{min:15});
 
+// ── WEEK 11 · Dec 21–27 · mixed, holiday week ───────────────────────────
+lc(11,"Mon","Morning",264,"Ugly Number II","ugly-number-ii","M",30,"learn","Three pointers over the sequence, or a min-heap with a seen set.");
+lc(11,"Mon","Morning",97,"Interleaving String","interleaving-string","M",30,"learn","dp[i][j]: can s1[:i] and s2[:j] interleave into s3[:i+j]?");
+lc(11,"Mon","Morning",115,"Distinct Subsequences","distinct-subsequences","H",15,"variant","dp[i][j]: ways to form t[:j] from s[:i]; match adds the diagonal.");
+add(11,"Mon","linux","Evening","Read systemd.exec(5) and systemd.timer(5): sandboxing options, Restart= semantics, timers vs cron",{min:30,url:"https://man7.org/linux/man-pages/man5/systemd.exec.5.html",note:"Know ProtectSystem, NoNewPrivileges, MemoryMax, StartLimitBurst."});
+add(11,"Mon","linux","Evening","Skim journald.conf(5) and logrotate(8)",{min:15,url:"https://man7.org/linux/man-pages/man5/journald.conf.5.html"});
+add(11,"Mon","linux","Evening","Answer aloud: a unit hits start-limit-hit — why, and how do you recover it? How does systemd kill a service's children?",{min:15});
+lc(11,"Tue","Morning",43,"Multiply Strings","multiply-strings","M",30,"learn","Grade-school multiplication into a result array of size m+n.");
+lc(11,"Tue","Morning",6,"Zigzag Conversion","zigzag-conversion","M",15,"variant","Simulate the row index bouncing between 0 and numRows-1.");
+lc(11,"Tue","Morning",8,"String to Integer (atoi)","string-to-integer-atoi","M",15,"variant","Trim, sign, digits, clamp to the int range.");
+lc(11,"Tue","Morning",151,"Reverse Words in a String","reverse-words-in-a-string","M",15,"variant","Split on whitespace, reverse, join — then do it in place.");
+add(11,"Tue","net","Evening","Drill: openssl s_client -connect example.com:443 and read the chain; explain every field",{min:25});
+add(11,"Tue","net","Evening","Read Cloudflare Learning: what is mutual TLS?",{min:15,url:"https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/"});
+add(11,"Tue","net","Evening","Answer aloud: a certificate expired in production — detection, mitigation, prevention",{min:20});
+lc(11,"Wed","Morning",1514,"Path with Maximum Probability","path-with-maximum-probability","M",30,"learn","Dijkstra with a max-heap on probability.");
+lc(11,"Wed","Morning",1462,"Course Schedule IV","course-schedule-iv","M",15,"variant","Floyd–Warshall reachability, or a DFS per query.");
+lc(11,"Wed","Morning",886,"Possible Bipartition","possible-bipartition","M",15,"variant","2-color the dislike graph with BFS/DFS.");
+lc(11,"Wed","Morning",1971,"Find if Path Exists in Graph","find-if-path-exists-in-graph","E",15,"variant","Union-find or BFS.");
+add(11,"Wed","design","Evening","Timed design: distributed lock service / leader election (45 min, blank page, out loud)",{min:45,note:"Leases, fencing tokens, quorum, clock skew, and what the clients do on failure."});
+add(11,"Wed","design","Evening","Self-score the design and list the gaps",{min:15});
+lc(11,"Thu","Morning",41,"First Missing Positive","first-missing-positive","H",30,"learn","Place each value v at index v-1 by swapping; the first mismatch is the answer.");
+lc(11,"Thu","Morning",189,"Rotate Array","rotate-array","M",15,"variant","Reverse all, then reverse the two parts.");
+lc(11,"Thu","Morning",48,"Rotate Image","rotate-image","M",15,"variant","Transpose, then reverse each row.");
+add(11,"Thu","cloud","Evening","Read the Google SRE book: Managing Critical State (distributed consensus)",{min:30,url:"https://sre.google/sre-book/managing-critical-state/"});
+add(11,"Thu","cloud","Evening","Play with the Raft visualization",{min:20,url:"http://thesecretlivesofdata.com/raft/"});
+add(11,"Thu","cloud","Evening","Answer aloud: etcd loses quorum — what still works in a Kubernetes cluster and what stops?",{min:10});
+add(11,"Thu","fleet","Evening","Write the controller HTTP API handler tests (POST /rollouts, GET /rollouts/{id})",{min:30});
+add(11,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30,note:"Light day: do this and stop."});
+add(11,"Fri","misc","Light day","Christmas (Fri Dec 25): nothing else is scheduled. Take the day.",{min:0,note:"Deliberate. Scripting moves to Sunday."});
+lc(11,"Sat","Timed set",289,"Game of Life","game-of-life","M",35,"timed","Encode old and new state in the same cell (2 bits) to stay in place.");
+lc(11,"Sat","Timed set",1026,"Maximum Difference Between Node and Ancestor","maximum-difference-between-node-and-ancestor","M",35,"timed","Carry the min and max seen on the path down.");
+lc(11,"Sat","Timed set",1249,"Minimum Remove to Make Valid Parentheses","minimum-remove-to-make-valid-parentheses","M",35,"timed","Stack of indices; mark the unmatched ones and drop them.");
+add(11,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(11,"Sat","linux","Lab","Lab: write a service with Restart=on-failure, StartLimitBurst, a timer, MemoryMax/CPUQuota and a hardening set; break it 3 ways and read the journal",{min:60});
+add(11,"Sat","linux","Lab","Exit test: explain how systemd confines and supervises a service, from unit file to cgroup",{min:30});
+add(11,"Sat","fleet","Build","Build the controller HTTP API (POST /rollouts, GET /rollouts/{id}); tests green; commit",{min:75});
+add(11,"Sat","fleet","Build","README: document the API with curl examples",{min:15});
+add(11,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:30,note:"Fully caught up? Re-do any problem you flagged 🔁."});
+add(11,"Sun","dsa","Scripting","Python: a retrying HTTP client with backoff, jitter and a circuit breaker, with tests",{min:30});
+add(11,"Sun","design","Evening","Redo the lock-service design from memory, with units, for two different failure cases",{min:45});
+add(11,"Sun","misc","Review","Say stories 1–4 aloud, 2 minutes each, recorded; score each against the rubric",{min:30});
+add(11,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+
+// ── WEEK 12 · Dec 28 – Jan 3 · interview mode begins ────────────────────
+lc(12,"Mon","Timed pair",92,"Reverse Linked List II","reverse-linked-list-ii","M",35,"timed","Dummy head; walk to the node before left, then head-insert the next nodes.");
+lc(12,"Mon","Timed pair",227,"Basic Calculator II","basic-calculator-ii","M",35,"timed","One stack; apply * and / immediately, push signed numbers for + and -.");
+add(12,"Mon","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(12,"Mon","linux","Evening","Linux oral round, recorded: 10 questions, 2 min each (boot, OOM, df/du, load, inodes, strace, cgroups, SELinux, NAT, systemd)",{min:40});
+add(12,"Mon","linux","Evening","Redo the 2 weakest Linux lab exit tests",{min:20});
+lc(12,"Tue","Timed pair",240,"Search a 2D Matrix II","search-a-2d-matrix-ii","M",35,"timed","Start at the top-right; step left or down.");
+lc(12,"Tue","Timed pair",974,"Subarray Sums Divisible by K","subarray-sums-divisible-by-k","M",35,"timed","Prefix sums mod k with a count map.");
+add(12,"Tue","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(12,"Tue","net","Evening","Network oral round, recorded: 10 questions, 2 min each (handshake, DNS, TLS, 502/503/504, MTU, CIDR, BGP, NAT, conntrack, congestion)",{min:40});
+add(12,"Tue","net","Evening","CIDR speed drill: 10 prefixes in under 5 minutes",{min:20});
+lc(12,"Wed","Timed pair",103,"Binary Tree Zigzag Level Order Traversal","binary-tree-zigzag-level-order-traversal","M",35,"timed","BFS; reverse alternate levels.");
+lc(12,"Wed","Timed pair",1905,"Count Sub Islands","count-sub-islands","M",35,"timed","DFS grid2; an island counts only if every cell is land in grid1.");
+add(12,"Wed","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(12,"Wed","design","Evening","Timed design: global notification system (unseen prompt, 45 min, blank page, out loud)",{min:45,note:"Fan-out, priorities, retries, dedup, rate limits per user, and provider failure."});
+add(12,"Wed","design","Evening","Self-score against the rubric and list the gaps",{min:15});
+lc(12,"Thu","Timed pair",1048,"Longest String Chain","longest-string-chain","M",35,"timed","Sort by length; dp over words, removing one character at a time.");
+lc(12,"Thu","Timed pair",179,"Largest Number","largest-number","M",35,"timed","Sort with the comparator a+b > b+a; strip leading zeros.");
+add(12,"Thu","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(12,"Thu","cloud","Evening","Kubernetes oral round, recorded: 10 questions, 2 min each (scheduling trace, probes, HPA, PDB, NetworkPolicy, PV, rolling update, kube-proxy, etcd, IRSA)",{min:40});
+add(12,"Thu","cloud","Evening","Walk through ml-inference-sre — architecture and Terraform — out loud in 10 minutes, then list what you stumbled on",{min:20});
+add(12,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30,note:"Light day: do this and stop."});
+add(12,"Fri","misc","Light day","New Year's Day (Fri Jan 1): nothing else is scheduled. Take the day.",{min:0,note:"Deliberate. Scripting moves to Sunday."});
+lc(12,"Sat","Timed set",1268,"Search Suggestions System","search-suggestions-system","M",35,"timed","Sort + binary search per prefix, or a trie storing the top 3.");
+lc(12,"Sat","Timed set",1094,"Car Pooling","car-pooling","M",35,"timed","Difference array over stops, or a min-heap of drop-offs.");
+lc(12,"Sat","Timed set",503,"Next Greater Element II","next-greater-element-ii","M",35,"timed","Monotonic stack over the array twice (circular).");
+add(12,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(12,"Sat","linux","Lab","Lab: two full triage drills with your fault-injection script, each narrated out loud against a 10-minute timer",{min:60});
+add(12,"Sat","linux","Lab","Exit test: tell one real incident from your Barclays work in STAR form in 10 minutes, as if to an interviewer",{min:30});
+add(12,"Sat","fleet","Build","Write Prometheus alert rules for canary failure and agent silence, with promtool tests; commit",{min:75});
+add(12,"Sat","fleet","Build","Write a blameless postmortem for one of your own injected failures",{min:15});
+add(12,"Sun","design","Mock","System design mock #2 — 45 min design + 15 min feedback (unseen prompt, with your referrer or a peer)",{min:60,note:"Ask for a verdict and the top 2 fixes. If it falls through, self-mock an unseen prompt and score it against the rubric."});
+add(12,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:30,note:"Fully caught up? Re-do any problem you flagged 🔁."});
+add(12,"Sun","dsa","Scripting","bash: a deploy-style script with set -euo pipefail, trap cleanup, flock and a rollback on failure; shellcheck clean",{min:30});
+add(12,"Sun","misc","Review","Behavioral drill, recorded: 6 questions, 2 minutes each; score against the rubric",{min:30});
+add(12,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+
+// ── WEEK 13 · Jan 4–10 · interview mode, gap-fill ───────────────────────
+lc(13,"Mon","Timed pair",61,"Rotate List","rotate-list","M",35,"timed","Close the list into a ring, then cut at length - k % length.");
+lc(13,"Mon","Timed pair",402,"Remove K Digits","remove-k-digits","M",35,"timed","Monotonic increasing stack; drop larger digits while you still have removals.");
+add(13,"Mon","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(13,"Mon","linux","Evening","Gap-fill: rewrite your 5 weakest Linux answers from the oral round, then re-read the source for each",{min:40});
+add(13,"Mon","linux","Evening","Rapid fire: say the 60-second triage and the 'server is slow' decision tree aloud",{min:20});
+lc(13,"Tue","Timed pair",718,"Maximum Length of Repeated Subarray","maximum-length-of-repeated-subarray","M",35,"timed","dp[i][j] = 1 + dp[i-1][j-1] when the elements match.");
+lc(13,"Tue","Timed pair",611,"Valid Triangle Number","valid-triangle-number","M",35,"timed","Sort; fix the largest side and two-pointer the other two.");
+add(13,"Tue","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(13,"Tue","net","Evening","Gap-fill: rewrite your 5 weakest networking answers from the oral round, then re-read the source for each",{min:40});
+add(13,"Tue","net","Evening","Subnet drill: 10 CIDR problems in under 5 minutes, then explain NAT and conntrack aloud",{min:20});
+lc(13,"Wed","Timed pair",437,"Path Sum III","path-sum-iii","M",35,"timed","Prefix sums on the root-to-node path with a count map.");
+lc(13,"Wed","Timed pair",654,"Maximum Binary Tree","maximum-binary-tree","M",35,"timed","Recurse on the max; or a monotonic stack for O(n).");
+add(13,"Wed","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(13,"Wed","design","Evening","Timed design: SLO and error-budget platform (unseen prompt, 45 min, blank page, out loud)",{min:45,note:"SLIs, SLOs, burn-rate alerts, multi-window alerting, and what happens when the budget is spent."});
+add(13,"Wed","design","Evening","Self-score against the rubric and list the gaps",{min:15});
+lc(13,"Thu","Timed pair",474,"Ones and Zeroes","ones-and-zeroes","M",35,"timed","2-D 0/1 knapsack over (zeros, ones); iterate capacities downward.");
+lc(13,"Thu","Timed pair",678,"Valid Parenthesis String","valid-parenthesis-string","M",35,"timed","Track a [low, high] range of open counts, or two stacks.");
+add(13,"Thu","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(13,"Thu","cloud","Evening","Read the SRE workbook: Implementing SLOs",{min:30,url:"https://sre.google/workbook/implementing-slos/"});
+add(13,"Thu","cloud","Evening","Read the SRE workbook: Alerting on SLOs",{min:25,url:"https://sre.google/workbook/alerting-on-slos/"});
+add(13,"Thu","cloud","Evening","Answer aloud: why multi-window, multi-burn-rate alerts beat a simple threshold",{min:5});
+lc(13,"Fri","Morning",98,"Validate Binary Search Tree (revisit)","validate-binary-search-tree","M",15,"revisit","Recurse with (min, max) bounds.");
+lc(13,"Fri","Morning",49,"Group Anagrams (revisit)","group-anagrams","M",15,"revisit","HashMap keyed by sorted string or a 26-count tuple.");
+add(13,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
+add(13,"Fri","dsa","Scripting","Python: compute an error-budget burn rate from a request log over two windows",{min:30});
+add(13,"Fri","fleet","Evening","Write the alert-rule tests for burn rate on the controller's own success metric",{min:30});
+lc(13,"Sat","Timed set",1834,"Single-Threaded CPU","single-threaded-cpu","M",35,"timed","Sort tasks by enqueue time; a min-heap by (processing time, index).");
+lc(13,"Sat","Timed set",662,"Maximum Width of Binary Tree","maximum-width-of-binary-tree","M",35,"timed","BFS with positions 2i and 2i+1; width is last - first + 1 per level.");
+lc(13,"Sat","Timed set",909,"Snakes and Ladders","snakes-and-ladders","M",35,"timed","BFS over squares; map the boustrophedon numbering to coordinates.");
+add(13,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(13,"Sat","linux","Lab","Lab: two faults back to back with a timer, narrated, then self-score against the rubric",{min:60});
+add(13,"Sat","linux","Lab","Exit test: explain the single hardest Linux topic from this plan in 5 minutes, without notes",{min:30});
+add(13,"Sat","fleet","Build","Wire the SLO-style alert rules into the controller's own metrics; promtool tests green; commit",{min:75});
+add(13,"Sat","fleet","Build","Write the fleetguard runbook: how to operate it and what each alert means",{min:15});
+add(13,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:45,note:"Fully caught up? Re-do any problem you flagged 🔁."});
+add(13,"Sun","design","Evening","Redo the SLO-platform design from memory, with units",{min:45});
+add(13,"Sun","misc","Review","Behavioral drill, recorded: 6 questions, 2 minutes each; score against the rubric",{min:30});
+add(13,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+
+// ── WEEK 14 · Jan 11–17 · interview mode, full-loop mock ────────────────
+lc(14,"Mon","Timed pair",86,"Partition List","partition-list","M",35,"timed","Two dummy-headed lists (less / greater-or-equal), then join.");
+lc(14,"Mon","Timed pair",622,"Design Circular Queue","design-circular-queue","M",35,"timed","Fixed array with head and count (or head/tail with a size).");
+add(14,"Mon","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(14,"Mon","linux","Evening","Linux oral round #2, recorded: 10 new questions, 2 min each; ask clarifying questions before answering",{min:40});
+add(14,"Mon","linux","Evening","Compare to round 1: which answers improved, which did not?",{min:20});
+lc(14,"Tue","Timed pair",454,"4Sum II","4sum-ii","M",35,"timed","Hash the sums of two arrays; look up the negation of the other two.");
+lc(14,"Tue","Timed pair",525,"Contiguous Array","contiguous-array","M",35,"timed","Treat 0 as -1; prefix sum with first-seen index.");
+add(14,"Tue","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(14,"Tue","net","Evening","Network oral round #2, recorded: 10 new questions, 2 min each",{min:40});
+add(14,"Tue","net","Evening","Compare to round 1: which answers improved, which did not?",{min:20});
+lc(14,"Wed","Timed pair",106,"Construct Binary Tree from Inorder and Postorder Traversal","construct-binary-tree-from-inorder-and-postorder-traversal","M",35,"timed","The last postorder element is the root; build the right subtree first.");
+lc(14,"Wed","Timed pair",538,"Convert BST to Greater Tree","convert-bst-to-greater-tree","M",35,"timed","Reverse inorder with a running sum.");
+add(14,"Wed","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(14,"Wed","design","Evening","Timed design: Dynamo-style distributed key-value store (unseen prompt, 45 min, blank page, out loud)",{min:45,note:"Partitioning, replication and quorums, conflict resolution, hinted handoff, and repair."});
+add(14,"Wed","design","Evening","Self-score against the rubric and list the gaps",{min:15});
+lc(14,"Thu","Timed pair",516,"Longest Palindromic Subsequence","longest-palindromic-subsequence","M",35,"timed","dp[i][j] over substrings; or LCS of s and reverse(s).");
+lc(14,"Thu","Timed pair",714,"Best Time to Buy and Sell Stock with Transaction Fee","best-time-to-buy-and-sell-stock-with-transaction-fee","M",35,"timed","Two states: cash and hold; pay the fee on sell.");
+add(14,"Thu","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(14,"Thu","cloud","Evening","Pick one AWS or GCP service per category (compute, storage, network, IAM) and say each one's failure mode and how you'd detect it",{min:40});
+add(14,"Thu","cloud","Evening","Kubernetes oral round #2, recorded: 5 new questions, 3 min each",{min:20});
+lc(14,"Fri","Morning",417,"Pacific Atlantic Water Flow (revisit)","pacific-atlantic-water-flow","M",15,"revisit","Search inward from each ocean's border; intersect.");
+lc(14,"Fri","Morning",994,"Rotting Oranges (revisit)","rotting-oranges","M",15,"revisit","Multi-source BFS; levels are minutes.");
+add(14,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
+add(14,"Fri","dsa","Scripting","Go: a rate-limited concurrent fetcher with a token bucket and graceful shutdown",{min:30});
+add(14,"Fri","fleet","Evening","Write down fleetguard's design decisions and tradeoffs as 3 short ADRs",{min:30});
+lc(14,"Sat","Timed set",433,"Minimum Genetic Mutation","minimum-genetic-mutation","M",35,"timed","BFS over valid one-character mutations.");
+lc(14,"Sat","Timed set",96,"Unique Binary Search Trees","unique-binary-search-trees","M",35,"timed","Catalan numbers: dp[n] = sum dp[i] * dp[n-1-i].");
+lc(14,"Sat","Timed set",1008,"Construct Binary Search Tree from Preorder Traversal","construct-binary-search-tree-from-preorder-traversal","M",35,"timed","Recurse with an upper bound and a global index.");
+add(14,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(14,"Sat","linux","Lab","Lab: three random faults, 10 minutes each, narrated against a timer",{min:60});
+add(14,"Sat","linux","Lab","Exit test: write down what you got wrong and fix the one root cause",{min:30});
+add(14,"Sat","fleet","Build","Hardening: graceful shutdown, signal handling, config validation and tests; commit",{min:75});
+add(14,"Sat","fleet","Build","README polish: quick start, architecture diagram, demo link placeholder",{min:15});
+add(14,"Sun","misc","Mock","Full-loop mock #1 — coding 45, design 45, troubleshooting 30, behavioral 30 (2.5 hours, with a peer or your referrer)",{min:150,note:"Ask for a verdict per round and the top 3 fixes overall. If it falls through, self-run all four rounds back to back and score each against its rubric."});
+add(14,"Sun","misc","Review","Write the top 3 fixes from the mock and which pillar each belongs to",{min:15});
+add(14,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+
+// ── WEEK 15 · Jan 18–24 · interview mode, final gap-fill ────────────────
+lc(15,"Mon","Timed pair",63,"Unique Paths II","unique-paths-ii","M",35,"timed","Grid dp; obstacles zero out their cells.");
+lc(15,"Mon","Timed pair",137,"Single Number II","single-number-ii","M",35,"timed","Count bits mod 3, or the ones/twos state trick.");
+add(15,"Mon","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(15,"Mon","linux","Evening","Final gap-fill: redo only the Linux questions you got wrong in mock #1 and oral round #2",{min:45});
+add(15,"Mon","linux","Evening","Rapid fire: 20 Linux questions in 20 minutes, aloud",{min:15});
+lc(15,"Tue","Timed pair",77,"Combinations","combinations","M",35,"timed","Backtrack with a start index; prune when too few numbers remain.");
+lc(15,"Tue","Timed pair",216,"Combination Sum III","combination-sum-iii","M",35,"timed","Backtrack with count k and target n over digits 1–9.");
+add(15,"Tue","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(15,"Tue","net","Evening","Final gap-fill: redo only the networking questions you got wrong in mock #1 and oral round #2",{min:45});
+add(15,"Tue","net","Evening","Rapid fire: 20 networking questions in 20 minutes, aloud",{min:15});
+lc(15,"Wed","Timed pair",129,"Sum Root to Leaf Numbers","sum-root-to-leaf-numbers","M",35,"timed","DFS carrying the number built so far.");
+lc(15,"Wed","Timed pair",513,"Find Bottom Left Tree Value","find-bottom-left-tree-value","M",35,"timed","BFS right-to-left; the last node visited is the answer.");
+add(15,"Wed","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(15,"Wed","design","Evening","Redo your weakest design from the whole plan, blank page, 45 min, out loud",{min:45,note:"Pick the lowest self-score from the Wednesday sessions."});
+add(15,"Wed","design","Evening","Self-score against the rubric and list the gaps",{min:15});
+lc(15,"Thu","Timed pair",583,"Delete Operation for Two Strings","delete-operation-for-two-strings","M",35,"timed","Answer = m + n - 2 * LCS.");
+lc(15,"Thu","Timed pair",673,"Number of Longest Increasing Subsequence","number-of-longest-increasing-subsequence","M",35,"timed","dp of (length, count) per index.");
+add(15,"Thu","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(15,"Thu","cloud","Evening","Final gap-fill: redo only the cloud and Kubernetes questions you got wrong in mock #1 and oral round #2",{min:45});
+add(15,"Thu","cloud","Evening","Rapid fire: 20 cloud and Kubernetes questions in 20 minutes, aloud",{min:15});
+lc(15,"Fri","Morning",300,"Longest Increasing Subsequence (revisit)","longest-increasing-subsequence","M",15,"revisit","O(n log n) patience sorting with binary search.");
+lc(15,"Fri","Morning",139,"Word Break (revisit)","word-break","M",15,"revisit","dp[i] = some j with dp[j] and s[j:i] in the dictionary.");
+add(15,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
+add(15,"Fri","dsa","Scripting","Redo your two slowest scripting exercises from a blank file with a clock",{min:30});
+add(15,"Fri","fleet","Evening","Rehearse the 5-minute fleetguard pitch aloud; record it and note where you rambled",{min:30});
+lc(15,"Sat","Timed set",274,"H-Index","h-index","M",35,"timed","Sort descending, or counting buckets capped at n.");
+lc(15,"Sat","Timed set",406,"Queue Reconstruction by Height","queue-reconstruction-by-height","M",35,"timed","Sort by height descending, k ascending; insert at index k.");
+lc(15,"Sat","Timed set",930,"Binary Subarrays With Sum","binary-subarrays-with-sum","M",35,"timed","Prefix sums with a count map, or atMost(goal) - atMost(goal-1).");
+add(15,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(15,"Sat","linux","Lab","Lab: two faults back to back, narrated, against a timer",{min:45});
+add(15,"Sat","linux","Lab","Exit test: explain the three Linux failures that surprised you most in this plan",{min:45});
+add(15,"Sat","fleet","Build","Record the final 3-minute fleetguard demo and add the link to the README",{min:75});
+add(15,"Sat","fleet","Build","Write the 3 resume bullets for fleetguard, each with a number",{min:15});
+add(15,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:45,note:"Fully caught up? Re-do any problem you flagged 🔁."});
+add(15,"Sun","design","Evening","Redo your second-weakest design blank, 30 min, then diff it against your notes",{min:45});
+add(15,"Sun","misc","Review","Refine all 8 STAR stories to 2 minutes each; say each one aloud once",{min:30});
+add(15,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
+
+// ── WEEK 16 · Jan 25–31 · taper and final mock ──────────────────────────
+lc(16,"Mon","Timed pair",80,"Remove Duplicates from Sorted Array II","remove-duplicates-from-sorted-array-ii","M",35,"timed","Write pointer; keep an element if it differs from the one two behind.");
+lc(16,"Mon","Timed pair",1161,"Maximum Level Sum of a Binary Tree","maximum-level-sum-of-a-binary-tree","M",35,"timed","BFS; sum each level and keep the smallest level index with the max.");
+add(16,"Mon","linux","Evening","Final rapid fire: 20 Linux questions in 20 minutes, aloud, no notes",{min:20});
+add(16,"Mon","linux","Evening","Re-read your 'server is slow' decision tree and the 60-second triage once",{min:15});
+lc(16,"Tue","Timed pair",701,"Insert into a Binary Search Tree","insert-into-a-binary-search-tree","M",35,"timed","Walk down to a null child and attach.");
+lc(16,"Tue","Timed pair",113,"Path Sum II","path-sum-ii","M",35,"timed","DFS with a path list; copy it at matching leaves.");
+add(16,"Tue","net","Evening","Final rapid fire: 20 networking questions in 20 minutes, aloud, no notes",{min:20});
+add(16,"Tue","net","Evening","Re-read your CIDR drill and your 'service unreachable' checklist once",{min:15});
+add(16,"Wed","dsa","Morning","Cold re-solve: the 6 problems you flagged 🔁 most often or took longest on, 10 minutes each",{min:60,note:"Pick them from the Redo tab and your timing notes."});
+add(16,"Wed","design","Evening","Redo your single weakest design blank, 45 min, out loud",{min:45});
+add(16,"Thu","dsa","Morning","Cold re-solve: 6 more problems from your slowest list, 10 minutes each",{min:60});
+add(16,"Thu","cloud","Evening","Final rapid fire: 20 cloud and Kubernetes questions in 20 minutes, aloud, no notes",{min:20});
+add(16,"Thu","cloud","Evening","Re-read your resume bullets and the fleetguard pitch once",{min:15});
+lc(16,"Fri","Morning",76,"Minimum Window Substring (revisit)","minimum-window-substring","H",15,"revisit","Sliding window with need/have counts.");
+lc(16,"Fri","Morning",84,"Largest Rectangle in Histogram (revisit)","largest-rectangle-in-histogram","H",15,"revisit","Monotonic increasing stack.");
+add(16,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
+add(16,"Fri","misc","Light day","No new material from here. Sleep and keep the routine.",{min:0,note:"Tomorrow is the final checkpoint; Sunday is the final mock."});
+lc(16,"Sat","Final checkpoint",16,"3Sum Closest (final checkpoint 1/4)","3sum-closest","M",35,"timed","Sort; fix one and two-pointer the rest, tracking the closest sum.");
+lc(16,"Sat","Final checkpoint",24,"Swap Nodes in Pairs (final checkpoint 2/4)","swap-nodes-in-pairs","M",35,"timed","Dummy head; rewire pairs with a prev pointer.");
+lc(16,"Sat","Final checkpoint",1498,"Number of Subsequences That Satisfy the Given Sum Condition (final checkpoint 3/4)","number-of-subsequences-that-satisfy-the-given-sum-condition","M",35,"timed","Sort; two pointers; add 2^(r-l) per valid pair, with precomputed powers mod 1e9+7.");
+lc(16,"Sat","Final checkpoint",109,"Convert Sorted List to Binary Search Tree (final checkpoint 4/4)","convert-sorted-list-to-binary-search-tree","M",35,"timed","Fast/slow to find the middle, or inorder simulation with a global pointer.");
+add(16,"Sat","misc","Final checkpoint","Score the final checkpoint: how many of 4 solved in ≤35 min with no hints? Compare it to the Week 6 checkpoint",{min:15,note:"Week 6 pass mark was 8 of 10 (80%). 3 of 4 is the same bar."});
+add(16,"Sat","misc","Admin","Final admin: update the resume, confirm your referrer, and list where you stand on each application",{min:30});
+add(16,"Sun","misc","Mock","Full-loop mock #2 — coding 45, design 45, troubleshooting 30, behavioral 30 (2.5 hours, with a peer or your referrer)",{min:150,note:"Ask for a verdict per round. Compare it to mock #1."});
+add(16,"Sun","misc","Review","Decide: are you ready to book loops, or do you need a 4-week gap-fill block? Tell me and I will build it",{min:30,note:"This is the plan's decision point. Use the two mock verdicts and the Saturday checkpoint, not a feeling."});
+
 TASKS.forEach(function(t){t.id=t.id||(t.wk+t.day+"-"+slugify(t.title));});
 
 // ══ STATE ═════════════════════════════════════════════════════════════
@@ -818,9 +1064,12 @@ const WEEKMETA={
   8:{t:"Mixed stretch · monotonic stacks, DP variants, design DS, advanced graphs",m:"Sunday: system design mock"},
   9:{t:"Mixed · linked lists, binary search, trees, bits & math",m:"Rollout state machine built"},
   10:{t:"Mixed · design DS, backtracking, union-find, windows · troubleshooting week",m:"Sunday: troubleshooting mock · end-to-end rollback demo"},
-  12:{m:"Sunday: system design mock"},
-  14:{m:"Sunday: full-loop mock"},
-  16:{m:"Sunday: full-loop mock"}
+  11:{t:"Mixed · DP II, strings, graphs III, arrays · holiday week",m:"Friday Dec 25 is deliberately light · controller API built"},
+  12:{t:"Interview mode begins · 2 timed mediums a day, oral rounds",m:"Sunday: system design mock #2 · Friday Jan 1 is deliberately light"},
+  13:{t:"Interview mode · gap-fill and SLOs",m:"Alert rules tested · fleetguard runbook written"},
+  14:{t:"Interview mode · full-loop week",m:"Sunday: full-loop mock #1 (coding, design, troubleshooting, behavioral)"},
+  15:{t:"Interview mode · final gap-fill",m:"fleetguard demo recorded · resume bullets written"},
+  16:{t:"Taper · final checkpoint · final mock",m:"Sunday: full-loop mock #2 · decision point: book loops or extend"}
 };
 const DORDER=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 function addDays(d,n){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()+n);return x;}
@@ -916,6 +1165,169 @@ function renderPlan(){
     +"</div>"+cards+"</div>";
 }
 
+// ══ PROGRESS ══════════════════════════════════════════════════════════
+function goPlan(w){STATE.planWk=w;STATE.planDays={};setTab("plan");scrollWkTab(w);}
+function renderProgress(){
+  var today=midnight(NOW()),dcache={};
+  function dd(t){var k=t.wk+t.day;if(!(k in dcache))dcache[k]=dayDate(t.wk,t.day);return dcache[k];}
+  var tot=TASKS.length,done=TASKS.filter(function(t){return STATE.checked[t.id];});
+  var totMin=TASKS.reduce(function(a,t){return a+(t.min||0);},0),doneMin=done.reduce(function(a,t){return a+(t.min||0);},0);
+  var pct=tot?Math.round(done.length/tot*100):0;
+  var overdue=TASKS.filter(function(t){var d=dd(t);return d&&d<today&&!STATE.checked[t.id]&&(t.min||0)>0;});
+  var odMin=overdue.reduce(function(a,t){return a+(t.min||0);},0);
+  var odWeeks={};overdue.forEach(function(t){odWeeks[t.wk]=(odWeeks[t.wk]||0)+1;});
+  var firstOd=overdue.length?Math.min.apply(null,Object.keys(odWeeks).map(Number)):null;
+
+  var h="<div class=\"page\" style=\"padding-bottom:4px\"><h2>Progress 📊</h2></div><div style=\"padding:0 16px\">";
+  h+="<div class=\"pcard\"><div style=\"display:flex;justify-content:space-between;align-items:flex-end\"><div class=\"big\">"+pct+"%</div>"
+    +"<div style=\"font-size:12px;color:var(--muted);text-align:right\">"+done.length+" / "+tot+" tasks<br>"+hm(doneMin)+" of "+hm(totMin)+"</div></div>"
+    +"<div class=\"bar\" style=\"margin-top:10px;height:8px\"><i style=\"width:"+pct+"%\"></i></div>"
+    +(overdue.length?"<div class=\"warn\"><b>Behind: "+overdue.length+" tasks (~"+hm(odMin)+")</b> scheduled before today and not ticked. <button style=\"color:var(--accent);font-weight:600\" onclick=\"goPlan("+firstOd+")\">Open Week "+firstOd+" →</button></div>"
+      :"<div class=\"warn\">Nothing overdue. Everything scheduled before today is ticked.</div>")
+    +"</div>";
+
+  h+="<div class=\"pcard\"><div class=\"label\">By pillar</div>";
+  Object.keys(PILLARS).forEach(function(k){
+    var ts=TASKS.filter(function(t){return t.p===k;}),dn=ts.filter(function(t){return STATE.checked[t.id];});
+    var m=ts.reduce(function(a,t){return a+(t.min||0);},0),dm=dn.reduce(function(a,t){return a+(t.min||0);},0);
+    var pp=ts.length?Math.round(dn.length/ts.length*100):0;
+    h+="<div class=\"prow\"><div class=\"pn\" style=\"color:var(--p-"+k+")\">"+PILLARS[k].i+" "+esc(PILLARS[k].n)+"</div>"
+      +"<div class=\"bar\"><i style=\"width:"+pp+"%;background:var(--p-"+k+")\"></i></div>"
+      +"<div class=\"pv\">"+pp+"% · "+hm(dm)+"</div></div>";
+  });
+  h+="</div>";
+
+  var lcs=TASKS.filter(function(t){return t.lc;}),newP=lcs.filter(function(t){return t.kind!=="revisit";}),rev=lcs.filter(function(t){return t.kind==="revisit";});
+  var cnt=function(a){return a.filter(function(t){return STATE.checked[t.id];}).length;};
+  var timed=lcs.filter(function(t){return t.kind==="timed"&&!/checkpoint/i.test(t.title);});
+  var cp=lcs.filter(function(t){return /\(checkpoint \d+\/10\)/.test(t.title);});
+  var redoN=lcs.filter(function(t){return STATE.redo[t.id];}).length;
+  h+="<div class=\"pcard\"><div class=\"label\">DSA</div><div class=\"tiles\">"
+    +"<div class=\"tile\"><div class=\"tn\">"+cnt(newP)+"<span style=\"font-size:12px;font-weight:500;color:var(--muted)\"> / "+newP.length+"</span></div><div class=\"tl\">New problems</div></div>"
+    +"<div class=\"tile\"><div class=\"tn\">"+cnt(rev)+"<span style=\"font-size:12px;font-weight:500;color:var(--muted)\"> / "+rev.length+"</span></div><div class=\"tl\">Revisits</div></div>"
+    +"<div class=\"tile\"><div class=\"tn\">"+cnt(timed)+"<span style=\"font-size:12px;font-weight:500;color:var(--muted)\"> / "+timed.length+"</span></div><div class=\"tl\">Timed sets</div></div>"
+    +"<div class=\"tile\"><div class=\"tn\">"+redoN+"</div><div class=\"tl\">Flagged for redo</div></div>"
+    +"<div class=\"tile\" style=\"grid-column:1 / -1\"><div class=\"tn\">"+cnt(cp)+"<span style=\"font-size:12px;font-weight:500;color:var(--muted)\"> / "+cp.length+" attempted</span></div><div class=\"tl\">Week 6 checkpoint (pass = 8 of 10 in ≤35 min; a tick means attempted, not passed)</div></div>"
+    +"</div></div>";
+
+  h+="<div class=\"pcard\"><div class=\"label\">Weeks</div><div class=\"wgrid\">";
+  var cur=posOf(today).wk;
+  for(var w=0;w<=TOTAL_WEEKS;w++){
+    var ts=TASKS.filter(function(t){return t.wk===w;}),dn=ts.filter(function(t){return STATE.checked[t.id];}).length;
+    var pp=ts.length?Math.round(dn/ts.length*100):0,c=phaseOf(w).color,full=ts.length&&dn===ts.length;
+    h+="<button class=\"wcell\" onclick=\"goPlan("+w+")\" style=\"background:"+(full?"rgba(16,185,129,0.15)":c+"14")+";color:"+(full?"#10B981":c)+";"+(cur===w?"border-color:"+c:"")+"\">"
+      +(odWeeks[w]?"<span class=\"od\"></span>":"")+"<div class=\"wn\">"+(full?"✓":"W"+w)+"</div><div class=\"wp\">"+pp+"%</div></button>";
+  }
+  h+="</div><div class=\"hint\">Red dot = unticked tasks from days that have passed. Tap a week to open it.</div></div></div>";
+  return h;
+}
+
+// ══ GITHUB SYNC (progress file in this repo) ══════════════════════════
+// Same mechanics as the old tracker, with its own file. The token is read from
+// the same browser key ("ghToken"), so if the old tracker was already set up on
+// this domain, this one connects automatically.
+const GH_OWNER="AbhijeetGulhane",GH_REPO="sre-prep-tracker",GH_BRANCH="main",GH_PATH="roadmap_progress.json";
+const GH_API="https://api.github.com/repos/"+GH_OWNER+"/"+GH_REPO+"/contents/"+GH_PATH;
+let GH_SHA=null,ghTimer=null,ghBusy=false,ghStarted=false;
+STATE.sync={status:"off",msg:"",at:null};
+function ghToken(){try{return (localStorage.getItem("ghToken")||"").trim();}catch(e){return "";}}
+function ghHeaders(){return {"Authorization":"Bearer "+ghToken(),"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};}
+function ghEncode(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o))));}
+function ghDecode(b){return JSON.parse(decodeURIComponent(escape(atob(b))));}
+function isDirty(){return !!load("v3Dirty",false);}
+function markDirty(){save("v3Dirty",true);queueSync();}
+function setSync(status,msg){
+  STATE.sync.status=status;STATE.sync.msg=msg||"";if(status==="ok")STATE.sync.at=new Date();
+  var e=document.getElementById("syncStatus");if(e)e.innerHTML=syncLine();
+}
+function syncLine(){
+  var m={off:"Not connected",idle:"Connected",syncing:"Syncing…",ok:"✓ Synced"+(STATE.sync.at?" at "+STATE.sync.at.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}):""),error:"⚠ "+STATE.sync.msg}[STATE.sync.status]||"";
+  return esc(m);
+}
+async function ghPull(silent){
+  if(!ghToken()||ghBusy)return;
+  if(ghTimer||isDirty()){return ghPush();}          // never overwrite unsynced local edits
+  ghBusy=true;setSync("syncing");
+  try{
+    var res=await fetch(GH_API+"?ref="+GH_BRANCH+"&t="+Date.now(),{headers:ghHeaders()});
+    if(res.status===404){GH_SHA=null;setSync("ok");ghBusy=false;if(Object.keys(STATE.checked).length||Object.keys(STATE.redo).length){return ghPush();}return;}
+    if(res.status===401||res.status===403)throw new Error("Token rejected ("+res.status+")");
+    if(!res.ok)throw new Error("Pull failed ("+res.status+")");
+    var data=await res.json();GH_SHA=data.sha;
+    var r=ghDecode(String(data.content).replace(/\n/g,"")),changed=false;
+    if(r&&typeof r.checked==="object"){
+      if(JSON.stringify(r.checked)!==JSON.stringify(STATE.checked)){STATE.checked=r.checked;changed=true;}
+      if(r.redo&&JSON.stringify(r.redo)!==JSON.stringify(STATE.redo)){STATE.redo=r.redo;changed=true;}
+      if(r.startDate&&r.startDate!==STATE.startDate){STATE.startDate=r.startDate;changed=true;}
+      if(r.theme&&r.theme!==STATE.theme){STATE.theme=r.theme;document.documentElement.setAttribute("data-theme",r.theme);changed=true;}
+    }
+    if(changed){save("v3Checked",STATE.checked);save("v3Redo",STATE.redo);save("v3Start",STATE.startDate);save("v3Theme",STATE.theme);}
+    setSync("ok");
+    if(changed)render();
+  }catch(e){setSync("error",String(e.message||e));}
+  finally{ghBusy=false;}
+}
+async function ghPush(){
+  if(!ghToken()||ghBusy)return;
+  ghBusy=true;setSync("syncing");
+  try{
+    var payload={checked:STATE.checked,redo:STATE.redo,startDate:STATE.startDate,theme:STATE.theme,updatedAt:new Date().toISOString()};
+    var body={message:"Update roadmap progress",content:ghEncode(payload),branch:GH_BRANCH};
+    if(GH_SHA)body.sha=GH_SHA;
+    var put=function(){return fetch(GH_API,{method:"PUT",headers:Object.assign({"Content-Type":"application/json"},ghHeaders()),body:JSON.stringify(body)});};
+    var res=await put();
+    if(res.status===409||res.status===422){                 // stale or missing sha: refetch it and retry once
+      var r2=await fetch(GH_API+"?ref="+GH_BRANCH+"&t="+Date.now(),{headers:ghHeaders()});
+      if(r2.ok){
+        var d2=await r2.json();GH_SHA=d2.sha;body.sha=GH_SHA;
+        try{                                                  // another device wrote first: keep both sets of ticks
+          var rr=ghDecode(String(d2.content).replace(/\n/g,"")),added=false;
+          Object.keys(rr.checked||{}).forEach(function(k){if(!STATE.checked[k]){STATE.checked[k]=true;added=true;}});
+          Object.keys(rr.redo||{}).forEach(function(k){if(!STATE.redo[k]){STATE.redo[k]=true;added=true;}});
+          if(added){save("v3Checked",STATE.checked);save("v3Redo",STATE.redo);
+            body.content=ghEncode({checked:STATE.checked,redo:STATE.redo,startDate:STATE.startDate,theme:STATE.theme,updatedAt:new Date().toISOString()});}
+        }catch(e){}
+        res=await put();
+      }
+    }
+    if(res.status===401||res.status===403)throw new Error("Token rejected ("+res.status+")");
+    if(!res.ok)throw new Error("Push failed ("+res.status+")");
+    var d=await res.json();GH_SHA=d.content.sha;save("v3Dirty",false);setSync("ok");
+  }catch(e){setSync("error",String(e.message||e));}
+  finally{ghBusy=false;}
+}
+function queueSync(){
+  if(!ghToken())return;
+  clearTimeout(ghTimer);ghTimer=setTimeout(function(){ghTimer=null;ghPush();},2500);
+}
+function ghStart(){
+  if(ghStarted||!ghToken())return;ghStarted=true;setSync("idle");
+  ghPull(true);
+  setInterval(function(){ghPull(true);},45000);
+  document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible")ghPull(true);});
+}
+function connectGh(){
+  var v=(document.getElementById("tokInput")||{}).value;if(!v||!v.trim())return;
+  try{localStorage.setItem("ghToken",v.trim());}catch(e){}
+  ghStarted=false;ghStart();render();
+}
+function disconnectGh(){
+  try{localStorage.removeItem("ghToken");}catch(e){}
+  STATE.sync={status:"off",msg:"",at:null};render();
+}
+function syncNow(){if(isDirty())ghPush();else ghPull(false);}
+function syncCard(){
+  var on=!!ghToken();
+  return "<div class=\"card\"><div class=\"label\">GitHub sync</div>"
+    +"<div class=\"hint\" style=\"margin-top:0\">Saves your ticks to <b>"+GH_PATH+"</b> in the "+GH_REPO+" repo, so a cleared browser or a second device doesn't lose progress. If two devices edit at once, ticks are merged (an un-tick can come back).</div>"
+    +"<div class=\"syncline\" id=\"syncStatus\">"+syncLine()+"</div>"
+    +(on?"<div class=\"btnrow\"><button class=\"big-btn\" style=\"background:var(--accent)\" onclick=\"syncNow()\">Sync now</button><button class=\"big-btn\" style=\"background:var(--muted)\" onclick=\"disconnectGh()\">Disconnect</button></div>"
+        :"<input class=\"input\" type=\"password\" id=\"tokInput\" placeholder=\"GitHub token\" style=\"margin-top:10px\" autocomplete=\"off\">"
+         +"<div class=\"hint\">Create a fine-grained token limited to the "+GH_REPO+" repo with <b>Contents: Read and write</b>. It is kept in this browser only. If the old tracker is already connected on this domain, this connects by itself.</div>"
+         +"<button class=\"big-btn\" style=\"background:var(--accent)\" onclick=\"connectGh()\">Connect</button>")
+    +"</div>";
+}
+
 function renderRedo(){
   var rows=TASKS.filter(function(t){return t.lc&&STATE.redo[t.id];});
   var body=rows.length?rows.map(function(t){
@@ -930,13 +1342,13 @@ function renderRedo(){
 
 function renderSettings(){
   var pos=posOf(midnight(NOW()));
-  return "<div class=\"page\"><h2>Settings</h2><div class=\"sub\">Everything here is saved in this browser only until GitHub sync is added in Step 4.</div>"
+  return "<div class=\"page\"><h2>Settings</h2><div class=\"sub\">Progress is saved in this browser. Connect GitHub sync below to back it up and share it across devices.</div>"+syncCard()
     +"<div class=\"card\"><div class=\"label\">Start date (Monday of Week 1)</div>"
     +"<input class=\"input\" type=\"date\" id=\"startInput\" value=\""+esc(STATE.startDate||"")+"\">"
     +"<div class=\"hint\">"+(pos.wk===null?"Today is outside the plan window.":"Today is in "+(pos.wk===0?"Week 0":"Week "+pos.wk)+".")+" If you fall behind, move this date forward 7 days and the whole plan shifts.</div>"
     +"<button class=\"big-btn\" id=\"saveDateBtn\" style=\"background:var(--accent)\" onclick=\"saveDate()\">Save start date</button></div>"
     +"<div class=\"card\"><div class=\"label\">Backup &amp; restore</div>"
-    +"<div class=\"hint\" style=\"margin-top:0\">Copy a backup code into Notes so you can restore if browser data clears or you switch phones.</div>"
+    +"<div class=\"hint\" style=\"margin-top:0\">A manual backup, in case you don't use GitHub sync.</div>"
     +"<button class=\"big-btn\" id=\"copyBtn\" style=\"background:var(--accent);margin-top:11px\" onclick=\"copyBackup()\">📋 Copy backup code</button>"
     +"<textarea class=\"input\" id=\"restoreInput\" style=\"min-height:70px;margin-top:14px;font-family:monospace;font-size:12px\" placeholder=\"Paste a backup code here\"></textarea>"
     +"<button class=\"big-btn\" id=\"restoreBtn\" style=\"background:var(--ok)\" onclick=\"restoreBackup()\">Restore progress</button></div>"
@@ -958,7 +1370,7 @@ function updateHeader(){
   if(rn)rn.textContent=n?"Redo ("+n+")":"Redo";
 }
 function render(){
-  var html=STATE.tab==="today"?renderToday():STATE.tab==="plan"?renderPlan():STATE.tab==="redo"?renderRedo():renderSettings();
+  var html=STATE.tab==="today"?renderToday():STATE.tab==="plan"?renderPlan():STATE.tab==="progress"?renderProgress():STATE.tab==="redo"?renderRedo():renderSettings();
   var wt=document.querySelector&&document.querySelector(".week-tabs"),sl=wt?wt.scrollLeft:0;
   document.getElementById("content").innerHTML=html;
   var wt2=document.querySelector&&document.querySelector(".week-tabs");if(wt2&&sl)wt2.scrollLeft=sl;
@@ -970,28 +1382,28 @@ function render(){
 // ══ ACTIONS ═══════════════════════════════════════════════════════════
 function setTab(t){
   STATE.tab=t;
-  ["today","plan","redo","settings"].forEach(function(n){document.getElementById("nav-"+n).classList.toggle("active",n===t);});
+  ["today","plan","progress","redo","settings"].forEach(function(n){document.getElementById("nav-"+n).classList.toggle("active",n===t);});
   render();window.scrollTo(0,0);
 }
 function toggleTheme(){
   STATE.theme=STATE.theme==="light"?"dark":"light";
   document.documentElement.setAttribute("data-theme",STATE.theme);
-  save("v3Theme",STATE.theme);updateHeader();
+  save("v3Theme",STATE.theme);markDirty();updateHeader();
 }
 function toggleCheck(id){
   if(STATE.checked[id])delete STATE.checked[id];else STATE.checked[id]=true;
-  save("v3Checked",STATE.checked);render();
+  save("v3Checked",STATE.checked);markDirty();render();
 }
 function toggleOpen(id){STATE.open[id]=!STATE.open[id];render();}
 function toggleRedo(id){
   if(STATE.redo[id])delete STATE.redo[id];else STATE.redo[id]=true;
-  save("v3Redo",STATE.redo);render();
+  save("v3Redo",STATE.redo);markDirty();render();
 }
-function resolveRedo(id){delete STATE.redo[id];save("v3Redo",STATE.redo);render();}
+function resolveRedo(id){delete STATE.redo[id];save("v3Redo",STATE.redo);markDirty();render();}
 function shiftDay(n){STATE.offset=n===0?0:STATE.offset+n;render();window.scrollTo(0,0);}
 function saveDate(){
   var v=document.getElementById("startInput").value;if(!v)return;
-  STATE.startDate=v;save("v3Start",v);STATE.offset=0;
+  STATE.startDate=v;save("v3Start",v);markDirty();STATE.offset=0;
   var b=document.getElementById("saveDateBtn");
   render();
   b=document.getElementById("saveDateBtn");
@@ -1013,7 +1425,7 @@ function restoreBackup(){
     STATE.checked=p.checked||{};STATE.redo=p.redo||{};
     if(p.startDate)STATE.startDate=p.startDate;
     if(p.theme){STATE.theme=p.theme;document.documentElement.setAttribute("data-theme",p.theme);save("v3Theme",p.theme);}
-    save("v3Checked",STATE.checked);save("v3Redo",STATE.redo);save("v3Start",STATE.startDate);
+    save("v3Checked",STATE.checked);save("v3Redo",STATE.redo);save("v3Start",STATE.startDate);markDirty();
     render();
     b=document.getElementById("restoreBtn");if(b)b.textContent="✓ Restored";
   }catch(e){if(b)b.textContent="✗ Invalid code";}
@@ -1021,12 +1433,13 @@ function restoreBackup(){
 function startFresh(){
   if(!confirm("Erase all ticks and Redo flags in this browser? This can't be undone."))return;
   STATE.checked={};STATE.redo={};STATE.open={};STATE.offset=0;
-  save("v3Checked",{});save("v3Redo",{});render();
+  save("v3Checked",{});save("v3Redo",{});markDirty();render();
 }
 
 // ══ INIT ══════════════════════════════════════════════════════════════
 document.documentElement.setAttribute("data-theme",STATE.theme);
 render();
+ghStart();
 </script>
 </body>
 </html>
