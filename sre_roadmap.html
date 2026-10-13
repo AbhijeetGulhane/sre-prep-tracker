@@ -165,6 +165,8 @@ a{color:var(--accent);text-decoration:none}
 // min (minutes), d (E/M/H), kind (cold/learn/variant/timed/revisit/base), note, url, lc (true = DSA problem, gets a 🔁 button).
 // IDs are derived from week + day + title. If you rename a task later, its tick resets.
 // All 16 weeks loaded.
+// Oct 13 gap-fix pass: applications, tighter timers (25 min Wk 7–11, 20 min Wk 12–16), fleetguard
+// explain checks, storage/NFS/FD, SRE book chapters, behavioral refresh + LP map, AI-assisted coding, HFT internals.
 const PILLARS={
   dsa:{n:"DSA & scripting",i:"💻"},design:{n:"System design",i:"🏗️"},linux:{n:"Linux & storage",i:"🐧"},
   net:{n:"Networking",i:"🌐"},cloud:{n:"Cloud & K8s",i:"☁️"},fleet:{n:"fleetguard",i:"🛡️"},misc:{n:"Mocks & admin",i:"🎯"}
@@ -174,7 +176,7 @@ const KIND={
   cold:"Cold re-solve — aim for 10 min. Can't do it cold? Flag 🔁.",
   learn:"Learn — 30 min cap. Stuck at 20 min: read the approach (not the code), then code it. Flag 🔁 if you needed the approach.",
   variant:"Variant — 15 min cap. Apply the pattern from the learn problem.",
-  timed:"Timed — 35 min, narrated, plain doc, no hints. Missed it? Read the approach, re-solve cold within 2 days, flag 🔁.",
+  timed:"Timed — stop at the time on the chip (35 min to start, 25 from Week 7, 20 from Week 12: two in a row is Meta's 45-min screen). Narrated, plain doc, no hints. Missed it? Read the approach, re-solve cold within 2 days, flag 🔁.",
   revisit:"Revisit — cold, 15 min cap. Stuck? Flag 🔁."
 };
 const TASKS=[];
@@ -266,6 +268,7 @@ lc(2,"Wed","Morning",226,"Invert Binary Tree","invert-binary-tree","E",10,"cold"
 lc(2,"Wed","Morning",104,"Maximum Depth of Binary Tree","maximum-depth-of-binary-tree","E",10,"cold","1 + max(depth(left), depth(right)).");
 lc(2,"Wed","Morning",100,"Same Tree","same-tree","E",10,"cold","Compare values, recurse both sides; both null = true.");
 lc(2,"Wed","Morning",102,"Binary Tree Level Order Traversal","binary-tree-level-order-traversal","M",30,"learn","BFS with a queue; process level by level using the queue size.");
+add(2,"Wed","design","Evening","Read SRE Workbook Ch 12: Non-Abstract Large System Design",{min:30,url:"https://sre.google/workbook/non-abstract-design/",note:"The format of Google's Round 2 design interview: real machines, disks and bandwidth, with the math shown. Free."});
 add(2,"Wed","design","Evening","Timed design: rate limiter (45 min, blank page, out loud)",{min:45,note:"Token bucket vs leaky bucket vs sliding window; where it sits; Redis INCR/EXPIRE."});
 add(2,"Wed","design","Evening","Self-score the design and list the gaps",{min:15});
 // Thu
@@ -280,6 +283,7 @@ lc(2,"Fri","Morning",208,"Implement Trie (Prefix Tree)","implement-trie-prefix-t
 lc(2,"Fri","Morning",15,"3Sum (revisit)","3sum","M",15,"revisit","Sort; fix one, two-pointer the rest; skip duplicates.");
 lc(2,"Fri","Morning",3,"Longest Substring Without Repeating Characters (revisit)","longest-substring-without-repeating-characters","M",15,"revisit","Sliding window + set/map.");
 add(2,"Fri","dsa","Scripting","awk: failed SSH logins per source IP, top 5 (from /var/log/secure)",{min:30,note:"awk + sort -nr + head. Then redo it once from a blank file with the clock running."});
+add(2,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(2,"Fri","fleet","Evening","Read the /proc/meminfo and /proc/pressure/memory fields and write the test fixtures",{min:30,note:"Fixtures first, collector tomorrow."});
 // Sat
 lc(2,"Sat","Timed set",981,"Time Based Key-Value Store","time-based-key-value-store","M",35,"timed","HashMap of key → sorted (timestamp, value) list; binary search on get.");
@@ -321,6 +325,7 @@ lc(3,"Wed","Morning",210,"Course Schedule II","course-schedule-ii","M",15,"varia
 lc(3,"Wed","Morning",684,"Redundant Connection","redundant-connection","M",30,"learn","Union-find: the first edge whose endpoints already share a root is the answer.");
 add(3,"Wed","design","Evening","Timed design: distributed cache (45 min, blank page, out loud)",{min:45,note:"Eviction, consistent hashing, replication, stampede, invalidation. Capacity math with units."});
 add(3,"Wed","design","Evening","Self-score the design and list the gaps",{min:15});
+add(3,"Wed","linux","Evening","Read fsync(2); answer aloud: what is on disk after write() returns vs after fsync() returns?",{min:15,url:"https://man7.org/linux/man-pages/man2/fsync.2.html",note:"Page cache → dirty pages → writeback (the dirty_* knobs from Week 2) → fsync forces it to disk."});
 // Thu
 lc(3,"Thu","Morning",547,"Number of Provinces","number-of-provinces","M",15,"variant","Union-find or DFS over the adjacency matrix; count components.");
 lc(3,"Thu","Morning",127,"Word Ladder","word-ladder","H",30,"learn","BFS over words; bucket by wildcard patterns like h*t to find neighbors fast.");
@@ -329,11 +334,13 @@ lc(3,"Thu","Morning",797,"All Paths From Source to Target","all-paths-from-sourc
 add(3,"Thu","cloud","Evening","Read k8s docs: Service — ClusterIP, NodePort, LoadBalancer and EndpointSlices",{min:20,url:"https://kubernetes.io/docs/concepts/services-networking/service/"});
 add(3,"Thu","cloud","Evening","Read k8s docs: DNS for Services and Pods",{min:15,url:"https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/"});
 add(3,"Thu","cloud","Evening","Answer aloud: trace a pod → ClusterIP request. Who rewrites it? What if kube-proxy dies? Why does a failed readiness probe drop the endpoint?",{min:25});
+add(3,"Thu","linux","Evening","Read OSTEP Ch 42: crash consistency — fsck vs journaling",{min:15,url:"https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf",note:"Data vs metadata journaling, and what ext4's default data=ordered means. Free."});
 // Fri
 lc(3,"Fri","Morning",153,"Find Minimum in Rotated Sorted Array (revisit)","find-minimum-in-rotated-sorted-array","M",15,"revisit","Compare mid to right; the min is in the unsorted half.");
 lc(3,"Fri","Morning",102,"Binary Tree Level Order Traversal (revisit)","binary-tree-level-order-traversal","M",15,"revisit","BFS with a queue; process level by level using the queue size.");
 add(3,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30,note:"Nothing flagged? Re-do the two problems that felt slowest."});
 add(3,"Fri","dsa","Scripting","awk: top 10 slowest URLs from an nginx access log (request_time field)",{min:30,note:"Then redo it once from a blank file with the clock running."});
+add(3,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(3,"Fri","fleet","Evening","Read /proc/stat and write the CPU collector test fixtures",{min:30,note:"Fixtures first, collector tomorrow. CPU usage is a delta between two reads."});
 // Sat
 lc(3,"Sat","Timed set",542,"01 Matrix","01-matrix","M",35,"timed","Multi-source BFS from every 0; distances fill outward.");
@@ -372,6 +379,7 @@ lc(4,"Wed","Morning",57,"Insert Interval","insert-interval","M",30,"learn","Add 
 lc(4,"Wed","Morning",56,"Merge Intervals","merge-intervals","M",15,"variant","Sort by start; extend the last merged interval while they overlap.");
 lc(4,"Wed","Morning",435,"Non-overlapping Intervals","non-overlapping-intervals","M",15,"variant","Sort by end; keep the earliest-ending interval, count the removals.");
 lc(4,"Wed","Morning",986,"Interval List Intersections","interval-list-intersections","M",15,"variant","Two pointers; intersect, then advance the one that ends first.");
+add(4,"Wed","design","Evening","Read SRE Book Ch 6: Monitoring Distributed Systems",{min:15,url:"https://sre.google/sre-book/monitoring-distributed-systems/",note:"The four golden signals: latency, traffic, errors, saturation. Use them in tonight's design. Free."});
 add(4,"Wed","design","Evening","Timed design: monitoring and alerting system (45 min, blank page, out loud)",{min:45,note:"Collection (pull vs push), TSDB, retention and downsampling, alert evaluation, noise, and who monitors the monitor."});
 add(4,"Wed","design","Evening","Self-score the design and list the gaps",{min:15});
 // Thu
@@ -386,7 +394,9 @@ lc(4,"Fri","Morning",200,"Number of Islands (revisit)","number-of-islands","M",1
 lc(4,"Fri","Morning",207,"Course Schedule (revisit)","course-schedule","M",15,"revisit","Detect a cycle: Kahn's algorithm or 3-state DFS.");
 add(4,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(4,"Fri","dsa","Scripting","Python: read a log file and print p50/p95/p99 latency per endpoint (no pandas)",{min:30,note:"Then redo it once from a blank file with the clock running."});
+add(4,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(4,"Fri","fleet","Evening","Write the disk collector fixtures (statfs numbers + /proc/diskstats lines)",{min:30});
+add(4,"Fri","linux","Evening","Read getrlimit(2) and fs.file-max; answer aloud: EMFILE vs ENFILE, and finding the leaking process",{min:15,url:"https://man7.org/linux/man-pages/man2/getrlimit.2.html",note:"Per-process RLIMIT_NOFILE vs the system-wide table (/proc/sys/fs/file-nr); ls /proc/<pid>/fd | wc -l and lsof -p. This is the theory behind your FD-exhaustion story."});
 // Sat
 lc(4,"Sat","Timed set",692,"Top K Frequent Words","top-k-frequent-words","M",35,"timed","Count, then heap with a (-count, word) key so ties sort alphabetically.");
 lc(4,"Sat","Timed set",452,"Minimum Number of Arrows to Burst Balloons","minimum-number-of-arrows-to-burst-balloons","M",35,"timed","Sort by end; shoot at the end of the first balloon, skip everything it pops.");
@@ -402,7 +412,7 @@ add(4,"Sun","dsa","Mock","Coding mock #2 — 45 min coding + 15 min feedback (wi
 add(4,"Sun","design","Evening","Redo the monitoring-system capacity chain from memory, with units, for two different number sets",{min:45});
 add(4,"Sun","design","Evening","Second pass on your weakest section: 30 min timed, 15 min self-score",{min:45});
 add(4,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
-add(4,"Sun","misc","Review","Draft STAR story 3: a failure or mistake, v1 with numbers",{min:15});
+add(4,"Sun","misc","Review","Refresh STAR story 3 — failure: the Gap VM network misconfiguration",{min:15,note:"Cut it to 2 minutes, add numbers, and tag the Amazon Leadership Principles it covers."});
 
 // ── WEEK 5 · Nov 9–15 · backtracking, 1-D dynamic programming ──────────
 // Mon
@@ -412,6 +422,7 @@ lc(5,"Mon","Morning",39,"Combination Sum","combination-sum","M",30,"learn","Back
 add(5,"Mon","linux","Evening","Read OSTEP Ch 37–38: hard disk drives and RAID",{min:30,url:"https://pages.cs.wisc.edu/~remzi/OSTEP/",note:"Seek, rotation and transfer; RAID 0/1/4/5 capacity and failure tolerance."});
 add(5,"Mon","linux","Evening","Skim man pages: lvm(8), mdadm(8), iostat(1)",{min:20,url:"https://man7.org/linux/man-pages/",note:"Know what await and %util mean and why %util lies on SSDs."});
 add(5,"Mon","linux","Evening","Answer aloud: RAID 1/5/6/10 — failure tolerance and write penalty; what an LVM snapshot is",{min:10});
+add(5,"Mon","linux","Evening","Read OSTEP Ch 49: Sun's Network File System (NFS)",{min:15,url:"https://pages.cs.wisc.edu/~remzi/OSTEP/dist-nfs.pdf",note:"Stateless protocol, file handles, idempotent operations, client-side caching. Free."});
 // Tue
 lc(5,"Tue","Morning",40,"Combination Sum II","combination-sum-ii","M",15,"variant","Sort; skip duplicates at the same depth; each element used once.");
 lc(5,"Tue","Morning",79,"Word Search","word-search","M",30,"learn","DFS from every cell; mark visited in place and restore on backtrack.");
@@ -426,6 +437,7 @@ lc(5,"Wed","Morning",198,"House Robber","house-robber","M",30,"learn","dp[i] = m
 lc(5,"Wed","Morning",213,"House Robber II","house-robber-ii","M",15,"variant","Circular: the max of robbing houses [0..n-2] and [1..n-1].");
 add(5,"Wed","design","Evening","Timed design: job scheduler / cron service (45 min, blank page, out loud)",{min:45,note:"Exactly-once vs at-least-once, leader election, missed runs, retries and backoff, and idempotency."});
 add(5,"Wed","design","Evening","Self-score the design and list the gaps",{min:15});
+add(5,"Wed","linux","Evening","Answer aloud: NFS hard vs soft mounts, stale file handles, D-state hangs, v3 vs v4 locking",{min:15,note:"Use your Isilon migration (~200 shares, ~5,000 servers) as the example. It's on your resume, so expect questions."});
 // Thu
 lc(5,"Thu","Morning",322,"Coin Change","coin-change","M",30,"learn","dp[a] = 1 + min(dp[a - c]) over coins; unreachable stays at infinity.");
 lc(5,"Thu","Morning",300,"Longest Increasing Subsequence","longest-increasing-subsequence","M",30,"learn","O(n^2) dp first; then the patience-sorting O(n log n) with binary search.");
@@ -438,6 +450,7 @@ lc(5,"Fri","Morning",56,"Merge Intervals (revisit)","merge-intervals","M",15,"re
 lc(5,"Fri","Morning",133,"Clone Graph (revisit)","clone-graph","M",15,"revisit","HashMap old→new; copy on first visit, wire neighbors recursively.");
 add(5,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(5,"Fri","dsa","Scripting","bash: a safe log-rotation script (set -euo pipefail, trap cleanup, flock); clean under shellcheck",{min:30});
+add(5,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(5,"Fri","fleet","Evening","Write the TCP-state collector fixtures (/proc/net/tcp lines)",{min:30});
 // Sat
 lc(5,"Sat","Timed set",139,"Word Break","word-break","M",35,"timed","dp[i] = true if some j < i has dp[j] and s[j:i] is in the dictionary.");
@@ -454,7 +467,7 @@ add(5,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min
 add(5,"Sun","design","Evening","Redo the job-scheduler capacity chain from memory, with units, for two different number sets",{min:45});
 add(5,"Sun","design","Evening","Second pass on your weakest section: 30 min timed, 15 min self-score",{min:45});
 add(5,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
-add(5,"Sun","misc","Review","Draft STAR story 4: a conflict or disagreement, v1 with numbers",{min:15});
+add(5,"Sun","misc","Review","Refresh STAR story 4 — conflict: the AD/VAS migration over the Hadoop team's objection",{min:15,note:"Cut it to 2 minutes, add numbers, and tag the Amazon Leadership Principles it covers."});
 
 // ── WEEK 6 · Nov 16–22 · 2-D DP, then the DSA CHECKPOINT ──────────────
 // Mon
@@ -464,6 +477,7 @@ lc(6,"Mon","Morning",64,"Minimum Path Sum","minimum-path-sum","M",15,"variant","
 add(6,"Mon","linux","Evening","Read cgroups(7) (v2 section) and namespaces(7)",{min:30,url:"https://man7.org/linux/man-pages/man7/cgroups.7.html",note:"Which namespaces exist, and which controllers v2 gives you."});
 add(6,"Mon","linux","Evening","Read Julia Evans: what even is a container?",{min:15,url:"https://jvns.ca/blog/2016/10/10/what-even-is-a-container/"});
 add(6,"Mon","linux","Evening","Answer aloud: what does docker run do, in syscalls (clone flags, pivot_root, cgroup writes, execve)?",{min:15});
+add(6,"Mon","linux","Evening","Walk through capsule aloud in 10 minutes",{min:15,note:"Namespaces, cgroups v2, pivot_root, user namespaces: the same story as tonight's 'docker run in syscalls'. If you can't do it, drop capsule from your resume."});
 // Tue
 lc(6,"Tue","Morning",518,"Coin Change II","coin-change-ii","M",30,"learn","Unbounded knapsack counting combinations: loop coins outermost, amounts inner.");
 lc(6,"Tue","Morning",494,"Target Sum","target-sum","M",15,"variant","Reduce to a subset-sum count: (total + target) / 2.");
@@ -486,6 +500,7 @@ add(6,"Thu","cloud","Evening","Answer aloud: draining a node with a PDB that blo
 lc(6,"Fri","Checkpoint",74,"Search a 2D Matrix (checkpoint 5/10)","search-a-2d-matrix","M",35,"timed","CHECKPOINT. Plain doc, no hints, 35 min.");
 lc(6,"Fri","Checkpoint",2,"Add Two Numbers (checkpoint 6/10)","add-two-numbers","M",35,"timed","CHECKPOINT. Plain doc, no hints, 35 min.");
 add(6,"Fri","dsa","Scripting","Python: poll an HTTP endpoint with retry, exponential backoff and jitter, plus unit tests",{min:30});
+add(6,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(6,"Fri","fleet","Evening","Write the controller design: rollout state machine, canary waves, health gates, rollback rule",{min:30,note:"One page in the repo. Then fixtures for the wave planner."});
 // Sat — checkpoint 7-10
 lc(6,"Sat","Checkpoint",1448,"Count Good Nodes in Binary Tree (checkpoint 7/10)","count-good-nodes-in-binary-tree","M",35,"timed","CHECKPOINT. Plain doc, no hints, 35 min.");
@@ -511,6 +526,7 @@ lc(7,"Mon","Morning",572,"Subtree of Another Tree","subtree-of-another-tree","E"
 add(7,"Mon","linux","Evening","Read Brendan Gregg: Linux perf examples",{min:25,url:"https://www.brendangregg.com/perf.html"});
 add(7,"Mon","linux","Evening","Read the bpftrace one-liners tutorial",{min:25,url:"https://github.com/bpftrace/bpftrace/blob/master/docs/tutorial_one_liners.md"});
 add(7,"Mon","linux","Evening","Answer aloud: one process is at 100% CPU — which tools, in which order, to find out why?",{min:10});
+add(7,"Mon","linux","Evening","Read kernel docs: NUMA memory policy and IRQ affinity; answer aloud: why pin to an isolated core on the NIC's node?",{min:15,url:"https://docs.kernel.org/admin-guide/mm/numa_memory_policy.html",note:"Also skim https://docs.kernel.org/core-api/irq/irq-affinity.html. Cover isolcpus and transparent huge pages. HFT firms like HRT and Jane Street ask this."});
 // Tue
 lc(7,"Tue","Morning",1631,"Path With Minimum Effort","path-with-minimum-effort","M",30,"learn","Dijkstra where the edge cost is the max step so far; or binary search on the answer + BFS.");
 lc(7,"Tue","Morning",778,"Swim in Rising Water","swim-in-rising-water","H",15,"variant","Same shape as the minimax-path problem above.");
@@ -532,15 +548,17 @@ lc(7,"Fri","Morning",322,"Coin Change (revisit)","coin-change","M",15,"revisit",
 lc(7,"Fri","Morning",79,"Word Search (revisit)","word-search","M",15,"revisit","DFS from every cell; mark visited in place and restore.");
 add(7,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(7,"Fri","dsa","Scripting","Go: a concurrent health checker with a worker pool and a context timeout",{min:30});
+add(7,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(7,"Fri","fleet","Evening","Write the health-gate evaluation tests (healthy, degraded, flapping, missing metrics)",{min:30});
 // Sat
-lc(7,"Sat","Timed set",287,"Find the Duplicate Number","find-the-duplicate-number","M",35,"timed","Floyd's cycle detection on the index graph; find the cycle entrance.");
-lc(7,"Sat","Timed set",721,"Accounts Merge","accounts-merge","M",35,"timed","Union-find over emails; group by root.");
-lc(7,"Sat","Timed set",90,"Subsets II","subsets-ii","M",35,"timed","Sort; skip duplicates at the same depth while backtracking.");
+lc(7,"Sat","Timed set",287,"Find the Duplicate Number","find-the-duplicate-number","M",25,"timed","Floyd's cycle detection on the index graph; find the cycle entrance.");
+lc(7,"Sat","Timed set",721,"Accounts Merge","accounts-merge","M",25,"timed","Union-find over emails; group by root.");
+lc(7,"Sat","Timed set",90,"Subsets II","subsets-ii","M",25,"timed","Sort; skip duplicates at the same depth while backtracking.");
 add(7,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
 add(7,"Sat","linux","Lab","Lab: perf record -g on a CPU burner and read the report; find the hot function",{min:35});
 add(7,"Sat","linux","Lab","Lab: strace -c and strace -T on a slow program; name the slow syscall and why",{min:35});
 add(7,"Sat","linux","Lab","Exit test: do a bpftrace one-liner that counts syscalls by process, and explain the output",{min:20});
+add(7,"Sat","linux","Lab","Lab: pin a CPU burner with taskset, watch mpstat -P ALL, read numactl --hardware",{min:20,note:"WSL shows one NUMA node. Say what a two-socket box would show and why remote-node memory is slower."});
 add(7,"Sat","fleet","Build","Build the health-gate evaluator (pure function) + wire it into the wave planner; tests green; commit",{min:75});
 add(7,"Sat","fleet","Build","README: write the rollback rule and the health-gate thresholds",{min:15});
 // Sun
@@ -550,7 +568,7 @@ add(7,"Sun","cloud","Evening","Read Borg, Omega, and Kubernetes (ACM Queue)",{mi
 add(7,"Sun","cloud","Evening","Answer aloud: Cluster Autoscaler vs Karpenter, node pools, spot interruption handling",{min:15});
 add(7,"Sun","design","Evening","Redo the message-queue capacity chain from memory, with units, for two different number sets",{min:45});
 add(7,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
-add(7,"Sun","misc","Review","Draft STAR story 5: leading during an incident, v1 with numbers",{min:15});
+add(7,"Sun","misc","Review","Refresh STAR story 5 — incident: FD exhaustion",{min:15,note:"Cut it to 2 minutes, add numbers, and tag the Amazon Leadership Principles it covers."});
 
 // ── WEEK 8 · Nov 30 – Dec 6 · mixed stretch ────────────────────────────
 // Mon
@@ -560,6 +578,7 @@ lc(8,"Mon","Morning",42,"Trapping Rain Water","trapping-rain-water","H",15,"vari
 add(8,"Mon","linux","Evening","Read Netflix: Linux Performance Analysis in 60,000 Milliseconds",{min:25,url:"https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55"});
 add(8,"Mon","linux","Evening","Read kernel docs: PSI — pressure stall information",{min:15,url:"https://docs.kernel.org/accounting/psi.html"});
 add(8,"Mon","linux","Evening","Answer aloud: the 60-second checklist in order, and what each number tells you",{min:20});
+add(8,"Mon","cloud","Evening","Read SRE Book Ch 3: Embracing Risk",{min:15,url:"https://sre.google/sre-book/embracing-risk/",note:"Why 100% is the wrong target, and how an error budget turns reliability into a product decision. Free."});
 // Tue
 lc(8,"Tue","Morning",309,"Best Time to Buy and Sell Stock with Cooldown","best-time-to-buy-and-sell-stock-with-cooldown","M",30,"learn","State machine dp: hold, sold, rest.");
 lc(8,"Tue","Morning",279,"Perfect Squares","perfect-squares","M",15,"variant","Coin Change over the squares.");
@@ -567,6 +586,7 @@ lc(8,"Tue","Morning",377,"Combination Sum IV","combination-sum-iv","M",15,"varia
 add(8,"Tue","net","Evening","Read Cloudflare Learning: what is BGP?",{min:20,url:"https://www.cloudflare.com/learning/security/glossary/what-is-bgp/"});
 add(8,"Tue","net","Evening","Read Cloudflare Learning: what is anycast?",{min:15,url:"https://www.cloudflare.com/learning/cdn/glossary/anycast-network/"});
 add(8,"Tue","net","Evening","Answer aloud: the 2021 Facebook outage — why did DNS die along with BGP?",{min:25});
+add(8,"Tue","cloud","Evening","Read SRE Book Ch 4: Service Level Objectives",{min:15,url:"https://sre.google/sre-book/service-level-objectives/",note:"SLI vs SLO vs SLA, and how to choose indicators users actually feel. Free."});
 // Wed
 lc(8,"Wed","Morning",146,"LRU Cache","lru-cache","M",30,"learn","HashMap + doubly linked list with dummy head/tail; move to front on every get/put.");
 lc(8,"Wed","Morning",380,"Insert Delete GetRandom O(1)","insert-delete-getrandom-o1","M",30,"learn","List + value→index map; delete by swapping with the last element.");
@@ -585,11 +605,12 @@ lc(8,"Fri","Morning",295,"Find Median from Data Stream (revisit)","find-median-f
 lc(8,"Fri","Morning",621,"Task Scheduler (revisit)","task-scheduler","M",15,"revisit","Max-heap by count plus a cooldown queue.");
 add(8,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(8,"Fri","dsa","Scripting","bash: parse /proc/meminfo and /proc/loadavg and print a one-line health summary, shellcheck clean",{min:30});
+add(8,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(8,"Fri","fleet","Evening","Write the controller → agent polling tests (timeouts, partial failures, stale data)",{min:30});
 // Sat
-lc(8,"Sat","Timed set",1011,"Capacity To Ship Packages Within D Days","capacity-to-ship-packages-within-d-days","M",35,"timed","Binary search on the answer; feasibility by a greedy pass.");
-lc(8,"Sat","Timed set",450,"Delete Node in a BST","delete-node-in-a-bst","M",35,"timed","Three cases: leaf, one child, two children (replace with the inorder successor).");
-lc(8,"Sat","Timed set",329,"Longest Increasing Path in a Matrix","longest-increasing-path-in-a-matrix","H",35,"timed","DFS with memoization; the strictly increasing rule means no cycles.");
+lc(8,"Sat","Timed set",1011,"Capacity To Ship Packages Within D Days","capacity-to-ship-packages-within-d-days","M",25,"timed","Binary search on the answer; feasibility by a greedy pass.");
+lc(8,"Sat","Timed set",450,"Delete Node in a BST","delete-node-in-a-bst","M",25,"timed","Three cases: leaf, one child, two children (replace with the inorder successor).");
+lc(8,"Sat","Timed set",329,"Longest Increasing Path in a Matrix","longest-increasing-path-in-a-matrix","H",25,"timed","DFS with memoization; the strictly increasing rule means no cycles.");
 add(8,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
 add(8,"Sat","linux","Lab","Lab: inject a CPU hog, run the 60-second checklist, and write your diagnosis in one paragraph",{min:25});
 add(8,"Sat","linux","Lab","Lab: inject a slow memory leak and a full disk (one at a time), diagnose each from a cold start, and write the one-paragraph diagnosis",{min:50});
@@ -601,7 +622,7 @@ add(8,"Sun","design","Mock","System design mock — 45 min design + 15 min feedb
 add(8,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:30,note:"Fully caught up? Re-do any problem you flagged 🔁."});
 add(8,"Sun","design","Evening","Redo the CDN capacity chain from memory, with units, for two different number sets",{min:45});
 add(8,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
-add(8,"Sun","misc","Review","Draft STAR story 6: automation or simplification, v1 with numbers",{min:15});
+add(8,"Sun","misc","Review","Refresh STAR story 6 — automation: the patching tool",{min:15,note:"Cut it to 2 minutes, add numbers, and tag the Amazon Leadership Principles it covers."});
 
 // ── WEEK 9 · Dec 7–13 · mixed ──────────────────────────────────────────
 // Mon
@@ -618,6 +639,7 @@ lc(9,"Tue","Morning",658,"Find K Closest Elements","find-k-closest-elements","M"
 add(9,"Tue","net","Evening","Read Cloudflare: how to stop running out of ephemeral ports",{min:25,url:"https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections/"});
 add(9,"Tue","net","Evening","Drill: 6 troubleshooting scenarios (timeouts, resets, slow DNS, MTU black hole, conntrack full, port exhaustion) — one-line diagnosis and first command for each",{min:25});
 add(9,"Tue","net","Evening","Try ping -M do -s 1472 to find a path MTU, and say what you'd see if ICMP were filtered",{min:10});
+add(9,"Tue","cloud","Evening","Read SRE Book Ch 5: Eliminating Toil",{min:15,url:"https://sre.google/sre-book/eliminating-toil/",note:"Frame your patching tool as a toil story: manual, repetitive, automatable, growing with the fleet. Free."});
 // Wed
 lc(9,"Wed","Morning",235,"Lowest Common Ancestor of a Binary Search Tree","lowest-common-ancestor-of-a-binary-search-tree","M",15,"variant","Walk down: if both targets are smaller go left, larger go right, else this is the LCA.");
 lc(9,"Wed","Morning",543,"Diameter of Binary Tree","diameter-of-binary-tree","E",15,"variant","Post-order height; the diameter at a node is left + right.");
@@ -638,11 +660,12 @@ lc(9,"Fri","Morning",146,"LRU Cache (revisit)","lru-cache","M",15,"revisit","Has
 lc(9,"Fri","Morning",124,"Binary Tree Maximum Path Sum (revisit)","binary-tree-maximum-path-sum","H",15,"revisit","Post-order; update a global with left + node + right.");
 add(9,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(9,"Fri","dsa","Scripting","Go: a concurrent port checker with a worker pool, a context timeout and a results channel",{min:30});
+add(9,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(9,"Fri","fleet","Evening","Write the rollout state-machine tests (pending → canary → waves → done | rollback)",{min:30});
 // Sat
-lc(9,"Sat","Timed set",31,"Next Permutation","next-permutation","M",35,"timed","Find the pivot from the right, swap with the next larger, reverse the suffix.");
-lc(9,"Sat","Timed set",120,"Triangle","triangle","M",35,"timed","Bottom-up dp in place; each cell adds the min of the two below.");
-lc(9,"Sat","Timed set",36,"Valid Sudoku","valid-sudoku","M",35,"timed","Three sets of seen-values: rows, columns and 3x3 boxes.");
+lc(9,"Sat","Timed set",31,"Next Permutation","next-permutation","M",25,"timed","Find the pivot from the right, swap with the next larger, reverse the suffix.");
+lc(9,"Sat","Timed set",120,"Triangle","triangle","M",25,"timed","Bottom-up dp in place; each cell adds the min of the two below.");
+lc(9,"Sat","Timed set",36,"Valid Sudoku","valid-sudoku","M",25,"timed","Three sets of seen-values: rows, columns and 3x3 boxes.");
 add(9,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
 add(9,"Sat","linux","Lab","Lab: two network namespaces + a veth pair + a bridge; ping across, then add NAT with an nftables masquerade rule",{min:45});
 add(9,"Sat","linux","Lab","Lab: drop capabilities with capsh and show a bind to port 80 fail, then succeed with CAP_NET_BIND_SERVICE",{min:25});
@@ -654,7 +677,7 @@ add(9,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min
 add(9,"Sun","design","Evening","Redo the rollout-system design from memory in 30 min, then diff it against your doc",{min:45});
 add(9,"Sun","design","Evening","Second pass on your weakest section: 20 min timed, 10 min self-score",{min:30});
 add(9,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
-add(9,"Sun","misc","Review","Draft STAR story 7: mentoring or raising the bar, v1 with numbers",{min:15});
+add(9,"Sun","misc","Review","Refresh STAR story 7 — mentoring: the new grad",{min:15,note:"Cut it to 2 minutes, add numbers, and tag the Amazon Leadership Principles it covers."});
 
 // ── WEEK 10 · Dec 14–20 · mixed, troubleshooting week ──────────────────
 // Mon
@@ -688,11 +711,12 @@ lc(10,"Fri","Morning",380,"Insert Delete GetRandom O(1) (revisit)","insert-delet
 lc(10,"Fri","Morning",1631,"Path With Minimum Effort (revisit)","path-with-minimum-effort","M",15,"revisit","Dijkstra on the max step so far.");
 add(10,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(10,"Fri","dsa","Scripting","Python: a log tailer that survives rotation (inode check) and emits one JSON line per event",{min:30});
+add(10,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(10,"Fri","fleet","Evening","Write the end-to-end test plan: two local agents, a failing canary, an automatic rollback",{min:30});
 // Sat
-lc(10,"Sat","Timed set",73,"Set Matrix Zeroes","set-matrix-zeroes","M",35,"timed","Use the first row and column as markers to get O(1) extra space.");
-lc(10,"Sat","Timed set",116,"Populating Next Right Pointers in Each Node","populating-next-right-pointers-in-each-node","M",35,"timed","Level by level, using the already-built next pointers.");
-lc(10,"Sat","Timed set",18,"4Sum","4sum","M",35,"timed","Sort; two nested loops + two pointers; skip duplicates at every level.");
+lc(10,"Sat","Timed set",73,"Set Matrix Zeroes","set-matrix-zeroes","M",25,"timed","Use the first row and column as markers to get O(1) extra space.");
+lc(10,"Sat","Timed set",116,"Populating Next Right Pointers in Each Node","populating-next-right-pointers-in-each-node","M",25,"timed","Level by level, using the already-built next pointers.");
+lc(10,"Sat","Timed set",18,"4Sum","4sum","M",25,"timed","Sort; two nested loops + two pointers; skip duplicates at every level.");
 add(10,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
 add(10,"Sat","linux","Lab","Lab: write a script that injects one random fault (disk full, OOM, CPU hog, port in use, bad DNS); run it, then diagnose against a timer — target 10 min each",{min:60});
 add(10,"Sat","linux","Lab","Exit test: narrate one full diagnosis out loud as if to an interviewer",{min:30});
@@ -702,8 +726,9 @@ add(10,"Sat","fleet","Build","Record a 60-second terminal demo and add it to the
 add(10,"Sun","misc","Mock","Troubleshooting mock — 45 min + 15 min feedback (a peer breaks a VM or gives a scenario; diagnose out loud)",{min:60,note:"Ask for a verdict and the top 2 fixes. If it falls through, run your fault script and narrate the diagnosis into a voice recording."});
 add(10,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:30,note:"Fully caught up? Re-do any problem you flagged 🔁."});
 add(10,"Sun","design","Evening","Redo the failover design from memory with units: RPO, RTO and the replication lag budget",{min:45});
+add(10,"Sun","misc","Admin","Build the target list: 15–20 roles, with a referrer for each",{min:15,note:"Tier A, Tier B and fintech. Meta and Google go on the list but wait until mid-January and mid-March."});
 add(10,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
-add(10,"Sun","misc","Review","Draft STAR story 8: ambiguity or learning something fast, v1 with numbers",{min:15});
+add(10,"Sun","misc","Review","Refresh STAR story 8 — ambiguity: the post-release data-correctness bug",{min:15,note:"Cut it to 2 minutes, add numbers, and tag the Amazon Leadership Principles it covers."});
 
 // ── WEEK 11 · Dec 21–27 · mixed, holiday week ───────────────────────────
 lc(11,"Mon","Morning",264,"Ugly Number II","ugly-number-ii","M",30,"learn","Three pointers over the sequence, or a min-heap with a seen set.");
@@ -712,6 +737,7 @@ lc(11,"Mon","Morning",115,"Distinct Subsequences","distinct-subsequences","H",15
 add(11,"Mon","linux","Evening","Read systemd.exec(5) and systemd.timer(5): sandboxing options, Restart= semantics, timers vs cron",{min:30,url:"https://man7.org/linux/man-pages/man5/systemd.exec.5.html",note:"Know ProtectSystem, NoNewPrivileges, MemoryMax, StartLimitBurst."});
 add(11,"Mon","linux","Evening","Skim journald.conf(5) and logrotate(8)",{min:15,url:"https://man7.org/linux/man-pages/man5/journald.conf.5.html"});
 add(11,"Mon","linux","Evening","Answer aloud: a unit hits start-limit-hit — why, and how do you recover it? How does systemd kill a service's children?",{min:15});
+add(11,"Mon","misc","Admin","Send referral asks for the January wave (AWS SysDE, Tier B, fintech)",{min:15,note:"Ask now so the referrals are in when you apply on Jan 4. Meta and Google wait."});
 lc(11,"Tue","Morning",43,"Multiply Strings","multiply-strings","M",30,"learn","Grade-school multiplication into a result array of size m+n.");
 lc(11,"Tue","Morning",6,"Zigzag Conversion","zigzag-conversion","M",15,"variant","Simulate the row index bouncing between 0 and numRows-1.");
 lc(11,"Tue","Morning",8,"String to Integer (atoi)","string-to-integer-atoi","M",15,"variant","Trim, sign, digits, clamp to the int range.");
@@ -734,9 +760,9 @@ add(11,"Thu","cloud","Evening","Answer aloud: etcd loses quorum — what still w
 add(11,"Thu","fleet","Evening","Write the controller HTTP API handler tests (POST /rollouts, GET /rollouts/{id})",{min:30});
 add(11,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30,note:"Light day: do this and stop."});
 add(11,"Fri","misc","Light day","Christmas (Fri Dec 25): nothing else is scheduled. Take the day.",{min:0,note:"Deliberate. Scripting moves to Sunday."});
-lc(11,"Sat","Timed set",289,"Game of Life","game-of-life","M",35,"timed","Encode old and new state in the same cell (2 bits) to stay in place.");
-lc(11,"Sat","Timed set",1026,"Maximum Difference Between Node and Ancestor","maximum-difference-between-node-and-ancestor","M",35,"timed","Carry the min and max seen on the path down.");
-lc(11,"Sat","Timed set",1249,"Minimum Remove to Make Valid Parentheses","minimum-remove-to-make-valid-parentheses","M",35,"timed","Stack of indices; mark the unmatched ones and drop them.");
+lc(11,"Sat","Timed set",289,"Game of Life","game-of-life","M",25,"timed","Encode old and new state in the same cell (2 bits) to stay in place.");
+lc(11,"Sat","Timed set",1026,"Maximum Difference Between Node and Ancestor","maximum-difference-between-node-and-ancestor","M",25,"timed","Carry the min and max seen on the path down.");
+lc(11,"Sat","Timed set",1249,"Minimum Remove to Make Valid Parentheses","minimum-remove-to-make-valid-parentheses","M",25,"timed","Stack of indices; mark the unmatched ones and drop them.");
 add(11,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
 add(11,"Sat","linux","Lab","Lab: write a service with Restart=on-failure, StartLimitBurst, a timer, MemoryMax/CPUQuota and a hardening set; break it 3 ways and read the journal",{min:60});
 add(11,"Sat","linux","Lab","Exit test: explain how systemd confines and supervises a service, from unit file to cgroup",{min:30});
@@ -749,61 +775,74 @@ add(11,"Sun","misc","Review","Say stories 1–4 aloud, 2 minutes each, recorded;
 add(11,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
 
 // ── WEEK 12 · Dec 28 – Jan 3 · interview mode begins ────────────────────
-lc(12,"Mon","Timed pair",92,"Reverse Linked List II","reverse-linked-list-ii","M",35,"timed","Dummy head; walk to the node before left, then head-insert the next nodes.");
-lc(12,"Mon","Timed pair",227,"Basic Calculator II","basic-calculator-ii","M",35,"timed","One stack; apply * and / immediately, push signed numbers for + and -.");
+lc(12,"Mon","Timed pair",92,"Reverse Linked List II","reverse-linked-list-ii","M",20,"timed","Dummy head; walk to the node before left, then head-insert the next nodes.");
+lc(12,"Mon","Timed pair",227,"Basic Calculator II","basic-calculator-ii","M",20,"timed","One stack; apply * and / immediately, push signed numbers for + and -.");
 add(12,"Mon","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(12,"Mon","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(12,"Mon","linux","Evening","Linux oral round, recorded: 10 questions, 2 min each (boot, OOM, df/du, load, inodes, strace, cgroups, SELinux, NAT, systemd)",{min:40});
 add(12,"Mon","linux","Evening","Redo the 2 weakest Linux lab exit tests",{min:20});
-lc(12,"Tue","Timed pair",240,"Search a 2D Matrix II","search-a-2d-matrix-ii","M",35,"timed","Start at the top-right; step left or down.");
-lc(12,"Tue","Timed pair",974,"Subarray Sums Divisible by K","subarray-sums-divisible-by-k","M",35,"timed","Prefix sums mod k with a count map.");
+lc(12,"Tue","Timed pair",240,"Search a 2D Matrix II","search-a-2d-matrix-ii","M",20,"timed","Start at the top-right; step left or down.");
+lc(12,"Tue","Timed pair",974,"Subarray Sums Divisible by K","subarray-sums-divisible-by-k","M",20,"timed","Prefix sums mod k with a count map.");
 add(12,"Tue","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(12,"Tue","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(12,"Tue","net","Evening","Network oral round, recorded: 10 questions, 2 min each (handshake, DNS, TLS, 502/503/504, MTU, CIDR, BGP, NAT, conntrack, congestion)",{min:40});
 add(12,"Tue","net","Evening","CIDR speed drill: 10 prefixes in under 5 minutes",{min:20});
-lc(12,"Wed","Timed pair",103,"Binary Tree Zigzag Level Order Traversal","binary-tree-zigzag-level-order-traversal","M",35,"timed","BFS; reverse alternate levels.");
-lc(12,"Wed","Timed pair",1905,"Count Sub Islands","count-sub-islands","M",35,"timed","DFS grid2; an island counts only if every cell is land in grid1.");
+add(12,"Tue","misc","Behavioral","Map your 10 STAR stories to Amazon's 16 Leadership Principles",{min:20,url:"https://www.amazon.jobs/content/en/our-workplace/leadership-principles",note:"AWS asks Leadership Principle questions in every round. Mark the principles no story covers."});
+lc(12,"Wed","Timed pair",103,"Binary Tree Zigzag Level Order Traversal","binary-tree-zigzag-level-order-traversal","M",20,"timed","BFS; reverse alternate levels.");
+lc(12,"Wed","Timed pair",1905,"Count Sub Islands","count-sub-islands","M",20,"timed","DFS grid2; an island counts only if every cell is land in grid1.");
 add(12,"Wed","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(12,"Wed","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(12,"Wed","design","Evening","Timed design: global notification system (unseen prompt, 45 min, blank page, out loud)",{min:45,note:"Fan-out, priorities, retries, dedup, rate limits per user, and provider failure."});
 add(12,"Wed","design","Evening","Self-score against the rubric and list the gaps",{min:15});
-lc(12,"Thu","Timed pair",1048,"Longest String Chain","longest-string-chain","M",35,"timed","Sort by length; dp over words, removing one character at a time.");
-lc(12,"Thu","Timed pair",179,"Largest Number","largest-number","M",35,"timed","Sort with the comparator a+b > b+a; strip leading zeros.");
+add(12,"Wed","misc","Behavioral","Map your stories to Meta's behavioral areas; refresh 'Why Meta PE'",{min:15,note:"Use the prep guide Meta's recruiter sends. Until you have it, cover conflict, ambiguity, growth and impact."});
+lc(12,"Thu","Timed pair",1048,"Longest String Chain","longest-string-chain","M",20,"timed","Sort by length; dp over words, removing one character at a time.");
+lc(12,"Thu","Timed pair",179,"Largest Number","largest-number","M",20,"timed","Sort with the comparator a+b > b+a; strip leading zeros.");
 add(12,"Thu","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(12,"Thu","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(12,"Thu","cloud","Evening","Kubernetes oral round, recorded: 10 questions, 2 min each (scheduling trace, probes, HPA, PDB, NetworkPolicy, PV, rolling update, kube-proxy, etcd, IRSA)",{min:40});
 add(12,"Thu","cloud","Evening","Walk through ml-inference-sre — architecture and Terraform — out loud in 10 minutes, then list what you stumbled on",{min:20});
 add(12,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30,note:"Light day: do this and stop."});
 add(12,"Fri","misc","Light day","New Year's Day (Fri Jan 1): nothing else is scheduled. Take the day.",{min:0,note:"Deliberate. Scripting moves to Sunday."});
-lc(12,"Sat","Timed set",1268,"Search Suggestions System","search-suggestions-system","M",35,"timed","Sort + binary search per prefix, or a trie storing the top 3.");
-lc(12,"Sat","Timed set",1094,"Car Pooling","car-pooling","M",35,"timed","Difference array over stops, or a min-heap of drop-offs.");
-lc(12,"Sat","Timed set",503,"Next Greater Element II","next-greater-element-ii","M",35,"timed","Monotonic stack over the array twice (circular).");
+lc(12,"Sat","Timed set",1268,"Search Suggestions System","search-suggestions-system","M",20,"timed","Sort + binary search per prefix, or a trie storing the top 3.");
+lc(12,"Sat","Timed set",1094,"Car Pooling","car-pooling","M",20,"timed","Difference array over stops, or a min-heap of drop-offs.");
+lc(12,"Sat","Timed set",503,"Next Greater Element II","next-greater-element-ii","M",20,"timed","Monotonic stack over the array twice (circular).");
 add(12,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
 add(12,"Sat","linux","Lab","Lab: two full triage drills with your fault-injection script, each narrated out loud against a 10-minute timer",{min:60});
 add(12,"Sat","linux","Lab","Exit test: tell one real incident from your Barclays work in STAR form in 10 minutes, as if to an interviewer",{min:30});
+add(12,"Sat","fleet","Build","Explain the Weeks 10–11 fleetguard code aloud, without looking",{min:15,note:"Covers the demo and the API from the two holiday weeks. You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(12,"Sat","fleet","Build","Write Prometheus alert rules for canary failure and agent silence, with promtool tests; commit",{min:75});
 add(12,"Sat","fleet","Build","Write a blameless postmortem for one of your own injected failures",{min:15});
 add(12,"Sun","design","Mock","System design mock #2 — 45 min design + 15 min feedback (unseen prompt, with your referrer or a peer)",{min:60,note:"Ask for a verdict and the top 2 fixes. If it falls through, self-mock an unseen prompt and score it against the rubric."});
 add(12,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:30,note:"Fully caught up? Re-do any problem you flagged 🔁."});
 add(12,"Sun","dsa","Scripting","bash: a deploy-style script with set -euo pipefail, trap cleanup, flock and a rollback on failure; shellcheck clean",{min:30});
 add(12,"Sun","misc","Review","Behavioral drill, recorded: 6 questions, 2 minutes each; score against the rubric",{min:30});
+add(12,"Sun","misc","Admin","Refresh your resume variants for the January wave",{min:15,note:"List fleetguard as in progress. Applications go out tomorrow."});
 add(12,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
 
 // ── WEEK 13 · Jan 4–10 · interview mode, gap-fill ───────────────────────
-lc(13,"Mon","Timed pair",61,"Rotate List","rotate-list","M",35,"timed","Close the list into a ring, then cut at length - k % length.");
-lc(13,"Mon","Timed pair",402,"Remove K Digits","remove-k-digits","M",35,"timed","Monotonic increasing stack; drop larger digits while you still have removals.");
+lc(13,"Mon","Timed pair",61,"Rotate List","rotate-list","M",20,"timed","Close the list into a ring, then cut at length - k % length.");
+lc(13,"Mon","Timed pair",402,"Remove K Digits","remove-k-digits","M",20,"timed","Monotonic increasing stack; drop larger digits while you still have removals.");
 add(13,"Mon","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
 add(13,"Mon","linux","Evening","Gap-fill: rewrite your 5 weakest Linux answers from the oral round, then re-read the source for each",{min:40});
 add(13,"Mon","linux","Evening","Rapid fire: say the 60-second triage and the 'server is slow' decision tree aloud",{min:20});
-lc(13,"Tue","Timed pair",718,"Maximum Length of Repeated Subarray","maximum-length-of-repeated-subarray","M",35,"timed","dp[i][j] = 1 + dp[i-1][j-1] when the elements match.");
-lc(13,"Tue","Timed pair",611,"Valid Triangle Number","valid-triangle-number","M",35,"timed","Sort; fix the largest side and two-pointer the other two.");
+add(13,"Mon","misc","Admin","Apply to the January wave: AWS SysDE, Tier B, fintech",{min:30,note:"Use your referrals. February loops at these companies are your best mock interviews. Log every application in your notes."});
+lc(13,"Tue","Timed pair",718,"Maximum Length of Repeated Subarray","maximum-length-of-repeated-subarray","M",20,"timed","dp[i][j] = 1 + dp[i-1][j-1] when the elements match.");
+lc(13,"Tue","Timed pair",611,"Valid Triangle Number","valid-triangle-number","M",20,"timed","Sort; fix the largest side and two-pointer the other two.");
 add(13,"Tue","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(13,"Tue","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(13,"Tue","net","Evening","Gap-fill: rewrite your 5 weakest networking answers from the oral round, then re-read the source for each",{min:40});
 add(13,"Tue","net","Evening","Subnet drill: 10 CIDR problems in under 5 minutes, then explain NAT and conntrack aloud",{min:20});
-lc(13,"Wed","Timed pair",437,"Path Sum III","path-sum-iii","M",35,"timed","Prefix sums on the root-to-node path with a count map.");
-lc(13,"Wed","Timed pair",654,"Maximum Binary Tree","maximum-binary-tree","M",35,"timed","Recurse on the max; or a monotonic stack for O(n).");
+add(13,"Tue","misc","Behavioral","Draft stories for the 2 biggest uncovered Leadership Principles",{min:20,note:"2 minutes each, with numbers."});
+lc(13,"Wed","Timed pair",437,"Path Sum III","path-sum-iii","M",20,"timed","Prefix sums on the root-to-node path with a count map.");
+lc(13,"Wed","Timed pair",654,"Maximum Binary Tree","maximum-binary-tree","M",20,"timed","Recurse on the max; or a monotonic stack for O(n).");
 add(13,"Wed","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(13,"Wed","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(13,"Wed","design","Evening","Timed design: SLO and error-budget platform (unseen prompt, 45 min, blank page, out loud)",{min:45,note:"SLIs, SLOs, burn-rate alerts, multi-window alerting, and what happens when the budget is spent."});
 add(13,"Wed","design","Evening","Self-score against the rubric and list the gaps",{min:15});
-lc(13,"Thu","Timed pair",474,"Ones and Zeroes","ones-and-zeroes","M",35,"timed","2-D 0/1 knapsack over (zeros, ones); iterate capacities downward.");
-lc(13,"Thu","Timed pair",678,"Valid Parenthesis String","valid-parenthesis-string","M",35,"timed","Track a [low, high] range of open counts, or two stacks.");
+lc(13,"Thu","Timed pair",474,"Ones and Zeroes","ones-and-zeroes","M",20,"timed","2-D 0/1 knapsack over (zeros, ones); iterate capacities downward.");
+lc(13,"Thu","Timed pair",678,"Valid Parenthesis String","valid-parenthesis-string","M",20,"timed","Track a [low, high] range of open counts, or two stacks.");
 add(13,"Thu","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(13,"Thu","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(13,"Thu","cloud","Evening","Read the SRE workbook: Implementing SLOs",{min:30,url:"https://sre.google/workbook/implementing-slos/"});
 add(13,"Thu","cloud","Evening","Read the SRE workbook: Alerting on SLOs",{min:25,url:"https://sre.google/workbook/alerting-on-slos/"});
 add(13,"Thu","cloud","Evening","Answer aloud: why multi-window, multi-burn-rate alerts beat a simple threshold",{min:5});
@@ -811,11 +850,13 @@ lc(13,"Fri","Morning",98,"Validate Binary Search Tree (revisit)","validate-binar
 lc(13,"Fri","Morning",49,"Group Anagrams (revisit)","group-anagrams","M",15,"revisit","HashMap keyed by sorted string or a 26-count tuple.");
 add(13,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(13,"Fri","dsa","Scripting","Python: compute an error-budget burn rate from a request log over two windows",{min:30});
+add(13,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(13,"Fri","fleet","Evening","Write the alert-rule tests for burn rate on the controller's own success metric",{min:30});
-lc(13,"Sat","Timed set",1834,"Single-Threaded CPU","single-threaded-cpu","M",35,"timed","Sort tasks by enqueue time; a min-heap by (processing time, index).");
-lc(13,"Sat","Timed set",662,"Maximum Width of Binary Tree","maximum-width-of-binary-tree","M",35,"timed","BFS with positions 2i and 2i+1; width is last - first + 1 per level.");
-lc(13,"Sat","Timed set",909,"Snakes and Ladders","snakes-and-ladders","M",35,"timed","BFS over squares; map the boustrophedon numbering to coordinates.");
+lc(13,"Sat","Timed set",1834,"Single-Threaded CPU","single-threaded-cpu","M",20,"timed","Sort tasks by enqueue time; a min-heap by (processing time, index).");
+lc(13,"Sat","Timed set",662,"Maximum Width of Binary Tree","maximum-width-of-binary-tree","M",20,"timed","BFS with positions 2i and 2i+1; width is last - first + 1 per level.");
+lc(13,"Sat","Timed set",909,"Snakes and Ladders","snakes-and-ladders","M",20,"timed","BFS over squares; map the boustrophedon numbering to coordinates.");
 add(13,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(13,"Sat","dsa","AI-assisted","AI-assisted coding rep #1: unfamiliar repo, failing tests, 45 min",{min:45,note:"Clone a small open-source Go or Python repo, then fix a failing test or an open issue (or blank out a function and make its tests pass). Spend the first 5–8 min reading and breaking the work down before any prompt; treat the assistant as a fast but unreliable junior and review every line. Meta now runs one onsite coding round this way."});
 add(13,"Sat","linux","Lab","Lab: two faults back to back with a timer, narrated, then self-score against the rubric",{min:60});
 add(13,"Sat","linux","Lab","Exit test: explain the single hardest Linux topic from this plan in 5 minutes, without notes",{min:30});
 add(13,"Sat","fleet","Build","Wire the SLO-style alert rules into the controller's own metrics; promtool tests green; commit",{min:75});
@@ -826,73 +867,86 @@ add(13,"Sun","misc","Review","Behavioral drill, recorded: 6 questions, 2 minutes
 add(13,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
 
 // ── WEEK 14 · Jan 11–17 · interview mode, full-loop mock ────────────────
-lc(14,"Mon","Timed pair",86,"Partition List","partition-list","M",35,"timed","Two dummy-headed lists (less / greater-or-equal), then join.");
-lc(14,"Mon","Timed pair",622,"Design Circular Queue","design-circular-queue","M",35,"timed","Fixed array with head and count (or head/tail with a size).");
+lc(14,"Mon","Timed pair",86,"Partition List","partition-list","M",20,"timed","Two dummy-headed lists (less / greater-or-equal), then join.");
+lc(14,"Mon","Timed pair",622,"Design Circular Queue","design-circular-queue","M",20,"timed","Fixed array with head and count (or head/tail with a size).");
 add(14,"Mon","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(14,"Mon","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(14,"Mon","linux","Evening","Linux oral round #2, recorded: 10 new questions, 2 min each; ask clarifying questions before answering",{min:40});
 add(14,"Mon","linux","Evening","Compare to round 1: which answers improved, which did not?",{min:20});
-lc(14,"Tue","Timed pair",454,"4Sum II","4sum-ii","M",35,"timed","Hash the sums of two arrays; look up the negation of the other two.");
-lc(14,"Tue","Timed pair",525,"Contiguous Array","contiguous-array","M",35,"timed","Treat 0 as -1; prefix sum with first-seen index.");
+add(14,"Mon","misc","Admin","Apply to Meta PE with a referral (only if the Week 6 checkpoint passed)",{min:20,note:"Also check your mocks are trending toward Hire. If not, wait and tell me: a failed loop starts a cooldown."});
+lc(14,"Tue","Timed pair",454,"4Sum II","4sum-ii","M",20,"timed","Hash the sums of two arrays; look up the negation of the other two.");
+lc(14,"Tue","Timed pair",525,"Contiguous Array","contiguous-array","M",20,"timed","Treat 0 as -1; prefix sum with first-seen index.");
 add(14,"Tue","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(14,"Tue","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(14,"Tue","net","Evening","Network oral round #2, recorded: 10 new questions, 2 min each",{min:40});
 add(14,"Tue","net","Evening","Compare to round 1: which answers improved, which did not?",{min:20});
-lc(14,"Wed","Timed pair",106,"Construct Binary Tree from Inorder and Postorder Traversal","construct-binary-tree-from-inorder-and-postorder-traversal","M",35,"timed","The last postorder element is the root; build the right subtree first.");
-lc(14,"Wed","Timed pair",538,"Convert BST to Greater Tree","convert-bst-to-greater-tree","M",35,"timed","Reverse inorder with a running sum.");
+lc(14,"Wed","Timed pair",106,"Construct Binary Tree from Inorder and Postorder Traversal","construct-binary-tree-from-inorder-and-postorder-traversal","M",20,"timed","The last postorder element is the root; build the right subtree first.");
+lc(14,"Wed","Timed pair",538,"Convert BST to Greater Tree","convert-bst-to-greater-tree","M",20,"timed","Reverse inorder with a running sum.");
 add(14,"Wed","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(14,"Wed","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(14,"Wed","design","Evening","Timed design: Dynamo-style distributed key-value store (unseen prompt, 45 min, blank page, out loud)",{min:45,note:"Partitioning, replication and quorums, conflict resolution, hinted handoff, and repair."});
 add(14,"Wed","design","Evening","Self-score against the rubric and list the gaps",{min:15});
-lc(14,"Thu","Timed pair",516,"Longest Palindromic Subsequence","longest-palindromic-subsequence","M",35,"timed","dp[i][j] over substrings; or LCS of s and reverse(s).");
-lc(14,"Thu","Timed pair",714,"Best Time to Buy and Sell Stock with Transaction Fee","best-time-to-buy-and-sell-stock-with-transaction-fee","M",35,"timed","Two states: cash and hold; pay the fee on sell.");
+lc(14,"Thu","Timed pair",516,"Longest Palindromic Subsequence","longest-palindromic-subsequence","M",20,"timed","dp[i][j] over substrings; or LCS of s and reverse(s).");
+lc(14,"Thu","Timed pair",714,"Best Time to Buy and Sell Stock with Transaction Fee","best-time-to-buy-and-sell-stock-with-transaction-fee","M",20,"timed","Two states: cash and hold; pay the fee on sell.");
 add(14,"Thu","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(14,"Thu","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(14,"Thu","cloud","Evening","Pick one AWS or GCP service per category (compute, storage, network, IAM) and say each one's failure mode and how you'd detect it",{min:40});
 add(14,"Thu","cloud","Evening","Kubernetes oral round #2, recorded: 5 new questions, 3 min each",{min:20});
 lc(14,"Fri","Morning",417,"Pacific Atlantic Water Flow (revisit)","pacific-atlantic-water-flow","M",15,"revisit","Search inward from each ocean's border; intersect.");
 lc(14,"Fri","Morning",994,"Rotting Oranges (revisit)","rotting-oranges","M",15,"revisit","Multi-source BFS; levels are minutes.");
 add(14,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(14,"Fri","dsa","Scripting","Go: a rate-limited concurrent fetcher with a token bucket and graceful shutdown",{min:30});
+add(14,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(14,"Fri","fleet","Evening","Write down fleetguard's design decisions and tradeoffs as 3 short ADRs",{min:30});
-lc(14,"Sat","Timed set",433,"Minimum Genetic Mutation","minimum-genetic-mutation","M",35,"timed","BFS over valid one-character mutations.");
-lc(14,"Sat","Timed set",96,"Unique Binary Search Trees","unique-binary-search-trees","M",35,"timed","Catalan numbers: dp[n] = sum dp[i] * dp[n-1-i].");
-lc(14,"Sat","Timed set",1008,"Construct Binary Search Tree from Preorder Traversal","construct-binary-search-tree-from-preorder-traversal","M",35,"timed","Recurse with an upper bound and a global index.");
+lc(14,"Sat","Timed set",433,"Minimum Genetic Mutation","minimum-genetic-mutation","M",20,"timed","BFS over valid one-character mutations.");
+lc(14,"Sat","Timed set",96,"Unique Binary Search Trees","unique-binary-search-trees","M",20,"timed","Catalan numbers: dp[n] = sum dp[i] * dp[n-1-i].");
+lc(14,"Sat","Timed set",1008,"Construct Binary Search Tree from Preorder Traversal","construct-binary-search-tree-from-preorder-traversal","M",20,"timed","Recurse with an upper bound and a global index.");
 add(14,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
 add(14,"Sat","linux","Lab","Lab: three random faults, 10 minutes each, narrated against a timer",{min:60});
 add(14,"Sat","linux","Lab","Exit test: write down what you got wrong and fix the one root cause",{min:30});
 add(14,"Sat","fleet","Build","Hardening: graceful shutdown, signal handling, config validation and tests; commit",{min:75});
 add(14,"Sat","fleet","Build","README polish: quick start, architecture diagram, demo link placeholder",{min:15});
+add(14,"Sat","fleet","Build","Recorded fleetguard code walkthrough: agent → controller → rollback in 10 min",{min:20,note:"Same drill as the ml-inference-sre walkthrough in Week 12. List what you stumbled on and re-read it before tomorrow's mock."});
 add(14,"Sun","misc","Mock","Full-loop mock #1 — coding 45, design 45, troubleshooting 30, behavioral 30 (2.5 hours, with a peer or your referrer)",{min:150,note:"Ask for a verdict per round and the top 3 fixes overall. If it falls through, self-run all four rounds back to back and score each against its rubric."});
 add(14,"Sun","misc","Review","Write the top 3 fixes from the mock and which pillar each belongs to",{min:15});
 add(14,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
 
 // ── WEEK 15 · Jan 18–24 · interview mode, final gap-fill ────────────────
-lc(15,"Mon","Timed pair",63,"Unique Paths II","unique-paths-ii","M",35,"timed","Grid dp; obstacles zero out their cells.");
-lc(15,"Mon","Timed pair",137,"Single Number II","single-number-ii","M",35,"timed","Count bits mod 3, or the ones/twos state trick.");
+lc(15,"Mon","Timed pair",63,"Unique Paths II","unique-paths-ii","M",20,"timed","Grid dp; obstacles zero out their cells.");
+lc(15,"Mon","Timed pair",137,"Single Number II","single-number-ii","M",20,"timed","Count bits mod 3, or the ones/twos state trick.");
 add(15,"Mon","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(15,"Mon","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(15,"Mon","linux","Evening","Final gap-fill: redo only the Linux questions you got wrong in mock #1 and oral round #2",{min:45});
 add(15,"Mon","linux","Evening","Rapid fire: 20 Linux questions in 20 minutes, aloud",{min:15});
-lc(15,"Tue","Timed pair",77,"Combinations","combinations","M",35,"timed","Backtrack with a start index; prune when too few numbers remain.");
-lc(15,"Tue","Timed pair",216,"Combination Sum III","combination-sum-iii","M",35,"timed","Backtrack with count k and target n over digits 1–9.");
+lc(15,"Tue","Timed pair",77,"Combinations","combinations","M",20,"timed","Backtrack with a start index; prune when too few numbers remain.");
+lc(15,"Tue","Timed pair",216,"Combination Sum III","combination-sum-iii","M",20,"timed","Backtrack with count k and target n over digits 1–9.");
 add(15,"Tue","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(15,"Tue","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(15,"Tue","net","Evening","Final gap-fill: redo only the networking questions you got wrong in mock #1 and oral round #2",{min:45});
 add(15,"Tue","net","Evening","Rapid fire: 20 networking questions in 20 minutes, aloud",{min:15});
-lc(15,"Wed","Timed pair",129,"Sum Root to Leaf Numbers","sum-root-to-leaf-numbers","M",35,"timed","DFS carrying the number built so far.");
-lc(15,"Wed","Timed pair",513,"Find Bottom Left Tree Value","find-bottom-left-tree-value","M",35,"timed","BFS right-to-left; the last node visited is the answer.");
+lc(15,"Wed","Timed pair",129,"Sum Root to Leaf Numbers","sum-root-to-leaf-numbers","M",20,"timed","DFS carrying the number built so far.");
+lc(15,"Wed","Timed pair",513,"Find Bottom Left Tree Value","find-bottom-left-tree-value","M",20,"timed","BFS right-to-left; the last node visited is the answer.");
 add(15,"Wed","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(15,"Wed","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(15,"Wed","design","Evening","Redo your weakest design from the whole plan, blank page, 45 min, out loud",{min:45,note:"Pick the lowest self-score from the Wednesday sessions."});
 add(15,"Wed","design","Evening","Self-score against the rubric and list the gaps",{min:15});
-lc(15,"Thu","Timed pair",583,"Delete Operation for Two Strings","delete-operation-for-two-strings","M",35,"timed","Answer = m + n - 2 * LCS.");
-lc(15,"Thu","Timed pair",673,"Number of Longest Increasing Subsequence","number-of-longest-increasing-subsequence","M",35,"timed","dp of (length, count) per index.");
+lc(15,"Thu","Timed pair",583,"Delete Operation for Two Strings","delete-operation-for-two-strings","M",20,"timed","Answer = m + n - 2 * LCS.");
+lc(15,"Thu","Timed pair",673,"Number of Longest Increasing Subsequence","number-of-longest-increasing-subsequence","M",20,"timed","dp of (length, count) per index.");
 add(15,"Thu","dsa","Timed pair","Cold re-solve: one problem from the Redo tab (or your slowest earlier problem), 15 min cap",{min:15,note:"Not on the Redo tab? Pick the earlier problem you were slowest on."});
+add(15,"Thu","dsa","Timed pair","Cold re-solve #2: an older problem you didn't flag, 15 min cap",{min:15,note:"Pick one you solved 3+ weeks ago and never flagged 🔁. Can't do it cold? Flag it now."});
 add(15,"Thu","cloud","Evening","Final gap-fill: redo only the cloud and Kubernetes questions you got wrong in mock #1 and oral round #2",{min:45});
 add(15,"Thu","cloud","Evening","Rapid fire: 20 cloud and Kubernetes questions in 20 minutes, aloud",{min:15});
 lc(15,"Fri","Morning",300,"Longest Increasing Subsequence (revisit)","longest-increasing-subsequence","M",15,"revisit","O(n log n) patience sorting with binary search.");
 lc(15,"Fri","Morning",139,"Word Break (revisit)","word-break","M",15,"revisit","dp[i] = some j with dp[j] and s[j:i] in the dictionary.");
 add(15,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(15,"Fri","dsa","Scripting","Redo your two slowest scripting exercises from a blank file with a clock",{min:30});
+add(15,"Fri","fleet","Evening","Explain last Saturday's fleetguard code aloud, without looking",{min:15,note:"You didn't type this code, so this check is what lets you defend it in an interview. Any function you can't explain: re-read it and write a 2-line comment in your own words."});
 add(15,"Fri","fleet","Evening","Rehearse the 5-minute fleetguard pitch aloud; record it and note where you rambled",{min:30});
-lc(15,"Sat","Timed set",274,"H-Index","h-index","M",35,"timed","Sort descending, or counting buckets capped at n.");
-lc(15,"Sat","Timed set",406,"Queue Reconstruction by Height","queue-reconstruction-by-height","M",35,"timed","Sort by height descending, k ascending; insert at index k.");
-lc(15,"Sat","Timed set",930,"Binary Subarrays With Sum","binary-subarrays-with-sum","M",35,"timed","Prefix sums with a count map, or atMost(goal) - atMost(goal-1).");
+lc(15,"Sat","Timed set",274,"H-Index","h-index","M",20,"timed","Sort descending, or counting buckets capped at n.");
+lc(15,"Sat","Timed set",406,"Queue Reconstruction by Height","queue-reconstruction-by-height","M",20,"timed","Sort by height descending, k ascending; insert at index k.");
+lc(15,"Sat","Timed set",930,"Binary Subarrays With Sum","binary-subarrays-with-sum","M",20,"timed","Prefix sums with a count map, or atMost(goal) - atMost(goal-1).");
 add(15,"Sat","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{min:10});
+add(15,"Sat","dsa","AI-assisted","AI-assisted coding rep #2: a different repo, 45 min",{min:45,note:"Clone a small open-source Go or Python repo, then fix a failing test or an open issue (or blank out a function and make its tests pass). Spend the first 5–8 min reading and breaking the work down before any prompt; treat the assistant as a fast but unreliable junior and review every line. Meta now runs one onsite coding round this way."});
 add(15,"Sat","linux","Lab","Lab: two faults back to back, narrated, against a timer",{min:45});
 add(15,"Sat","linux","Lab","Exit test: explain the three Linux failures that surprised you most in this plan",{min:45});
 add(15,"Sat","fleet","Build","Record the final 3-minute fleetguard demo and add the link to the README",{min:75});
@@ -900,15 +954,16 @@ add(15,"Sat","fleet","Build","Write the 3 resume bullets for fleetguard, each wi
 add(15,"Sun","dsa","Morning","Catch up on any unfinished DSA from this week",{min:45,note:"Fully caught up? Re-do any problem you flagged 🔁."});
 add(15,"Sun","design","Evening","Redo your second-weakest design blank, 30 min, then diff it against your notes",{min:45});
 add(15,"Sun","misc","Review","Refine all 8 STAR stories to 2 minutes each; say each one aloud once",{min:30});
+add(15,"Sun","misc","Admin","Pipeline check: every application's status; follow up on silent ones",{min:15,note:"Follow up on anything silent for 10+ days."});
 add(15,"Sun","misc","Review","Weekly review: what got done, what slipped, what changes next week",{min:15});
 
 // ── WEEK 16 · Jan 25–31 · taper and final mock ──────────────────────────
-lc(16,"Mon","Timed pair",80,"Remove Duplicates from Sorted Array II","remove-duplicates-from-sorted-array-ii","M",35,"timed","Write pointer; keep an element if it differs from the one two behind.");
-lc(16,"Mon","Timed pair",1161,"Maximum Level Sum of a Binary Tree","maximum-level-sum-of-a-binary-tree","M",35,"timed","BFS; sum each level and keep the smallest level index with the max.");
+lc(16,"Mon","Timed pair",80,"Remove Duplicates from Sorted Array II","remove-duplicates-from-sorted-array-ii","M",20,"timed","Write pointer; keep an element if it differs from the one two behind.");
+lc(16,"Mon","Timed pair",1161,"Maximum Level Sum of a Binary Tree","maximum-level-sum-of-a-binary-tree","M",20,"timed","BFS; sum each level and keep the smallest level index with the max.");
 add(16,"Mon","linux","Evening","Final rapid fire: 20 Linux questions in 20 minutes, aloud, no notes",{min:20});
 add(16,"Mon","linux","Evening","Re-read your 'server is slow' decision tree and the 60-second triage once",{min:15});
-lc(16,"Tue","Timed pair",701,"Insert into a Binary Search Tree","insert-into-a-binary-search-tree","M",35,"timed","Walk down to a null child and attach.");
-lc(16,"Tue","Timed pair",113,"Path Sum II","path-sum-ii","M",35,"timed","DFS with a path list; copy it at matching leaves.");
+lc(16,"Tue","Timed pair",701,"Insert into a Binary Search Tree","insert-into-a-binary-search-tree","M",20,"timed","Walk down to a null child and attach.");
+lc(16,"Tue","Timed pair",113,"Path Sum II","path-sum-ii","M",20,"timed","DFS with a path list; copy it at matching leaves.");
 add(16,"Tue","net","Evening","Final rapid fire: 20 networking questions in 20 minutes, aloud, no notes",{min:20});
 add(16,"Tue","net","Evening","Re-read your CIDR drill and your 'service unreachable' checklist once",{min:15});
 add(16,"Wed","dsa","Morning","Cold re-solve: the 6 problems you flagged 🔁 most often or took longest on, 10 minutes each",{min:60,note:"Pick them from the Redo tab and your timing notes."});
@@ -920,12 +975,13 @@ lc(16,"Fri","Morning",76,"Minimum Window Substring (revisit)","minimum-window-su
 lc(16,"Fri","Morning",84,"Largest Rectangle in Histogram (revisit)","largest-rectangle-in-histogram","H",15,"revisit","Monotonic increasing stack.");
 add(16,"Fri","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{min:30});
 add(16,"Fri","misc","Light day","No new material from here. Sleep and keep the routine.",{min:0,note:"Tomorrow is the final checkpoint; Sunday is the final mock."});
-lc(16,"Sat","Final checkpoint",16,"3Sum Closest (final checkpoint 1/4)","3sum-closest","M",35,"timed","Sort; fix one and two-pointer the rest, tracking the closest sum.");
-lc(16,"Sat","Final checkpoint",24,"Swap Nodes in Pairs (final checkpoint 2/4)","swap-nodes-in-pairs","M",35,"timed","Dummy head; rewire pairs with a prev pointer.");
-lc(16,"Sat","Final checkpoint",1498,"Number of Subsequences That Satisfy the Given Sum Condition (final checkpoint 3/4)","number-of-subsequences-that-satisfy-the-given-sum-condition","M",35,"timed","Sort; two pointers; add 2^(r-l) per valid pair, with precomputed powers mod 1e9+7.");
-lc(16,"Sat","Final checkpoint",109,"Convert Sorted List to Binary Search Tree (final checkpoint 4/4)","convert-sorted-list-to-binary-search-tree","M",35,"timed","Fast/slow to find the middle, or inorder simulation with a global pointer.");
-add(16,"Sat","misc","Final checkpoint","Score the final checkpoint: how many of 4 solved in ≤35 min with no hints? Compare it to the Week 6 checkpoint",{min:15,note:"Week 6 pass mark was 8 of 10 (80%). 3 of 4 is the same bar."});
+lc(16,"Sat","Final checkpoint",16,"3Sum Closest (final checkpoint 1/4)","3sum-closest","M",25,"timed","Sort; fix one and two-pointer the rest, tracking the closest sum.");
+lc(16,"Sat","Final checkpoint",24,"Swap Nodes in Pairs (final checkpoint 2/4)","swap-nodes-in-pairs","M",25,"timed","Dummy head; rewire pairs with a prev pointer.");
+lc(16,"Sat","Final checkpoint",1498,"Number of Subsequences That Satisfy the Given Sum Condition (final checkpoint 3/4)","number-of-subsequences-that-satisfy-the-given-sum-condition","M",25,"timed","Sort; two pointers; add 2^(r-l) per valid pair, with precomputed powers mod 1e9+7.");
+lc(16,"Sat","Final checkpoint",109,"Convert Sorted List to Binary Search Tree (final checkpoint 4/4)","convert-sorted-list-to-binary-search-tree","M",25,"timed","Fast/slow to find the middle, or inorder simulation with a global pointer.");
+add(16,"Sat","misc","Final checkpoint","Score the final checkpoint: how many of 4 solved in ≤25 min with no hints? Compare it to the Week 6 checkpoint",{min:15,note:"Week 6 pass mark was 8 of 10 in ≤35 min (80%). 3 of 4 in ≤25 min is the same pass rate at interview speed."});
 add(16,"Sat","misc","Admin","Final admin: update the resume, confirm your referrer, and list where you stand on each application",{min:30});
+add(16,"Sat","misc","Admin","Contact your Google recruiter and referrer about the mid-March reapplication",{min:15,note:"Your cooldown ends around Mar 15. Confirm the date and which roles to apply to."});
 add(16,"Sun","misc","Mock","Full-loop mock #2 — coding 45, design 45, troubleshooting 30, behavioral 30 (2.5 hours, with a peer or your referrer)",{min:150,note:"Ask for a verdict per round. Compare it to mock #1."});
 add(16,"Sun","misc","Review","Decide: are you ready to book loops, or do you need a 4-week gap-fill block? Tell me and I will build it",{min:30,note:"This is the plan's decision point. Use the two mock verdicts and the Saturday checkpoint, not a feeling."});
 
@@ -1066,8 +1122,8 @@ const WEEKMETA={
   10:{t:"Mixed · design DS, backtracking, union-find, windows · troubleshooting week",m:"Sunday: troubleshooting mock · end-to-end rollback demo"},
   11:{t:"Mixed · DP II, strings, graphs III, arrays · holiday week",m:"Friday Dec 25 is deliberately light · controller API built"},
   12:{t:"Interview mode begins · 2 timed mediums a day, oral rounds",m:"Sunday: system design mock #2 · Friday Jan 1 is deliberately light"},
-  13:{t:"Interview mode · gap-fill and SLOs",m:"Alert rules tested · fleetguard runbook written"},
-  14:{t:"Interview mode · full-loop week",m:"Sunday: full-loop mock #1 (coding, design, troubleshooting, behavioral)"},
+  13:{t:"Interview mode · gap-fill and SLOs",m:"Alert rules tested · fleetguard runbook written · January applications sent (Mon)"},
+  14:{t:"Interview mode · full-loop week",m:"Meta application (Mon, if the Week 6 checkpoint passed) · Sunday: full-loop mock #1"},
   15:{t:"Interview mode · final gap-fill",m:"fleetguard demo recorded · resume bullets written"},
   16:{t:"Taper · final checkpoint · final mock",m:"Sunday: full-loop mock #2 · decision point: book loops or extend"}
 };
