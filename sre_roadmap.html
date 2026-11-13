@@ -43,3 +43,1346 @@ a{color:var(--accent);text-decoration:none}
 .theme-btn{width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--border);font-size:15px}
 #content{padding-bottom:76px}
 #bottomnav{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:var(--nav);border-top:1px solid var(--nav-b);display:flex;z-index:100}
+.nav-btn{flex:1;padding:9px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.nav-icon{font-size:19px;opacity:.4}
+.nav-label{font-size:10px;color:var(--muted)}
+.nav-btn.active .nav-icon{opacity:1}
+.nav-btn.active .nav-label{color:var(--accent);font-weight:700}
+/* hero */
+.hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));padding:16px;border-bottom:1px solid var(--border)}
+.hero-top{display:flex;justify-content:space-between;align-items:center}
+.hero-date{font-size:12px;font-weight:500;color:var(--accent)}
+.hero-day{font-size:22px;font-weight:800;letter-spacing:-.4px;margin-top:2px}
+.arrows{display:flex;gap:6px}
+.arrow-btn{width:34px;height:34px;border-radius:50%;background:var(--surface);border:1px solid var(--border);font-size:18px;line-height:1}
+.hero-meta{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:12px;color:var(--soft)}
+.bar{flex:1;height:6px;border-radius:6px;background:var(--border);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--ok);border-radius:6px}
+.back-today{font-size:11px;font-weight:600;color:var(--accent);margin-top:8px}
+/* groups & tasks */
+.group{margin:14px 16px 0}
+.ghead{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.ghead .slot{font-weight:400;color:var(--muted);text-transform:none;letter-spacing:0}
+.task{display:flex;gap:9px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-left-width:3px;border-radius:10px;padding:9px 10px;margin-bottom:6px;box-shadow:var(--shadow)}
+.chk{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;margin-top:1px;font-size:12px;color:#fff;display:flex;align-items:center;justify-content:center}
+.chk.done{background:var(--ok);border-color:var(--ok)}
+.tmain{flex:1;min-width:0;cursor:pointer}
+.trow{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.ttitle{font-size:13px;font-weight:600;line-height:1.35;word-break:break-word}
+.task.isdone .ttitle{opacity:.4;text-decoration:line-through}
+.task.isskip .ttitle{opacity:.45;text-decoration:line-through;font-style:italic}
+.chk.skip{background:var(--muted);border-color:var(--muted)}
+.skipbtn{margin-top:6px;font:inherit;font-size:12px;padding:4px 10px;border-radius:8px;border:1px solid var(--line,#ccc);background:transparent;color:inherit;cursor:pointer}
+.chip{font-size:10px;font-weight:700;padding:1px 5px;border-radius:5px;background:var(--card);color:var(--muted)}
+.chip.E{color:#059669}.chip.M{color:#B45309}.chip.H{color:#DC2626}
+.more{margin-left:auto;font-size:11px;color:var(--muted)}
+.det{margin-top:7px;font-size:11px;color:var(--soft);line-height:1.5;display:flex;flex-direction:column;gap:4px}
+.redo-btn{font-size:14px;opacity:.35;flex-shrink:0;margin-top:1px}
+.redo-btn.on{opacity:1}
+.empty{padding:40px 24px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}
+/* plan (old-tracker structure) */
+.sticky-hd{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:58px;z-index:9;padding:11px 16px 8px;box-shadow:var(--shadow)}
+.week-tabs{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.week-tabs::-webkit-scrollbar{display:none}
+.wtab{flex:0 0 auto;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);background:var(--card);border:1px solid var(--border)}
+.wtab.active{color:#fff;font-weight:700}
+.wh-card{background:var(--card);border-radius:11px;border:1px solid var(--border);padding:11px 13px;margin-bottom:9px;box-shadow:var(--shadow)}
+.wh-phase-chip{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:3px 9px;margin-bottom:5px}
+.phase-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.wh-title{font-size:16px;font-weight:800;letter-spacing:-.3px}
+.wh-dates{font-size:11px;color:var(--muted);margin-top:2px}
+.milestone-box{border-radius:7px;padding:5px 9px;margin-top:7px;display:flex;align-items:flex-start;gap:5px;font-size:11px;font-weight:600;line-height:1.4}
+.day-card{background:var(--surface);border:1px solid var(--border);border-radius:11px;margin-bottom:7px;overflow:hidden;box-shadow:var(--shadow)}
+.day-card.today{background:var(--card)}
+.day-card.all-done{border-color:rgba(16,185,129,0.4)}
+.day-header{display:flex;align-items:center;gap:9px;padding:10px 13px;width:100%;text-align:left}
+.day-strip{width:3px;border-radius:2px;align-self:stretch;min-height:26px;flex-shrink:0}
+.day-name{font-size:13px;font-weight:700}
+.day-meta{font-size:10px;color:var(--muted);margin-top:1px}
+.today-badge{font-size:9px;font-weight:700;padding:1px 5px;border-radius:6px;background:rgba(245,158,11,0.15);color:#B45309;margin-left:3px}
+[data-theme="dark"] .today-badge{background:rgba(245,158,11,0.2);color:#F59E0B}
+.day-right{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
+.day-prog{font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;background:var(--card);border:1px solid var(--border)}
+.day-prog.prog-done{background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);color:#059669}
+.arrow{color:var(--muted);font-size:16px;transition:transform .2s}
+.arrow.open{transform:rotate(90deg)}
+.day-body{padding:0 13px 8px;border-top:1px solid var(--border)}
+/* progress */
+.pcard{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:var(--shadow)}
+.big{font-size:30px;font-weight:800;letter-spacing:-.5px;line-height:1}
+.prow{display:flex;align-items:center;gap:9px;margin-bottom:9px;font-size:12px}
+.prow .pn{width:112px;flex-shrink:0;font-weight:600}
+.prow .bar{height:8px}
+.prow .pv{width:64px;text-align:right;color:var(--muted);font-size:11px;flex-shrink:0}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+.tile .tn{font-size:20px;font-weight:800;line-height:1}
+.tile .tl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:3px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.wcell{border-radius:10px;padding:8px 2px;text-align:center;border:1.5px solid transparent;position:relative}
+.wcell .wn{font-size:11px;font-weight:800;margin-bottom:2px}
+.wcell .wp{font-size:9px;font-weight:600}
+.wcell .od{position:absolute;top:4px;right:5px;width:6px;height:6px;border-radius:50%;background:#DC2626}
+.warn{margin-top:10px;font-size:12px;color:var(--soft);line-height:1.5}
+.warn b{color:#DC2626}
+.syncline{font-size:12px;margin-top:8px;line-height:1.5}
+.btnrow{display:flex;gap:8px}
+.btnrow .big-btn{margin-top:11px}
+/* redo + settings */
+.page{padding:16px}
+.page h2{font-size:19px;font-weight:700}
+.page .sub{font-size:12px;color:var(--muted);margin:4px 0 14px}
+.rtask{display:flex;gap:9px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:7px}
+.rmeta{font-size:10px;color:var(--muted);margin-top:2px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:12px}
+.label{font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.input{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:9px;padding:11px 13px;color:var(--text);font-size:16px;color-scheme:light dark}
+.hint{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5}
+.big-btn{width:100%;padding:12px;border-radius:9px;font-size:14px;font-weight:700;color:#fff;margin-top:11px}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="topbar">
+    <div class="tb-row">
+      <div><div class="tb-title">SRE Roadmap</div><div class="tb-sub" id="tb-sub"></div></div>
+      <div class="tb-right">
+        <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">🌙</button>
+        <div class="wk-badge"><div class="wk-num" id="tb-wk">—</div><div class="wk-lbl">Week</div></div>
+      </div>
+    </div>
+    <div class="ph-bar" id="ph-bar"></div>
+  </div>
+  <div id="content"></div>
+  <div id="bottomnav">
+    <button class="nav-btn active" id="nav-today" onclick="setTab('today')"><span class="nav-icon">🏠</span><span class="nav-label">Today</span></button>
+    <button class="nav-btn" id="nav-plan" onclick="setTab('plan')"><span class="nav-icon">🗓️</span><span class="nav-label">Plan</span></button>
+    <button class="nav-btn" id="nav-progress" onclick="setTab('progress')"><span class="nav-icon">📊</span><span class="nav-label">Progress</span></button>
+    <button class="nav-btn" id="nav-redo" onclick="setTab('redo')"><span class="nav-icon">🔁</span><span class="nav-label">Redo</span></button>
+    <button class="nav-btn" id="nav-settings" onclick="setTab('settings')"><span class="nav-icon">⚙️</span><span class="nav-label">Settings</span></button>
+  </div>
+</div>
+<script>
+// ══ PLAN DATA ═════════════════════════════════════════════════════════
+// One flat list. Each task: wk, day, p (pillar), slot, title, and optional
+// min (minutes), d (E/M/H), kind (cold/learn/variant/timed/revisit/base), note, url, lc (true = DSA problem, gets a 🔁 button).
+// IDs are derived from week + day + title. If you rename a task later, its tick resets.
+// Plan v6 (rebuilt Nov 13): round-based, ~19h/week template built from a coverage matrix of Google SRE, Meta PE, AWS SysDE, CoreWeave, NVIDIA, Lambda, Bloomberg, Datadog loops.
+// Week 1 = Mon Nov 16; starts Fri Nov 13; ends Sun Mar 14. Phase 1 Screen-ready (W0–4, Gate 1 Dec 7–9) · Phase 2 Onsite-ready (W5–11, Gate 2 Jan 28–31) · Phase 3 Loop-ready (W12–17, Gate 3 Feb 21 + Mar 7).
+// Rules: fail a gate → that phase extends (re-plan with Claude). Interview booked → that week retargets to the company. Laid off → same sequence, more hours.
+// Missed items roll into Saturday's flex hour or get Skipped — never stacked. Applications are evening slots on top of prep.
+const PILLARS={
+  dsa:{n:"DSA, scripting & AI round",i:"💻"},design:{n:"System design",i:"🏗️"},linux:{n:"Linux & storage",i:"🐧"},
+  net:{n:"Networking",i:"🌐"},cloud:{n:"Cloud & K8s",i:"☁️"},fleet:{n:"fleetguard",i:"🛡️"},proj:{n:"Resume projects",i:"📁"},misc:{n:"Mocks, admin & jobs",i:"🎯"}
+};
+const KIND={
+  base:"Baseline — 35 min, plain doc, no hints. Write down your time, hints needed and where you got stuck.",
+  cold:"Cold re-solve — aim for 10 min. Can't do it cold? Flag 🔁.",
+  learn:"New problem, interview mode — timer on, narrate, justify every complexity claim out loud. Stuck at 25 min: read the solution, flag 🔁, and re-solve it cold on the next DSA day (that counts as its revisit).",
+  variant:"Variant — 15 min cap. Apply the pattern from the learn problem.",
+  timed:"Timed — 35 min, narrated, plain doc, no hints. Missed it? Read the solution, flag 🔁, re-solve cold on the next DSA day.",
+  revisit:"Revisit — cold, 20 min cap, complexity aloud. Stuck? Flag 🔁."
+};
+const TASKS=[];
+function add(wk,day,p,slot,title,o){TASKS.push(Object.assign({wk:wk,day:day,p:p,slot:slot,title:title},o||{}));}
+function lc(wk,day,slot,num,title,slug,d,min,kind,note){
+  add(wk,day,"dsa",slot,num+". "+title,{d:d,min:min,kind:kind,note:note,url:"https://leetcode.com/problems/"+slug+"/",lc:true});
+}
+
+// ── Week 0 = finished work from earlier plans (history, old ids kept) + the Nov 13–15 start ──
+add(0,"Thu","dsa","Baseline","394. Decode String",{"d":"M","min":35,"kind":"base","note":"Stack of (previous string, repeat count); build the string on ']'.","url":"https://leetcode.com/problems/decode-string/","lc":true,"id":"0Thu-394-decode-string"});
+add(0,"Thu","dsa","Baseline","767. Reorganize String",{"d":"M","min":35,"kind":"base","note":"Max-heap by count; place the top char unless it equals the last one placed.","url":"https://leetcode.com/problems/reorganize-string/","lc":true,"id":"0Fri-767-reorganize-string"});
+add(0,"Thu","dsa","Baseline","399. Evaluate Division",{"d":"M","min":35,"kind":"base","note":"Weighted graph: a→b = v and b→a = 1/v; DFS/BFS multiplying along the path.","url":"https://leetcode.com/problems/evaluate-division/","lc":true,"id":"0Sat-399-evaluate-division"});
+add(0,"Thu","misc","Admin","Book the Week 2 mock (Sun Oct 25) with your referrer or a peer",{"min":15,"note":"A person expecting you is a deadline you control.","id":"0Sat-book-the-week-2-mock-sun-oct-25-with-your-referrer-or-a-peer"});
+add(0,"Thu","misc","Admin","Decide the ladder with your referrer: SWE-SRE or SRE-SE",{"min":15,"note":"It changes how much coding vs systems the loops weigh. Write the decision and why.","id":"0Sat-decide-the-ladder-with-your-referrer-swe-sre-or-sre-se"});
+add(0,"Thu","misc","Admin","Log the 3 baselines: time, hints needed, where you got stuck",{"min":15,"note":"This is your starting point. Keep it in your notes repo.","id":"0Sun-log-the-3-baselines-time-hints-needed-where-you-got-stuck"});
+add(0,"Thu","fleet","Setup","Create the fleetguard repo (README + Go module, nothing else)",{"min":30,"note":"Design doc comes first in Week 1. No code before it.","id":"0Sun-create-the-fleetguard-repo-readme-go-module-nothing-else"});
+add(0,"Thu","dsa","Morning","217. Contains Duplicate",{"d":"E","min":10,"kind":"cold","note":"First plan, W1 Mon. HashSet; duplicate exists if len(set) < len(array).","url":"https://leetcode.com/problems/contains-duplicate/","lc":true,"id":"1Mon-217-contains-duplicate"});
+add(0,"Thu","dsa","Morning","1. Two Sum",{"d":"E","min":10,"kind":"cold","note":"First plan, W1 Mon. HashMap value→index; check the complement as you go.","url":"https://leetcode.com/problems/two-sum/","lc":true,"id":"1Mon-1-two-sum"});
+add(0,"Thu","dsa","Morning","49. Group Anagrams",{"d":"M","min":30,"kind":"learn","note":"First plan, W1 Mon. HashMap keyed by sorted string (or a 26-count tuple).","url":"https://leetcode.com/problems/group-anagrams/","lc":true,"id":"1Mon-49-group-anagrams"});
+add(0,"Thu","dsa","Morning","125. Valid Palindrome",{"d":"E","min":10,"kind":"cold","note":"First plan, W1 Tue. Two pointers inward; skip non-alphanumeric; compare lowercase.","url":"https://leetcode.com/problems/valid-palindrome/","lc":true,"id":"1Tue-125-valid-palindrome"});
+add(0,"Thu","dsa","Morning","167. Two Sum II – Input Array Is Sorted",{"d":"M","min":15,"kind":"variant","note":"First plan, W1 Tue. Sorted array: sum too small → move left up, too big → move right down.","url":"https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/","lc":true,"id":"1Tue-167-two-sum-ii-input-array-is-sorted"});
+add(0,"Thu","dsa","Morning","121. Best Time to Buy and Sell Stock",{"d":"E","min":10,"kind":"cold","note":"First plan, W1 Wed. Track the min price so far; profit = price − minSoFar.","url":"https://leetcode.com/problems/best-time-to-buy-and-sell-stock/","lc":true,"id":"1Wed-121-best-time-to-buy-and-sell-stock"});
+add(0,"Thu","dsa","Morning","20. Valid Parentheses",{"d":"E","min":10,"kind":"cold","note":"First plan, W1 Thu. Stack: push openers, pop and match on closers.","url":"https://leetcode.com/problems/valid-parentheses/","lc":true,"id":"1Thu-20-valid-parentheses"});
+add(0,"Thu","dsa","Morning","238. Product of Array Except Self",{"d":"M","min":30,"kind":"learn","note":"First plan, W1 Fri. Prefix products × suffix products.","url":"https://leetcode.com/problems/product-of-array-except-self/","lc":true,"id":"1Fri-238-product-of-array-except-self"});
+add(0,"Thu","fleet","Evening","Write the 1-page fleetguard design doc",{"min":30,"note":"First plan, W1 Fri. Goals, non-goals, components (agent, controller), failure modes. IN: agent with memory/CPU/disk/TCP collectors; controller with canary waves, health gate, auto-pause, rollback, resume after a crash. OUT: SLO gating, UI, cloud fleet.","id":"1Fri-write-the-1-page-fleetguard-design-doc"});
+add(0,"Thu","dsa","Timed set","Narrate: replay one solved problem aloud — approach, complexity with reasons",{"min":10,"note":"First plan, W1 Sat. Keeps the explain-while-coding habit alive.","id":"1Sat-narrate-replay-one-solved-problem-aloud-approach-complexity-with-reasons"});
+add(0,"Thu","misc","Review","Weekly review: what got done, what slipped, what changes next week",{"min":15,"note":"First plan, W1 Sun. ","id":"1Sun-weekly-review-what-got-done-what-slipped-what-changes-next-week"});
+add(0,"Thu","misc","Review","Map your 8 STAR stories to the rubric and mark the 2 gaps (user-first, cross-team influence)",{"min":15,"note":"First plan, W1 Sun. No writing yet, just the map.","id":"1Sun-map-your-8-star-stories-to-the-rubric-and-mark-the-2-gaps-user-first-cross-team-influence"});
+add(0,"Thu","dsa","Morning","704. Binary Search",{"d":"E","min":10,"kind":"cold","note":"First plan, W2 Mon. Classic lo/hi/mid; decide how you handle the boundaries.","url":"https://leetcode.com/problems/binary-search/","lc":true,"id":"2Mon-704-binary-search"});
+add(0,"Thu","dsa","Morning","153. Find Minimum in Rotated Sorted Array",{"d":"M","min":30,"kind":"learn","note":"First plan, W2 Mon. Compare mid to right; the min is in the unsorted half.","url":"https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/","lc":true,"id":"2Mon-153-find-minimum-in-rotated-sorted-array"});
+add(0,"Thu","dsa","Morning","33. Search in Rotated Sorted Array",{"d":"M","min":15,"kind":"variant","note":"First plan, W2 Mon. Find the sorted half, then decide which side to search.","url":"https://leetcode.com/problems/search-in-rotated-sorted-array/","lc":true,"id":"2Mon-33-search-in-rotated-sorted-array"});
+add(0,"Thu","dsa","Morning","21. Merge Two Sorted Lists",{"d":"E","min":10,"kind":"cold","note":"First plan, W2 Tue. Dummy head; attach the smaller node and advance.","url":"https://leetcode.com/problems/merge-two-sorted-lists/","lc":true,"id":"2Tue-21-merge-two-sorted-lists"});
+add(0,"Thu","dsa","Morning","141. Linked List Cycle",{"d":"E","min":10,"kind":"cold","note":"First plan, W2 Tue. Floyd: slow/fast pointers; a cycle exists if they meet.","url":"https://leetcode.com/problems/linked-list-cycle/","lc":true,"id":"2Tue-141-linked-list-cycle"});
+add(0,"Thu","dsa","Morning","19. Remove Nth Node From End of List",{"d":"M","min":30,"kind":"learn","note":"First plan, W2 Tue. Two pointers n apart; when fast hits the end, slow is at the target.","url":"https://leetcode.com/problems/remove-nth-node-from-end-of-list/","lc":true,"id":"2Tue-19-remove-nth-node-from-end-of-list"});
+add(0,"Thu","dsa","Morning","226. Invert Binary Tree",{"d":"E","min":10,"kind":"cold","note":"First plan, W2 Wed. Swap children, recurse into both.","url":"https://leetcode.com/problems/invert-binary-tree/","lc":true,"id":"2Wed-226-invert-binary-tree"});
+add(0,"Thu","dsa","Morning","104. Maximum Depth of Binary Tree",{"d":"E","min":10,"kind":"cold","note":"First plan, W2 Wed. 1 + max(depth(left), depth(right)).","url":"https://leetcode.com/problems/maximum-depth-of-binary-tree/","lc":true,"id":"2Wed-104-maximum-depth-of-binary-tree"});
+add(0,"Thu","dsa","Morning","100. Same Tree",{"d":"E","min":10,"kind":"cold","note":"First plan, W2 Wed. Compare values, recurse both sides; both null = true.","url":"https://leetcode.com/problems/same-tree/","lc":true,"id":"2Wed-100-same-tree"});
+add(0,"Thu","dsa","Floor","Daily floor: one cold re-solve from the Redo tab (or any earlier problem), 20 min cap, complexity aloud",{"min":20,"note":"Done in plan v3 (W1 Mon). Keeps the DSA streak alive on a day with no scheduled problems.","id":"1Mon-daily-floor-one-cold-re-solve-from-the-redo-tab-or-any-earlier-problem-20-min-cap-complexity-aloud"});
+add(0,"Thu","misc","Admin","Kickoff: publish the new tracker, import your backup (Settings), and pick dates for the 4 paid mocks",{"min":15,"note":"Done in plan v3 (W1 Mon). ","id":"1Mon-kickoff-publish-the-new-tracker-import-your-backup-settings-and-pick-dates-for-the-4-paid-mocks"});
+add(0,"Thu","dsa","Morning","217. Contains Duplicate (re-solve)",{"d":"E","min":10,"kind":"cold","note":"Done in plan v3 (W1 Tue). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/contains-duplicate/","lc":true,"id":"1Tue-217-contains-duplicate-re-solve"});
+add(0,"Thu","dsa","Morning","1. Two Sum (re-solve)",{"d":"E","min":10,"kind":"cold","note":"Done in plan v3 (W1 Tue). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/two-sum/","lc":true,"id":"1Tue-1-two-sum-re-solve"});
+add(0,"Thu","dsa","Morning","49. Group Anagrams (re-solve)",{"d":"M","min":15,"kind":"cold","note":"Done in plan v3 (W1 Tue). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/group-anagrams/","lc":true,"id":"1Tue-49-group-anagrams-re-solve"});
+add(0,"Thu","dsa","Morning","347. Top K Frequent Elements",{"d":"M","min":15,"kind":"variant","note":"Done in plan v3 (W1 Tue). Frequency map + bucket sort by count, or a min-heap of size k.","url":"https://leetcode.com/problems/top-k-frequent-elements/","lc":true,"id":"1Tue-347-top-k-frequent-elements"});
+add(0,"Thu","dsa","Morning","125. Valid Palindrome (re-solve)",{"d":"E","min":10,"kind":"cold","note":"Done in plan v3 (W1 Tue). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/valid-palindrome/","lc":true,"id":"1Tue-125-valid-palindrome-re-solve"});
+add(0,"Thu","dsa","Morning","167. Two Sum II – Input Array Is Sorted (re-solve)",{"d":"M","min":15,"kind":"cold","note":"Done in plan v3 (W1 Tue). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/","lc":true,"id":"1Tue-167-two-sum-ii-input-array-is-sorted-re-solve"});
+add(0,"Thu","dsa","Morning","15. 3Sum",{"d":"M","min":30,"kind":"learn","note":"Done in plan v3 (W1 Tue). Sort; fix one number, two-pointer the rest; skip duplicates.","url":"https://leetcode.com/problems/3sum/","lc":true,"id":"1Tue-15-3sum"});
+add(0,"Thu","net","Evening","Read HPBN Ch 2: Building Blocks of TCP",{"min":30,"note":"Done in plan v3 (W1 Tue). Handshake, flow control (rwnd), congestion control (cwnd, slow start, AIMD).","url":"https://hpbn.co/building-blocks-of-tcp/","id":"1Tue-read-hpbn-ch-2-building-blocks-of-tcp"});
+add(0,"Thu","net","Evening","Read Cloudflare: SYN packet handling in the wild",{"min":20,"note":"Done in plan v3 (W1 Tue). SYN queue vs accept queue, and what an overflow looks like.","url":"https://blog.cloudflare.com/syn-packet-handling-in-the-wild/","id":"1Tue-read-cloudflare-syn-packet-handling-in-the-wild"});
+add(0,"Thu","net","Evening","Say the TCP state machine aloud from memory, including TIME_WAIT and CLOSE_WAIT",{"min":10,"note":"Done in plan v3 (W1 Tue). Write down anything you couldn't recall and re-read just that.","id":"1Tue-say-the-tcp-state-machine-aloud-from-memory-including-time-wait-and-close-wait"});
+add(0,"Thu","dsa","Morning","121. Best Time to Buy and Sell Stock (re-solve)",{"d":"E","min":10,"kind":"cold","note":"Done in plan v3 (W1 Wed). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/best-time-to-buy-and-sell-stock/","lc":true,"id":"1Wed-121-best-time-to-buy-and-sell-stock-re-solve"});
+add(0,"Thu","dsa","Morning","3. Longest Substring Without Repeating Characters",{"d":"M","min":30,"kind":"learn","note":"Done in plan v3 (W1 Wed). Sliding window + set/map; shrink from the left on a duplicate.","url":"https://leetcode.com/problems/longest-substring-without-repeating-characters/","lc":true,"id":"1Wed-3-longest-substring-without-repeating-characters"});
+add(0,"Thu","design","Evening","Timed design: URL shortener (45 min, blank page, out loud)",{"min":45,"note":"Done in plan v3 (W1 Wed). Requirements → capacity math with units → API → storage → bottlenecks → failure modes.","id":"1Wed-timed-design-url-shortener-45-min-blank-page-out-loud"});
+add(0,"Thu","design","Evening","Self-score the design and list the gaps",{"min":15,"note":"Done in plan v3 (W1 Wed). Did you state requirements first, show capacity math, and name 3+ failure modes?","id":"1Wed-self-score-the-design-and-list-the-gaps"});
+add(0,"Thu","dsa","Morning","20. Valid Parentheses (re-solve)",{"d":"E","min":10,"kind":"cold","note":"Done in plan v3 (W1 Thu). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/valid-parentheses/","lc":true,"id":"1Thu-20-valid-parentheses-re-solve"});
+add(0,"Thu","dsa","Morning","739. Daily Temperatures",{"d":"M","min":15,"kind":"variant","note":"Done in plan v3 (W1 Thu). Monotonic decreasing stack of indices; pop while today is warmer.","url":"https://leetcode.com/problems/daily-temperatures/","lc":true,"id":"1Thu-739-daily-temperatures"});
+add(0,"Thu","cloud","Evening","Open every .tf file in ml-inference-sre and draw the resource graph",{"min":25,"note":"Done in plan v3 (W1 Thu). VPC, subnets, EKS control plane, node group, IAM roles. Use your own files as the source.","id":"1Thu-open-every-tf-file-in-ml-inference-sre-and-draw-the-resource-graph"});
+add(0,"Thu","cloud","Evening","Read Terraform docs: state, backends and locking",{"min":15,"note":"Done in plan v3 (W1 Thu). ","url":"https://developer.hashicorp.com/terraform/language/state","id":"1Thu-read-terraform-docs-state-backends-and-locking"});
+add(0,"Thu","cloud","Evening","Answer aloud: Terraform vs manifests, state + locking, two people applying at once, drift, why not eksctl, node IAM",{"min":20,"note":"Done in plan v3 (W1 Thu). Write the answers into your notes repo (project-notes/ml-inference-sre-terraform.md).","id":"1Thu-answer-aloud-terraform-vs-manifests-state-locking-two-people-applying-at-once-drift-why-not-eksctl-node-iam"});
+add(0,"Thu","dsa","Morning","238. Product of Array Except Self (re-solve)",{"d":"M","min":15,"kind":"cold","note":"Done in plan v3 (W1 Fri). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/product-of-array-except-self/","lc":true,"id":"1Fri-238-product-of-array-except-self-re-solve"});
+add(0,"Thu","dsa","Morning","Clear the Redo tab: re-solve anything flagged 🔁 this week, cold",{"min":30,"note":"Done in plan v3 (W1 Fri). Nothing flagged? Re-do the two problems that felt slowest.","id":"1Fri-clear-the-redo-tab-re-solve-anything-flagged-this-week-cold"});
+add(0,"Thu","dsa","Scripting","awk: count logins per user from who/last output",{"min":30,"note":"Done in plan v3 (W1 Fri). Associative array as the accumulator. Then redo it once from a blank file with the clock running.","id":"1Fri-awk-count-logins-per-user-from-who-last-output"});
+add(0,"Thu","dsa","Morning","704. Binary Search (re-solve)",{"d":"E","min":10,"kind":"cold","note":"Done in plan v3 (W1 Fri). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/binary-search/","lc":true,"id":"1Fri-704-binary-search-re-solve"});
+add(0,"Thu","dsa","Morning","153. Find Minimum in Rotated Sorted Array (re-solve)",{"d":"M","min":15,"kind":"cold","note":"Done in plan v3 (W1 Fri). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/","lc":true,"id":"1Fri-153-find-minimum-in-rotated-sorted-array-re-solve"});
+add(0,"Thu","dsa","Morning","33. Search in Rotated Sorted Array (re-solve)",{"d":"M","min":15,"kind":"cold","note":"Done in plan v3 (W1 Fri). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/search-in-rotated-sorted-array/","lc":true,"id":"1Fri-33-search-in-rotated-sorted-array-re-solve"});
+add(0,"Thu","dsa","Morning","206. Reverse Linked List",{"d":"E","min":10,"kind":"cold","note":"Done in plan v3 (W2 Mon). Iterative: prev/curr pointer flip.","url":"https://leetcode.com/problems/reverse-linked-list/","lc":true,"id":"2Mon-206-reverse-linked-list"});
+add(0,"Thu","dsa","Morning","141. Linked List Cycle (re-solve)",{"d":"E","min":10,"kind":"cold","note":"Done in plan v3 (W2 Mon). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/linked-list-cycle/","lc":true,"id":"2Mon-141-linked-list-cycle-re-solve"});
+add(0,"Thu","dsa","Morning","56. Merge Intervals",{"d":"M","min":15,"kind":"variant","note":"Done in plan v3 (W3 Tue). Sort by start; extend the last merged interval while they overlap.","url":"https://leetcode.com/problems/merge-intervals/","lc":true,"id":"3Tue-56-merge-intervals"});
+add(0,"Thu","dsa","Leave day","424. Longest Repeating Character Replacement",{"d":"M","min":15,"kind":"variant","note":"Done Nov 10–12 (plan v4). Window is valid if (length − maxFreq) ≤ k.","url":"https://leetcode.com/problems/longest-repeating-character-replacement/","lc":true,"id":"v4-1Tue-424-longest-repeating-character-replacement"});
+add(0,"Thu","dsa","Leave day","155. Min Stack",{"d":"M","min":30,"kind":"learn","note":"Done Nov 10–12 (plan v4). Second stack (or pairs) holding the running min next to each push.","url":"https://leetcode.com/problems/min-stack/","lc":true,"id":"v4-1Tue-155-min-stack"});
+add(0,"Thu","linux","Leave day","Read kernel docs: vm sysctl (overcommit_memory, swappiness, dirty_*)",{"min":15,"note":"Done Nov 10–12 (plan v4). Why can a box with no free memory be perfectly healthy?","url":"https://docs.kernel.org/admin-guide/sysctl/vm.html","id":"v4-1Tue-read-kernel-docs-vm-sysctl-overcommit-memory-swappiness-dirty"});
+add(0,"Thu","net","Leave day","Read howdns.works end to end",{"min":15,"note":"Done Nov 10–12 (plan v4). Resolver, root, TLD, authoritative, caching and TTL.","url":"https://howdns.works/","id":"v4-1Wed-read-howdns-works-end-to-end"});
+add(0,"Thu","dsa","Morning · 7:00–8:30","21. Merge Two Sorted Lists (re-solve)",{"d":"E","min":10,"kind":"cold","note":"Done Nov 10–12 (plan v4). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/merge-two-sorted-lists/","lc":true,"id":"v4-1Thu-21-merge-two-sorted-lists-re-solve"});
+add(0,"Thu","dsa","Morning · 7:00–8:30","19. Remove Nth Node From End of List (re-solve)",{"d":"M","min":15,"kind":"cold","note":"Done Nov 10–12 (plan v4). Restart: you solved this in the first plan. Cold, aim for 10-15 min, say the approach and complexity aloud. Stuck at the cap? Read the approach, re-solve cold within 2 days, flag 🔁.","url":"https://leetcode.com/problems/remove-nth-node-from-end-of-list/","lc":true,"id":"v4-1Thu-19-remove-nth-node-from-end-of-list-re-solve"});
+add(0,"Thu","net","Flex · during work","Read tcp(7): backlog, retransmit and keepalive knobs, and the TIME_WAIT behavior",{"min":25,"url":"https://man7.org/linux/man-pages/man7/tcp.7.html","id":"v4-1Thu-read-tcp-7-backlog-retransmit-and-keepalive-knobs-and-the-time-wait-behavior","note":"Done Nov 10–12 (plan v4). "});
+
+// ── WEEK 0 ──
+// Fri 2026-11-13
+add(0,"Fri","dsa","Evening (today only)","128. Longest Consecutive Sequence",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/longest-consecutive-sequence/","lc":true,"note":"HashSet; only start counting where n−1 is absent."});
+add(0,"Fri","dsa","Evening (today only)","399. Evaluate Division (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/evaluate-division/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+// Sat 2026-11-14
+add(0,"Sat","misc","Admin","Book PAID mock #1 (human coding interviewer) for Wed Dec 9 — Gate 1",{"min":15});
+add(0,"Sat","misc","Recruiter round","Write your 90-second pitch: who you are, the 60k-node fleet, what you want next (both lanes)",{"min":30});
+add(0,"Sat","misc","Recruiter round","Write the restructure-framed departure story (spoken only, ~20 seconds)",{"min":20,"note":"Keep the level change verbal-only, never in writing."});
+add(0,"Sat","misc","Recruiter round","Write your visa ask (H-1B transfer + GC sponsorship) and your comp-deflection lines",{"min":20});
+add(0,"Sat","dsa","Saturday","36. Valid Sudoku",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/valid-sudoku/","lc":true,"note":"Three sets of seen-values: rows, columns and 3x3 boxes."});
+add(0,"Sat","dsa","Saturday","11. Container With Most Water",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/container-with-most-water/","lc":true});
+add(0,"Sat","linux","Linux fundamentals","capsule: build and run from a clean checkout in WSL, then a walk-through of namespaces and clone flags with Claude; explain back without notes",{"min":60});
+// Sun 2026-11-15
+add(0,"Sun","misc","Recruiter round","Rehearse pitch, departure story, visa ask and comp lines aloud — record two takes, keep the better one",{"min":30});
+add(0,"Sun","misc","Review","Read the weekly template and the 3 gates; put the 7 AM blocks in your calendar",{"min":15,"note":"Mon/Fri 7:00–9:30, Tue/Wed/Thu 7:00–8:30, Sat 5h, Sun 4.5h. The 7 AM blocks are load-bearing."});
+add(0,"Sun","dsa","Scripting","Timed scripting drill (30 min): Accumulator warm-up: parse `last` output into logins per user — Python dict accumulator, then awk",{"min":60,"note":"30 min timed, 20 min review (cleaner version, edge cases, awk/sort/uniq equivalent). Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. Your known gap: the accumulator pattern cold under time. Ask Claude for a sample file."});
+add(0,"Sun","proj","Project deep-dive","ml-inference-sre: audit every resume/LinkedIn claim (20 min), then a Terraform EKS walk-through with Claude — VPC, subnets, node group, IAM; explain it back without notes (40 min)",{"min":60,"note":"Your last mock showed you could not explain Terraform's role here. This closes that first."});
+add(0,"Sun","dsa","Sunday","767. Reorganize String (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/reorganize-string/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+
+// ── WEEK 1 ──
+// Mon 2026-11-16
+add(1,"Mon","dsa","Morning · 7:00–9:30","42. Trapping Rain Water",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/trapping-rain-water/","lc":true,"note":"Two pointers with running left/right max, or the monotonic stack."});
+add(1,"Mon","dsa","Morning · 7:00–9:30","567. Permutation in String",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/permutation-in-string/","lc":true,"note":"Fixed-size window; compare character counts."});
+add(1,"Mon","dsa","Morning · 7:00–9:30","239. Sliding Window Maximum",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/sliding-window-maximum/","lc":true,"note":"Monotonic deque of indices; the front is the window max."});
+add(1,"Mon","dsa","Morning · 7:00–9:30","394. Decode String (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/decode-string/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(1,"Mon","misc","Applications · evening","Resume refresh: master SRE variant + an AI-infra variant that leads with the 60k-node fleet and fleetguard",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2026-11-17
+add(1,"Tue","dsa","Scripting","Timed scripting drill (30 min): auth.log: failed SSH logins per source IP, top 10 — Python regex, then grep/awk/sort/uniq -c",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(1,"Tue","linux","Knowledge","Write your one-page troubleshooting method: scope → clarifying questions → hypotheses → command + expected output → short-term fix → long-term fix. Keep it in sre-prep-notes/troubleshooting/",{"min":30});
+// Wed 2026-11-18
+add(1,"Wed","dsa","Morning · 7:00–8:30","76. Minimum Window Substring",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/minimum-window-substring/","lc":true,"note":"Sliding window with need/have counts."});
+add(1,"Wed","dsa","Morning · 7:00–8:30","217. Contains Duplicate (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/contains-duplicate/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(1,"Wed","linux","Knowledge","Linux admin rapid-fire #1 (25 questions, aloud, 60 s each): persistent env vars, systemd units and journalctl, df vs du, kill vs kill -9, iptables vs firewalld vs nmcli, block an IP",{"min":30,"note":"Ask Claude to quiz you and score each answer."});
+add(1,"Wed","misc","Applications · evening","LinkedIn refresh: headline covering both lanes, projects, the three BigPanda certs",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2026-11-19
+add(1,"Thu","linux","Troubleshooting","Scenario (out loud): Box is slow: load average 40 on 16 cores, CPU only 20% busy",{"min":75,"note":"Solo: 30 min diagnosing out loud with a timer (each command you would run and what it tells you), 30 min checking against your notes — name the kernel or protocol mechanism — 15 min writing it up in sre-prep-notes/troubleshooting/. Hint: D-state tasks count toward load: ps, /proc/<pid>/stack, iostat, PSI."});
+// Fri 2026-11-20
+add(1,"Fri","dsa","Morning · 7:00–9:30","150. Evaluate Reverse Polish Notation",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/evaluate-reverse-polish-notation/","lc":true});
+add(1,"Fri","dsa","Morning · 7:00–9:30","853. Car Fleet",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/car-fleet/","lc":true,"note":"Sort by position descending; time = (target − pos)/speed; new fleet when time > stack top."});
+add(1,"Fri","dsa","Morning · 7:00–9:30","128. Longest Consecutive Sequence (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/longest-consecutive-sequence/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(1,"Fri","cloud","Knowledge","K8s lab 1 (Minikube): break a deployment (bad image, failing probe, missing secret) and debug it live with a timer, narrated",{"min":45});
+add(1,"Fri","misc","Applications · evening","Target list: ~30 companies — lane 1 (CoreWeave, Lambda, Crusoe, Nebius, NVIDIA, hyperscaler AI-infra) and lane 2 (AWS SysDE, Meta PE, Datadog, Bloomberg, Goldman, JPMC) — with a referral-contact column",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2026-11-21
+add(1,"Sat","design","Timed design","Timed design: Distribute a 10 GB file to 10,000 machines (classic NALSD) — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(1,"Sat","design","Design review","Review: Distribute a 10 GB file to 10,000 machines — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(1,"Sat","linux","Phase topic","capsule: walk-throughs of pivot_root (why not chroot) and cgroups v2 (memory.max, cpu.max, memory.events); explain back",{"min":60});
+add(1,"Sat","dsa","Timed medium","22. Generate Parentheses",{"d":"M","min":60,"kind":"timed","url":"https://leetcode.com/problems/generate-parentheses/","lc":true,"note":"Saturday timed medium: 35 min, narrated, no hints, then 25 min reviewing your code and complexity claims."});
+add(1,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(1,"Sat","dsa","Flex hour","Extra practice: two cold re-solves from the Redo tab or your hardest problems so far, 25 min each, narrated",{"min":60});
+// Sun 2026-11-22
+add(1,"Sun","dsa","Mock","Coding mock #1 (calibration): unseen medium, 45 min + 15 min feedback — peer, free platform, or self-run with a timer",{"min":60});
+add(1,"Sun","misc","Mock","Write the top 3 fixes from this mock and which slot each goes into next week",{"min":30});
+add(1,"Sun","proj","Project deep-dive","ml-inference-sre: Kubernetes manifests, HPA, requests/limits and QoS walk-through, then explain back (40 min); FastAPI app and model loading (20 min)",{"min":60});
+add(1,"Sun","misc","Behavioral","Draft the new user-first STAR story v1 with numbers (15), then rehearse it aloud twice (15)",{"min":30});
+add(1,"Sun","proj","Knowledge","Work-project deep-dive: the patching tool across the 60k-node estate — architecture, numbers, trade-offs, what you would change; then a 10-question recorded drill",{"min":60});
+add(1,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(1,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 2 ──
+// Mon 2026-11-23
+add(2,"Mon","dsa","Morning · 7:00–9:30","84. Largest Rectangle in Histogram",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/largest-rectangle-in-histogram/","lc":true,"note":"Monotonic increasing stack; pop and compute the area when a lower bar arrives."});
+add(2,"Mon","dsa","Morning · 7:00–9:30","74. Search a 2D Matrix",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/search-a-2d-matrix/","lc":true});
+add(2,"Mon","dsa","Morning · 7:00–9:30","875. Koko Eating Bananas",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/koko-eating-bananas/","lc":true,"note":"Binary search on the answer k in [1, max]; feasible if sum(ceil(p/k)) ≤ h."});
+add(2,"Mon","dsa","Morning · 7:00–9:30","1. Two Sum (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/two-sum/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(2,"Mon","misc","Applications · evening","Write 2-line \"why <company>\" answers for your top 15 targets",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2026-11-24
+add(2,"Tue","dsa","Scripting","Timed scripting drill (30 min): Pure Bash: loop over a host list file line by line, read fields, write a report file — no Python",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. NVIDIA-style HackerRank: Bash file I/O."});
+add(2,"Tue","linux","Knowledge","Processes and signals: fork/exec/wait, zombies and orphans, fg/bg jobs, SIGTERM vs SIGKILL, PID 1 — explain aloud, then check with ps/strace",{"min":30});
+// Wed 2026-11-25
+add(2,"Wed","dsa","Morning · 7:00–8:30","981. Time Based Key-Value Store",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/time-based-key-value-store/","lc":true,"note":"HashMap of key → sorted (timestamp, value) list; binary search on get."});
+add(2,"Wed","dsa","Morning · 7:00–8:30","36. Valid Sudoku (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/valid-sudoku/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(2,"Wed","net","Knowledge","Networking rapid-fire #1 (25 questions): TCP vs UDP, common ports, DHCP, ARP, NAT, routing tables, what a default gateway does",{"min":30,"note":"Ask Claude to quiz you."});
+add(2,"Wed","misc","Applications · evening","Comp research per tier (levels.fyi and similar) and write down your number and walk-away",{"min":60,"note":"Evening slot, on top of prep time."});
+// Fri 2026-11-27
+add(2,"Fri","dsa","Morning · 7:00–9:30","143. Reorder List",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/reorder-list/","lc":true,"note":"Find the middle, reverse the second half, merge alternately."});
+add(2,"Fri","dsa","Morning · 7:00–9:30","138. Copy List with Random Pointer",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/copy-list-with-random-pointer/","lc":true,"note":"HashMap old→new, or the interleave trick for O(1) extra space."});
+add(2,"Fri","dsa","Morning · 7:00–9:30","11. Container With Most Water (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/container-with-most-water/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(2,"Fri","cloud","Knowledge","AWS 1: VPC, subnets, route tables, IGW/NAT, security groups vs NACLs — explain using your ml-inference-sre Terraform stack",{"min":45});
+add(2,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2026-11-28
+add(2,"Sat","design","Timed design","Timed design: Distributed rate limiter — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(2,"Sat","design","Design review","Review: Distributed rate limiter — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(2,"Sat","linux","Phase topic","capsule: user namespaces and uid/gid mapping walk-through; then record a 5-minute capsule pitch",{"min":60});
+add(2,"Sat","dsa","Timed medium","2. Add Two Numbers",{"d":"M","min":60,"kind":"timed","url":"https://leetcode.com/problems/add-two-numbers/","lc":true,"note":"Saturday timed medium: 35 min, narrated, no hints, then 25 min reviewing your code and complexity claims."});
+add(2,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(2,"Sat","dsa","Flex hour","Extra practice: two cold re-solves from the Redo tab or your hardest problems so far, 25 min each, narrated",{"min":60});
+// Sun 2026-11-29
+add(2,"Sun","dsa","AI-assisted","AI-assisted practice #1 (Meta-style): 60-min CoderPad-style session — unfamiliar multi-file Python repo, fix a bug and add a feature with the AI sidebar, narrated",{"min":90,"note":"Graded on HOW you use the AI: plan before prompting, targeted prompts, verify every suggestion by reading and running it, test. Then 30 min review: log each AI suggestion you accepted or rejected, and why."});
+add(2,"Sun","proj","Project deep-dive","ml-inference-sre: Dockerfile/uvicorn workers and the Prometheus metrics and alerts walk-through (40 min); record a 5-minute pitch (20 min)",{"min":60});
+add(2,"Sun","misc","Behavioral","STAR rehearsal: ownership — the patching tool across the 60k-node estate, then technical excellence — the FD-exhaustion diagnosis — 2 min each, recorded, then one follow-up question on each (\"why that? what would you change?\")",{"min":30});
+add(2,"Sun","proj","Knowledge","Work-project deep-dive: the FD-exhaustion incident as a technical story — kernel mechanism, mitigation → correction → prevention; 10-question drill",{"min":60});
+add(2,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(2,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 3 ──
+// Mon 2026-11-30
+add(3,"Mon","dsa","Morning · 7:00–9:30","146. LRU Cache",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/lru-cache/","lc":true,"note":"HashMap + doubly linked list with dummy head/tail; move to front on every get/put."});
+add(3,"Mon","dsa","Morning · 7:00–9:30","287. Find the Duplicate Number",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/find-the-duplicate-number/","lc":true,"note":"Floyd's cycle detection on the index graph; find the cycle entrance."});
+add(3,"Mon","dsa","Morning · 7:00–9:30","23. Merge k Sorted Lists",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/merge-k-sorted-lists/","lc":true,"note":"Min-heap of the k heads; or divide-and-conquer merging."});
+add(3,"Mon","dsa","Morning · 7:00–9:30","49. Group Anagrams (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/group-anagrams/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(3,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2026-12-01
+add(3,"Tue","dsa","Scripting","Timed scripting drill (30 min): ps aux: total RSS and process count per user, top 5 by memory — Python and an awk one-liner",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(3,"Tue","linux","Knowledge","Inodes, hard vs soft links, df vs du, filesystem journaling — explain aloud, then demonstrate in WSL",{"min":30});
+// Wed 2026-12-02
+add(3,"Wed","dsa","Morning · 7:00–8:30","53. Maximum Subarray",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/maximum-subarray/","lc":true});
+add(3,"Wed","dsa","Morning · 7:00–8:30","42. Trapping Rain Water (revisit)",{"d":"H","min":20,"kind":"revisit","url":"https://leetcode.com/problems/trapping-rain-water/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(3,"Wed","design","Knowledge","Numbers to know + capacity drill #1: latency numbers, disk/network throughput; size storage and bandwidth for a log pipeline in 20 min",{"min":30});
+add(3,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2026-12-03
+add(3,"Thu","net","Troubleshooting","Role-play scenario: What happens when you run curl https://example.com — end to end (first pass, untimed)",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: DNS → TCP → TLS 1.3 → HTTP → load balancer → backend."});
+add(3,"Thu","misc","Reading (optional)","Optional commute reading — SRE Book: Effective Troubleshooting",{"min":0,"url":"https://sre.google/sre-book/effective-troubleshooting/","note":"Phone-friendly. Skip if the week is tight."});
+// Fri 2026-12-04
+add(3,"Fri","dsa","Morning · 7:00–9:30","55. Jump Game",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/jump-game/","lc":true,"note":"Track the farthest reachable index; fail if you hit an index beyond it."});
+add(3,"Fri","dsa","Morning · 7:00–9:30","45. Jump Game II",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/jump-game-ii/","lc":true,"note":"Greedy BFS in windows: count a jump each time you pass the current window's end."});
+add(3,"Fri","dsa","Morning · 7:00–9:30","567. Permutation in String (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/permutation-in-string/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(3,"Fri","cloud","Knowledge","K8s lab 2: network policies, taints/tolerations, node drain and cordon — apply each in Minikube and observe",{"min":45});
+add(3,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2026-12-05
+add(3,"Sat","design","Timed design","Timed design: Fleet-wide config push to 100k hosts (classic NALSD) — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(3,"Sat","design","Design review","Review: Fleet-wide config push to 100k hosts — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(3,"Sat","linux","Phase topic","Linux memory: virtual memory, page cache, reclaim (kswapd vs direct reclaim), the OOM killer and oom_score, PSI — explain aloud, then check /proc/meminfo and memory.events",{"min":60});
+add(3,"Sat","dsa","Timed medium","134. Gas Station",{"d":"M","min":60,"kind":"timed","url":"https://leetcode.com/problems/gas-station/","lc":true,"note":"Saturday timed medium: 35 min, narrated, no hints, then 25 min reviewing your code and complexity claims. If total gas >= total cost a solution exists; restart the start index whenever the running tank goes negative."});
+add(3,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(3,"Sat","cloud","Flex hour","Role-play scenario: Pod in CrashLoopBackOff",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: logs --previous, exit codes (137 = OOMKilled), probes killing a slow starter."});
+// Sun 2026-12-06
+add(3,"Sun","misc","Mock","Claude role-play: recruiter screen + behavioral mock — 90-sec pitch, departure story, visa ask, comp, 3 STARs with 2-level follow-ups",{"min":60});
+add(3,"Sun","misc","Mock","Write the top 3 fixes from this mock and which slot each goes into next week",{"min":30});
+add(3,"Sun","proj","Project deep-dive","Gate 1 rehearsal: 90-sec pitch, then the ml-inference-sre and capsule pitches back to back, recorded",{"min":60});
+add(3,"Sun","misc","Behavioral","STAR rehearsal: conflict — the AD/VAS migration, then failure — the Gap VM build misconfiguration — 2 min each, recorded, then one follow-up question on each (\"why that? what would you change?\")",{"min":30});
+add(3,"Sun","proj","Knowledge","Work-project deep-dive: the AD/VAS migration — scale, sequencing, risk, the Hadoop disagreement; 10-question drill",{"min":60});
+add(3,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(3,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 4 ──
+// Mon 2026-12-07
+add(4,"Mon","dsa","Gate","GATE 1: two unseen mediums, 45 min each, narrated, every complexity claim justified aloud",{"min":105,"note":"Ask Claude or a peer to pick 2 mediums from Phase 1 topics you have not seen. Pass = both solved in time with clean narration."});
+add(4,"Mon","dsa","Leave day","125. Valid Palindrome (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/valid-palindrome/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(4,"Mon","proj","capsule","capsule deep-dive drill, recorded: 10 questions × 2 min (PID 1 and signals, why pivot_root, cgroup v1 vs v2, rootless, overlayfs, OOM behavior, what Docker adds)",{"min":30});
+add(4,"Mon","linux","Knowledge","Linux admin rapid-fire #2: boot sequence, systemd targets, cron vs timers, users/groups/sudo, ulimits, /proc and /sys, log locations",{"min":30});
+add(4,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2026-12-08
+add(4,"Tue","dsa","Gate","GATE 1: log-parsing drill cold, 30 min — accumulator pattern, no looking anything up",{"min":45,"note":"Ask Claude for a fresh log file and prompt. Pass = correct output in 30 min."});
+add(4,"Tue","misc","Gate","GATE 1: 90-sec pitch + departure story + all 9 STARs, timed (2 min each), recorded",{"min":60,"note":"Pass = every story under 2 minutes with a number in it."});
+add(4,"Tue","proj","ml-inference-sre","ml-inference-sre deep-dive drill, recorded: 10 questions × 2 min (HPA settings, 10× traffic, cold start, why EKS, Terraform state, rollback, failure modes)",{"min":30});
+add(4,"Tue","linux","Troubleshooting","Role-play scenario: Errors started right after a deploy — find the root cause",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Google classic: clarifying questions first; roll back vs fix forward."});
+// Wed 2026-12-09
+add(4,"Wed","dsa","Gate","GATE 1: PAID mock #1 — coding with a human interviewer",{"min":75});
+add(4,"Wed","misc","Mock","Write the top 3 fixes from this mock and which slot each goes into next week",{"min":15});
+add(4,"Wed","net","Troubleshooting","Scenario (out loud): A user can't SSH into a remote machine",{"min":75,"note":"Solo: 30 min diagnosing out loud with a timer (each command you would run and what it tells you), 30 min checking against your notes — name the kernel or protocol mechanism — 15 min writing it up in sre-prep-notes/troubleshooting/. Hint: DNS, routing, firewall, sshd, keys, PAM, disk full, host down — layer by layer."});
+add(4,"Wed","misc","Gate","GATE 1 verdict: all four passed (2 mediums, log drill, pitch + STARs, paid mock)? If not, Phase 1 extends — send Claude your backup code for a re-plan",{"min":15});
+add(4,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 5 ──
+// Mon 2026-12-14
+add(5,"Mon","dsa","Morning · 7:00–9:30","763. Partition Labels",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/partition-labels/","lc":true,"note":"Record each letter's last index; extend the current cut to the farthest last index seen."});
+add(5,"Mon","dsa","Morning · 7:00–9:30","102. Binary Tree Level Order Traversal",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/binary-tree-level-order-traversal/","lc":true,"note":"BFS with a queue; process level by level using the queue size."});
+add(5,"Mon","dsa","Morning · 7:00–9:30","199. Binary Tree Right Side View",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/binary-tree-right-side-view/","lc":true,"note":"Level-order BFS; take the last node of each level."});
+add(5,"Mon","dsa","Morning · 7:00–9:30","239. Sliding Window Maximum (revisit)",{"d":"H","min":20,"kind":"revisit","url":"https://leetcode.com/problems/sliding-window-maximum/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(5,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2026-12-15
+add(5,"Tue","dsa","Scripting","Timed scripting drill (30 min): Ping a list of hosts, find the slow ones, print host + avg latency; iteration 2: in parallel; iteration 3: handle timeouts and DNS failures",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. Google Linux-round classic — it escalates over three iterations."});
+add(5,"Tue","net","Knowledge","Networking rapid-fire #2: SSH, NFS, SFTP vs FTP, packet path over the internet vs an intranet, firewalls, WAF vs iptables",{"min":30});
+// Wed 2026-12-16
+add(5,"Wed","dsa","Morning · 7:00–8:30","98. Validate Binary Search Tree",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/validate-binary-search-tree/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review. Recurse with (min, max) bounds; the node must fit in the range."});
+add(5,"Wed","dsa","Morning · 7:00–8:30","230. Kth Smallest Element in a BST",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/kth-smallest-element-in-a-bst/","lc":true,"note":"Second of the timed pair. Inorder traversal is sorted; the kth visited is the answer."});
+add(5,"Wed","dsa","Morning · 7:00–8:30","76. Minimum Window Substring (revisit)",{"d":"H","min":20,"kind":"revisit","url":"https://leetcode.com/problems/minimum-window-substring/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(5,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2026-12-17
+add(5,"Thu","linux","Troubleshooting","Role-play scenario: Disk full: df says 100% but du adds up to far less; then the inode-exhaustion variant",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: lsof +L1, reserved blocks, df -i."});
+add(5,"Thu","misc","Reading (optional)","Optional commute reading — SRE Book: Monitoring Distributed Systems",{"min":0,"url":"https://sre.google/sre-book/monitoring-distributed-systems/","note":"Phone-friendly. Skip if the week is tight."});
+// Fri 2026-12-18
+add(5,"Fri","dsa","Morning · 7:00–9:30","235. Lowest Common Ancestor of a Binary Search Tree",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/","lc":true,"note":"Walk down: if both targets are smaller go left, larger go right, else this is the LCA."});
+add(5,"Fri","dsa","Morning · 7:00–9:30","1448. Count Good Nodes in Binary Tree",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/count-good-nodes-in-binary-tree/","lc":true});
+add(5,"Fri","dsa","Morning · 7:00–9:30","167. Two Sum II – Input Array Is Sorted (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(5,"Fri","fleet","Knowledge","AI infra: NCCL rings and trees over NVLink inside a node and InfiniBand across nodes; why one bad link slows a whole all-reduce",{"min":45});
+add(5,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2026-12-19
+add(5,"Sat","design","Timed design","Timed design: Monitoring and alerting with low noise — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(5,"Sat","design","Design review","Review: Monitoring and alerting with low noise — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(5,"Sat","linux","Phase topic","CPU and scheduling: CFS, cgroup cpu.max throttling (nr_throttled, throttle_cfs_rq), load average including D state; perf top on a busy process",{"min":60});
+add(5,"Sat","fleet","Build","fleetguard: generate slim v1 with Claude in one session — agent (memory/CPU/disk + GPU fixture collector), controller (wave rollout, health gate, auto-rollback), Compose fleet of 6. Push it; confirm `docker compose up` and the demo run",{"min":60});
+add(5,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(5,"Sat","cloud","Flex hour","Role-play scenario: Pod stuck in Pending",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Requests vs allocatable, taints, affinity, unbound PVC; kubectl describe events."});
+// Sun 2026-12-20
+add(5,"Sun","linux","Mock","Role-play scenario: Service latency doubled while CPU sits at 50%",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Lock contention, I/O wait, GC, throttling, a slow dependency, network retransmits."});
+add(5,"Sun","misc","Mock","Write the top 3 fixes from this mock and which slot each goes into next week",{"min":30});
+add(5,"Sun","fleet","Project deep-dive","fleetguard walk-through 1: repo tour and architecture; run the Compose fleet and the demo; explain the data flow back aloud",{"min":60});
+add(5,"Sun","misc","Behavioral","Build the Amazon LP × story matrix: map your 9 stories to the 16 LPs, mark the uncovered ones",{"min":30});
+add(5,"Sun","design","Knowledge","Short design (40 + 20 review): distributed job scheduler (cron at scale)",{"min":60});
+add(5,"Sun","misc","Admin","Book PAID mock #2 (system design) for Sun Jan 17",{"min":10});
+add(5,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(5,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 6 ──
+// Mon 2026-12-21
+add(6,"Mon","dsa","Morning · 7:00–9:30","105. Construct Binary Tree from Preorder and Inorder Traversal",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/","lc":true,"note":"preorder[0] is the root; find it in inorder to split left/right."});
+add(6,"Mon","dsa","Morning · 7:00–9:30","543. Diameter of Binary Tree",{"d":"E","min":40,"kind":"learn","url":"https://leetcode.com/problems/diameter-of-binary-tree/","lc":true,"note":"Post-order height; the diameter at a node is left + right."});
+add(6,"Mon","dsa","Morning · 7:00–9:30","572. Subtree of Another Tree",{"d":"E","min":40,"kind":"learn","url":"https://leetcode.com/problems/subtree-of-another-tree/","lc":true,"note":"For each node, run the Same Tree check."});
+add(6,"Mon","dsa","Morning · 7:00–9:30","150. Evaluate Reverse Polish Notation (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/evaluate-reverse-polish-notation/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(6,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2026-12-22
+add(6,"Tue","dsa","Scripting","Timed scripting drill (30 min): nginx access log: top 10 IPs, status-code counts, 5xx rate per minute",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. Ask Claude for a 50k-line log with planted signals."});
+add(6,"Tue","linux","Knowledge","OS theory: threads vs processes, locks, deadlock conditions, semaphores, paging vs segmentation",{"min":30});
+// Wed 2026-12-23
+add(6,"Wed","dsa","Morning · 7:00–8:30","609. Find Duplicate File in System",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/find-duplicate-file-in-system/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review."});
+add(6,"Wed","dsa","Morning · 7:00–8:30","200. Number of Islands",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/number-of-islands/","lc":true,"note":"Second of the timed pair. Scan the grid; on each unvisited '1' run DFS/BFS to sink the island and count++."});
+add(6,"Wed","dsa","Morning · 7:00–8:30","853. Car Fleet (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/car-fleet/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(6,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2026-12-24
+add(6,"Thu","net","Troubleshooting","Scenario (out loud): Intermittent 502/504 errors from the load balancer",{"min":40,"note":"Solo: 30 min diagnosing out loud with a timer (each command you would run and what it tells you), 30 min checking against your notes — name the kernel or protocol mechanism — 15 min writing it up in sre-prep-notes/troubleshooting/. Hint: Upstream timeouts, keepalive mismatch, health checks, draining during deploys."});
+// Fri 2026-12-25
+add(6,"Fri","dsa","Holiday","121. Best Time to Buy and Sell Stock (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/best-time-to-buy-and-sell-stock/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+// Sat 2026-12-26
+add(6,"Sat","design","Timed design","Timed design: Distributed cache — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(6,"Sat","design","Design review","Review: Distributed cache — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":15});
+add(6,"Sat","net","Phase topic","TCP in depth: handshake and teardown, TIME_WAIT vs CLOSE_WAIT, backlog, retransmits, conntrack; read a tcpdump capture",{"min":60});
+// Sun 2026-12-27
+add(6,"Sun","dsa","AI-assisted","AI rep (holiday, 45 min): unfamiliar ~300-line Python repo from Claude with 2 planted bugs — fix one with an AI assistant: plan → prompt → verify → test",{"min":45,"note":"Graded on HOW you use the AI: plan before prompting, targeted prompts, verify every suggestion by reading and running it, test. Then 30 min review: log each AI suggestion you accepted or rejected, and why."});
+add(6,"Sun","misc","Behavioral","STAR rehearsal: cross-team — the DCR/DR failover events — 2 min, recorded",{"min":15});
+add(6,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(6,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 7 ──
+// Mon 2026-12-28
+add(7,"Mon","dsa","Morning · 7:00–9:30","124. Binary Tree Maximum Path Sum",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/binary-tree-maximum-path-sum/","lc":true,"note":"Post-order: return the best downward path; update a global with left + node + right."});
+add(7,"Mon","dsa","Morning · 7:00–9:30","22. Generate Parentheses (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/generate-parentheses/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(7,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2026-12-29
+add(7,"Tue","dsa","Scripting","Timed scripting drill (30 min): Pure Bash + sed: rewrite a config file in place (change keys, comment out lines, keep a backup), idempotent",{"min":30,"note":"Holiday week: drill only."});
+// Wed 2026-12-30
+add(7,"Wed","dsa","Morning · 7:00–8:30","297. Serialize and Deserialize Binary Tree",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/serialize-and-deserialize-binary-tree/","lc":true,"note":"Preorder with null markers; rebuild from an iterator."});
+add(7,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2026-12-31
+add(7,"Thu","linux","Troubleshooting","Role-play scenario: A process keeps getting killed",{"min":40,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Kernel OOM killer vs cgroup memory.max: dmesg, memory.events, oom_score; direct reclaim first."});
+// Fri 2027-01-01
+add(7,"Fri","dsa","Holiday","84. Largest Rectangle in Histogram (revisit)",{"d":"H","min":20,"kind":"revisit","url":"https://leetcode.com/problems/largest-rectangle-in-histogram/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+// Sat 2027-01-02
+add(7,"Sat","design","Timed design","Timed design: Log aggregation pipeline (bytes/day → machines) — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(7,"Sat","design","Design review","Review: Log aggregation pipeline — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":15});
+add(7,"Sat","net","Phase topic","DNS, TLS and load balancers: resolution path, TTL and negative caching, the TLS 1.3 handshake, mTLS, L4 vs L7, health checks and draining",{"min":60});
+// Sun 2027-01-03
+add(7,"Sun","linux","Mock","Troubleshooting mock (peer): \"box is slow\" or \"service 5xx\", live, 45 min + 15 min feedback",{"min":60});
+add(7,"Sun","misc","Mock","Write the top 3 fixes from this mock and which slot each goes into next week",{"min":30});
+add(7,"Sun","fleet","Project deep-dive","fleetguard walk-through 2: agent collectors — memory, PSI, cgroup files, CPU and disk",{"min":60});
+add(7,"Sun","misc","Behavioral","Draft LP story: Frugality / Invent and Simplify (STAR with numbers)",{"min":30});
+add(7,"Sun","design","Knowledge","Short design: message queue (Kafka-like)",{"min":60});
+add(7,"Sun","misc","Admin","Book PAID mock #3 (live debugging) for Sun Jan 31 — Gate 2",{"min":10});
+add(7,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(7,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 8 ──
+// Mon 2027-01-04
+add(8,"Mon","dsa","Morning · 7:00–9:30","695. Max Area of Island",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/max-area-of-island/","lc":true,"note":"Same traversal; return the size of each component and keep the max."});
+add(8,"Mon","dsa","Morning · 7:00–9:30","133. Clone Graph",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/clone-graph/","lc":true,"note":"HashMap old→new; copy the node on first visit, then wire up neighbors recursively."});
+add(8,"Mon","dsa","Morning · 7:00–9:30","994. Rotting Oranges",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/rotting-oranges/","lc":true,"note":"Multi-source BFS: seed the queue with every rotten orange; the number of levels is the minutes."});
+add(8,"Mon","dsa","Morning · 7:00–9:30","20. Valid Parentheses (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/valid-parentheses/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(8,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-01-05
+add(8,"Tue","dsa","Scripting","Timed scripting drill (30 min): Request log CSV: p50/p95 latency per endpoint (sort-based percentile, no numpy)",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(8,"Tue","linux","Knowledge","Interrupts, signal handlers and signal masking — how the kernel delivers a signal; explain aloud",{"min":30});
+// Wed 2027-01-06
+add(8,"Wed","dsa","Morning · 7:00–8:30","417. Pacific Atlantic Water Flow",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/pacific-atlantic-water-flow/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review. Search inward from each ocean's border; the answer is the cells reached from both."});
+add(8,"Wed","dsa","Morning · 7:00–8:30","130. Surrounded Regions",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/surrounded-regions/","lc":true,"note":"Second of the timed pair. Mark the O's connected to the border as safe; flip every other O."});
+add(8,"Wed","dsa","Morning · 7:00–8:30","74. Search a 2D Matrix (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/search-a-2d-matrix/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(8,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-01-07
+add(8,"Thu","cloud","Troubleshooting","Scenario (out loud): Node NotReady",{"min":75,"note":"Solo: 30 min diagnosing out loud with a timer (each command you would run and what it tells you), 30 min checking against your notes — name the kernel or protocol mechanism — 15 min writing it up in sre-prep-notes/troubleshooting/. Hint: kubelet, container runtime, disk/memory/PID pressure, API-server connectivity, cert expiry."});
+add(8,"Thu","misc","Reading (optional)","Optional commute reading — SRE Book: Handling Overload",{"min":0,"url":"https://sre.google/sre-book/handling-overload/","note":"Phone-friendly. Skip if the week is tight."});
+// Fri 2027-01-08
+add(8,"Fri","dsa","Morning · 7:00–9:30","207. Course Schedule",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/course-schedule/","lc":true,"note":"Detect a cycle in a directed graph: Kahn's algorithm (indegree) or DFS with 3 states."});
+add(8,"Fri","dsa","Morning · 7:00–9:30","210. Course Schedule II",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/course-schedule-ii/","lc":true,"note":"Same topological sort; return the order instead of a boolean."});
+add(8,"Fri","dsa","Morning · 7:00–9:30","875. Koko Eating Bananas (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/koko-eating-bananas/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(8,"Fri","cloud","Knowledge","AWS 2: IAM (roles, policies, instance profiles), EC2 basics, ELB vs ALB vs NLB",{"min":45});
+add(8,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-01-09
+add(8,"Sat","design","Timed design","Timed design: GPU fleet health monitoring: 10k GPUs, DCGM/Xid signals, detect → cordon → drain — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(8,"Sat","design","Design review","Review: GPU fleet health monitoring — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(8,"Sat","linux","Phase topic","Storage and filesystems in depth: page-cache writeback, iostat await/%util, LVM and RAID at talk-track level",{"min":60});
+add(8,"Sat","fleet","Build","fleetguard: end-to-end demo — push a bad config, watch the health gate trip and auto-rollback; record a 3-min video; list what you could not explain",{"min":60});
+add(8,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(8,"Sat","dsa","Flex hour","Extra practice: two cold re-solves from the Redo tab or your hardest problems so far, 25 min each, narrated",{"min":60});
+// Sun 2027-01-10
+add(8,"Sun","dsa","AI-assisted","AI-assisted practice #2: unfamiliar Go service — debug a failing test and extend it, AI allowed, narrated",{"min":90,"note":"Graded on HOW you use the AI: plan before prompting, targeted prompts, verify every suggestion by reading and running it, test. Then 30 min review: log each AI suggestion you accepted or rejected, and why."});
+add(8,"Sun","fleet","Project deep-dive","fleetguard walk-through 3: GPU collector — nvidia-smi/DCGM fixtures, Xid error parsing, how a bad GPU gets flagged",{"min":60});
+add(8,"Sun","misc","Behavioral","Draft LP story: Bias for Action (STAR with numbers)",{"min":30});
+add(8,"Sun","design","Knowledge","Short design: notification system (fan-out at scale)",{"min":60});
+add(8,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(8,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 9 ──
+// Mon 2027-01-11
+add(9,"Mon","dsa","Morning · 7:00–9:30","684. Redundant Connection",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/redundant-connection/","lc":true,"note":"Union-find: the first edge whose endpoints already share a root is the answer."});
+add(9,"Mon","dsa","Morning · 7:00–9:30","547. Number of Provinces",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/number-of-provinces/","lc":true,"note":"Union-find or DFS over the adjacency matrix; count components."});
+add(9,"Mon","dsa","Morning · 7:00–9:30","743. Network Delay Time",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/network-delay-time/","lc":true,"note":"Dijkstra with a min-heap; the answer is the max shortest distance (or -1)."});
+add(9,"Mon","dsa","Morning · 7:00–9:30","238. Product of Array Except Self (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/product-of-array-except-self/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(9,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-01-12
+add(9,"Tue","dsa","Scripting","Timed scripting drill (30 min): Watch an app's stdout and print a line whenever field X changes (streaming, no buffering the whole output)",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. Reported Meta PE screen question."});
+add(9,"Tue","linux","Knowledge","What the kernel does for `ls -l`: strace it and walk through each syscall (execve, openat, getdents, statx, write), VFS and the page cache",{"min":30});
+// Wed 2027-01-13
+add(9,"Wed","dsa","Morning · 7:00–8:30","787. Cheapest Flights Within K Stops",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/cheapest-flights-within-k-stops/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review. Bellman-Ford limited to k+1 rounds, or BFS with (node, stops) states."});
+add(9,"Wed","dsa","Morning · 7:00–8:30","1584. Min Cost to Connect All Points",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/min-cost-to-connect-all-points/","lc":true,"note":"Second of the timed pair."});
+add(9,"Wed","dsa","Morning · 7:00–8:30","981. Time Based Key-Value Store (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/time-based-key-value-store/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(9,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-01-14
+add(9,"Thu","net","Troubleshooting","Role-play scenario: Connections time out under load",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: SYN backlog, ephemeral ports, conntrack table full, TIME_WAIT; ss -s, netstat -s."});
+add(9,"Thu","misc","Reading (optional)","Optional commute reading — SRE Book: Addressing Cascading Failures",{"min":0,"url":"https://sre.google/sre-book/addressing-cascading-failures/","note":"Phone-friendly. Skip if the week is tight."});
+// Fri 2027-01-15
+add(9,"Fri","dsa","Morning · 7:00–9:30","127. Word Ladder",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/word-ladder/","lc":true,"note":"BFS over words; bucket by wildcard patterns like h*t to find neighbors fast."});
+add(9,"Fri","dsa","Morning · 7:00–9:30","215. Kth Largest Element in an Array",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/kth-largest-element-in-an-array/","lc":true,"note":"Min-heap of size k, or quickselect for O(n) average."});
+add(9,"Fri","dsa","Morning · 7:00–9:30","143. Reorder List (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/reorder-list/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(9,"Fri","cloud","Knowledge","K8s lab 3: Docker port mapping, building an image from a Dockerfile, Helm chart vs release — hands-on",{"min":45});
+add(9,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-01-16
+add(9,"Sat","design","Timed design","Timed design: Multi-tenant GPU cluster scheduler: topology-aware, gang scheduling, preemption — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(9,"Sat","design","Design review","Review: Multi-tenant GPU cluster scheduler — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(9,"Sat","cloud","Phase topic","Kubernetes internals: scheduler, kubelet, probes, kube-proxy/iptables, CNI, QoS classes and eviction",{"min":60});
+add(9,"Sat","dsa","Timed medium","973. K Closest Points to Origin",{"d":"M","min":60,"kind":"timed","url":"https://leetcode.com/problems/k-closest-points-to-origin/","lc":true,"note":"Saturday timed medium: 35 min, narrated, no hints, then 25 min reviewing your code and complexity claims. Max-heap of size k on squared distance, or quickselect."});
+add(9,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(9,"Sat","linux","Flex hour","Role-play scenario: A process is unresponsive",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: State (R/S/D/Z), what it's waiting on (/proc/<pid>/stack, strace -p), memory, which signal to send and why."});
+// Sun 2027-01-17
+add(9,"Sun","design","Mock","PAID mock #2 — system design with a human interviewer",{"min":60});
+add(9,"Sun","misc","Mock","Write the top 3 fixes from this mock and which slot each goes into next week",{"min":30});
+add(9,"Sun","fleet","Project deep-dive","fleetguard walk-through 4: controller — wave planner and health-gate evaluator",{"min":60});
+add(9,"Sun","misc","Behavioral","Draft LP story: Disagree and Commit / Are Right, A Lot (STAR with numbers)",{"min":30});
+add(9,"Sun","design","Knowledge","Short design: distributed lock service (Chubby-like)",{"min":60});
+add(9,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(9,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 10 ──
+// Mon 2027-01-18
+add(10,"Mon","dsa","Morning · 7:00–9:30","621. Task Scheduler",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/task-scheduler/","lc":true,"note":"Max-heap by count plus a cooldown queue; or the closed-form (maxCount-1)*(n+1)+ties."});
+add(10,"Mon","dsa","Morning · 7:00–9:30","1834. Single-Threaded CPU",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/single-threaded-cpu/","lc":true,"note":"Sort tasks by enqueue time; a min-heap by (processing time, index)."});
+add(10,"Mon","dsa","Morning · 7:00–9:30","355. Design Twitter",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/design-twitter/","lc":true,"note":"Per-user tweet lists + a heap merge of the followees' latest tweets."});
+add(10,"Mon","dsa","Morning · 7:00–9:30","704. Binary Search (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/binary-search/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(10,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-01-19
+add(10,"Tue","dsa","Scripting","Timed scripting drill (30 min): Time windows: requests per minute, flag minutes above 3× the median",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(10,"Tue","design","Knowledge","Capacity drill #2: QPS → servers → storage → bandwidth for a URL-shortener-sized service, with units",{"min":30});
+// Wed 2027-01-20
+add(10,"Wed","dsa","Morning · 7:00–8:30","57. Insert Interval",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/insert-interval/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review. Add intervals ending before the new one, merge the overlapping ones, then add the rest."});
+add(10,"Wed","dsa","Morning · 7:00–8:30","435. Non-overlapping Intervals",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/non-overlapping-intervals/","lc":true,"note":"Second of the timed pair. Sort by end; keep the earliest-ending interval, count the removals."});
+add(10,"Wed","dsa","Morning · 7:00–8:30","138. Copy List with Random Pointer (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/copy-list-with-random-pointer/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(10,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-01-21
+add(10,"Thu","linux","Troubleshooting","Role-play scenario: On call: three alerts fire at once — triage, decide what to look at first, and communicate",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Impact first, then blast radius; who to tell and when."});
+add(10,"Thu","misc","Reading (optional)","Optional commute reading — SRE Book: Postmortem Culture",{"min":0,"url":"https://sre.google/sre-book/postmortem-culture/","note":"Phone-friendly. Skip if the week is tight."});
+// Fri 2027-01-22
+add(10,"Fri","dsa","Morning · 7:00–9:30","295. Find Median from Data Stream",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/find-median-from-data-stream/","lc":true,"note":"Two heaps: a max-heap for the lower half, a min-heap for the upper half; keep sizes within 1."});
+add(10,"Fri","dsa","Morning · 7:00–9:30","920. Meeting Rooms (LintCode)",{"d":"E","min":40,"kind":"learn","url":"https://www.lintcode.com/problem/920/","lc":true});
+add(10,"Fri","dsa","Morning · 7:00–9:30","2. Add Two Numbers (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/add-two-numbers/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(10,"Fri","fleet","Knowledge","AI infra: InfiniBand, RDMA and RoCE basics — what RDMA buys you, IPoIB, how a bad cable or a downed rail shows up",{"min":45});
+add(10,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-01-23
+add(10,"Sat","design","Timed design","Timed design: Safe driver/firmware rollout across a GPU fleet (waves, health gates, rollback) — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(10,"Sat","design","Design review","Review: Safe driver/firmware rollout across a GPU fleet — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(10,"Sat","misc","Phase topic","Observability talk track: golden signals, SLOs and burn-rate alerting, what you would page on (ml-inference-sre as the example)",{"min":60});
+add(10,"Sat","fleet","Build","fleetguard live-modify drill: add a new agent metric and gate on it in 30 min with AI help, narrated; then write the 3 resume bullets",{"min":60});
+add(10,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(10,"Sat","net","Flex hour","Role-play scenario: Some hosts can't resolve one name",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: resolv.conf, search/ndots, caching and TTL, negative caching, split-horizon DNS."});
+// Sun 2027-01-24
+add(10,"Sun","misc","Mock","Claude role-play: Amazon-style behavioral — 4 Leadership Principle questions, each drilled 2 levels deep",{"min":60});
+add(10,"Sun","misc","Mock","Write the top 3 fixes from this mock and which slot each goes into next week",{"min":30});
+add(10,"Sun","fleet","Project deep-dive","fleetguard walk-through 5: state machine, persistence and the kill -9 resume",{"min":60});
+add(10,"Sun","misc","Behavioral","STAR rehearsal: ambiguity — the post-release data-correctness bug, then mentorship — the new grad on the Unix team — 2 min each, recorded, then one follow-up question on each (\"why that? what would you change?\")",{"min":30});
+add(10,"Sun","design","Knowledge","Short design: web crawler",{"min":60});
+add(10,"Sun","misc","Admin","Line up a peer for the full loops on Sun Feb 7 and Sun Feb 21",{"min":10});
+add(10,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(10,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 11 ──
+// Mon 2027-01-25
+add(11,"Mon","dsa","Morning · 7:00–9:30","919. Meeting Rooms II (LintCode)",{"d":"M","min":40,"kind":"learn","url":"https://www.lintcode.com/problem/919/","lc":true});
+add(11,"Mon","dsa","Morning · 7:00–9:30","729. My Calendar I",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/my-calendar-i/","lc":true});
+add(11,"Mon","dsa","Morning · 7:00–9:30","1851. Minimum Interval to Include Each Query",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/minimum-interval-to-include-each-query/","lc":true});
+add(11,"Mon","dsa","Morning · 7:00–9:30","153. Find Minimum in Rotated Sorted Array (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(11,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-01-26
+add(11,"Tue","dsa","Scripting","Timed scripting drill (30 min): Parallel subprocess: run a command on 50 hosts (simulated) with a worker pool and per-host timeout; summarise failures",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(11,"Tue","misc","Knowledge","Prepare your answer to \"How do you use AI tools in your work?\" — BigPanda certs, your own workflow, how you verify AI output",{"min":30});
+// Wed 2027-01-27
+add(11,"Wed","dsa","Morning · 7:00–8:30","846. Hand of Straights",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/hand-of-straights/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review."});
+add(11,"Wed","dsa","Morning · 7:00–8:30","1899. Merge Triplets to Form Target Triplet",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/merge-triplets-to-form-target-triplet/","lc":true,"note":"Second of the timed pair."});
+add(11,"Wed","dsa","Morning · 7:00–8:30","146. LRU Cache (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/lru-cache/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(11,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-01-28
+add(11,"Thu","net","Gate","GATE 2: \"what happens when you curl https://…\" end to end in under 10 minutes, recorded",{"min":30,"note":"DNS, TCP, TLS 1.3, HTTP, load balancer, backend, response. Pass = under 10 min, no gaps."});
+add(11,"Thu","cloud","Troubleshooting","Role-play scenario: Service unreachable: 'no endpoints'",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Selector mismatch, readiness failing, kube-proxy/iptables, cluster DNS."});
+add(11,"Thu","misc","Reading (optional)","Optional commute reading — SRE Book: Workbook: Non-Abstract Large System Design",{"min":0,"url":"https://sre.google/workbook/non-abstract-design/","note":"Phone-friendly. Skip if the week is tight."});
+// Fri 2027-01-29
+add(11,"Fri","dsa","Morning · 7:00–9:30","678. Valid Parenthesis String",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/valid-parenthesis-string/","lc":true,"note":"Track a [low, high] range of open counts, or two stacks."});
+add(11,"Fri","dsa","Morning · 7:00–9:30","198. House Robber",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/house-robber/","lc":true,"note":"dp[i] = max(dp[i-1], dp[i-2] + nums[i])."});
+add(11,"Fri","dsa","Morning · 7:00–9:30","287. Find the Duplicate Number (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/find-the-duplicate-number/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(11,"Fri","cloud","Knowledge","AWS 3: S3, CloudWatch, Auto Scaling — then a 15-question AWS phone-screen rapid-fire with Claude",{"min":45});
+add(11,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-01-30
+add(11,"Sat","design","Gate","GATE 2: NALSD in 45 min with capacity math — an unseen prompt from Claude, out loud",{"min":45,"note":"Pass = requirements, capacity chain with units, design, bottlenecks and failure modes inside 45 min."});
+add(11,"Sat","design","Design review","Review the Gate 2 design: self-score against the rubric and redo the capacity chain",{"min":60});
+add(11,"Sat","fleet","Phase topic","Gate 2 rehearsal: explain fleetguard end to end in 5 min, then a 15-min live change",{"min":60});
+add(11,"Sat","dsa","Timed medium","213. House Robber II",{"d":"M","min":60,"kind":"timed","url":"https://leetcode.com/problems/house-robber-ii/","lc":true,"note":"Saturday timed medium: 35 min, narrated, no hints, then 25 min reviewing your code and complexity claims. Circular: the max of robbing houses [0..n-2] and [1..n-1]."});
+add(11,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(11,"Sat","linux","Flex hour","Role-play scenario: Can't fork: 'Resource temporarily unavailable'",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: pid_max, ulimit -u, cgroup pids.max — and FD exhaustion (your own incident)."});
+// Sun 2027-01-31
+add(11,"Sun","linux","Gate","GATE 2: PAID mock #3 — live debugging (\"box is slow\" / \"service 5xx\") with a human interviewer",{"min":60});
+add(11,"Sun","misc","Mock","Write the top 3 fixes from this mock and which slot each goes into next week",{"min":30});
+add(11,"Sun","fleet","Gate","GATE 2: explain fleetguard end to end, then live-modify it (add a field or change the gate policy) in 30 min",{"min":60});
+add(11,"Sun","misc","Behavioral","STAR rehearsal: intellectual humility — the 2023 MIM network call, then user-first — the new story — 2 min each, recorded, then one follow-up question on each (\"why that? what would you change?\")",{"min":30});
+add(11,"Sun","misc","Review","Weekly review + GATE 2 verdict: all four passed (curl, NALSD, live debugging, fleetguard)? If not, Phase 2 extends — send Claude your backup code",{"min":30});
+add(11,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 12 ──
+// Mon 2027-02-01
+add(12,"Mon","dsa","Morning · 7:00–9:30","322. Coin Change",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/coin-change/","lc":true,"note":"dp[a] = 1 + min(dp[a - c]) over coins; unreachable stays at infinity."});
+add(12,"Mon","dsa","Morning · 7:00–9:30","139. Word Break",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/word-break/","lc":true,"note":"dp[i] = true if some j < i has dp[j] and s[j:i] is in the dictionary."});
+add(12,"Mon","dsa","Morning · 7:00–9:30","300. Longest Increasing Subsequence",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/longest-increasing-subsequence/","lc":true,"note":"O(n^2) dp first; then the patience-sorting O(n log n) with binary search."});
+add(12,"Mon","dsa","Morning · 7:00–9:30","33. Search in Rotated Sorted Array (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/search-in-rotated-sorted-array/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(12,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-02-02
+add(12,"Tue","dsa","Scripting","Timed scripting drill (30 min): Join two files: user→team map + usage log → usage per team; handle missing keys and malformed lines",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(12,"Tue","design","Knowledge","Capacity drill #3: a fleet-wide metrics system — samples/s, bytes/sample, retention, machines",{"min":30});
+// Wed 2027-02-03
+add(12,"Wed","dsa","Morning · 7:00–8:30","152. Maximum Product Subarray",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/maximum-product-subarray/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review. Track both the running max and min product, since a negative can flip them."});
+add(12,"Wed","dsa","Morning · 7:00–8:30","5. Longest Palindromic Substring",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/longest-palindromic-substring/","lc":true,"note":"Second of the timed pair. Expand around the 2n-1 centers, as in Palindromic Substrings."});
+add(12,"Wed","dsa","Morning · 7:00–8:30","23. Merge k Sorted Lists (revisit)",{"d":"H","min":20,"kind":"revisit","url":"https://leetcode.com/problems/merge-k-sorted-lists/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(12,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-02-04
+add(12,"Thu","net","Troubleshooting","Role-play scenario: TLS handshake failures for some clients only",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Expired intermediate, SNI, protocol/cipher mismatch, clock skew; openssl s_client."});
+add(12,"Thu","misc","Reading (optional)","Optional commute reading — SRE Book: Workbook: Alerting on SLOs",{"min":0,"url":"https://sre.google/workbook/alerting-on-slos/","note":"Phone-friendly. Skip if the week is tight."});
+// Fri 2027-02-05
+add(12,"Fri","dsa","Morning · 7:00–9:30","647. Palindromic Substrings",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/palindromic-substrings/","lc":true,"note":"Expand around each of the 2n-1 centers and count."});
+add(12,"Fri","dsa","Morning · 7:00–9:30","91. Decode Ways",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/decode-ways/","lc":true,"note":"dp[i] = (one-digit valid ? dp[i-1] : 0) + (two-digit valid ? dp[i-2] : 0)."});
+add(12,"Fri","dsa","Morning · 7:00–9:30","53. Maximum Subarray (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/maximum-subarray/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(12,"Fri","cloud","Knowledge","K8s lab 4: a rollout stuck at 50% — PDBs, readiness, rollback; then a control-plane/node upgrade at talk-track level",{"min":45});
+add(12,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-02-06
+add(12,"Sat","design","Timed design","Timed design: CI/CD pipeline and deployment tool — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(12,"Sat","design","Design review","Review: CI/CD pipeline and deployment tool — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(12,"Sat","misc","Phase topic","Company prep — Meta PE: loop format (coding, systems/OS, troubleshooting, behavioral); map your stories to Meta signals",{"min":60});
+add(12,"Sat","misc","Weak spot","Weak-spot drill: the top fix from your latest mock, practised once more",{"min":60});
+add(12,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(12,"Sat","cloud","Flex hour","Role-play scenario: A deployment rollout is stuck halfway",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Readiness, PDBs, maxUnavailable/maxSurge, image pulls, quota."});
+// Sun 2027-02-07
+add(12,"Sun","misc","Mock","Full mock loop #1 (calibration, peer or self-run) — coding 45, design 45, troubleshooting 45, behavioral 30, back to back",{"min":165});
+add(12,"Sun","misc","Admin","Book PAID mock #4 (full loop) for Sun Mar 7 — Gate 3",{"min":10});
+add(12,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(12,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 13 ──
+// Mon 2027-02-08
+add(13,"Mon","dsa","Morning · 7:00–9:30","62. Unique Paths",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/unique-paths/","lc":true,"note":"dp[r][c] = dp[r-1][c] + dp[r][c-1]; roll it into one row."});
+add(13,"Mon","dsa","Morning · 7:00–9:30","1143. Longest Common Subsequence",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/longest-common-subsequence/","lc":true,"note":"dp[i][j]: if the chars match, 1 + dp[i-1][j-1], else max of the two neighbors."});
+add(13,"Mon","dsa","Morning · 7:00–9:30","416. Partition Equal Subset Sum",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/partition-equal-subset-sum/","lc":true,"note":"0/1 knapsack to total/2 with a boolean dp over sums, iterated downward."});
+add(13,"Mon","dsa","Morning · 7:00–9:30","21. Merge Two Sorted Lists (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/merge-two-sorted-lists/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(13,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-02-09
+add(13,"Tue","dsa","Scripting","Timed scripting drill (30 min): Pure Bash: find the 10 largest files under a tree, then the 10 directories with the most inodes",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(13,"Tue","net","Knowledge","QUIC and HTTP/3: what they fix over TCP + TLS (head-of-line blocking, 0-RTT, connection migration)",{"min":30});
+// Wed 2027-02-10
+add(13,"Wed","dsa","Morning · 7:00–8:30","518. Coin Change II",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/coin-change-ii/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review. Unbounded knapsack counting combinations: loop coins outermost, amounts inner."});
+add(13,"Wed","dsa","Morning · 7:00–8:30","494. Target Sum",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/target-sum/","lc":true,"note":"Second of the timed pair. Reduce to a subset-sum count: (total + target) / 2."});
+add(13,"Wed","dsa","Morning · 7:00–8:30","55. Jump Game (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/jump-game/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(13,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-02-11
+add(13,"Thu","linux","Troubleshooting","Role-play scenario: High sys CPU and the app is slow inside a container",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Context switches, lock contention, perf top; CFS throttling (cpu.max, nr_throttled)."});
+// Fri 2027-02-12
+add(13,"Fri","dsa","Morning · 7:00–9:30","72. Edit Distance",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/edit-distance/","lc":true,"note":"dp[i][j] = min(insert, delete, replace); the match case copies the diagonal."});
+add(13,"Fri","dsa","Morning · 7:00–9:30","309. Best Time to Buy and Sell Stock with Cooldown",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/","lc":true,"note":"State machine dp: hold, sold, rest."});
+add(13,"Fri","dsa","Morning · 7:00–9:30","45. Jump Game II (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/jump-game-ii/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(13,"Fri","fleet","Knowledge","AI infra: Slurm architecture (slurmctld, slurmd, partitions), GPU scheduling (gres), gang scheduling vs bin-packing, Slurm vs Kubernetes — talk track only",{"min":45});
+add(13,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-02-13
+add(13,"Sat","design","Timed design","Timed design: Kubernetes GPU control plane with NCCL + InfiniBand; draining a failed GPU mid-run — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(13,"Sat","design","Design review","Review: Kubernetes GPU control plane with NCCL + InfiniBand; draining a failed GPU mid-run — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(13,"Sat","misc","Phase topic","Company prep — AWS: rehearse 4 LP stories with follow-ups + the AWS rapid-fire again",{"min":60});
+add(13,"Sat","misc","Weak spot","Weak-spot drill: the top fix from your latest mock, practised once more",{"min":60});
+add(13,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(13,"Sat","linux","Flex hour","Role-play scenario: Service returns 5xx after a deploy — Linux, network and Kubernetes layers together",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Mixed round."});
+// Sun 2027-02-14
+add(13,"Sun","dsa","AI-assisted","AI-assisted practice #3: mixed repo (service + script + config) — fix the bug, then optimize the slow path",{"min":90,"note":"Graded on HOW you use the AI: plan before prompting, targeted prompts, verify every suggestion by reading and running it, test. Then 30 min review: log each AI suggestion you accepted or rejected, and why."});
+add(13,"Sun","proj","Project deep-dive","Projects oral round, recorded: ml-inference-sre, capsule, fleetguard — 5 min each, then the hardest follow-up for each",{"min":60});
+add(13,"Sun","misc","Behavioral","Tag every story by theme (ownership, on-call, customer impact, conflict, failure); fill any theme with no story",{"min":30});
+add(13,"Sun","proj","Knowledge","ml-inference-sre: re-run the chaos test on Minikube, refresh the recovery and error-budget numbers, write \"what I would do differently\"",{"min":60});
+add(13,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(13,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 14 ──
+// Mon 2027-02-15
+add(14,"Mon","dsa","Morning · 7:00–9:30","97. Interleaving String",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/interleaving-string/","lc":true,"note":"dp[i][j]: can s1[:i] and s2[:j] interleave into s3[:i+j]?"});
+add(14,"Mon","dsa","Morning · 7:00–9:30","329. Longest Increasing Path in a Matrix",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/longest-increasing-path-in-a-matrix/","lc":true,"note":"DFS with memoization; the strictly increasing rule means no cycles."});
+add(14,"Mon","dsa","Morning · 7:00–9:30","78. Subsets",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/subsets/","lc":true,"note":"Backtrack: at each index choose to include or skip; record the path at every node."});
+add(14,"Mon","dsa","Morning · 7:00–9:30","141. Linked List Cycle (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/linked-list-cycle/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(14,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-02-16
+add(14,"Tue","dsa","Scripting","Timed scripting drill (30 min): Implement a sliding-window rate limiter class in Python with tests (allow(user) → bool)",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. AWS/Google practical coding."});
+add(14,"Tue","misc","Knowledge","Talk track: incident management — roles, comms, mitigation first, postmortems, on-call health",{"min":30});
+// Wed 2027-02-17
+add(14,"Wed","dsa","Morning · 7:00–8:30","39. Combination Sum",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/combination-sum/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review. Backtrack with a start index so you can reuse an element but never go backwards."});
+add(14,"Wed","dsa","Morning · 7:00–8:30","46. Permutations",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/permutations/","lc":true,"note":"Second of the timed pair. Backtrack with a used[] set; record when the path length equals n."});
+add(14,"Wed","dsa","Morning · 7:00–8:30","134. Gas Station (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/gas-station/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(14,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-02-18
+add(14,"Thu","misc","Troubleshooting","Role-play scenario: After the fix: explain the outage to a non-technical stakeholder in 2 minutes, then write the 5-line incident summary",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Communication is scored in Google and NVIDIA loops."});
+// Fri 2027-02-19
+add(14,"Fri","dsa","Morning · 7:00–9:30","90. Subsets II",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/subsets-ii/","lc":true,"note":"Sort; skip duplicates at the same depth while backtracking."});
+add(14,"Fri","dsa","Morning · 7:00–9:30","40. Combination Sum II",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/combination-sum-ii/","lc":true,"note":"Sort; skip duplicates at the same depth; each element used once."});
+add(14,"Fri","dsa","Morning · 7:00–9:30","763. Partition Labels (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/partition-labels/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(14,"Fri","dsa","AI-assisted","AI rep (45 min): unfamiliar Go repo — add a small feature with an AI assistant, test first",{"min":45,"note":"Graded on HOW you use the AI: plan before prompting, targeted prompts, verify every suggestion by reading and running it, test. Then 10 min review: log each AI suggestion you accepted or rejected, and why."});
+add(14,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-02-20
+add(14,"Sat","design","Timed design","Timed design: Multi-region failover and DR — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(14,"Sat","design","Design review","Review: Multi-region failover and DR — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(14,"Sat","fleet","Phase topic","Company prep — AI infra / neoclouds: GPU fleet talk track end to end (nvidia-smi, Xid, ECC, DCGM, NCCL, InfiniBand, Slurm vs K8s) tied to the fleetguard GPU collector",{"min":60});
+add(14,"Sat","misc","Weak spot","Weak-spot drill: the top fix from your latest mock, practised once more",{"min":60});
+add(14,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(14,"Sat","linux","Flex hour","Role-play scenario: Box is slow: load average 40 on 16 cores, CPU only 20% busy — second pass",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: D-state tasks count toward load: ps, /proc/<pid>/stack, iostat, PSI."});
+// Sun 2027-02-21
+add(14,"Sun","misc","Gate","GATE 3 (1 of 2): full mock loop #2 (peer) — coding 45, design 45, troubleshooting 45, behavioral 30, back to back",{"min":165});
+add(14,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(14,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 15 ──
+// Mon 2027-02-22
+add(15,"Mon","dsa","Morning · 7:00–9:30","79. Word Search",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/word-search/","lc":true,"note":"DFS from every cell; mark visited in place and restore on backtrack."});
+add(15,"Mon","dsa","Morning · 7:00–9:30","131. Palindrome Partitioning",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/palindrome-partitioning/","lc":true,"note":"Backtrack on cut positions; only continue when the prefix is a palindrome."});
+add(15,"Mon","dsa","Morning · 7:00–9:30","17. Letter Combinations of a Phone Number",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/letter-combinations-of-a-phone-number/","lc":true});
+add(15,"Mon","dsa","Morning · 7:00–9:30","19. Remove Nth Node From End of List (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/remove-nth-node-from-end-of-list/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(15,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-02-23
+add(15,"Tue","dsa","Scripting","Timed scripting drill (30 min): JSON-lines logs: errors per service per hour in Python, with two pytest tests",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(15,"Tue","cloud","Knowledge","Talk track: CI/CD and configuration management — pipelines, artifact promotion, canaries, config push safety",{"min":30});
+// Wed 2027-02-24
+add(15,"Wed","dsa","Morning · 7:00–8:30","208. Implement Trie (Prefix Tree)",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/implement-trie-prefix-tree/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review. TrieNode: children map + isEnd flag; insert/search/startsWith."});
+add(15,"Wed","dsa","Morning · 7:00–8:30","211. Design Add and Search Words Data Structure",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/design-add-and-search-words-data-structure/","lc":true,"note":"Second of the timed pair. Trie + DFS; on a '.' recurse into all children."});
+add(15,"Wed","dsa","Morning · 7:00–8:30","102. Binary Tree Level Order Traversal (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/binary-tree-level-order-traversal/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(15,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-02-25
+add(15,"Thu","net","Troubleshooting","Role-play scenario: What happens when you run curl https://example.com — end to end (first pass, untimed) — second pass",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: DNS → TCP → TLS 1.3 → HTTP → load balancer → backend."});
+// Fri 2027-02-26
+add(15,"Fri","dsa","Morning · 7:00–9:30","51. N-Queens",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/n-queens/","lc":true,"note":"Backtrack row by row with column and two diagonal sets."});
+add(15,"Fri","dsa","Morning · 7:00–9:30","212. Word Search II",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/word-search-ii/","lc":true,"note":"Trie + DFS backtracking; prune trie branches as words are found."});
+add(15,"Fri","dsa","Morning · 7:00–9:30","199. Binary Tree Right Side View (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/binary-tree-right-side-view/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(15,"Fri","dsa","AI-assisted","AI rep (45 min): a slow data-processing script — find the hotspot by reading, confirm with a profiler, fix with AI help",{"min":45,"note":"Graded on HOW you use the AI: plan before prompting, targeted prompts, verify every suggestion by reading and running it, test. Then 10 min review: log each AI suggestion you accepted or rejected, and why."});
+add(15,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-02-27
+add(15,"Sat","design","Timed design","Timed design: Distributed key-value store (Dynamo-style) — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(15,"Sat","design","Design review","Review: Distributed key-value store — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(15,"Sat","misc","Phase topic","Company prep — Google SRE: NALSD rubric, Googleyness, \"why Google\", your Round 1 feedback; confirm you will ask for SE-SRE + the Linux round",{"min":60});
+add(15,"Sat","misc","Weak spot","Weak-spot drill: the top fix from your latest mock, practised once more",{"min":60});
+add(15,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(15,"Sat","cloud","Flex hour","Role-play scenario: Pod in CrashLoopBackOff — second pass",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: logs --previous, exit codes (137 = OOMKilled), probes killing a slow starter."});
+// Sun 2027-02-28
+add(15,"Sun","linux","Mock","Role-play scenario: Errors started right after a deploy — find the root cause — second pass",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Google classic: clarifying questions first; roll back vs fix forward."});
+add(15,"Sun","misc","Mock","Write the top 3 fixes from this mock and which slot each goes into next week",{"min":30});
+add(15,"Sun","proj","Project deep-dive","Work projects oral round: patching tool, FD incident, AD/VAS — 5 min each + hardest follow-up",{"min":60});
+add(15,"Sun","misc","Behavioral","STAR rehearsal: ownership — the patching tool across the 60k-node estate, then technical excellence — the FD-exhaustion diagnosis — 2 min each, recorded, then one follow-up question on each (\"why that? what would you change?\")",{"min":30});
+add(15,"Sun","design","Knowledge","Short design: CDN / global content delivery",{"min":60});
+add(15,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(15,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 16 ──
+// Mon 2027-03-01
+add(16,"Mon","dsa","Morning · 7:00–9:30","48. Rotate Image",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/rotate-image/","lc":true,"note":"Transpose, then reverse each row."});
+add(16,"Mon","dsa","Morning · 7:00–9:30","54. Spiral Matrix",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/spiral-matrix/","lc":true});
+add(16,"Mon","dsa","Morning · 7:00–9:30","73. Set Matrix Zeroes",{"d":"M","min":40,"kind":"learn","url":"https://leetcode.com/problems/set-matrix-zeroes/","lc":true,"note":"Use the first row and column as markers to get O(1) extra space."});
+add(16,"Mon","dsa","Morning · 7:00–9:30","226. Invert Binary Tree (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/invert-binary-tree/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(16,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-03-02
+add(16,"Tue","dsa","Scripting","Timed scripting drill (30 min): Full 30-min interview problem, cold: nginx log with planted signals, narrated as if to an interviewer",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(16,"Tue","fleet","Knowledge","AI infra: MIG vs MPS, Kubernetes device plugins, the NVIDIA GPU operator — how a GPU gets advertised to the scheduler",{"min":30});
+// Wed 2027-03-03
+add(16,"Wed","dsa","Morning · 7:00–8:30","50. Pow(x, n)",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/powx-n/","lc":true,"note":"Timed pair (Meta format): this and the next problem together in 45 min, narrated; 15 min review. Fast exponentiation; handle negative n and the int-min edge case."});
+add(16,"Wed","dsa","Morning · 7:00–8:30","371. Sum of Two Integers",{"d":"M","min":30,"kind":"timed","url":"https://leetcode.com/problems/sum-of-two-integers/","lc":true,"note":"Second of the timed pair."});
+add(16,"Wed","dsa","Morning · 7:00–8:30","98. Validate Binary Search Tree (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/validate-binary-search-tree/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(16,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-03-04
+add(16,"Thu","net","Troubleshooting","Scenario (out loud): A user can't SSH into a remote machine — second pass",{"min":75,"note":"Solo: 30 min diagnosing out loud with a timer (each command you would run and what it tells you), 30 min checking against your notes — name the kernel or protocol mechanism — 15 min writing it up in sre-prep-notes/troubleshooting/. Hint: DNS, routing, firewall, sshd, keys, PAM, disk full, host down — layer by layer."});
+// Fri 2027-03-05
+add(16,"Fri","dsa","Morning · 7:00–9:30","136. Single Number",{"d":"E","min":40,"kind":"learn","url":"https://leetcode.com/problems/single-number/","lc":true,"note":"XOR everything; pairs cancel."});
+add(16,"Fri","dsa","Morning · 7:00–9:30","191. Number of 1 Bits",{"d":"E","min":40,"kind":"learn","url":"https://leetcode.com/problems/number-of-1-bits/","lc":true,"note":"n &= n - 1 clears the lowest set bit."});
+add(16,"Fri","dsa","Morning · 7:00–9:30","230. Kth Smallest Element in a BST (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/kth-smallest-element-in-a-bst/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(16,"Fri","dsa","AI-assisted","AI rep (45 min): bash deploy script + Python service + YAML config — find the deploy-time config bug",{"min":45,"note":"Graded on HOW you use the AI: plan before prompting, targeted prompts, verify every suggestion by reading and running it, test. Then 10 min review: log each AI suggestion you accepted or rejected, and why."});
+add(16,"Fri","misc","Applications · evening","Job search: referral / reconnect outreach (2 messages)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-03-06
+add(16,"Sat","design","Timed design","Timed design: Microservices on containers: load balancing, service discovery, health checks — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(16,"Sat","design","Design review","Review: Microservices on containers — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(16,"Sat","misc","Phase topic","Weak-spot drill: the top fix from full loop #2",{"min":60});
+add(16,"Sat","misc","Weak spot","Weak-spot drill: the top fix from your latest mock, practised once more",{"min":60});
+add(16,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(16,"Sat","dsa","Flex hour","Extra practice: two cold re-solves from the Redo tab or your hardest problems so far, 25 min each, narrated",{"min":60});
+// Sun 2027-03-07
+add(16,"Sun","misc","Gate","GATE 3 (2 of 2): PAID mock #4 — full loop with a human interviewer — coding 45, design 45, troubleshooting 45, behavioral 30, back to back",{"min":165});
+add(16,"Sun","misc","Review","Weekly review: tick or Skip every unticked task this week (Skip = dropped, never stacked); pick at most 1h of rollover for next Saturday's flex hour",{"min":30});
+add(16,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+// ── WEEK 17 ──
+// Mon 2027-03-08
+add(17,"Mon","dsa","Morning · 7:00–9:30","338. Counting Bits",{"d":"E","min":40,"kind":"learn","url":"https://leetcode.com/problems/counting-bits/","lc":true,"note":"dp[i] = dp[i >> 1] + (i & 1)."});
+add(17,"Mon","dsa","Morning · 7:00–9:30","268. Missing Number",{"d":"E","min":40,"kind":"learn","url":"https://leetcode.com/problems/missing-number/","lc":true});
+add(17,"Mon","dsa","Morning · 7:00–9:30","115. Distinct Subsequences",{"d":"H","min":40,"kind":"learn","url":"https://leetcode.com/problems/distinct-subsequences/","lc":true,"note":"dp[i][j]: ways to form t[:j] from s[:i]; match adds the diagonal."});
+add(17,"Mon","dsa","Morning · 7:00–9:30","104. Maximum Depth of Binary Tree (revisit)",{"d":"E","min":20,"kind":"revisit","url":"https://leetcode.com/problems/maximum-depth-of-binary-tree/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(17,"Mon","misc","Applications · evening","Applications: shortlist roles and submit 2 (right resume variant per lane)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Tue 2027-03-09
+add(17,"Tue","dsa","Scripting","Timed scripting drill (30 min): Random pick from the earlier drills, interview conditions, narrated",{"min":60,"note":"30 min timed, 20 min review. Follow-up for the last 10 min: now the input is 500 GB (doesn't fit in memory) — then it's a live stream. Say how the code changes. "});
+add(17,"Tue","fleet","Knowledge","AI infra: checkpointing and fault tolerance for training jobs; Lustre/GPFS at talk-track level",{"min":30});
+// Wed 2027-03-10
+add(17,"Wed","dsa","Morning · 7:00–8:30","235. Lowest Common Ancestor of a Binary Search Tree (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(17,"Wed","misc","Applications · evening","Applications: submit 2 and follow up on open ones",{"min":60,"note":"Evening slot, on top of prep time."});
+// Thu 2027-03-11
+add(17,"Thu","linux","Troubleshooting","Role-play scenario: Disk full: df says 100% but du adds up to far less; then the inode-exhaustion variant — second pass",{"min":75,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: lsof +L1, reserved blocks, df -i."});
+// Fri 2027-03-12
+add(17,"Fri","dsa","Morning · 7:00–9:30","1448. Count Good Nodes in Binary Tree (revisit)",{"d":"M","min":20,"kind":"revisit","url":"https://leetcode.com/problems/count-good-nodes-in-binary-tree/","lc":true,"note":"Redo tab first: if anything is flagged 🔁, re-solve that instead (cold, 20 min) and tick this. Otherwise do this one cold, narrating the complexity."});
+add(17,"Fri","dsa","AI-assisted","AI rep (45 min): same broken repo twice — vague prompts, then precise ones; write down what changed",{"min":45,"note":"Graded on HOW you use the AI: plan before prompting, targeted prompts, verify every suggestion by reading and running it, test. Then 10 min review: log each AI suggestion you accepted or rejected, and why."});
+add(17,"Fri","misc","Applications · evening","Negotiation prep: levels, competing-offer script, what you trade off (base, equity, sign-on, start date)",{"min":60,"note":"Evening slot, on top of prep time."});
+// Sat 2027-03-13
+add(17,"Sat","design","Timed design","Timed design: Your weakest design, redone cold — 45 min out loud",{"min":45,"note":"Requirements, capacity math with units, API, high-level design, bottlenecks, failure modes. Don't open your sre-prep-notes until the review."});
+add(17,"Sat","design","Design review","Review: Your weakest design, redone cold — self-score, redo the capacity chain from memory, compare with your notes, list the top 2 gaps",{"min":60});
+add(17,"Sat","misc","Phase topic","Google application prep: finalize the SRE resume variant, confirm the referral, rehearse \"why Google\"",{"min":60});
+add(17,"Sat","misc","Weak spot","Weak-spot drill: the top fix from your latest mock, practised once more",{"min":60});
+add(17,"Sat","misc","Flex hour","Flex hour: catch up first on anything unticked this week (oldest first). Week clean? Do the task below instead",{"min":0,"note":"Whichever you do, Skip the other one. Never stack."});
+add(17,"Sat","cloud","Flex hour","Role-play scenario: Pod stuck in Pending — second pass",{"min":60,"note":"Claude role-play: tell Claude \"Act as an SRE interviewer running a troubleshooting round on: <symptom>. Only give me the output of the commands I ask for. At the end, score me on method, hypotheses, commands, short- and long-term fix, ownership and communication.\" 45 min round, 15 min going through the score, 15 min writing it up. Hint: Requests vs allocatable, taints, affinity, unbound PVC; kubectl describe events."});
+// Sun 2027-03-14
+add(17,"Sun","dsa","AI-assisted","AI-assisted practice #4: full 60-min simulation, recorded; self-score against the rubric",{"min":90,"note":"Graded on HOW you use the AI: plan before prompting, targeted prompts, verify every suggestion by reading and running it, test. Then 30 min review: log each AI suggestion you accepted or rejected, and why."});
+add(17,"Sun","proj","Project deep-dive","Resume and LinkedIn project audit: every bullet defensible from fresh evidence; update all variants",{"min":60});
+add(17,"Sun","misc","Behavioral","STAR rehearsal: conflict — the AD/VAS migration, then failure — the Gap VM build misconfiguration — 2 min each, recorded, then one follow-up question on each (\"why that? what would you change?\")",{"min":30});
+add(17,"Sun","design","Knowledge","Short design: ML dataset object store (many GPUs reading the same shards)",{"min":60});
+add(17,"Sun","misc","Review","GATE 3 verdict: two full loops passed (one paid)? Yes → submit the Google application on Mon Mar 15 (ask for SE-SRE + the Linux round). No → send Claude your backup code",{"min":30});
+add(17,"Sun","misc","Applications · evening","Applications: submit 1–2 and review the pipeline (replies, next steps)",{"min":60,"note":"Evening slot, on top of prep time."});
+
+function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+TASKS.forEach(function(t){t.id=t.id||("v6-"+t.wk+t.day+"-"+slugify(t.title));});
+
+// ══ STATE ═════════════════════════════════════════════════════════════
+const SEED_START="2026-11-16"; // Monday of Week 1. Week 0 = history + the Nov 13–15 start.
+const OLD_STARTS=["2026-10-12","2026-10-26","2026-11-09"]; // start dates from earlier plans; ignored on load, import and sync
+const TOTAL_WEEKS=17;
+function load(k,fallback){try{var v=localStorage.getItem(k);return v===null?fallback:JSON.parse(v);}catch(e){return fallback;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+const STATE={
+  tab:"today",
+  theme:load("v3Theme","light"),
+  startDate:(function(){var s=load("v3Start",SEED_START);return OLD_STARTS.indexOf(s)>=0?SEED_START:s;})(),
+  checked:load("v3Checked",{}),
+  redo:load("v3Redo",{}),
+  open:{},
+  offset:0,
+  planWk:null,
+  planDays:{}
+};
+
+// ══ DATES ═════════════════════════════════════════════════════════════
+function NOW(){
+  var m=/[?&]d=(\d{4})-(\d\d)-(\d\d)/.exec(location.search);   // ?d=2026-10-14 previews another day
+  return m?new Date(+m[1],+m[2]-1,+m[3],12):new Date();
+}
+function midnight(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate());}
+function parseLocal(s){var p=s.split("-").map(Number);return new Date(p[0],p[1]-1,p[2]);}
+function viewDate(){var d=midnight(NOW());d.setDate(d.getDate()+STATE.offset);return d;}
+const DAYNAMES=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function posOf(d){
+  if(!STATE.startDate)return {wk:null,day:DAYNAMES[d.getDay()]};
+  var diff=Math.round((midnight(d)-parseLocal(STATE.startDate))/864e5); // round, not floor: survives DST changes
+  var wk=diff>=0?Math.floor(diff/7)+1:(diff>=-4?0:null);
+  if(wk!==null&&wk>TOTAL_WEEKS)wk=null;
+  return {wk:wk,day:DAYNAMES[d.getDay()],diff:diff};
+}
+function fmt(d,o){return d.toLocaleDateString("en-US",o);}
+
+// ══ RENDER ════════════════════════════════════════════════════════════
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+function taskHtml(t){
+  var skip=STATE.checked[t.id]==="skip",done=!!STATE.checked[t.id],open=!!STATE.open[t.id],rd=!!STATE.redo[t.id];
+  var hasDet=true;
+  var det="";
+  if(open&&hasDet){
+    det="<div class=\"det\">"
+      +(t.kind?"<div>"+esc(KIND[t.kind])+"</div>":"")
+      +(t.note?"<div>"+esc(t.note)+"</div>":"")
+      +(t.url?"<div><a href=\""+esc(t.url)+"\" target=\"_blank\" rel=\"noopener\">Open ↗</a></div>":"")
+      +"<button class=\"skipbtn\" onclick=\"event.stopPropagation();toggleSkip('"+t.id+"')\">"+(skip?"Undo skip":"Skip — drop it (won't count as missed)")+"</button>"
+      +"</div>";
+  }
+  var chips=(t.d?"<span class=\"chip "+t.d+"\">"+({E:"Easy",M:"Med",H:"Hard"})[t.d]+"</span>":"")
+    +(t.min?"<span class=\"chip\">"+t.min+"m</span>":"");
+  return "<div class=\"task"+(skip?" isskip":done?" isdone":"")+"\" style=\"border-left-color:var(--p-"+t.p+")\">"
+    +"<button class=\"chk"+(skip?" skip":done?" done":"")+"\" onclick=\"toggleCheck('"+t.id+"')\" aria-label=\"Mark done\">"+(skip?"–":done?"✓":"")+"</button>"
+    +"<div class=\"tmain\" onclick=\"toggleOpen('"+t.id+"')\">"
+    +"<div class=\"trow\"><span class=\"ttitle\">"+esc(t.title)+"</span>"+chips+(hasDet?"<span class=\"more\">"+(open?"▾":"▸")+"</span>":"")+"</div>"
+    +det+"</div>"
+    +(t.lc?"<button class=\"redo-btn"+(rd?" on":"")+"\" onclick=\"toggleRedo('"+t.id+"')\" aria-label=\"Flag for redo\">🔁</button>":"")
+    +"</div>";
+}
+
+function renderToday(){
+  var d=viewDate(),pos=posOf(d);
+  var isToday=STATE.offset===0;
+  var tasks=pos.wk===null?[]:TASKS.filter(function(t){return t.wk===pos.wk&&t.day===pos.day;});
+  var done=tasks.filter(function(t){return STATE.checked[t.id];}).length;
+  var pct=tasks.length?Math.round(done/tasks.length*100):0;
+  var mins=tasks.reduce(function(a,t){return a+(/^Applications/.test(t.slot)?0:(t.min||0));},0);
+  var ph=pos.wk===null?null:phaseOf(pos.wk),left=daysLeft();
+  var extra=[];tasks.forEach(function(t){if(t.p!=="dsa"&&t.p!=="misc"&&extra.indexOf(PILLARS[t.p].n)<0)extra.push(PILLARS[t.p].n);});
+  var sub=pos.day==="Sat"?"Weekend · long session":pos.day==="Sun"?"Weekend · review day":"Weekday"+(extra.length?" · "+extra.join(" + "):"");
+  function pill(c,num,lbl){return "<div class=\"pill\" style=\"background:"+c+"1A;border:1px solid "+c+"40\"><div class=\"pill-num\" style=\"color:"+c+"\">"+num+"</div><div class=\"pill-lbl\" style=\"color:"+c+"\">"+lbl+"</div></div>";}
+  var pills="";
+  if(pos.wk!==null)pills+=pill("#3B82F6","W"+pos.wk+"<span style=\"font-size:10px;font-weight:400\"> of "+TOTAL_WEEKS+"</span>","Prep Week");
+  if(left!==null)pills+=pill("#10B981",left,"Days Left");
+  if(tasks.length)pills+=pill("#8B5CF6","~"+hm(mins),"Study Today");
+  if(tasks.length)pills+=pill("#10B981",done+"/"+tasks.length,"Done Today");
+
+  var h="<div class=\"hero\"><div class=\"hero-top\"><div>"
+    +"<div class=\"hero-date\">"+esc(fmt(d,{weekday:"long",month:"long",day:"numeric"}))+"</div>"
+    +"<div class=\"hero-day\">"+esc(fmt(d,{weekday:"long"}))+"</div>"
+    +"<div class=\"hero-sub\">"+esc(pos.wk===null?"Outside the plan":sub)+"</div></div>"
+    +"<div class=\"arrows\"><button class=\"arrow-btn\" onclick=\"shiftDay(-1)\" aria-label=\"Previous day\">‹</button><button class=\"arrow-btn\" onclick=\"shiftDay(1)\" aria-label=\"Next day\">›</button></div></div>"
+    +(pills?"<div class=\"hero-pills\">"+pills+"</div>":"")
+    +(ph?"<div class=\"phase-chip\" style=\"background:"+ph.color+"18;border:1px solid "+ph.color+"33\"><div class=\"phase-dot\" style=\"background:"+ph.color+"\"></div><span style=\"font-size:12px;font-weight:600;color:"+ph.color+"\">"+esc(ph.label+": "+ph.name)+"</span></div>":"");
+  if(!isToday)h+="<button class=\"back-today\" onclick=\"shiftDay(0)\">← Back to today</button>";
+  h+="</div>";
+
+  if(pos.wk===null){
+    h+="<div class=\"empty\">"+(pos.diff!==undefined&&pos.diff<-4?"The plan starts Fri Nov 13 (Week 0). Use the arrows to preview.":"This date is outside the plan.")+"</div>";
+    return h;
+  }
+  var weekLoaded=TASKS.some(function(t){return t.wk===pos.wk;});
+  if(!weekLoaded){
+    h+="<div class=\"empty\">Week "+pos.wk+" isn't loaded yet. </div>";
+    return h;
+  }
+  if(!tasks.length){
+    h+="<div class=\"empty\">Nothing scheduled for "+esc(pos.day)+" this week.</div>";
+    return h;
+  }
+  var lastKey="";
+  tasks.forEach(function(t){
+    var key=t.p+"|"+t.slot;
+    if(key!==lastKey){
+      if(lastKey)h+="</div>";
+      h+="<div class=\"group\"><div class=\"ghead\" style=\"color:var(--p-"+t.p+")\"><span>"+PILLARS[t.p].i+" "+esc(PILLARS[t.p].n)+"</span><span class=\"slot\">· "+esc(t.slot)+"</span></div>";
+      lastKey=key;
+    }
+    h+=taskHtml(t);
+  });
+  h+="</div>";
+  return h;
+}
+
+// ══ PLAN (same structure as the old trackers: week tabs → week card → day accordion) ══
+const PHASES=[{"label": "Phase 1", "name": "Screen-ready", "color": "#3B82F6", "wks": [0, 1, 2, 3, 4]}, {"label": "Phase 2", "name": "Onsite-ready", "color": "#8B5CF6", "wks": [5, 6, 7, 8, 9, 10, 11]}, {"label": "Phase 3", "name": "Loop-ready", "color": "#10B981", "wks": [12, 13, 14, 15, 16, 17]}];
+function phaseOf(w){return PHASES.find(function(p){return p.wks.indexOf(w)>=0;})||PHASES[0];}
+const WEEKMETA={"0": {"t": "arrays, two pointers", "m": "Starts tonight (Fri Nov 13). Earlier ticks live here as history. · Sat: Book PAID mock #1 (human coding interviewer)"}, "1": {"t": "two pointers, windows, stack · design: Distribute a 10 GB file to 10,000 machines", "m": "Sun: Coding mock #1 (calibration)"}, "2": {"t": "stack, binary search, linked lists · design: Distributed rate limiter", "m": "Thanksgiving Thu: no scenario"}, "3": {"t": "linked lists, greedy · design: Fleet-wide config push to 100k hosts", "m": "Sun: Claude role-play recruiter screen + behavioral mock"}, "4": {"t": "GATE 1", "m": "GATE 1 Dec 7–9 (leave days) · trip Dec 10–13: nothing scheduled"}, "5": {"t": "greedy, trees · design: Monitoring and alerting with low noise", "m": "Sat: fleetguard · Sun: Role-play troubleshooting mock · Sun: Book PAID mock #2 (system design)"}, "6": {"t": "trees, infra-style, graphs · design: Distributed cache", "m": "Holiday half-load from Thu · Christmas Fri: one revisit"}, "7": {"t": "trees · design: Log aggregation pipeline", "m": "Holiday half-load through Fri · New Year Fri: one revisit · Sun: Troubleshooting mock (peer) · Sun: Book PAID mock #3 (live debugging)"}, "8": {"t": "graphs, topo sort · design: GPU fleet health monitoring", "m": "Sat: fleetguard"}, "9": {"t": "union-find, shortest paths, MST · design: Multi-tenant GPU cluster scheduler", "m": "Sun: PAID mock #2"}, "10": {"t": "heaps, infra-style, intervals · design: Safe driver/firmware rollout across a GPU fleet", "m": "Sat: fleetguard live-modify drill · Sun: Claude role-play Amazon-style behavioral"}, "11": {"t": "intervals, infra-style, greedy", "m": "GATE 2: Thu curl < 10 min · Sat NALSD · Sun PAID mock #3 + fleetguard live-modify + verdict"}, "12": {"t": "1-D DP · design: CI/CD pipeline and deployment tool", "m": "Sun: Full mock loop #1 (calibration, peer or self-run) · Sun: Book PAID mock #4 (full loop)"}, "13": {"t": "2-D DP · design: Kubernetes GPU control plane with NCCL + InfiniBand", "m": "Sunday review · Saturday flex hour"}, "14": {"t": "2-D DP, backtracking · design: Multi-region failover and DR", "m": "GATE 3 (1 of 2) Sun"}, "15": {"t": "backtracking, tries · design: Distributed key-value store", "m": "Sun: Role-play troubleshooting mock"}, "16": {"t": "math, bits · design: Microservices on containers", "m": "GATE 3 (2 of 2) Sun: PAID mock #4"}, "17": {"t": "bits, 2-D DP · design: Your weakest design, redone cold", "m": "Sun Mar 14: Gate 3 verdict → Google application Mon Mar 15"}};
+const DORDER=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+function addDays(d,n){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()+n);return x;}
+function dayDate(wk,day){
+  if(!STATE.startDate)return null;
+  var st=parseLocal(STATE.startDate),i=DORDER.indexOf(day);
+  return wk===0?addDays(st,i-7):addDays(st,(wk-1)*7+i);   // Week 0: Thu..Sun = start-4..start-1
+}
+function daysLeft(){
+  if(!STATE.startDate)return null;
+  var end=addDays(parseLocal(STATE.startDate),TOTAL_WEEKS*7-1);   // last Sunday of the plan
+  var n=Math.round((end-midnight(NOW()))/864e5);
+  return n>=0?n:null;
+}
+function hm(m){return m>=60?Math.floor(m/60)+"h"+(m%60?" "+(m%60)+"m":""):m+"m";}
+function planWeek(){
+  if(STATE.planWk!==null)return STATE.planWk;
+  var p=posOf(midnight(NOW()));return p.wk===null?1:p.wk;
+}
+function setPlanWk(n){STATE.planWk=n;STATE.planDays={};render();scrollWkTab(n);}
+function togglePlanDay(key){STATE.planDays[key]=!STATE.planDays[key];render();}
+function scrollWkTab(n){
+  setTimeout(function(){
+    var t=document.querySelector&&document.querySelector(".week-tabs");
+    var b=t&&t.querySelectorAll(".wtab")[n];
+    if(b&&b.scrollIntoView)b.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
+  },50);
+}
+function groupedHtml(tasks){
+  var h="",lastKey="";
+  tasks.forEach(function(t){
+    var key=t.p+"|"+t.slot;
+    if(key!==lastKey){
+      if(lastKey)h+="</div>";
+      h+="<div class=\"group\" style=\"margin:10px 0 0\"><div class=\"ghead\" style=\"color:var(--p-"+t.p+")\"><span>"+PILLARS[t.p].i+" "+esc(PILLARS[t.p].n)+"</span><span class=\"slot\">· "+esc(t.slot)+"</span></div>";
+      lastKey=key;
+    }
+    h+=taskHtml(t);
+  });
+  return h+(lastKey?"</div>":"");
+}
+function renderPlan(){
+  var cur=posOf(midnight(NOW())),pw=planWeek(),ph=phaseOf(pw),meta=WEEKMETA[pw]||{};
+  var wkTasks=TASKS.filter(function(t){return t.wk===pw;});
+  var wkDone=wkTasks.filter(function(t){return STATE.checked[t.id];}).length;
+  var wkPct=wkTasks.length?Math.round(wkDone/wkTasks.length*100):0;
+
+  var tabs="";
+  for(var w=0;w<=TOTAL_WEEKS;w++){
+    var ts=TASKS.filter(function(t){return t.wk===w;}),dn=ts.filter(function(t){return STATE.checked[t.id];}).length;
+    var all=ts.length>0&&dn===ts.length,a=w===pw,isCur=cur.wk===w,c=phaseOf(w).color;
+    tabs+="<button class=\"wtab"+(a?" active":"")+(isCur&&!a?" current":"")+"\" onclick=\"setPlanWk("+w+")\" style=\""+(a?"background:"+c+";border-color:"+c+";color:#fff":isCur?"border-color:"+c+";color:"+c:"")+"\">W"+w+(all?"✓":isCur&&!a?"★":"")+"</button>";
+  }
+
+  var first=dayDate(pw,pw===0?"Thu":"Mon"),last=dayDate(pw,"Sun");
+  var rng=first?fmt(first,{month:"short",day:"numeric"})+" – "+fmt(last,{month:"short",day:"numeric"}):"";
+  var title=meta.t||(wkTasks.length?"Week "+pw:"Week "+pw+" — not loaded yet");
+
+  var days=pw===0?["Thu","Fri","Sat","Sun"]:DORDER;
+  var cards="";
+  if(!wkTasks.length){
+    cards="<div class=\"empty\">Week "+pw+" tasks are still being written.</div>";
+  }else days.forEach(function(dn){
+    var dt=wkTasks.filter(function(t){return t.day===dn;});
+    var key=pw+"-"+dn,isToday=cur.wk===pw&&cur.day===dn;
+    var isOpen=(key in STATE.planDays)?STATE.planDays[key]:isToday;
+    var done=dt.filter(function(t){return STATE.checked[t.id];}).length,total=dt.length,all=total>0&&done===total;
+    var mins=dt.reduce(function(a,t){return a+(t.min||0);},0),dsa=dt.filter(function(t){return t.lc;}).length;
+    var dd=dayDate(pw,dn);
+    cards+="<div class=\"day-card"+(isToday?" today":"")+(all?" all-done":"")+"\">"
+      +"<button class=\"day-header\" onclick=\"togglePlanDay('"+key+"')\">"
+      +"<div class=\"day-strip\" style=\"background:"+(isToday?ph.color:"var(--border)")+"\"></div>"
+      +"<div style=\"flex:1\"><div style=\"display:flex;align-items:center;gap:5px\"><span class=\"day-name\">"+dn+(dd?" "+fmt(dd,{month:"short",day:"numeric"}):"")+"</span>"+(isToday?"<span class=\"today-badge\">TODAY</span>":"")+"</div>"
+      +"<div class=\"day-meta\">"+(total?total+" tasks · "+hm(mins)+(dsa?" · "+dsa+" DSA":""):"Nothing scheduled")+"</div></div>"
+      +"<div class=\"day-right\">"+(total?"<div class=\"day-prog"+(all?" prog-done":"")+"\">"+(all?"✓ All done":done+"/"+total)+"</div>":"")+"<span class=\"arrow"+(isOpen?" open":"")+"\">›</span></div></button>"
+      +(isOpen&&total?"<div class=\"day-body\">"+groupedHtml(dt)+"</div>":"")+"</div>";
+  });
+
+  return "<div class=\"sticky-hd\" id=\"plan-hd\">"
+    +"<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:6px\"><div style=\"font-size:15px;font-weight:700\">"+TOTAL_WEEKS+"-Week Prep Plan</div>"
+    +"<div style=\"font-size:11px;font-weight:600;color:"+ph.color+"\">"+(pw===0?"Week 0":"Week "+pw)+": "+wkPct+"%</div></div>"
+    +"<div style=\"display:flex;gap:2px;height:4px;border-radius:4px;overflow:hidden;margin-bottom:7px\">"
+    +PHASES.map(function(p){return "<div style=\"flex:"+p.wks.length+";background:"+p.color+";opacity:"+(p.wks.indexOf(pw)>=0?1:0.25)+"\"></div>";}).join("")+"</div>"
+    +"<div class=\"week-tabs\">"+tabs+"</div></div>"
+    +"<div style=\"padding:10px 16px\"><div class=\"wh-card\">"
+    +"<div class=\"wh-phase-chip\" style=\"background:"+ph.color+"18;border:1px solid "+ph.color+"33\"><div class=\"phase-dot\" style=\"background:"+ph.color+"\"></div><span style=\"font-size:11px;font-weight:600;color:"+ph.color+"\">"+esc(ph.name)+"</span></div>"
+    +"<div class=\"wh-title\">"+esc(title)+"</div>"
+    +(rng?"<div class=\"wh-dates\">📅 "+esc(rng)+"</div>":"")
+    +(meta.m?"<div class=\"milestone-box\" style=\"background:"+ph.color+"12;color:"+ph.color+"\">🏁 <span>"+esc(meta.m)+"</span></div>":"")
+    +(wkTasks.length?"<div style=\"margin-top:8px\"><div style=\"display:flex;justify-content:space-between;margin-bottom:4px\"><span style=\"font-size:10px;font-weight:600;color:var(--muted)\">Week progress</span>"
+      +"<span style=\"font-size:10px;font-weight:700;color:"+ph.color+"\">"+wkDone+"/"+wkTasks.length+" tasks</span></div>"
+      +"<div class=\"bar\" style=\"height:6px\"><i style=\"width:"+wkPct+"%;background:"+ph.color+"\"></i></div></div>":"")
+    +"</div>"+cards+"</div>";
+}
+
+// ══ PROGRESS ══════════════════════════════════════════════════════════
+function goPlan(w){STATE.planWk=w;STATE.planDays={};setTab("plan");scrollWkTab(w);}
+function renderProgress(){
+  var today=midnight(NOW()),dcache={};
+  function dd(t){var k=t.wk+t.day;if(!(k in dcache))dcache[k]=dayDate(t.wk,t.day);return dcache[k];}
+  var tot=TASKS.filter(function(t){return STATE.checked[t.id]!=="skip";}).length,done=TASKS.filter(function(t){return STATE.checked[t.id]===true;});
+  var totMin=TASKS.reduce(function(a,t){return a+(t.min||0);},0),doneMin=done.reduce(function(a,t){return a+(t.min||0);},0);
+  var pct=tot?Math.round(done.length/tot*100):0;
+  var wkStart=addDays(today,-((today.getDay()+6)%7)); // Monday of this week
+  var overdue=TASKS.filter(function(t){var d=dd(t);return d&&d>=wkStart&&d<today&&!STATE.checked[t.id]&&(t.min||0)>0;});
+  var odMin=overdue.reduce(function(a,t){return a+(t.min||0);},0);
+  var odWeeks={};overdue.forEach(function(t){odWeeks[t.wk]=(odWeeks[t.wk]||0)+1;});
+  var firstOd=overdue.length?Math.min.apply(null,Object.keys(odWeeks).map(Number)):null;
+
+  var h="<div class=\"page\" style=\"padding-bottom:4px\"><h2>Progress 📊</h2></div><div style=\"padding:0 16px\">";
+  h+="<div class=\"pcard\"><div style=\"display:flex;justify-content:space-between;align-items:flex-end\"><div class=\"big\">"+pct+"%</div>"
+    +"<div style=\"font-size:12px;color:var(--muted);text-align:right\">"+done.length+" / "+tot+" tasks<br>"+hm(doneMin)+" of "+hm(totMin)+"</div></div>"
+    +"<div class=\"bar\" style=\"margin-top:10px;height:8px\"><i style=\"width:"+pct+"%\"></i></div>"
+    +(overdue.length?"<div class=\"warn\"><b>Missed this week: "+overdue.length+" tasks (~"+hm(odMin)+")</b>. Sunday's overflow block is for these. Older misses are not counted here; the next re-plan checkpoint picks them up. <button style=\"color:var(--accent);font-weight:600\" onclick=\"goPlan("+firstOd+")\">Open Week "+firstOd+" →</button></div>"
+      :"<div class=\"warn\">Nothing missed this week.</div>")
+    +"<div class=\"warn\" style=\"margin-top:8px\"><b>If laid off:</b> same sequence, more hours (~30h/week). Rough pace from notice day: finish Phase 1 in ~1 week, Phase 2 in ~3, Phase 3 in ~3 — loop-ready about 7 weeks later. Send Claude your backup code that day to re-date the plan.</div>"
+    +"</div>";
+
+  h+="<div class=\"pcard\"><div class=\"label\">By pillar</div>";
+  Object.keys(PILLARS).forEach(function(k){
+    var ts=TASKS.filter(function(t){return t.p===k&&STATE.checked[t.id]!=="skip";}),dn=ts.filter(function(t){return STATE.checked[t.id]===true;});
+    var m=ts.reduce(function(a,t){return a+(t.min||0);},0),dm=dn.reduce(function(a,t){return a+(t.min||0);},0);
+    var pp=ts.length?Math.round(dn.length/ts.length*100):0;
+    h+="<div class=\"prow\"><div class=\"pn\" style=\"color:var(--p-"+k+")\">"+PILLARS[k].i+" "+esc(PILLARS[k].n)+"</div>"
+      +"<div class=\"bar\"><i style=\"width:"+pp+"%;background:var(--p-"+k+")\"></i></div>"
+      +"<div class=\"pv\">"+pp+"% · "+hm(dm)+"</div></div>";
+  });
+  h+="</div>";
+
+  var lcs=TASKS.filter(function(t){return t.lc;}),isRev=function(t){return t.kind==="revisit"||/\((revisit|re-solve|timed re-solve)\)$/.test(t.title);},newP=lcs.filter(function(t){return !isRev(t);}),rev=lcs.filter(isRev);
+  var cnt=function(a){return a.filter(function(t){return STATE.checked[t.id]===true;}).length;};
+  var timed=lcs.filter(function(t){return t.kind==="timed"&&!/checkpoint/i.test(t.title);});
+  var cp=lcs.filter(function(t){return /\(checkpoint \d+\/10\)/.test(t.title);});
+  var redoN=lcs.filter(function(t){return STATE.redo[t.id];}).length;
+  h+="<div class=\"pcard\"><div class=\"label\">DSA</div><div class=\"tiles\">"
+    +"<div class=\"tile\"><div class=\"tn\">"+cnt(newP)+"<span style=\"font-size:12px;font-weight:500;color:var(--muted)\"> / "+newP.length+"</span></div><div class=\"tl\">New problems</div></div>"
+    +"<div class=\"tile\"><div class=\"tn\">"+cnt(rev)+"<span style=\"font-size:12px;font-weight:500;color:var(--muted)\"> / "+rev.length+"</span></div><div class=\"tl\">Revisits</div></div>"
+    +"<div class=\"tile\"><div class=\"tn\">"+cnt(timed)+"<span style=\"font-size:12px;font-weight:500;color:var(--muted)\"> / "+timed.length+"</span></div><div class=\"tl\">Timed sets</div></div>"
+    +"<div class=\"tile\"><div class=\"tn\">"+redoN+"</div><div class=\"tl\">Flagged for redo</div></div>"
+    +(function(){var g=TASKS.filter(function(t){return t.slot==="Gate";});return "<div class=\"tile\" style=\"grid-column:1 / -1\"><div class=\"tn\">"+cnt(g)+"<span style=\"font-size:12px;font-weight:500;color:var(--muted)\"> / "+g.length+" gate tasks</span></div><div class=\"tl\">Gates: 1 = Dec 7–9 · 2 = Jan 28–31 · 3 = Feb 21 + Mar 7. A tick means done, not passed — the verdict task decides.</div></div>";})()
+    +"</div></div>";
+
+  h+="<div class=\"pcard\"><div class=\"label\">Weeks</div><div class=\"wgrid\">";
+  var cur=posOf(today).wk;
+  for(var w=0;w<=TOTAL_WEEKS;w++){
+    var ts=TASKS.filter(function(t){return t.wk===w;}),dn=ts.filter(function(t){return STATE.checked[t.id];}).length;
+    var pp=ts.length?Math.round(dn/ts.length*100):0,c=phaseOf(w).color,full=ts.length&&dn===ts.length;
+    h+="<button class=\"wcell\" onclick=\"goPlan("+w+")\" style=\"background:"+(full?"rgba(16,185,129,0.15)":c+"14")+";color:"+(full?"#10B981":c)+";"+(cur===w?"border-color:"+c:"")+"\">"
+      +(odWeeks[w]?"<span class=\"od\"></span>":"")+"<div class=\"wn\">"+(full?"✓":"W"+w)+"</div><div class=\"wp\">"+pp+"%</div></button>";
+  }
+  h+="</div><div class=\"hint\">Red dot = unticked tasks from days that have passed. Tap a week to open it.</div></div></div>";
+  return h;
+}
+
+// ══ GITHUB SYNC (progress file in this repo) ══════════════════════════
+// Same mechanics as the old tracker, with its own file. The token is read from
+// the same browser key ("ghToken"), so if the old tracker was already set up on
+// this domain, this one connects automatically.
+const GH_OWNER="AbhijeetGulhane",GH_REPO="sre-prep-tracker",GH_BRANCH="main",GH_PATH="roadmap_progress.json";
+const GH_API="https://api.github.com/repos/"+GH_OWNER+"/"+GH_REPO+"/contents/"+GH_PATH;
+let GH_SHA=null,ghTimer=null,ghBusy=false,ghStarted=false;
+STATE.sync={status:"off",msg:"",at:null};
+function ghToken(){try{return (localStorage.getItem("ghToken")||"").trim();}catch(e){return "";}}
+function ghHeaders(){return {"Authorization":"Bearer "+ghToken(),"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};}
+function ghEncode(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o))));}
+function ghDecode(b){return JSON.parse(decodeURIComponent(escape(atob(b))));}
+function isDirty(){return !!load("v3Dirty",false);}
+function markDirty(){save("v3Dirty",true);queueSync();}
+function setSync(status,msg){
+  STATE.sync.status=status;STATE.sync.msg=msg||"";if(status==="ok")STATE.sync.at=new Date();
+  var e=document.getElementById("syncStatus");if(e)e.innerHTML=syncLine();
+}
+function syncLine(){
+  var m={off:"Not connected",idle:"Connected",syncing:"Syncing…",ok:"✓ Synced"+(STATE.sync.at?" at "+STATE.sync.at.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}):""),error:"⚠ "+STATE.sync.msg}[STATE.sync.status]||"";
+  return esc(m);
+}
+async function ghPull(silent){
+  if(!ghToken()||ghBusy)return;
+  if(ghTimer||isDirty()){return ghPush();}          // never overwrite unsynced local edits
+  ghBusy=true;setSync("syncing");
+  try{
+    var res=await fetch(GH_API+"?ref="+GH_BRANCH+"&t="+Date.now(),{headers:ghHeaders()});
+    if(res.status===404){GH_SHA=null;setSync("ok");ghBusy=false;if(Object.keys(STATE.checked).length||Object.keys(STATE.redo).length){return ghPush();}return;}
+    if(res.status===401||res.status===403)throw new Error("Token rejected ("+res.status+")");
+    if(!res.ok)throw new Error("Pull failed ("+res.status+")");
+    var data=await res.json();GH_SHA=data.sha;
+    var r=ghDecode(String(data.content).replace(/\n/g,"")),changed=false;
+    if(r&&typeof r.checked==="object"){
+      if(JSON.stringify(r.checked)!==JSON.stringify(STATE.checked)){STATE.checked=r.checked;changed=true;}
+      if(r.redo&&JSON.stringify(r.redo)!==JSON.stringify(STATE.redo)){STATE.redo=r.redo;changed=true;}
+      if(r.startDate&&OLD_STARTS.indexOf(r.startDate)<0&&r.startDate!==STATE.startDate){STATE.startDate=r.startDate;changed=true;}
+      if(r.theme&&r.theme!==STATE.theme){STATE.theme=r.theme;document.documentElement.setAttribute("data-theme",r.theme);changed=true;}
+    }
+    if(changed){save("v3Checked",STATE.checked);save("v3Redo",STATE.redo);save("v3Start",STATE.startDate);save("v3Theme",STATE.theme);}
+    setSync("ok");
+    if(changed)render();
+  }catch(e){setSync("error",String(e.message||e));}
+  finally{ghBusy=false;}
+}
+async function ghPush(){
+  if(!ghToken()||ghBusy)return;
+  ghBusy=true;setSync("syncing");
+  try{
+    var payload={checked:STATE.checked,redo:STATE.redo,startDate:STATE.startDate,theme:STATE.theme,updatedAt:new Date().toISOString()};
+    var body={message:"Update roadmap progress",content:ghEncode(payload),branch:GH_BRANCH};
+    if(GH_SHA)body.sha=GH_SHA;
+    var put=function(){return fetch(GH_API,{method:"PUT",headers:Object.assign({"Content-Type":"application/json"},ghHeaders()),body:JSON.stringify(body)});};
+    var res=await put();
+    if(res.status===409||res.status===422){                 // stale or missing sha: refetch it and retry once
+      var r2=await fetch(GH_API+"?ref="+GH_BRANCH+"&t="+Date.now(),{headers:ghHeaders()});
+      if(r2.ok){
+        var d2=await r2.json();GH_SHA=d2.sha;body.sha=GH_SHA;
+        try{                                                  // another device wrote first: keep both sets of ticks
+          var rr=ghDecode(String(d2.content).replace(/\n/g,"")),added=false;
+          Object.keys(rr.checked||{}).forEach(function(k){if(!STATE.checked[k]&&rr.checked[k]){STATE.checked[k]=rr.checked[k];added=true;}});
+          Object.keys(rr.redo||{}).forEach(function(k){if(!STATE.redo[k]){STATE.redo[k]=true;added=true;}});
+          if(added){save("v3Checked",STATE.checked);save("v3Redo",STATE.redo);
+            body.content=ghEncode({checked:STATE.checked,redo:STATE.redo,startDate:STATE.startDate,theme:STATE.theme,updatedAt:new Date().toISOString()});}
+        }catch(e){}
+        res=await put();
+      }
+    }
+    if(res.status===401||res.status===403)throw new Error("Token rejected ("+res.status+")");
+    if(!res.ok)throw new Error("Push failed ("+res.status+")");
+    var d=await res.json();GH_SHA=d.content.sha;save("v3Dirty",false);setSync("ok");
+  }catch(e){setSync("error",String(e.message||e));}
+  finally{ghBusy=false;}
+}
+function queueSync(){
+  if(!ghToken())return;
+  clearTimeout(ghTimer);ghTimer=setTimeout(function(){ghTimer=null;ghPush();},2500);
+}
+function ghStart(){
+  if(ghStarted||!ghToken())return;ghStarted=true;setSync("idle");
+  ghPull(true);
+  setInterval(function(){ghPull(true);},45000);
+  document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible")ghPull(true);});
+}
+function connectGh(){
+  var v=(document.getElementById("tokInput")||{}).value;if(!v||!v.trim())return;
+  try{localStorage.setItem("ghToken",v.trim());}catch(e){}
+  ghStarted=false;ghStart();render();
+}
+function disconnectGh(){
+  try{localStorage.removeItem("ghToken");}catch(e){}
+  STATE.sync={status:"off",msg:"",at:null};render();
+}
+function syncNow(){if(isDirty())ghPush();else ghPull(false);}
+function syncCard(){
+  var on=!!ghToken();
+  return "<div class=\"card\"><div class=\"label\">GitHub sync</div>"
+    +"<div class=\"hint\" style=\"margin-top:0\">Saves your ticks to <b>"+GH_PATH+"</b> in the "+GH_REPO+" repo, so a cleared browser or a second device doesn't lose progress. If two devices edit at once, ticks are merged (an un-tick can come back).</div>"
+    +"<div class=\"syncline\" id=\"syncStatus\">"+syncLine()+"</div>"
+    +(on?"<div class=\"btnrow\"><button class=\"big-btn\" style=\"background:var(--accent)\" onclick=\"syncNow()\">Sync now</button><button class=\"big-btn\" style=\"background:var(--muted)\" onclick=\"disconnectGh()\">Disconnect</button></div>"
+        :"<input class=\"input\" type=\"password\" id=\"tokInput\" placeholder=\"GitHub token\" style=\"margin-top:10px\" autocomplete=\"off\">"
+         +"<div class=\"hint\">Create a fine-grained token limited to the "+GH_REPO+" repo with <b>Contents: Read and write</b>. It is kept in this browser only. If the old tracker is already connected on this domain, this connects by itself.</div>"
+         +"<button class=\"big-btn\" style=\"background:var(--accent)\" onclick=\"connectGh()\">Connect</button>")
+    +"</div>";
+}
+
+function renderRedo(){
+  var rows=TASKS.filter(function(t){return t.lc&&STATE.redo[t.id];});
+  var body=rows.length?rows.map(function(t){
+    return "<div class=\"rtask\"><div class=\"tmain\"><div class=\"ttitle\">"
+      +(t.url?"<a href=\""+esc(t.url)+"\" target=\"_blank\" rel=\"noopener\">"+esc(t.title)+"</a>":esc(t.title))+"</div>"
+      +"<div class=\"rmeta\">Week "+t.wk+" · "+esc(t.day)+(t.note?" · "+esc(t.note):"")+"</div></div>"
+      +"<button class=\"chk done\" onclick=\"resolveRedo('"+t.id+"')\" aria-label=\"Mark resolved\">✓</button></div>";
+  }).join(""):"<div class=\"empty\">Nothing flagged. Tap 🔁 on any DSA problem to put it here.</div>";
+  return "<div class=\"page\"><h2>Redo 🔁 <span style=\"font-size:13px;color:var(--muted);font-weight:500\">"+rows.length+" flagged</span></h2>"
+    +"<div class=\"sub\">Problems you flagged. Solve each cold, then tap ✓ to clear it. Friday's DSA slot is for this list.</div>"+body+"</div>";
+}
+
+function renderSettings(){
+  var pos=posOf(midnight(NOW()));
+  return "<div class=\"page\"><h2>Settings</h2><div class=\"sub\">Progress is saved in this browser. Connect GitHub sync below to back it up and share it across devices.</div>"+syncCard()
+    +"<div class=\"card\"><div class=\"label\">Start date (Monday of Week 1)</div>"
+    +"<input class=\"input\" type=\"date\" id=\"startInput\" value=\""+esc(STATE.startDate||"")+"\">"
+    +"<div class=\"hint\">"+(pos.wk===null?"Today is outside the plan window.":"Today is in "+(pos.wk===0?"Week 0":"Week "+pos.wk)+".")+" If you fall behind, don't move this date: use Sunday's overflow block, and bring the backup code to the next re-plan checkpoint.</div>"
+    +"<button class=\"big-btn\" id=\"saveDateBtn\" style=\"background:var(--accent)\" onclick=\"saveDate()\">Save start date</button></div>"
+    +"<div class=\"card\"><div class=\"label\">Backup &amp; restore</div>"
+    +"<div class=\"hint\" style=\"margin-top:0\">A manual backup, in case you don't use GitHub sync.</div>"
+    +"<button class=\"big-btn\" id=\"copyBtn\" style=\"background:var(--accent);margin-top:11px\" onclick=\"copyBackup()\">📋 Copy backup code</button>"
+    +"<textarea class=\"input\" id=\"restoreInput\" style=\"min-height:70px;margin-top:14px;font-family:monospace;font-size:12px\" placeholder=\"Paste a backup code here\"></textarea>"
+    +"<button class=\"big-btn\" id=\"restoreBtn\" style=\"background:var(--ok)\" onclick=\"restoreBackup()\">Restore progress</button></div>"
+    +"<div class=\"card\"><div class=\"label\">🗑️ Start fresh</div>"
+    +"<div class=\"hint\" style=\"margin-top:0\">Erases all ticks and Redo flags in this browser. Copy a backup code first.</div>"
+    +"<button class=\"big-btn\" id=\"freshBtn\" style=\"background:#DC2626\" onclick=\"startFresh()\">Start fresh</button></div></div>";
+}
+
+function updateHeader(){
+  var pos=posOf(midnight(NOW())),ph=pos.wk===null?null:phaseOf(pos.wk),left=daysLeft();
+  var set=function(id,v){var e=document.getElementById(id);if(e)e.textContent=v;};
+  set("tb-wk",pos.wk===null?"—":"W"+pos.wk+"/"+TOTAL_WEEKS);
+  set("tb-sub",ph?ph.label+": "+ph.name+(left!==null?" · "+left+"d left":""):"Outside the plan");
+  set("theme-btn",STATE.theme==="dark"?"☀️":"🌙");
+  var bar=document.getElementById("ph-bar");
+  if(bar)bar.innerHTML=PHASES.map(function(p){return "<div style=\"flex:"+p.wks.length+";background:"+p.color+";opacity:"+(pos.wk!==null&&p.wks.indexOf(pos.wk)>=0?1:0.25)+"\"></div>";}).join("");
+  var rn=document.querySelector("#nav-redo .nav-label");
+  var n=TASKS.filter(function(t){return t.lc&&STATE.redo[t.id];}).length;
+  if(rn)rn.textContent=n?"Redo ("+n+")":"Redo";
+}
+function render(){
+  var html=STATE.tab==="today"?renderToday():STATE.tab==="plan"?renderPlan():STATE.tab==="progress"?renderProgress():STATE.tab==="redo"?renderRedo():renderSettings();
+  var wt=document.querySelector&&document.querySelector(".week-tabs"),sl=wt?wt.scrollLeft:0;
+  document.getElementById("content").innerHTML=html;
+  var wt2=document.querySelector&&document.querySelector(".week-tabs");if(wt2&&sl)wt2.scrollLeft=sl;
+  var tb=document.getElementById("topbar"),hd=document.getElementById("plan-hd");
+  if(tb&&hd&&tb.offsetHeight)hd.style.top=tb.offsetHeight+"px";
+  updateHeader();
+}
+
+// ══ ACTIONS ═══════════════════════════════════════════════════════════
+function setTab(t){
+  STATE.tab=t;
+  ["today","plan","progress","redo","settings"].forEach(function(n){document.getElementById("nav-"+n).classList.toggle("active",n===t);});
+  render();window.scrollTo(0,0);
+}
+function toggleTheme(){
+  STATE.theme=STATE.theme==="light"?"dark":"light";
+  document.documentElement.setAttribute("data-theme",STATE.theme);
+  save("v3Theme",STATE.theme);markDirty();updateHeader();
+}
+function toggleSkip(id){
+  if(STATE.checked[id]==="skip")delete STATE.checked[id];else STATE.checked[id]="skip";
+  save("v3Checked",STATE.checked);markDirty();render();
+}
+function toggleCheck(id){
+  if(STATE.checked[id])delete STATE.checked[id];else STATE.checked[id]=true;
+  save("v3Checked",STATE.checked);markDirty();render();
+}
+function toggleOpen(id){STATE.open[id]=!STATE.open[id];render();}
+function toggleRedo(id){
+  if(STATE.redo[id])delete STATE.redo[id];else STATE.redo[id]=true;
+  save("v3Redo",STATE.redo);markDirty();render();
+}
+function resolveRedo(id){delete STATE.redo[id];save("v3Redo",STATE.redo);markDirty();render();}
+function shiftDay(n){STATE.offset=n===0?0:STATE.offset+n;render();window.scrollTo(0,0);}
+function saveDate(){
+  var v=document.getElementById("startInput").value;if(!v)return;
+  STATE.startDate=v;save("v3Start",v);markDirty();STATE.offset=0;
+  var b=document.getElementById("saveDateBtn");
+  render();
+  b=document.getElementById("saveDateBtn");
+  if(b){b.textContent="✓ Saved";setTimeout(function(){var x=document.getElementById("saveDateBtn");if(x)x.textContent="Save start date";},1500);}
+}
+function copyBackup(){
+  var code=btoa(unescape(encodeURIComponent(JSON.stringify({startDate:STATE.startDate,checked:STATE.checked,redo:STATE.redo,theme:STATE.theme}))));
+  var b=document.getElementById("copyBtn");
+  function res(ok){if(!b)return;b.textContent=ok?"✓ Copied":"Copy failed";setTimeout(function(){b.textContent="📋 Copy backup code";},2000);}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(code).then(function(){res(true);},function(){res(false);});
+  else res(false);
+}
+function restoreBackup(){
+  var code=document.getElementById("restoreInput").value.trim();if(!code)return;
+  var b=document.getElementById("restoreBtn");
+  try{
+    var p=JSON.parse(decodeURIComponent(escape(atob(code))));
+    if(!p||typeof p.checked!=="object")throw new Error("bad");
+    STATE.checked=p.checked||{};STATE.redo=p.redo||{};
+    if(p.startDate&&OLD_STARTS.indexOf(p.startDate)<0)STATE.startDate=p.startDate;
+    if(p.theme){STATE.theme=p.theme;document.documentElement.setAttribute("data-theme",p.theme);save("v3Theme",p.theme);}
+    save("v3Checked",STATE.checked);save("v3Redo",STATE.redo);save("v3Start",STATE.startDate);markDirty();
+    render();
+    b=document.getElementById("restoreBtn");if(b)b.textContent="✓ Restored";
+  }catch(e){if(b)b.textContent="✗ Invalid code";}
+}
+function startFresh(){
+  if(!confirm("Erase all ticks and Redo flags in this browser? This can't be undone."))return;
+  STATE.checked={};STATE.redo={};STATE.open={};STATE.offset=0;
+  save("v3Checked",{});save("v3Redo",{});markDirty();render();
+}
+
+// ══ INIT ══════════════════════════════════════════════════════════════
+document.documentElement.setAttribute("data-theme",STATE.theme);
+render();
+ghStart();
+</script>
+</body>
+</html>
