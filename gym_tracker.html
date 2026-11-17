@@ -144,7 +144,7 @@ const PLAN={
     {ex:"kneeraise",sets:3,lo:10,hi:15,rest:"60 s"},{ex:"sideplank",sets:2,lo:30,hi:30,rest:"30 s"}]}
 };
 const DOW_PLAN={1:"A",5:"B",6:"C"};
-const FLOOR=2,GOAL=3;
+const GOAL=3;
 
 // ══ STATE ══════════════════════════════════════════════════════════════
 function load(k,f){try{var v=localStorage.getItem("gym_"+k);return v===null?f:JSON.parse(v);}catch(e){return f;}}
@@ -248,7 +248,7 @@ function softRender(){   // never rebuild the page under someone's fingers
 }
 document.addEventListener("focusout",function(){setTimeout(function(){if(STATE.pendingRender)softRender();},50);});
 function weekCount(ws){var n=0;workedDates().forEach(function(k){if(weekStart(k)===ws)n++;});return n;}
-function weekLine(){var n=weekCount(weekStart(today()));return "This week: "+n+" of "+GOAL+" sessions"+(n<FLOOR?" · floor is "+FLOOR:n<GOAL?" · floor met":" · goal met");}
+function weekLine(){var n=weekCount(weekStart(today()));return "This week: "+n+" of "+GOAL+" sessions"+(n>=GOAL?" · goal met":"");}
 function toggleTheme(){var t=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);save("theme",t);render();}
 
 // ══ TODAY ══════════════════════════════════════════════════════════════
@@ -435,12 +435,12 @@ function liftSeries(id){
 }
 function liftUnit(id,series){var e=ex(id);if(e.kind==="time")return "s";var anyW=series.some(function(p){return topW(p.sets)>0;});return anyW?"lb":"reps";}
 function renderProgress(){
-  var h="",wd=workedDates(),ws=weekStart(today()),bars=[],floorHit=0;
-  for(var i=11;i>=0;i--){var w=addDays(ws,-7*i),n=weekCount(w);if(i<4&&n>=FLOOR)floorHit++;bars.push({label:fmt(w),v:n,show:i%3===2||i===0,tip:"Week of "+fmt(w)+": "+n+" session"+(n===1?"":"s")});}
+  var h="",wd=workedDates(),ws=weekStart(today()),bars=[],goalHit=0;
+  for(var i=11;i>=0;i--){var w=addDays(ws,-7*i),n=weekCount(w);if(i<4&&n>=GOAL)goalHit++;bars.push({label:fmt(w),v:n,show:i%3===2||i===0,tip:"Week of "+fmt(w)+": "+n+" session"+(n===1?"":"s")});}
   h+="<div class=\"card\"><div class=\"pills\"><div class=\"pill\"><div class=\"pill-num\">"+weekCount(ws)+"/"+GOAL+"</div><div class=\"pill-lbl\">This week</div></div>"
-    +"<div class=\"pill\"><div class=\"pill-num\">"+floorHit+"/4</div><div class=\"pill-lbl\">Weeks at floor</div></div>"
+    +"<div class=\"pill\"><div class=\"pill-num\">"+goalHit+"/4</div><div class=\"pill-lbl\">Weeks at goal</div></div>"
     +"<div class=\"pill\"><div class=\"pill-num\">"+wd.length+"</div><div class=\"pill-lbl\">Sessions</div></div></div></div>";
-  h+="<div class=\"card\"><div class=\"label\">Sessions per week</div>"+barChart(bars,[{v:FLOOR,label:"floor "+FLOOR},{v:GOAL,label:"goal "+GOAL}])+"<div class=\"hint\">Last 12 weeks. A week below the floor counts as missed.</div></div>";
+  h+="<div class=\"card\"><div class=\"label\">Sessions per week</div>"+barChart(bars,[{v:GOAL,label:"goal "+GOAL}])+"<div class=\"hint\">Last 12 weeks.</div></div>";
   // lift graph
   var ids=[],seen={};wd.forEach(function(k){Object.keys(D.sessions[k].entries).forEach(function(id){if(!seen[id]&&loggedSets(D.sessions[k].entries[id]).length){seen[id]=1;ids.push(id);}});});
   var order=Object.keys(EX);ids.sort(function(a,b){var x=order.indexOf(a),y=order.indexOf(b);return (x<0?999:x)-(y<0?999:y);});
@@ -582,7 +582,7 @@ function renderSettings(){
     +"<div class=\"flabel\">Restore from a backup JSON (merges, never overwrites newer entries)</div><input class=\"input\" type=\"file\" accept=\"application/json,.json\" onchange=\"importJson(this)\"><div class=\"hint danger\" id=\"impMsg\"></div></div>";
   var perm="";["A","B","C"].forEach(function(w){(D.added[w]||[]).forEach(function(it){if(!it.off)perm+="<div class=\"row between\" style=\"margin-top:6px\"><span>Workout "+w+": <b>"+esc(ex(it.ex).name)+"</b> ("+it.sets+" × "+it.lo+"–"+it.hi+")</span><button class=\"link-btn danger\" onclick=\"dropAdded('"+w+"','"+esc(it.ex)+"')\">Remove</button></div>";});});
   h+="<div class=\"card\"><div class=\"label\">Exercises you added to the plan</div>"+(perm||"<div class=\"empty\">None. Use “Add an exercise” on the Today tab and tick “Keep it”.</div>")+"</div>";
-  h+="<div class=\"card\"><div class=\"label\">Rules</div><div class=\"hint\" style=\"margin-top:0\">1. Add reps until every set hits the top of the range.<br>2. Then add weight: 5 lb on squat, 10 lb on leg press and Romanian deadlift, the next pin on machines.<br>3. Dumbbells go up only after two sessions in a row at the top of the range.<br>4. Stop each set with 1–2 good reps left.<br>5. No progress for three sessions: drop that lift 10% and rebuild.<br>6. Two sessions a week is the floor, three is the goal.</div></div>";
+  h+="<div class=\"card\"><div class=\"label\">Rules</div><div class=\"hint\" style=\"margin-top:0\">1. Add reps until every set hits the top of the range.<br>2. Then add weight: 5 lb on squat, 10 lb on leg press and Romanian deadlift, the next pin on machines.<br>3. Dumbbells go up only after two sessions in a row at the top of the range.<br>4. Stop each set with 1–2 good reps left.<br>5. No progress for three sessions: drop that lift 10% and rebuild.<br>6. Three sessions a week is the goal.</div></div>";
   return h;
 }
 function dropAdded(w,id){var it=D.added[w].filter(function(o){return o.ex===id;})[0];if(it){it.off=true;it.at=nowIso();persist();render();}}
